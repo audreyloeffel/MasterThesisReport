@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Applied Technology Council}(1985)]{atc13}
+{Applied Technology Council}.
+\newblock {E}arthquake damage evaluation data for {C}alifornia.
+\newblock Technical report, Seismic Safety Commission, Applied Technology
+  Council (\textsc{atc}), California, 1985.
+
+\end{thebibliography}

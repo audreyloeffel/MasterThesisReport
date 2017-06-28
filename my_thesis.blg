@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: my_thesis.aux
+A level-1 auxiliary file: head/dedication.aux
+A level-1 auxiliary file: head/preface.aux
+A level-1 auxiliary file: head/abstracts.aux
+A level-1 auxiliary file: main/ch1_introduction.aux
+A level-1 auxiliary file: main/ch2_figures_tables.aux
+A level-1 auxiliary file: main/ch3_math.aux
+A level-1 auxiliary file: main/ch4_more_text.aux
+A level-1 auxiliary file: tail/appendix.aux
+A level-1 auxiliary file: tail/biblio.aux
+The style file: plainnat.bst
+A level-1 auxiliary file: tail/cv.aux
+Database file #1: tail/bibliography.bib
+You've used 1 entry,
+            2773 wiz_defined-function locations,
+            608 strings with 5201 characters,
+and the built_in function-call counts, 313 in all, are:
+= -- 28
+> -- 10
+< -- 1
++ -- 4
+- -- 3
+* -- 17
+:= -- 61
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 5
+chr.to.int$ -- 1
+cite$ -- 2
+duplicate$ -- 15
+empty$ -- 24
+format.name$ -- 4
+if$ -- 57
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 0
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 5
+preamble$ -- 1
+purify$ -- 3
+quote$ -- 0
+skip$ -- 12
+stack$ -- 0
+substring$ -- 2
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 11
+warning$ -- 0
+while$ -- 3
+width$ -- 0
+write$ -- 21

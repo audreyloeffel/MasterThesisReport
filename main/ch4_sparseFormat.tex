@@ -1,0 +1,52 @@
+\chapter{Sparse Formats}
+
+\section{Vectors and Matrices}
+
+
+There exists several different formats to store a sparse array. The idea behind using a sparse format instead of the classic dense one, is to reduce the memory space and the executing time of the operations. Knowing that a matrix is sparse allows to shortcut some operation steps. For example during a matrix multiplication, we can avoid to perform the multiplication for the zero elements of the sparse matrix.
+
+\subsection{Coordinate format (COO)}
+
+This format is the simplest format to encode a sparse array. The coordinates and the value of each non-zero entry are stored in arrays.
+Typically each element are encoded in a tuple (row, column, value)
+
+Some implementation variations of the COO format exist. The elements can be sorted along a dimension, or it can be some duplicate indexes.
+
+
+\[
+A = 
+\begin{bmatrix}
+0 &  2 & 0 \\
+0 &  0 & 3 \\
+1 &  0 & 4\\
+0 &  0 & 0
+\end{bmatrix}
+\quad\rightarrow\quad
+\begin{aligned}
+Values = 
+\begin{bmatrix}
+2 &  3 & 1 & 4
+\end{bmatrix}
+\\
+Rows = 
+\begin{bmatrix}
+0 &  1 & 2 & 2
+\end{bmatrix}
+\\
+Columns = 
+\begin{bmatrix}
+1 &  2 & 0 & 2
+\end{bmatrix}
+\end{aligned}
+\]
+
+With this format it's easy and fast to retrieve the value given an index and to insert a new non-zero element.. It's also fast and simple to convert into a dense format.
+
+But this format don't minimize the memory space. It can be reduced with a compressed format such as CSR or CSC as described below.
+
+\subsection{Compressed Row Format (CSR)}
+
+
+\section{Tensors / N-dimensional arrays}
+
+\subsubsection{Coordinate format(COO)}

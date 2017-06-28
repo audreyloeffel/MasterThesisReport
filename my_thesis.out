@@ -1,0 +1,18 @@
+\BOOKMARK [0][-]{chapter*.1}{Acknowledgements}{}% 1
+\BOOKMARK [0][-]{chapter*.2}{Abstract}{}% 2
+\BOOKMARK [0][-]{section*.4}{List of figures}{}% 3
+\BOOKMARK [0][-]{section*.6}{List of tables}{}% 4
+\BOOKMARK [0][-]{chapter*.8}{Introduction}{}% 5
+\BOOKMARK [0][-]{chapter.1}{Deeplearning4j Library}{}% 6
+\BOOKMARK [1][-]{section.1.1}{Structure of the library}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Sparse Linear Algebra}{}% 8
+\BOOKMARK [0][-]{chapter.3}{Sparse Formats}{}% 9
+\BOOKMARK [1][-]{section.3.1}{Vectors and Matrices}{chapter.3}% 10
+\BOOKMARK [2][-]{subsection.3.1.1}{Coordinate format \(COO\)}{section.3.1}% 11
+\BOOKMARK [2][-]{subsection.3.1.2}{Compressed Row Format \(CSR\)}{section.3.1}% 12
+\BOOKMARK [1][-]{section.3.2}{Tensors / N-dimensional arrays}{chapter.3}% 13
+\BOOKMARK [0][-]{chapter.4}{Mathematics}{}% 14
+\BOOKMARK [1][-]{section.4.1}{Very important formulas}{chapter.4}% 15
+\BOOKMARK [0][-]{appendix.A}{An appendix}{}% 16
+\BOOKMARK [0][-]{appendix*.10}{Bibliography}{}% 17
+\BOOKMARK [0][-]{section*.11}{Curriculum Vitae}{}% 18

@@ -1,0 +1,13 @@
+\chapter{Deeplearning4j Library}
+
+Deeplearning4j is a open-source Deep Learning library for the {JVM}. It runs on distributed CPU's and GPU's.
+
+\section{Structure of the library}
+The library is composed by several sub-libraries:
+
+\begin{description}
+	\item [Deeplearning4j] provides the tools to implement neural networks and build computation graphs
+	\item [Nd4j] is the mathematical back-end of Deeplearning4j. It provides the data structures for the n-dimensional arrays and allow Java to access the native libraries via Libnd4j.
+	\item [Libnd4j] is the computing library that provides native operations on CPU and GPU. It's written in C++ and Cuda.
+	\item [Datavec] provides the operations for the data processing such that data ingestion, normalization and transformation into feature vectors.
+\end{description}
