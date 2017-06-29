@@ -14,7 +14,7 @@ Some implementation variations of the COO format exist. The elements can be sort
 
 
 \[
-A = 
+A_{(M\times N)} = 
 \begin{bmatrix}
 0 &  2 & 0 \\
 0 &  0 & 3 \\
@@ -23,17 +23,17 @@ A =
 \end{bmatrix}
 \quad\rightarrow\quad
 \begin{aligned}
-Values = 
+Values_{(1\times NNZ)} = 
 \begin{bmatrix}
 2 &  3 & 1 & 4
 \end{bmatrix}
 \\
-Rows = 
+Rows_{(1\times NNZ)} = 
 \begin{bmatrix}
 0 &  1 & 2 & 2
 \end{bmatrix}
 \\
-Columns = 
+Columns_{(1\times NNZ)} = 
 \begin{bmatrix}
 1 &  2 & 0 & 2
 \end{bmatrix}
@@ -45,7 +45,50 @@ With this format it's easy and fast to retrieve the value given an index and to 
 But this format don't minimize the memory space. It can be reduced with a compressed format such as CSR or CSC as described below.
 
 \subsection{Compressed Row Format (CSR)}
+The Compressed Row and the Compressed Column formats are the most general format to store a sparse array. They don't store any unnecessary element. But it requires more steps to access the elements than the COO format. 
 
+Each non-zero element of a row are stored contiguously in the memory. Each row are also contiguously stored.
+
+The format requires four arrays:
+\begin{description}
+	\item [values] All the nonzero values are store contiguously in an array. The array size is {NNZ}.
+	\item [column pointers] This array keeps the column position for each values.
+	\item [Beginning of row pointers] Each pointer $i$ points to the first element of the row $i$ in the values array. The array size is the number of rows of the array.
+	\item [End of row pointers]  Each pointer $i$ points to the first element in the values array that does not belong to the row $i$ . The array size is the number of rows of the array.
+\end{description}
+
+\[
+A_{(N\times M)} = 
+\begin{bmatrix}
+0 &  2 & 0 & 0\\
+0 &  0 & 3 & 0\\
+1 &  0 & 4 & 0\\
+0 &  0 & 0 & 1
+\end{bmatrix}
+\quad\rightarrow\quad
+\begin{aligned}
+Values_{(1\times NNZ)} = 
+\begin{bmatrix}
+2 &  3 & 1 & 4 & 1
+\end{bmatrix}
+\\
+Columns_{(1\times NNZ)} = 
+\begin{bmatrix}
+1 &  2 & 0 & 2 & 2
+\end{bmatrix}
+\\
+pointersB_{(1\times N)} = 
+\begin{bmatrix}
+0 & 1 & 2 & 4 
+\end{bmatrix}
+\\
+PointersE_{(1\times N)} = 
+\begin{bmatrix}
+1 & 2 & 4 & 5
+\end{bmatrix}
+\\
+\end{aligned}
+\]
 
 \section{Tensors / N-dimensional arrays}
 

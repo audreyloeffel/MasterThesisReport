@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  28 JUN 2017 14:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  28 JUN 2017 16:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1624,10 +1624,10 @@ Chapter 2.
 
 ]
 Chapter 3.
-)
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]
+ [7])
 [8]
 \openout2 = `main/ch3_math.aux'.
 
@@ -1748,7 +1748,7 @@ ourier-mlit.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fourier/fouri
 er-ms.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on my_thesis.pdf (30 pages, 339907 bytes).
+Output written on my_thesis.pdf (30 pages, 342585 bytes).
 PDF statistics:
  402 PDF objects out of 1000 (max. 8388607)
  259 compressed objects within 3 object streams
