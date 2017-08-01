@@ -5,10 +5,9 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[{Applied Technology Council}(1985)]{atc13}
-{Applied Technology Council}.
-\newblock {E}arthquake damage evaluation data for {C}alifornia.
-\newblock Technical report, Seismic Safety Commission, Applied Technology
-  Council (\textsc{atc}), California, 1985.
+\bibitem[mkl()]{mklFormat}
+{Intel MKL} sparse format.
+\newblock
+  \url{https://software.intel.com/en-us/mkl-developer-reference-c-sparse-blas-csr-matrix-storage-format}.
 
 \end{thebibliography}
