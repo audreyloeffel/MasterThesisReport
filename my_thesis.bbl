@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{3}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -9,5 +9,13 @@
 {Intel MKL} sparse format.
 \newblock
   \url{https://software.intel.com/en-us/mkl-developer-reference-c-sparse-blas-csr-matrix-storage-format}.
+
+\bibitem[net()]{netflixgrandprize}
+Netflix grand prize.
+\newblock \url{http://www.netflixprize.com}.
+
+\bibitem[Koren(2009)]{Koren091the}
+Yehuda Koren.
+\newblock 1 the bellkor solution to the netflix grand prize, 2009.
 
 \end{thebibliography}

@@ -1,5 +1,12 @@
 \chapter{Sparse Matrix and Vector in Dl4J}
 
+\section{Architecture of Arrays in Dl4j}
+
+The shape of a array object in Dlj4 is defined through an java interface named INDArray (Interface for N-Dimension Array). This interface contains all the methods needed to put a new values in the array, to retrieve a slice or a value, to compare, to perform operations, etc.
+
+The dense array has a base implementation that implements the  interface and which is extended by the cuda and cpu inplementation.
+	
+
 \section{First COO implementation}
 
 The first implementation of a sparse format was the COO format for vectors and matrices. I used three databuffers to store the array. One for the values, one for the row coordinates and one for the column coordinates.
@@ -10,7 +17,7 @@ Moreover the implementation of the basic methods was too simple and didn't fit i
 
 \section{CSR format implementation}
 
-For a generalized version of a sparse representation in dl4j, I choose to use the CSR format. This format has the advantages to consume less memory to store a matrix since one dimension is compresssed and can be directly use with BLAS operations of Intel MKL Sparse BLAS \cite{mklFormat}.
+For a generalized version of a sparse representation in dl4j, I choose to use the CSR format. This format has the advantages to consume less memory to store a matrix since one dimension is compressed and can be directly use with BLAS operations of Intel MKL Sparse BLAS \cite{mklFormat}.
 
 \subsection{?}
 

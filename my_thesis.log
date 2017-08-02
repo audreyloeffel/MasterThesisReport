@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  31 JUL 2017 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  1 AUG 2017 16:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1493,7 +1493,7 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 5.51999pt on input line 12.
 
-<images/epfl.pdf, id=151, 574.94798pt x 275.429pt>
+<images/epfl.pdf, id=163, 574.94798pt x 275.429pt>
 File: images/epfl.pdf Graphic file (type pdf)
  <use images/epfl.pdf>
 Package pdftex.def Info: images/epfl.pdf used on input line 13.
@@ -1605,23 +1605,22 @@ l.25 \include{head/abstracts}
 
 ]
 Chapter 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-[]\T1/futs/b/n/24.88 Sparse Lin-ear Al-ge-bra in Ma-chine
- []
-
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 3.
-) [3]
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 2.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3])
+[4]
 \openout2 = `main/ch2_dl4j.aux'.
 
- (./main/ch2_dl4j.tex [4
+ (./main/ch2_dl4j.tex
+Chapter 2.
+) [5
 
 
 
 ]
-Chapter 2.
-) [5]
 \openout2 = `main/ch3_sparseLA.aux'.
 
  (./main/ch3_sparseLA.tex [6
@@ -1652,7 +1651,12 @@ Underfull \vbox (badness 1325) has occurred while \output is active []
 
 ]
 Chapter 5.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 17.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 24.
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -1660,7 +1664,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) [13] [14]
+) [14]
 \openout2 = `main/ch6_sparsetensor.aux'.
 
 
@@ -1719,15 +1723,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
 Package rerunfilecheck Info: File `my_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 141ACD119F76E159ADECED0A427163E1;2322.
+(rerunfilecheck)             Checksum: 50819271306BE0D6C1325AC2E2A8B1EB;2489.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 24822 strings out of 494953
- 431729 string characters out of 6180977
- 656577 words of memory out of 5000000
- 27321 multiletter control sequences out of 15000+600000
- 105852 words of font info for 175 fonts, out of 8000000 for 9000
+ 24862 strings out of 494953
+ 432181 string characters out of 6180977
+ 653743 words of memory out of 5000000
+ 27328 multiletter control sequences out of 15000+600000
+ 107889 words of font info for 195 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,17n,77p,961b,2241s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/audrey/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.600pk>{/usr/sh
@@ -1741,10 +1745,10 @@ t.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on my_thesis.pdf (35 pages, 326794 bytes).
+Output written on my_thesis.pdf (35 pages, 331537 bytes).
 PDF statistics:
- 565 PDF objects out of 1000 (max. 8388607)
- 387 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
- 26418 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 589 PDF objects out of 1000 (max. 8388607)
+ 410 compressed objects within 5 object streams
+ 98 named destinations out of 1000 (max. 500000)
+ 26442 words of extra memory for PDF output out of 29859 (max. 10000000)
 

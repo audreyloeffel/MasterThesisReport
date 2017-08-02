@@ -15,47 +15,49 @@ A level-1 auxiliary file: tail/appendix.aux
 A level-1 auxiliary file: tail/biblio.aux
 The style file: plainnat.bst
 Database file #1: tail/bibliography.bib
+Warning--to sort, need author or key in netflixgrandprize
 Warning--to sort, need author or key in mklFormat
 Warning--empty year in mklFormat
-You've used 1 entry,
+Warning--empty year in netflixgrandprize
+You've used 3 entries,
             2773 wiz_defined-function locations,
-            608 strings with 5241 characters,
-and the built_in function-call counts, 270 in all, are:
-= -- 23
-> -- 0
-< -- 0
-+ -- 1
-- -- 0
-* -- 16
-:= -- 29
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 3
-chr.to.int$ -- 1
-cite$ -- 5
-duplicate$ -- 15
-empty$ -- 36
-format.name$ -- 0
-if$ -- 60
+            616 strings with 5397 characters,
+and the built_in function-call counts, 790 in all, are:
+= -- 69
+> -- 10
+< -- 1
++ -- 6
+- -- 3
+* -- 43
+:= -- 90
+add.period$ -- 6
+call.type$ -- 3
+change.case$ -- 10
+chr.to.int$ -- 3
+cite$ -- 12
+duplicate$ -- 45
+empty$ -- 103
+format.name$ -- 4
+if$ -- 180
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 0
-newline$ -- 12
-num.names$ -- 0
-pop$ -- 15
+newline$ -- 20
+num.names$ -- 4
+pop$ -- 43
 preamble$ -- 1
-purify$ -- 2
+purify$ -- 7
 quote$ -- 0
-skip$ -- 13
+skip$ -- 39
 stack$ -- 0
-substring$ -- 3
-swap$ -- 1
+substring$ -- 8
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 11
-warning$ -- 2
-while$ -- 0
+type$ -- 33
+warning$ -- 4
+while$ -- 3
 width$ -- 0
-write$ -- 16
-(There were 2 warnings)
+write$ -- 35
+(There were 4 warnings)
