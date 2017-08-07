@@ -1,7 +1,7 @@
-.log
-.aux
-.lot
-.bbl
-.blg
-.out
-.toc
+*.log
+*.aux
+*.lot
+*.bbl
+*.blg
+*.out
+*.toc
