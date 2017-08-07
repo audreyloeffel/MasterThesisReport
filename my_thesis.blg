@@ -3,61 +3,58 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: my_thesis.aux
 A level-1 auxiliary file: head/dedication.aux
 A level-1 auxiliary file: head/abstracts.aux
-A level-1 auxiliary file: main/ch1_introduction.aux
-A level-1 auxiliary file: main/ch2_sparse_in_ml.aux
+A level-1 auxiliary file: main/introduction.aux
+A level-1 auxiliary file: main/ch1_sparse_in_ml.aux
 A level-1 auxiliary file: main/ch2_dl4j.aux
-A level-1 auxiliary file: main/ch3_sparseLA.aux
-A level-1 auxiliary file: main/ch4_sparseFormat.aux
-A level-1 auxiliary file: main/ch5_sparsematrix.aux
-A level-1 auxiliary file: main/ch6_sparsetensor.aux
-A level-1 auxiliary file: main/ch3_math.aux
+A level-1 auxiliary file: main/ch3_arrayStructure.aux
+A level-1 auxiliary file: main/ch5_operations.aux
+A level-1 auxiliary file: main/ch6_results.aux
+A level-1 auxiliary file: main/ch7_conclusion.aux
 A level-1 auxiliary file: tail/appendix.aux
 A level-1 auxiliary file: tail/biblio.aux
 The style file: plainnat.bst
 Database file #1: tail/bibliography.bib
 Warning--to sort, need author or key in netflixgrandprize
-Warning--to sort, need author or key in mklFormat
-Warning--empty year in mklFormat
 Warning--empty year in netflixgrandprize
-You've used 3 entries,
+You've used 2 entries,
             2773 wiz_defined-function locations,
-            616 strings with 5397 characters,
-and the built_in function-call counts, 790 in all, are:
-= -- 69
+            611 strings with 5228 characters,
+and the built_in function-call counts, 553 in all, are:
+= -- 46
 > -- 10
 < -- 1
-+ -- 6
++ -- 5
 - -- 3
-* -- 43
-:= -- 90
-add.period$ -- 6
-call.type$ -- 3
-change.case$ -- 10
-chr.to.int$ -- 3
-cite$ -- 12
-duplicate$ -- 45
-empty$ -- 103
+* -- 29
+:= -- 71
+add.period$ -- 4
+call.type$ -- 2
+change.case$ -- 7
+chr.to.int$ -- 2
+cite$ -- 7
+duplicate$ -- 30
+empty$ -- 68
 format.name$ -- 4
-if$ -- 180
+if$ -- 121
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 0
-newline$ -- 20
+newline$ -- 16
 num.names$ -- 4
-pop$ -- 43
+pop$ -- 28
 preamble$ -- 1
-purify$ -- 7
+purify$ -- 5
 quote$ -- 0
-skip$ -- 39
+skip$ -- 27
 stack$ -- 0
-substring$ -- 8
-swap$ -- 3
+substring$ -- 5
+swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 33
-warning$ -- 4
+type$ -- 22
+warning$ -- 2
 while$ -- 3
 width$ -- 0
-write$ -- 35
-(There were 4 warnings)
+write$ -- 26
+(There were 2 warnings)

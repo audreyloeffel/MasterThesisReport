@@ -4,44 +4,59 @@
 \contentsline {chapter}{List of figures}{vii}{section*.4}
 \contentsline {chapter}{List of tables}{ix}{section*.6}
 \contentsline {chapter}{Introduction}{1}{chapter*.8}
-\contentsline {chapter}{\numberline {1}Sparse Data}{3}{chapter.1}
+\contentsline {chapter}{\numberline {1}Sparse Data and Formats}{3}{chapter.1}
 \contentsline {section}{\numberline {1.1}Definition}{3}{section.1.1}
-\contentsline {section}{\numberline {1.2}The Frequency of Sparse Data}{3}{section.1.2}
-\contentsline {section}{\numberline {1.3}Real application}{4}{section.1.3}
-\contentsline {section}{\numberline {1.4}What Sparse linear Algebra resolve and optimize}{4}{section.1.4}
+\contentsline {section}{\numberline {1.2}The Advantages of Sparse Data}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Sparse Data are very common in Machine Learning}{4}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}A Real Case of Sparse Dataset}{4}{subsection.1.3.1}
+\contentsline {section}{\numberline {1.4}Solution: Encode the data into a Sparse Format}{4}{section.1.4}
 \contentsline {section}{\numberline {1.5}Formats}{4}{section.1.5}
 \contentsline {subsection}{\numberline {1.5.1}Matrices}{4}{subsection.1.5.1}
 \contentsline {subsubsection}{Coordinates Format}{4}{subsection.1.5.1}
-\contentsline {subsubsection}{Compressed Row Format}{4}{subsection.1.5.1}
-\contentsline {subsubsection}{Compressed Column Format}{4}{subsection.1.5.1}
-\contentsline {subsection}{\numberline {1.5.2}Tensors - Multi-dimensional arrays}{4}{subsection.1.5.2}
-\contentsline {subsubsection}{Coordinates Format}{4}{subsection.1.5.2}
-\contentsline {subsubsection}{Compressed Fiber Format}{4}{subsection.1.5.2}
-\contentsline {chapter}{\numberline {2}Deeplearning4j Library Overview}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Structure of the library}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Backend ?}{5}{section.2.2}
-\contentsline {chapter}{\numberline {3}Sparse Linear Algebra}{7}{chapter.3}
-\contentsline {chapter}{\numberline {4}Sparse Formats}{9}{chapter.4}
-\contentsline {section}{\numberline {4.1}Vectors and Matrices}{9}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Coordinate format (COO)}{9}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Compressed Row Format (CSR)}{10}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Compressed Colum Format (CSC)}{10}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Tensors / N-dimensional arrays}{10}{section.4.2}
-\contentsline {subsubsection}{Coordinate format (COO)}{11}{section.4.2}
-\contentsline {subsubsection}{Compressed Sparse Fiber}{11}{figure.caption.11}
-\contentsline {chapter}{\numberline {5}Sparse Matrix and Vector in Dl4J}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Architecture of Arrays in Dl4j}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}First COO implementation}{13}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Limitations}{13}{subsection.5.2.1}
-\contentsline {section}{\numberline {5.3}CSR format implementation}{13}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}?}{14}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Adding a value}{14}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Retrieve a value}{14}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}Representation}{14}{subsection.5.3.4}
-\contentsline {subsection}{\numberline {5.3.5}Operations}{14}{subsection.5.3.5}
-\contentsline {subsection}{\numberline {5.3.6}Limitations}{14}{subsection.5.3.6}
-\contentsline {chapter}{\numberline {6}Sparse Tensor in Dl4j}{15}{chapter.6}
-\contentsline {chapter}{\numberline {7}Mathematics}{17}{chapter.7}
-\contentsline {section}{\numberline {7.1}Very important formulas}{17}{section.7.1}
+\contentsline {subsubsection}{Compressed Row Format}{5}{figure.caption.9}
+\contentsline {subsubsection}{Compressed Column Format}{5}{figure.caption.10}
+\contentsline {subsection}{\numberline {1.5.2}Tensors - Multi-dimensional arrays}{6}{subsection.1.5.2}
+\contentsline {subsubsection}{Coordinates Format}{6}{subsection.1.5.2}
+\contentsline {chapter}{\numberline {2}The Deeplearning4j Library}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Architecture of the library}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}The Importance of Nd4j in the Library}{7}{section.2.2}
+\contentsline {section}{\numberline {2.3}Nd4j needs a Sparse Representation}{8}{section.2.3}
+\contentsline {chapter}{\numberline {3}Structure of an Array}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}How Dense array are stored}{9}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Data Buffer}{9}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Information concerning the shape of the array}{9}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Hierarchy of Arrays}{9}{section.3.2}
+\contentsline {section}{\numberline {3.3}Important Component of the Arrays}{9}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Indexes}{9}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Views}{10}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Operations}{10}{subsection.3.3.3}
+\contentsline {chapter}{\numberline {4}Implementation}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Limitations due to the Current Library}{12}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}DataBuffers have a fixed length}{12}{subsection.4.1.1}
+\contentsline {section}{\numberline {4.2}CSR Matrices}{12}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Structure}{12}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Get or Put Data into this format}{12}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Limits with this format}{12}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}COO Tensors}{12}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}First implementation}{12}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}More parameters are needed to define the tensors}{12}{subsection.4.3.2}
+\contentsline {subsubsection}{All and Interval Indexes}{12}{subsection.4.3.2}
+\contentsline {subsubsection}{Point Index}{12}{subsection.4.3.2}
+\contentsline {subsubsection}{Specified Index}{12}{subsection.4.3.2}
+\contentsline {subsubsection}{New Axis Index}{12}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Computations of the the Parameters}{12}{subsection.4.3.3}
+\contentsline {subsubsection}{Computation of the Sparse Offsets}{12}{subsection.4.3.3}
+\contentsline {subsubsection}{Computation of the Flags}{12}{subsection.4.3.3}
+\contentsline {subsubsection}{Computation of the Hidden Dimensions}{12}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Sparse Indexes Translation}{12}{subsection.4.3.4}
+\contentsline {chapter}{\numberline {5}Operations}{13}{chapter.5}
+\contentsline {section}{\numberline {5.1}Backends}{13}{section.5.1}
+\contentsline {section}{\numberline {5.2}BLAS}{13}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Level 1 in CSR Matrix}{13}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Level 1 in COO Tensor}{13}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Libnd4j}{13}{section.5.3}
+\contentsline {chapter}{\numberline {6}Results}{15}{chapter.6}
+\contentsline {section}{\numberline {6.1}l}{15}{section.6.1}
+\contentsline {chapter}{\numberline {7}Conclusion}{17}{chapter.7}
 \contentsline {chapter}{\numberline {A}An appendix}{19}{appendix.A}
 \contentsline {chapter}{Bibliography}{21}{appendix*.13}

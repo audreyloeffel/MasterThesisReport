@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  1 AUG 2017 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  7 AUG 2017 14:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1330,11 +1330,20 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 LaTeX Info: Redefining \[ on input line 2735.
 LaTeX Info: Redefining \] on input line 2736.
 ))
-(./head/settings_custom.tex) (./my_thesis.aux (./head/dedication.aux)
-(./head/abstracts.aux) (./main/ch1_introduction.aux)
-(./main/ch2_sparse_in_ml.aux) (./main/ch2_dl4j.aux) (./main/ch3_sparseLA.aux)
-(./main/ch4_sparseFormat.aux) (./main/ch5_sparsematrix.aux)
-(./main/ch6_sparsetensor.aux) (./main/ch3_math.aux) (./tail/appendix.aux)
+(./head/settings_custom.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip67
+\enit@outerparindent=\dimen257
+\enit@toks=\toks38
+\enit@inbox=\box44
+\enitdp@description=\count160
+)
+(./my_thesis.aux (./head/dedication.aux) (./head/abstracts.aux)
+(./main/ch0_introduction.aux) (./main/ch1_sparse_in_ml.aux)
+(./main/ch2_dl4j.aux) (./main/ch3_arrayStructure.aux)
+(./main/ch4_implementation.aux) (./main/ch5_operations.aux)
+(./main/ch6_results.aux) (./main/ch7_conclusion.aux) (./tail/appendix.aux)
 (./tail/biblio.aux))
 \openout1 = `my_thesis.aux'.
 
@@ -1390,17 +1399,17 @@ File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count160
-\scratchdimen=\dimen257
-\scratchbox=\box44
-\nofMPsegments=\count161
-\nofMParguments=\count162
-\everyMPshowfont=\toks38
-\MPscratchCnt=\count163
-\MPscratchDim=\dimen258
-\MPnumerator=\count164
-\makeMPintoPDFobject=\count165
-\everyMPtoPDFconversion=\toks39
+\scratchcounter=\count161
+\scratchdimen=\dimen258
+\scratchbox=\box45
+\nofMPsegments=\count162
+\nofMParguments=\count163
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count164
+\MPscratchDim=\dimen259
+\MPnumerator=\count165
+\makeMPintoPDFobject=\count166
+\everyMPtoPDFconversion=\toks40
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1435,7 +1444,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `futs' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-\AtBeginShipoutBox=\box45
+\AtBeginShipoutBox=\box46
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
@@ -1445,7 +1454,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
-\c@lstlisting=\count166
+\c@lstlisting=\count167
 Package hyperref Info: Link coloring ON on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -1454,7 +1463,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count167
+\c@section@level=\count168
 )
 LaTeX Info: Redefining \ref on input line 18.
 LaTeX Info: Redefining \pageref on input line 18.
@@ -1493,7 +1502,7 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 5.51999pt on input line 12.
 
-<images/epfl.pdf, id=163, 574.94798pt x 275.429pt>
+<images/epfl.pdf, id=208, 574.94798pt x 275.429pt>
 File: images/epfl.pdf Graphic file (type pdf)
  <use images/epfl.pdf>
 Package pdftex.def Info: images/epfl.pdf used on input line 13.
@@ -1590,16 +1599,16 @@ l.25 \include{head/abstracts}
 ] [10
 
 ]
-\openout2 = `main/ch1_introduction.aux'.
+\openout2 = `main/ch0_introduction.aux'.
 
 
-(./main/ch1_introduction.tex) [1
+(./main/ch0_introduction.tex) [1
 
 
 ]
-\openout2 = `main/ch2_sparse_in_ml.aux'.
+\openout2 = `main/ch1_sparse_in_ml.aux'.
 
- (./main/ch2_sparse_in_ml.tex [2
+ (./main/ch1_sparse_in_ml.tex [2
 
 
 
@@ -1610,145 +1619,129 @@ LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3])
-[4]
+ [3]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+[5]) [6]
 \openout2 = `main/ch2_dl4j.aux'.
 
  (./main/ch2_dl4j.tex
 Chapter 2.
-) [5
+[7
 
 
 
-]
-\openout2 = `main/ch3_sparseLA.aux'.
+]) [8]
+\openout2 = `main/ch3_arrayStructure.aux'.
 
- (./main/ch3_sparseLA.tex [6
-
-
-
-]
+ (./main/ch3_arrayStructure.tex
 Chapter 3.
-) [7]
-\openout2 = `main/ch4_sparseFormat.aux'.
-
- (./main/ch4_sparseFormat.tex [8
-
-
-
-]
-Chapter 4.
-
-Underfull \vbox (badness 1325) has occurred while \output is active []
-
- [9]
-[10]) [11]
-\openout2 = `main/ch5_sparsematrix.aux'.
-
- (./main/ch5_sparsematrix.tex [12
-
-
-
-]
-Chapter 5.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 24.
+ [9
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+
+
+])
+[10]
+\openout2 = `main/ch4_implementation.aux'.
+
+ (./main/ch4_implementation.tex
+Chapter 4.
 )
-Package microtype Info: Loading generic settings for font family
-(microtype)             `cmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-) [14]
-\openout2 = `main/ch6_sparsetensor.aux'.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-(./main/ch6_sparsetensor.tex
-Chapter 6.
-) [15
+ [11
 
 
 
 ]
-\openout2 = `main/ch3_math.aux'.
+Overfull \vbox (44.45514pt too high) has occurred while \output is active []
 
- (./main/ch3_math.tex [16
+
+[12]
+\openout2 = `main/ch5_operations.aux'.
+
+ (./main/ch5_operations.tex
+Chapter 5.
+) [13
+
+
+
+]
+\openout2 = `main/ch6_results.aux'.
+
+ (./main/ch6_results.tex [14
+
+
+
+]
+Chapter 6.
+) [15]
+\openout2 = `main/ch7_conclusion.aux'.
+
+ (./main/ch7_conclusion.tex [16
 
 
 
 ]
 Chapter 7.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [17])
-[18]
+) [17]
 \openout2 = `tail/appendix.aux'.
 
- (./tail/appendix.tex
+ (./tail/appendix.tex [18
+
+
+
+]
 Appendix A.
-) [19
-
-
-
-] [20
+) [19] [20
 
 
 ]
 \openout2 = `tail/biblio.aux'.
 
- (./tail/biblio.tex (./my_thesis.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 9--12
-[]\T1/futs/m/n/10.95 (+20) Intel MKL sparse for-mat.  [][]$https : / / software
- . intel . com / en-[]us /
- []
-
-)) [21
+ (./tail/biblio.tex (./my_thesis.bbl)) [21
 
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
- (./my_thesis.aux (./head/dedication.aux) (./head/abstracts.aux)
-(./main/ch1_introduction.aux) (./main/ch2_sparse_in_ml.aux)
-(./main/ch2_dl4j.aux) (./main/ch3_sparseLA.aux) (./main/ch4_sparseFormat.aux)
-(./main/ch5_sparsematrix.aux) (./main/ch6_sparsetensor.aux)
-(./main/ch3_math.aux) (./tail/appendix.aux) (./tail/biblio.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 70.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
+ (./my_thesis.aux
+(./head/dedication.aux) (./head/abstracts.aux) (./main/ch0_introduction.aux)
+(./main/ch1_sparse_in_ml.aux) (./main/ch2_dl4j.aux)
+(./main/ch3_arrayStructure.aux) (./main/ch4_implementation.aux)
+(./main/ch5_operations.aux) (./main/ch6_results.aux) (./main/ch7_conclusion.aux
+) (./tail/appendix.aux) (./tail/biblio.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
 Package rerunfilecheck Info: File `my_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 50819271306BE0D6C1325AC2E2A8B1EB;2489.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
+(rerunfilecheck)             Checksum: C684A638F974EB9AF9CC9BBE795F71B4;3331.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
  ) 
 Here is how much of TeX's memory you used:
- 24862 strings out of 494953
- 432181 string characters out of 6180977
- 653743 words of memory out of 5000000
- 27328 multiletter control sequences out of 15000+600000
- 107889 words of font info for 195 fonts, out of 8000000 for 9000
+ 23664 strings out of 494953
+ 418001 string characters out of 6180977
+ 641907 words of memory out of 5000000
+ 26161 multiletter control sequences out of 15000+600000
+ 92773 words of font info for 170 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,17n,77p,961b,2241s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/audrey/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.600pk>{/usr/sh
-are/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/audrey/.texmf-var/fo
-nts/pk/ljfour/jknappen/ec/ecss1000.600pk> </home/audrey/.texmf-var/fonts/pk/ljf
-our/jknappen/ec/ecss1095.600pk> </home/audrey/.texmf-var/fonts/pk/ljfour/jknapp
-en/ec/ecss2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/fourier/
-fourier-mex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fourier/fouri
-er-ml.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fourier/fourier-mli
-t.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on my_thesis.pdf (35 pages, 331537 bytes).
+ 57i,17n,77p,961b,1136s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/audrey/.te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600pk> </home/audrey/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/audrey/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/ecss2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/fourier/fourier-mex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fou
+rier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/put
+b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
+Output written on my_thesis.pdf (35 pages, 313675 bytes).
 PDF statistics:
- 589 PDF objects out of 1000 (max. 8388607)
- 410 compressed objects within 5 object streams
- 98 named destinations out of 1000 (max. 500000)
- 26442 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 577 PDF objects out of 1000 (max. 8388607)
+ 436 compressed objects within 5 object streams
+ 94 named destinations out of 1000 (max. 500000)
+ 24482 words of extra memory for PDF output out of 24883 (max. 10000000)
 
