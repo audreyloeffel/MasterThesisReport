@@ -75,6 +75,7 @@ Some implementation variations of the COO format exist. The elements can be sort
 	\end{aligned}
 	\]
 	\caption{A matrix stored in COO format}
+	\label{fig:cooformat}
 \end{figure}
 
 With this format it's easy and fast to retrieve the value given an index and to insert a new non-zero element.. It's also fast and simple to convert into a dense format.
@@ -130,6 +131,7 @@ The format requires four arrays:
 	\end{aligned}
 	\]
 	\caption{A matrix stored in CSR format}
+		\label{fig:csrformat}
 \end{figure}
 \subsubsection{Compressed Column Format}
 The Compressed Column Format is similar to {CSR} but it compresses columns instead of rows.
@@ -172,4 +174,5 @@ can be encoded with one values array and one indexes array :
 	\end{aligned}
 	\]
 	\caption{A tensor stored in COO format}
+		\label{fig:cooformattensor}
 \end{figure}

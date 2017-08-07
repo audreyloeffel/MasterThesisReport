@@ -3,10 +3,11 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: my_thesis.aux
 A level-1 auxiliary file: head/dedication.aux
 A level-1 auxiliary file: head/abstracts.aux
-A level-1 auxiliary file: main/introduction.aux
+A level-1 auxiliary file: main/ch0_introduction.aux
 A level-1 auxiliary file: main/ch1_sparse_in_ml.aux
 A level-1 auxiliary file: main/ch2_dl4j.aux
 A level-1 auxiliary file: main/ch3_arrayStructure.aux
+A level-1 auxiliary file: main/ch4_implementation.aux
 A level-1 auxiliary file: main/ch5_operations.aux
 A level-1 auxiliary file: main/ch6_results.aux
 A level-1 auxiliary file: main/ch7_conclusion.aux
@@ -18,7 +19,7 @@ Warning--to sort, need author or key in netflixgrandprize
 Warning--empty year in netflixgrandprize
 You've used 2 entries,
             2773 wiz_defined-function locations,
-            611 strings with 5228 characters,
+            612 strings with 5259 characters,
 and the built_in function-call counts, 553 in all, are:
 = -- 46
 > -- 10

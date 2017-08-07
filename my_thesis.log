@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  7 AUG 2017 14:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  7 AUG 2017 16:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1638,13 +1638,21 @@ Chapter 2.
  (./main/ch3_arrayStructure.tex
 Chapter 3.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 1--1
+[]\T1/futs/b/n/24.88 Structure of an Multi-dimensional
+ []
 
+<images/c_f_OrdersLabelled.png, id=381, 256.96pt x 128.48pt>
+File: images/c_f_OrdersLabelled.png Graphic file (type png)
+
+<use images/c_f_OrdersLabelled.png>
+Package pdftex.def Info: images/c_f_OrdersLabelled.png used on input line 14.
+(pdftex.def)             Requested size: 180.67499pt x 90.33922pt.
  [9
 
 
 
-])
+ <./images/c_f_OrdersLabelled.png>])
 [10]
 \openout2 = `main/ch4_implementation.aux'.
 
@@ -1719,15 +1727,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
 Package rerunfilecheck Info: File `my_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: C684A638F974EB9AF9CC9BBE795F71B4;3331.
+(rerunfilecheck)             Checksum: 0EAA08B6D8A3410BDFCCE87C9ABF5F41;3339.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
  ) 
 Here is how much of TeX's memory you used:
- 23664 strings out of 494953
- 418001 string characters out of 6180977
- 641907 words of memory out of 5000000
- 26161 multiletter control sequences out of 15000+600000
- 92773 words of font info for 170 fonts, out of 8000000 for 9000
+ 23699 strings out of 494953
+ 418485 string characters out of 6180977
+ 642246 words of memory out of 5000000
+ 26170 multiletter control sequences out of 15000+600000
+ 94393 words of font info for 188 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,17n,77p,961b,1136s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/audrey/.te
@@ -1738,10 +1746,10 @@ c/fourier/fourier-mex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fou
 rier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/put
 b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on my_thesis.pdf (35 pages, 313675 bytes).
+Output written on my_thesis.pdf (35 pages, 319249 bytes).
 PDF statistics:
- 577 PDF objects out of 1000 (max. 8388607)
- 436 compressed objects within 5 object streams
- 94 named destinations out of 1000 (max. 500000)
- 24482 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 584 PDF objects out of 1000 (max. 8388607)
+ 441 compressed objects within 5 object streams
+ 95 named destinations out of 1000 (max. 500000)
+ 24487 words of extra memory for PDF output out of 24883 (max. 10000000)
 

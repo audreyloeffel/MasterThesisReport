@@ -16,8 +16,8 @@
 \BOOKMARK [1][-]{section.2.1}{Architecture of the library}{chapter.2}% 16
 \BOOKMARK [1][-]{section.2.2}{The Importance of Nd4j in the Library}{chapter.2}% 17
 \BOOKMARK [1][-]{section.2.3}{Nd4j needs a Sparse Representation}{chapter.2}% 18
-\BOOKMARK [0][-]{chapter.3}{Structure of an Array}{}% 19
-\BOOKMARK [1][-]{section.3.1}{How Dense array are stored}{chapter.3}% 20
+\BOOKMARK [0][-]{chapter.3}{Structure of an Multi-dimensional Array}{}% 19
+\BOOKMARK [1][-]{section.3.1}{Storing an Array}{chapter.3}% 20
 \BOOKMARK [2][-]{subsection.3.1.1}{Data Buffer}{section.3.1}% 21
 \BOOKMARK [2][-]{subsection.3.1.2}{Information concerning the shape of the array}{section.3.1}% 22
 \BOOKMARK [1][-]{section.3.2}{Hierarchy of Arrays}{chapter.3}% 23
@@ -47,4 +47,4 @@
 \BOOKMARK [1][-]{section.6.1}{l}{chapter.6}% 47
 \BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 48
 \BOOKMARK [0][-]{appendix.A}{An appendix}{}% 49
-\BOOKMARK [0][-]{appendix*.13}{Bibliography}{}% 50
+\BOOKMARK [0][-]{appendix*.14}{Bibliography}{}% 50

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  7 AUG 2017 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  7 AUG 2017 14:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3435,7 +3435,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.78 \end{figure}
+l.79 \end{figure}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -3448,7 +3448,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.80 W
+l.81 W
       ith this format it's easy and fast to retrieve the value given an inde...
 
 You're in trouble here.  Try typing  <return>  to proceed.
@@ -3593,7 +3593,7 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 80--81
+Overfull \hbox (20.0pt too wide) in paragraph at lines 81--82
 []
  []
 
@@ -3604,7 +3604,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.82 B
+l.83 B
       ut this format don't minimize the memory space. It can be reduced with...
 
 You're in trouble here.  Try typing  <return>  to proceed.
@@ -3718,12 +3718,12 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no w in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 82--83
+Overfull \hbox (20.0pt too wide) in paragraph at lines 83--84
 []
  []
 
 ! Undefined control sequence.
-l.84 \subsubsection
+l.85 \subsubsection
                    {Compressed Row Format}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3738,7 +3738,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.84 \subsubsection{C
+l.85 \subsubsection{C
                      ompressed Row Format}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -3763,7 +3763,7 @@ Missing character: There is no m in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no t in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 84--85
+Overfull \hbox (20.0pt too wide) in paragraph at lines 85--86
 []
  []
 
@@ -3774,7 +3774,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 T
+l.87 T
       he Compressed Row and the Compressed Column formats are the most gener...
 
 You're in trouble here.  Try typing  <return>  to proceed.
@@ -3963,7 +3963,7 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 86--87
+Overfull \hbox (20.0pt too wide) in paragraph at lines 87--88
 []
  []
 
@@ -3974,7 +3974,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 E
+l.89 E
       ach non-zero element of a row are stored contiguously in the memory. E...
 
 You're in trouble here.  Try typing  <return>  to proceed.
@@ -4072,7 +4072,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 88--89
+Overfull \hbox (20.0pt too wide) in paragraph at lines 89--90
 []
  []
 
@@ -4083,7 +4083,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 T
+l.91 T
       he format requires four arrays:
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4123,7 +4123,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.91 \begin{description}
+l.92 \begin{description}
                         [leftmargin=!,labelwidth=\widthof{\bfseries Beginnin...
 
 Your command was ignored.
@@ -4156,7 +4156,7 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no = in font nullfont!
 ! Undefined control sequence.
-l.91 ...cription}[leftmargin=!,labelwidth=\widthof
+l.92 ...cription}[leftmargin=!,labelwidth=\widthof
                                                   {\bfseries Beginning of ro...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4166,42 +4166,42 @@ and I'll forget about whatever was undefined.
 
 Missing character: There is no ] in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 90--92
+Overfull \hbox (20.0pt too wide) in paragraph at lines 91--93
 []
  []
 
 
-Overfull \hbox (17.28464pt too wide) in paragraph at lines 90--92
+Overfull \hbox (17.28464pt too wide) in paragraph at lines 91--93
 \OT1/cmr/bx/n/10 Be-
  []
 
 
-Overfull \hbox (19.16656pt too wide) in paragraph at lines 90--92
+Overfull \hbox (19.16656pt too wide) in paragraph at lines 91--93
 \OT1/cmr/bx/n/10 gin-
  []
 
 
-Overfull \hbox (21.7221pt too wide) in paragraph at lines 90--92
+Overfull \hbox (21.7221pt too wide) in paragraph at lines 91--93
 \OT1/cmr/bx/n/10 ning
  []
 
 
-Overfull \hbox (9.26384pt too wide) in paragraph at lines 90--92
+Overfull \hbox (9.26384pt too wide) in paragraph at lines 91--93
 \OT1/cmr/bx/n/10 of
  []
 
 
-Overfull \hbox (18.47214pt too wide) in paragraph at lines 90--92
+Overfull \hbox (18.47214pt too wide) in paragraph at lines 91--93
 \OT1/cmr/bx/n/10 row
  []
 
 
-Overfull \hbox (30.02762pt too wide) in paragraph at lines 90--92
+Overfull \hbox (30.02762pt too wide) in paragraph at lines 91--93
 \OT1/cmr/bx/n/10 point-
  []
 
 
-Overfull \hbox (14.54298pt too wide) in paragraph at lines 90--92
+Overfull \hbox (14.54298pt too wide) in paragraph at lines 91--93
 \OT1/cmr/bx/n/10 ers 
  []
 
@@ -4212,7 +4212,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 	\item [Values]
+l.93 	\item [Values]
                      All the nonzero values are store contiguously in an arr...
 
 Try typing  <return>  to proceed.
@@ -4292,7 +4292,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.93 	\item [Column pointers]
+l.94 	\item [Column pointers]
                               This array keeps the column position for each ...
 
 Try typing  <return>  to proceed.
@@ -4350,7 +4350,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.94 	\item [Beginning of row pointers]
+l.95 	\item [Beginning of row pointers]
                                         Each pointer $i$ points to the first...
 
 Try typing  <return>  to proceed.
@@ -4456,12 +4456,12 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (3.44513pt too wide) in paragraph at lines 94--95
+Overfull \hbox (3.44513pt too wide) in paragraph at lines 95--96
 \OML/cmm/m/it/10 i$
  []
 
 
-Overfull \hbox (3.44513pt too wide) in paragraph at lines 94--95
+Overfull \hbox (3.44513pt too wide) in paragraph at lines 95--96
 \OML/cmm/m/it/10 i$
  []
 
@@ -4472,7 +4472,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.95 	\item [End of row pointers]
+l.96 	\item [End of row pointers]
                                    Each pointer $i$ points to the first elem...
 
 Try typing  <return>  to proceed.
@@ -4601,19 +4601,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.96 \end{description}
+l.97 \end{description}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (3.44513pt too wide) in paragraph at lines 95--97
+Overfull \hbox (3.44513pt too wide) in paragraph at lines 96--98
 \OML/cmm/m/it/10 i$
  []
 
 
-Overfull \hbox (3.44513pt too wide) in paragraph at lines 95--97
+Overfull \hbox (3.44513pt too wide) in paragraph at lines 96--98
 \OML/cmm/m/it/10 i$
  []
 
@@ -4624,7 +4624,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.98 \begin{figure}
+l.99 \begin{figure}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4637,13 +4637,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.99 	\[
-        
+l.100 	\[
+         
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 99--99
+Overfull \hbox (20.0pt too wide) in paragraph at lines 100--100
 [][] 
  []
 
@@ -4654,14 +4654,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.101 	\begin{bmatrix}
+l.102 	\begin{bmatrix}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Misplaced alignment tab character &.
-l.102 	0 &
+l.103 	0 &
            2 & 0 & 0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4671,7 +4671,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.102 	0 & 2 &
+l.103 	0 & 2 &
                0 & 0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4681,37 +4681,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.102 	0 & 2 & 0 &
-                   0\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.103 	0 &
-           0 & 3 & 0\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.103 	0 & 0 &
-               3 & 0\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.103 	0 & 0 & 3 &
+l.103 	0 & 2 & 0 &
                    0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4722,7 +4692,7 @@ might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
 l.104 	0 &
-           0 & 0 & 0\\
+           0 & 3 & 0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -4732,6 +4702,36 @@ might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
 l.104 	0 & 0 &
+               3 & 0\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.104 	0 & 0 & 3 &
+                   0\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.105 	0 &
+           0 & 0 & 0\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.105 	0 & 0 &
                0 & 0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4741,7 +4741,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.104 	0 & 0 & 0 &
+l.105 	0 & 0 & 0 &
                    0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4751,7 +4751,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.105 	1 &
+l.106 	1 &
            0 & 4 & 0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4761,7 +4761,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.105 	1 & 0 &
+l.106 	1 & 0 &
                4 & 0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4771,7 +4771,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.105 	1 & 0 & 4 &
+l.106 	1 & 0 & 4 &
                    0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4781,7 +4781,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.106 	0 &
+l.107 	0 &
            0 & 2 & 1
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4791,7 +4791,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.106 	0 & 0 &
+l.107 	0 & 0 &
                2 & 1
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4801,7 +4801,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.106 	0 & 0 & 2 &
+l.107 	0 & 0 & 2 &
                    1
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4817,7 +4817,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.107 	\end{bmatrix}
+l.108 	\end{bmatrix}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4830,7 +4830,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.109 	\begin{aligned}
+l.110 	\begin{aligned}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4843,14 +4843,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.111 	\begin{bmatrix}
+l.112 	\begin{bmatrix}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Misplaced alignment tab character &.
-l.112 	2 &
+l.113 	2 &
             3 & 1 & 4 & 2 & 1
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4860,7 +4860,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.112 	2 &  3 &
+l.113 	2 &  3 &
                 1 & 4 & 2 & 1
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4870,7 +4870,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.112 	2 &  3 & 1 &
+l.113 	2 &  3 & 1 &
                     4 & 2 & 1
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4880,7 +4880,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.112 	2 &  3 & 1 & 4 &
+l.113 	2 &  3 & 1 & 4 &
                         2 & 1
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4890,7 +4890,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.112 	2 &  3 & 1 & 4 & 2 &
+l.113 	2 &  3 & 1 & 4 & 2 &
                             1
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4906,7 +4906,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.113 	\end{bmatrix}
+l.114 	\end{bmatrix}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4919,14 +4919,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 	\begin{bmatrix}
+l.117 	\begin{bmatrix}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Misplaced alignment tab character &.
-l.117 	1 &
+l.118 	1 &
             2 & 0 & 2 & 2 & 3
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4936,7 +4936,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.117 	1 &  2 &
+l.118 	1 &  2 &
                 0 & 2 & 2 & 3
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4946,7 +4946,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.117 	1 &  2 & 0 &
+l.118 	1 &  2 & 0 &
                     2 & 2 & 3
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4956,7 +4956,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.117 	1 &  2 & 0 & 2 &
+l.118 	1 &  2 & 0 & 2 &
                         2 & 3
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4966,7 +4966,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.117 	1 &  2 & 0 & 2 & 2 &
+l.118 	1 &  2 & 0 & 2 & 2 &
                             3
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4982,7 +4982,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.118 	\end{bmatrix}
+l.119 	\end{bmatrix}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4995,14 +4995,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.121 	\begin{bmatrix}
+l.122 	\begin{bmatrix}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Misplaced alignment tab character &.
-l.122 	0 &
+l.123 	0 &
            1 & 2 & 2 & 4
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5012,7 +5012,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.122 	0 & 1 &
+l.123 	0 & 1 &
                2 & 2 & 4
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5022,7 +5022,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.122 	0 & 1 & 2 &
+l.123 	0 & 1 & 2 &
                    2 & 4
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5032,7 +5032,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.122 	0 & 1 & 2 & 2 &
+l.123 	0 & 1 & 2 & 2 &
                        4
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5048,7 +5048,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.123 	\end{bmatrix}
+l.124 	\end{bmatrix}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -5061,14 +5061,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.126 	\begin{bmatrix}
+l.127 	\begin{bmatrix}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Misplaced alignment tab character &.
-l.127 	1 &
+l.128 	1 &
            2 & 2 & 4 & 6
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5078,7 +5078,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.127 	1 & 2 &
+l.128 	1 & 2 &
                2 & 4 & 6
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5088,7 +5088,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.127 	1 & 2 & 2 &
+l.128 	1 & 2 & 2 &
                    4 & 6
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5098,7 +5098,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.127 	1 & 2 & 2 & 4 &
+l.128 	1 & 2 & 2 & 4 &
                        6
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5114,7 +5114,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.128 	\end{bmatrix}
+l.129 	\end{bmatrix}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -5127,14 +5127,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.130 	\end{aligned}
+l.131 	\end{aligned}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (615.07469pt too wide) detected at line 131
+Overfull \hbox (615.07469pt too wide) detected at line 132
 \OML/cmm/m/it/10 A[] \OT1/cmr/m/n/10 = 0200[] 0030[] 0000[] 1040[] 0021  \OMS/c
 msy/m/n/10 !  \OML/cmm/m/it/10 Values[] \OT1/cmr/m/n/10 = 231421[] \OML/cmm/m/i
 t/10 Columns[] \OT1/cmr/m/n/10 = 120223[] \OML/cmm/m/it/10 pointersB[] \OT1/cmr
@@ -5148,7 +5148,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.132 	\caption
+l.133 	\caption
                {A matrix stored in CSR format}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5184,14 +5184,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.133 \end{figure}
+l.135 \end{figure}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Undefined control sequence.
-l.134 \subsubsection
+l.136 \subsubsection
                     {Compressed Column Format}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5303,7 +5303,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.137 G
+l.139 G
        iven a matrix $N\times M$, the pointers arrays will have a size $M$.
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5353,7 +5353,7 @@ Missing character: There is no z in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no . in font nullfont!
 ! Undefined control sequence.
-l.138 \subsection
+l.140 \subsection
                  {Tensors - Multi-dimensional arrays}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5393,22 +5393,22 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no s in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 137--139
+Overfull \hbox (20.0pt too wide) in paragraph at lines 139--141
 []
  []
 
 
-Overfull \hbox (16.90277pt too wide) in paragraph at lines 137--139
+Overfull \hbox (16.90277pt too wide) in paragraph at lines 139--141
 \OML/cmm/m/it/10 N \OMS/cmsy/m/n/10 ^^B
  []
 
 
-Overfull \hbox (10.79166pt too wide) in paragraph at lines 137--139
+Overfull \hbox (10.79166pt too wide) in paragraph at lines 139--141
 \OML/cmm/m/it/10 M$
  []
 
 
-Overfull \hbox (10.79166pt too wide) in paragraph at lines 137--139
+Overfull \hbox (10.79166pt too wide) in paragraph at lines 139--141
 \OML/cmm/m/it/10 M$
  []
 
@@ -5419,7 +5419,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.140 A
+l.142 A
         tensor is a multi-dimensional array. The order of the tensor is the ...
 
 You're in trouble here.  Try typing  <return>  to proceed.
@@ -5611,7 +5611,7 @@ Missing character: There is no l in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 140--141
+Overfull \hbox (20.0pt too wide) in paragraph at lines 142--143
 []
  []
 
@@ -5622,7 +5622,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.142 T
+l.144 T
        his generalization allows a more generic implementation of a n-dimens...
 
 You're in trouble here.  Try typing  <return>  to proceed.
@@ -5717,7 +5717,7 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no . in font nullfont!
 ! Undefined control sequence.
-l.143 \subsubsection
+l.145 \subsubsection
                     {Coordinates Format}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5848,7 +5848,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 142--145
+Overfull \hbox (20.0pt too wide) in paragraph at lines 144--147
 []
  []
 
@@ -5859,7 +5859,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.146 A
+l.148 A
         array of order $K = 3$ with shape $N\times M \times P$ which has the...
 
 You're in trouble here.  Try typing  <return>  to proceed.
@@ -5923,32 +5923,32 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no : in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 146--147
+Overfull \hbox (20.0pt too wide) in paragraph at lines 148--149
 []
  []
 
 
-Overfull \hbox (19.76384pt too wide) in paragraph at lines 146--147
+Overfull \hbox (19.76384pt too wide) in paragraph at lines 148--149
 \OML/cmm/m/it/10 K \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (5.00002pt too wide) in paragraph at lines 146--147
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 148--149
 \OT1/cmr/m/n/10 3$
  []
 
 
-Overfull \hbox (16.90277pt too wide) in paragraph at lines 146--147
+Overfull \hbox (16.90277pt too wide) in paragraph at lines 148--149
 \OML/cmm/m/it/10 N \OMS/cmsy/m/n/10 ^^B
  []
 
 
-Overfull \hbox (18.56946pt too wide) in paragraph at lines 146--147
+Overfull \hbox (18.56946pt too wide) in paragraph at lines 148--149
 \OML/cmm/m/it/10 M \OMS/cmsy/m/n/10 ^^B
  []
 
 
-Overfull \hbox (7.80904pt too wide) in paragraph at lines 146--147
+Overfull \hbox (7.80904pt too wide) in paragraph at lines 148--149
 \OML/cmm/m/it/10 P$
  []
 
@@ -6040,7 +6040,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.160 \begin{figure}
+l.162 \begin{figure}
                     [h]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6050,7 +6050,7 @@ Missing character: There is no [ in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no ] in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 159--161
+Overfull \hbox (20.0pt too wide) in paragraph at lines 161--163
 []
  []
 
@@ -6061,7 +6061,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.162 	\begin{aligned}
+l.164 	\begin{aligned}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6074,14 +6074,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.164 	\begin{bmatrix}
+l.166 	\begin{bmatrix}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Misplaced alignment tab character &.
-l.165 	1, &
+l.167 	1, &
              2, & 3, & 4, & 5
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -6091,7 +6091,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.165 	1, &  2, &
+l.167 	1, &  2, &
                   3, & 4, & 5
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -6101,7 +6101,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.165 	1, &  2, & 3, &
+l.167 	1, &  2, & 3, &
                        4, & 5
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -6111,7 +6111,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.165 	1, &  2, & 3, & 4, &
+l.167 	1, &  2, & 3, & 4, &
                             5
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -6127,7 +6127,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.166 	\end{bmatrix}
+l.168 	\end{bmatrix}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6140,14 +6140,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.169 	\begin{bmatrix}
+l.171 	\begin{bmatrix}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Misplaced alignment tab character &.
-l.170 	[0, 1, 0] ,&
+l.172 	[0, 1, 0] ,&
                      [1, 1, 2], & [1, 2, 0], & [2, 0, 1], & [2, 2, 0]
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -6157,7 +6157,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.170 	[0, 1, 0] ,&  [1, 1, 2], &
+l.172 	[0, 1, 0] ,&  [1, 1, 2], &
                                   [1, 2, 0], & [2, 0, 1], & [2, 2, 0]
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -6167,7 +6167,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.170 	[0, 1, 0] ,&  [1, 1, 2], & [1, 2, 0], &
+l.172 	[0, 1, 0] ,&  [1, 1, 2], & [1, 2, 0], &
                                                [2, 0, 1], & [2, 2, 0]
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -6177,7 +6177,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.170 ...&  [1, 1, 2], & [1, 2, 0], & [2, 0, 1], &
+l.172 ...&  [1, 1, 2], & [1, 2, 0], & [2, 0, 1], &
                                                    [2, 2, 0]
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -6193,7 +6193,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.171 	\end{bmatrix}
+l.173 	\end{bmatrix}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6206,14 +6206,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.172 	\end{aligned}
+l.174 	\end{aligned}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (379.55014pt too wide) detected at line 173
+Overfull \hbox (379.55014pt too wide) detected at line 175
 \OML/cmm/m/it/10 Values[] \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10
  2\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 3\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 4\OML/
 cmm/m/it/10 ; \OT1/cmr/m/n/10 5[] \OML/cmm/m/it/10 Indexes[] \OT1/cmr/m/n/10 = 
@@ -6233,7 +6233,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.174 	\caption
+l.176 	\caption
                {A tensor stored in COO format}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -6269,7 +6269,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.175 \end{figure}
+l.178 \end{figure}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
