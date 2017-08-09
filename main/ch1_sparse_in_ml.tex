@@ -31,21 +31,21 @@ Storing more than 8 trillions 64-bit floating-point numbers needs more than 64 g
 
 \section{Solution: Encode the data into a Sparse Format}
 
-To avoid the high volume of storage needed issue, we must store the data into a sparse format. There are different kind of formats which each of them is more suitable to different aspects (storage, matrix-matrix operations, vector-matrix operations,...)
+To avoid the issue due to the high volume of storage needed, we must store the data into a sparse format. There are different kind of formats which each of them is more suitable to different aspects (Storage vs computation).
 
 
 
 \section{Formats}
 
-There exists several different formats to store a sparse array. The idea behind using a sparse format instead of the classic dense one, is to reduce the memory space and the executing time of the operations. Knowing that a matrix is sparse allows to shortcut some operation steps. For example during a matrix multiplication, we can avoid to perform the multiplication for the zero elements of the sparse matrix.
+There are many methods for storing sparse data, each of them presents different advantages and disadvantages.
 
 \subsection{Matrices}
 \subsubsection{Coordinates Format}
 
-This format is the simplest format to encode a sparse array. The coordinates and the value of each non-zero entry are stored in arrays.
+It is the simplest method to encode a sparse array. The coordinates and the value of each non-zero entry are stored in arrays.
 Typically each element are encoded in a tuple (row, column, value)
 
-Some implementation variations of the COO format exist. The elements can be sorted along a dimension, or it can be some duplicate indexes.
+Some implementation variations of the COO format exist. The elements can be sorted along a dimension, or it can have duplicate indexes.
 
 \begin{figure}[h]
 	\[
@@ -78,17 +78,17 @@ Some implementation variations of the COO format exist. The elements can be sort
 	\label{fig:cooformat}
 \end{figure}
 
-With this format it's easy and fast to retrieve the value given an index and to insert a new non-zero element.. It's also fast and simple to convert into a dense format.
+This format provides an easy and fast way to retrieve a value and to insert a new non-zero element. It's also fast and simple to convert into a dense format.
 
-But this format don't minimize the memory space. It can be reduced with a compressed format such as CSR or CSC as described below.
+But this format is not the most efficient regarding the memory consumption.
 
 \subsubsection{Compressed Row Format}
 
-The Compressed Row and the Compressed Column formats are the most general format to store a sparse array. They don't store any unnecessary element. But it requires more steps to access the elements than the COO format. 
+The Compressed Row and the Compressed Column formats are the most general format to store a sparse array. They don't store any unnecessary element conversely to the COO format. But it requires more steps to access a element than the COO format. 
 
 Each non-zero element of a row are stored contiguously in the memory. Each row are also contiguously stored.
 
-The format requires four arrays:
+The format, described by the Intel MKL Sparse Library \cite{mklformat}, requires four arrays:
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Beginning of row pointers}]
 	\item [Values] All the nonzero values are store contiguously in an array. The array size is {NNZ}.
 	\item [Column pointers] This array keeps the column position for each values.

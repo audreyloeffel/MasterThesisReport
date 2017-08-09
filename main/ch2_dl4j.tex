@@ -1,6 +1,8 @@
 \chapter{The Deeplearning4j Library}
 
-Deeplearning4j is a open-source Deep Learning library for the {JVM}. It runs on distributed CPU's and GPU's.
+Deeplearning4j is a open-source Deep Learning library for the {JVM}. It runs on distributed CPU's and GPU's. 
+
+--> TODO
 
 \section{Architecture of the library}
 The library is composed by several sub-libraries:
@@ -15,14 +17,25 @@ The library is composed by several sub-libraries:
 
 \section{The Importance of Nd4j in the Library}
 
-Nd4j is at the base of the Deeplearning4j library, it provides data storage, manipulations, and operations. It gives the atomic pieces needed to build more complex deep learning systems such as neural networks.  Nd4j stands for N-Dimensional Arrays for Java and is basically a scientific computing library for the JVM. It features n-dimensional array object and the support of CPU and GPU via Cuda. 
+Nd4j is at the base of the Deeplearning4j library, it provides data storage, manipulations, and operations. It gives the atomic pieces needed to build more complex deep learning systems.  Nd4j stands for N-Dimensional Arrays for Java and is basically a scientific computing library for the JVM. It features n-dimensional array object and the support of CPU and GPU via Cuda. 
 
 The APIs provided by the library are essentially wrappers for the different version of BLAS (Basic Linear Algebra Subprogram). 
 
 BLAS is  a specification that defines the low-level routines for linear algebra operations (for vectors and matrices). There exist several libraries implementing those subroutines in C or Fortran for dense or sparse formats. In Nd4j the BLAS subroutines can directly be called from Java thanks to JavaCPP, that internally uses the Java Native Interface (JNI) to call native routines from the JVM environment. This architecture allows the library to benefit from the advantages of the native side.
 
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=2.5in]{images/nd4j_architecture.png} 
+		\label{fig:hierachy}
+		\caption{Nd4j architecture}
+	\end{center}
+\end{figure}
+
 \section{Nd4j needs a Sparse Representation}
 
-Currently in Deeplearning4j Sparse Data are treated like dense and use the dense operations of BLAS and Libnd4j to perform computations. With a new sparse representation we could gain in storage space and computation speed.
-% -> develop 
+Currently in Deeplearning4j, Sparse Data are treated as dense and use the dense operations of BLAS and Libnd4j to perform computations. With a new sparse representation we can gain in storage space and computation speed.
+
+
+TODO -> develop 
 

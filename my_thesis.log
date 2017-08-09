@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  7 AUG 2017 16:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  8 AUG 2017 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1330,7 +1330,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 LaTeX Info: Redefining \[ on input line 2735.
 LaTeX Info: Redefining \] on input line 2736.
 ))
-(./head/settings_custom.tex)
+(./head/settings_custom.tex
 (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip67
@@ -1339,12 +1339,19 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box44
 \enitdp@description=\count160
 )
-(./my_thesis.aux (./head/dedication.aux) (./head/abstracts.aux)
-(./main/ch0_introduction.aux) (./main/ch1_sparse_in_ml.aux)
-(./main/ch2_dl4j.aux) (./main/ch3_arrayStructure.aux)
-(./main/ch4_implementation.aux) (./main/ch5_operations.aux)
-(./main/ch6_results.aux) (./main/ch7_conclusion.aux) (./tail/appendix.aux)
-(./tail/biblio.aux))
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count161
+\float@exts=\toks39
+\float@box=\box45
+\@float@everytoks=\toks40
+\@floatcapt=\box46
+)) (./my_thesis.aux
+(./head/abstracts.aux) (./main/ch0_introduction.aux)
+(./main/ch1_sparse_in_ml.aux) (./main/ch2_dl4j.aux)
+(./main/ch3_arrayStructure.aux) (./main/ch4_implementation.aux)
+(./main/ch5_operations.aux) (./main/ch6_results.aux) (./main/ch7_conclusion.aux
+) (./tail/appendix.aux) (./tail/biblio.aux))
 \openout1 = `my_thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -1399,17 +1406,17 @@ File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count161
+\scratchcounter=\count162
 \scratchdimen=\dimen258
-\scratchbox=\box45
-\nofMPsegments=\count162
-\nofMParguments=\count163
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count164
+\scratchbox=\box47
+\nofMPsegments=\count163
+\nofMParguments=\count164
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count165
 \MPscratchDim=\dimen259
-\MPnumerator=\count165
-\makeMPintoPDFobject=\count166
-\everyMPtoPDFconversion=\toks40
+\MPnumerator=\count166
+\makeMPintoPDFobject=\count167
+\everyMPtoPDFconversion=\toks42
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1427,6 +1434,7 @@ e
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -1444,7 +1452,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `futs' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-\AtBeginShipoutBox=\box46
+\AtBeginShipoutBox=\box48
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
@@ -1454,7 +1462,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
-\c@lstlisting=\count167
+\c@lstlisting=\count168
 Package hyperref Info: Link coloring ON on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -1463,7 +1471,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count168
+\c@section@level=\count169
 )
 LaTeX Info: Redefining \ref on input line 18.
 LaTeX Info: Redefining \pageref on input line 18.
@@ -1474,66 +1482,39 @@ LaTeX Info: Redefining \nameref on input line 18.
 \openout4 = `my_thesis.out'.
 
  ABD: EveryShipout initializing macros
-(./head/titlepage.tex
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 4.
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
-File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-Package microtype Info: Loading generic settings for font family
-(microtype)             `cmss' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for FML+futmi on input line 12
-.
-
-(/usr/share/texlive/texmf-dist/tex/latex/fourier/fmlfutmi.fd
-File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
-)
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 12.
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 12.
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 12.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 12.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 12.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 12.
-
-<images/epfl.pdf, id=208, 574.94798pt x 275.429pt>
+(./head/titlepage.tex <images/epfl.pdf, id=199, 574.94798pt x 275.429pt>
 File: images/epfl.pdf Graphic file (type pdf)
- <use images/epfl.pdf>
-Package pdftex.def Info: images/epfl.pdf used on input line 13.
-(pdftex.def)             Requested size: 113.81102pt x 54.51746pt.
 
-Overfull \hbox (23.99998pt too wide) in paragraph at lines 12--39
- [][] 
- []
+<use images/epfl.pdf>
+Package pdftex.def Info: images/epfl.pdf used on input line 8.
+(pdftex.def)             Requested size: 142.26277pt x 68.2855pt.
+ <images/skymind.png, id=200, 720.6925pt x 134.5025pt>
+File: images/skymind.png Graphic file (type png)
 
-[1
+<use images/skymind.png>
+Package pdftex.def Info: images/skymind.png used on input line 13.
+(pdftex.def)             Requested size: 142.26378pt x 26.54906pt.
+ [1
 
 
 
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/epfl.pdf, page is
- rotated 90 degrees>])
-\openout2 = `head/dedication.aux'.
-
- (./head/dedication.tex [2
-
-
-]) [3]
+ rotated 90 degrees> <./images/skymind.png>])
 (./head/acknowledgements.tex [0
-
 
 ]
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <24.88> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 1.
+LaTeX Font Info:    Try loading font information for FML+futmi on input line 1.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/fourier/fmlfutmi.fd
+File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
+)
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
 (Font)              scaled to size 22.88956pt on input line 1.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
@@ -1558,30 +1539,33 @@ l.25 \include{head/abstracts}
                               [1]
 \openout2 = `head/abstracts.aux'.
 
- (./head/abstracts.texpdfTeX warning (ext4): destination with the same identifi
-er (name{page.ii}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.6 \cleardoublepage
-                     [2
+ (./head/abstracts.tex [2
 
 
-])pdfTeX warning (ext4): destination with the same identifier (name{page.iii}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.25 \include{head/abstracts}
-                              [3
+]) [3
 
 ] [4
 
 
-] (./my_thesis.toc [5])
+]
+(./my_thesis.toc
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 10.07397pt on input line 7.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 7.63599pt on input line 7.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 7.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 10.07397pt on input line 7.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 7.63599pt on input line 7.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 7.
+ [5])
 \tf@toc=\write5
 \openout5 = `my_thesis.toc'.
 
- [6]
-(./my_thesis.lof)
+ [6] (./my_thesis.lof)
 \tf@lof=\write6
 \openout6 = `my_thesis.lof'.
 
@@ -1596,13 +1580,13 @@ l.25 \include{head/abstracts}
 
  [9
 
-] [10
+]
+[10
 
 ]
 \openout2 = `main/ch0_introduction.aux'.
 
-
-(./main/ch0_introduction.tex) [1
+ (./main/ch0_introduction.tex) [1
 
 
 ]
@@ -1620,6 +1604,10 @@ LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4]
@@ -1632,17 +1620,24 @@ Chapter 2.
 
 
 
-]) [8]
+] <images/nd4j_architecture.png, id=370, 334.24875pt x 316.18124pt>
+File: images/nd4j_architecture.png Graphic file (type png)
+
+<use images/nd4j_architecture.png>
+Package pdftex.def Info: images/nd4j_architecture.png used on input line 29.
+(pdftex.def)             Requested size: 180.67499pt x 170.91383pt.
+) [8 <./images/nd4j_architecture.png>]
 \openout2 = `main/ch3_arrayStructure.aux'.
 
- (./main/ch3_arrayStructure.tex
+
+(./main/ch3_arrayStructure.tex
 Chapter 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--1
 []\T1/futs/b/n/24.88 Structure of an Multi-dimensional
  []
 
-<images/c_f_OrdersLabelled.png, id=381, 256.96pt x 128.48pt>
+<images/c_f_OrdersLabelled.png, id=376, 256.96pt x 128.48pt>
 File: images/c_f_OrdersLabelled.png Graphic file (type png)
 
 <use images/c_f_OrdersLabelled.png>
@@ -1652,74 +1647,106 @@ Package pdftex.def Info: images/c_f_OrdersLabelled.png used on input line 14.
 
 
 
- <./images/c_f_OrdersLabelled.png>])
-[10]
+ <./images/c_f_OrdersLabelled.png>]
+
+Package caption Warning: \label without proper reference on input line 71.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:sharememView' on page 10 undefined on input line 
+66.
+
+<images/views.png, id=384, 326.21875pt x 252.945pt>
+File: images/views.png Graphic file (type png)
+ <use images/views.png>
+Package pdftex.def Info: images/views.png used on input line 70.
+(pdftex.def)             Requested size: 252.94499pt x 196.13841pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10]) [11 <./images/views.png>]
 \openout2 = `main/ch4_implementation.aux'.
 
- (./main/ch4_implementation.tex
+ (./main/ch4_implementation.tex [12
+
+
+
+]
 Chapter 4.
-)
+<images/INDArrayHierarchy.png, id=398, 1004.75375pt x 422.57875pt>
+File: images/INDArrayHierarchy.png Graphic file (type png)
+
+<use images/INDArrayHierarchy.png>
+Package pdftex.def Info: images/INDArrayHierarchy.png used on input line 22.
+(pdftex.def)             Requested size: 469.75499pt x 197.56746pt.
+
+Overfull \hbox (52.06853pt too wide) in paragraph at lines 22--24
+ [] 
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11
+ [13])
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-]
-Overfull \vbox (44.45514pt too high) has occurred while \output is active []
-
-
-[12]
+ [14 <./images/INDArrayHierarchy.png>] [15]
 \openout2 = `main/ch5_operations.aux'.
 
- (./main/ch5_operations.tex
-Chapter 5.
-) [13
+ (./main/ch5_operations.tex [16
 
 
 
 ]
+Chapter 5.
+) [17]
 \openout2 = `main/ch6_results.aux'.
 
- (./main/ch6_results.tex [14
+ (./main/ch6_results.tex [18
 
 
 
 ]
 Chapter 6.
-) [15]
+) [19]
 \openout2 = `main/ch7_conclusion.aux'.
 
- (./main/ch7_conclusion.tex [16
+ (./main/ch7_conclusion.tex [20
 
 
 
 ]
 Chapter 7.
-) [17]
+) [21]
 \openout2 = `tail/appendix.aux'.
 
- (./tail/appendix.tex [18
+ (./tail/appendix.tex [22
 
 
 
 ]
 Appendix A.
-) [19] [20
+) [23] [24
 
 
 ]
 \openout2 = `tail/biblio.aux'.
 
- (./tail/biblio.tex (./my_thesis.bbl)) [21
+ (./tail/biblio.tex (./my_thesis.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 9--13
+[]\T1/futs/m/n/10.95 (+20) Intel MKL sparse for-mat.  [][]$https : / / software
+ . intel . com / en-[]us /
+ []
+
+)) [25
 
 
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 70.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
- (./my_thesis.aux
-(./head/dedication.aux) (./head/abstracts.aux) (./main/ch0_introduction.aux)
+ (./my_thesis.aux (./head/abstracts.aux) (./main/ch0_introduction.aux)
 (./main/ch1_sparse_in_ml.aux) (./main/ch2_dl4j.aux)
 (./main/ch3_arrayStructure.aux) (./main/ch4_implementation.aux)
 (./main/ch5_operations.aux) (./main/ch6_results.aux) (./main/ch7_conclusion.aux
@@ -1727,29 +1754,31 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
 Package rerunfilecheck Info: File `my_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 0EAA08B6D8A3410BDFCCE87C9ABF5F41;3339.
+(rerunfilecheck)             Checksum: 14277D08A750D28B75F57B91E451D8B7;3155.
+
+
+LaTeX Warning: There were undefined references.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
  ) 
 Here is how much of TeX's memory you used:
- 23699 strings out of 494953
- 418485 string characters out of 6180977
- 642246 words of memory out of 5000000
- 26170 multiletter control sequences out of 15000+600000
- 94393 words of font info for 188 fonts, out of 8000000 for 9000
+ 23808 strings out of 494953
+ 419590 string characters out of 6180977
+ 643530 words of memory out of 5000000
+ 26219 multiletter control sequences out of 15000+600000
+ 121003 words of font info for 227 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,17n,77p,961b,1136s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/audrey/.te
-xmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600pk> </home/audrey/.texmf-var/fo
-nts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/audrey/.texmf-var/fonts/pk/ljf
-our/jknappen/ec/ecss2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/fourier/fourier-mex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fou
-rier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/put
-b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on my_thesis.pdf (35 pages, 319249 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/adobe/utopia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utop
+ia/putri8a.pfb>
+Output written on my_thesis.pdf (37 pages, 371213 bytes).
 PDF statistics:
- 584 PDF objects out of 1000 (max. 8388607)
- 441 compressed objects within 5 object streams
- 95 named destinations out of 1000 (max. 500000)
- 24487 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 508 PDF objects out of 1000 (max. 8388607)
+ 447 compressed objects within 5 object streams
+ 105 named destinations out of 1000 (max. 500000)
+ 38827 words of extra memory for PDF output out of 42996 (max. 10000000)
 
