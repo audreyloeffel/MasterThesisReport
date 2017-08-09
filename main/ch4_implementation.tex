@@ -12,10 +12,18 @@ Adding sparse representations asked two questions:
 \end{enumerate}
 
 To answer those questions, we need to go a little bit deeper in the implementation. 
- 
-... TODO
 
-Finally we arrive at the conclusion that everything that can be shared between the formats can also be shared with the dense array. That's why the sparse implementations also extends from the BaseNDArray class. The implementations still need some format-specific methods which are overridden and implemented in the different BaseSparseNDArray classes.
+The dense implementation includes methods that are inherently related to the way dense ndarray is internally made, and other methods are related to the generic parameters such as the shape or are utility method.
+
+The first type of methods is not useful in case of sparse. Dense and sparse ndarrays aren't built in the same manner. Methods such as \textit{getStrides} aren't relevant in the sparse context. Reciprocally the sparse array will need methods which will be irrelevant in the dense context.
+
+We encounter the same situation between the different sparse formats. Some will need utily methods that the other ones won't need.
+
+But everything has to be defined in the INDArray interface. To avoid code duplication, everything than can be shared should be implemented in the higher level of the hierarchy. The methods that are not compatible with a type of ndarray will simply throw an unsupported operation exception.
+
+The drawback brought with this solution is that we always need to verify the type of the ndarray before doing any operations.
+
+// TODO update schema
  
 \begin{figure}[H]
 	\begin{center}
@@ -25,9 +33,13 @@ Finally we arrive at the conclusion that everything that can be shared between t
 	\end{center}
 \end{figure}
 
-\section{Limitations and Constraints}
-\subsection{DataBuffers have a fixed length}
 
+\section{Limitations and Constraints}
+
+Nd4j has been made in the perspective of dense arrays. The design has been optimized rearding the dense implementation. 
+
+\subsection{DataBuffers have a fixed length}
+\subsection{Workspaces}
 
 \section{CSR Matrices}
 \subsection{Structure}

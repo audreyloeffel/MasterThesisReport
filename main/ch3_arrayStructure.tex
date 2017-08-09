@@ -74,12 +74,17 @@ Since the memory space is shared, changes to one will impact the other ones. Fig
 \end{figure}
 \section{Indexes}
 
-NDArrays can be accessed through a combination indexes.
-...
+NDArrays can be accessed through a combination of indexes. There are many way to index an array. For each dimension of the original array, we can specify if we want everything, an interval or a specific value of it. It gives a lot of flexibility to access sub-part of a array. 
+ 
+The indexes provide an efficient mechanism to access Tensors along dimension. A tensor along a dimension (TAD) is a view of an actual tensor with a lower rank.
+
 \section{Operations}
--> TODO briefly explain the different types of operation :
-Scalar
-Transform
-Accumulation
-Index Accumulation
-Broadcast
+
+Nd4j defines five types of operations:
+\begin{enumerate}
+\item Scalar: element-wise operations such as addition or multiplication where a scalar is applying on an ndarray.
+\item Transform: in-place operations such as logarithm or cosine. There are usually executed in an element-wise manner but it's not always the case; some can be applied along a dimension.
+\item Accumulation: Also called Reduction. Operations applied over the whole ndarray or along a dimension such as the sum of all values.
+\item Index Accumulation: Similar to accumulation operations but return an index instead of a value. A classic operation is getting the maximum or minimum value along a dimension.
+\item Broadcast: Some of the more useful operations are vector operations, such as \textit{addRowVector} which add a row vector to every row of a matrix.
+\end{enumerate}
