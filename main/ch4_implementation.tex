@@ -36,20 +36,103 @@ The drawback brought with this solution is that we always need to verify the typ
 
 \section{Limitations and Constraints}
 
-Nd4j has been made in the perspective of dense arrays. The design has been optimized rearding the dense implementation. 
+Nd4j has been made in the perspective of dense arrays. The design has been thought and optimized regarding the dense implementation which brings some constraints to implement the sparse representation
+\subsection{storing off-heap}
 
-\subsection{DataBuffers have a fixed length}
+// TO ASK TO RAVER:
+What are the advantages for storing data off-heap ? Why Garbadge collector is a bad thing ?
+
+What the idea behind the workspaces and how does it work ?
+
+Before the workspaces, data were already stored off-heap. What do workspaces bring new ? How could 
+
+
+
 \subsection{Workspaces}
+\subsection{DataBuffers have a fixed length}
+
+explain what is in the ToC doc
+
+--------
+-> we can reallocate memory from java side but it's impossible from native side. so we need to overallocated to the max result size before any operations !
+
+1 - estimate the size needed (only the size of the view -> which avoid to allocated at the max size of the array - it wouldn't fit in memory)
+2 - reallocate
+3 - perform the op
+
+-> add in op interface
+
 
 \section{CSR Matrices}
 \subsection{Structure}
-\subsection{Get or Put Data into this format}
+
+The representation uses 4 data buffers to encore a CSR matrix. One for the non-zero values, one for the columns indexes and two for the row pointers (to the beginning and to the end of each row).
+
+\subsection{Put a value}
+
+To insert a new value or to update an existing non-null value, we need to identify where the values of row we want ot insert to are located in the values buffer and in the columns buffer. The beginning and end of rows pointers give us the range of indexes.
+
+While iterating over the range of values, if we find a value with the same column index than the one we want to insert to, we can update the values and nothing needs to be changed in the three other buffer. 
+
+However if there is no value with that column, we need to insert a new one at the correct position. Then we need to update the end of row pointer for this row. Finally each row pointers that come after need to be increment by one.
+
+
+-- ADD pseudo code for putscalar of csr
+
+
+
+
+\subsection{Get a Sub-array}
+
+\begin{enumerate}
+\item First, we need to resolve the index to get the new shape of the array, the new rank, etc. In the case we use the resolution of the dense array but we are only interested in
+\begin{itemize}
+	\item the shape: an array with two elements containing the new shape of the sub-array.
+	\item the offsets: an arays with two elements that indicate the first row and the first column that belongs to the sub-array.
+	\item the offset: indicates the position in the databuffer of the first element that belongs to the sub-array.
+\end{itemize}
+ \item Sometimes the offsets are equals to zeros while having a non-null offset. In this case we need to override the offsets.
+\begin{lstlisting}
+	 offsets[0] = (int) resolution.getOffset() / shape()[1];
+	 offsets[1] = (int) resolution.getOffset() % shape()[1];
+\end{lstlisting}
+\item With the offsets we can now compute the first and the last position of each dimension.
+\begin{lstlisting}
+	long firstRow = offsets[0];
+	long lastRow = firstRow + shape[0];
+	long firstColumn = offsets[1];
+	long lastColumn = firstElement + shape[1];
+\end{lstlisting}
+\item Now we have the bounds for each dimension, we can reconstruct the new beginning and end of row pointers et the columns indexes.
+\end{enumerate}
+
+% put the code in annex?
+
 \subsection{Limits with this format}
 
+This formats only works with two dimensions and cannot be extended to tensors. Therefor it makes it difficult to be compatible with the API.
+Moreover the operations to get or put values aren't straightforward. Several step are necessary before accessing the value.
+
 \section{COO Tensors}
-\subsection{First implementation}
+\subsection{Naive implementation}
+
+Based on the description in \ref{sssec:coo} we need a databuffer to store all the non-null value and the indexes of each values. One easy solution would have been to store the indexes into a multi-dimension array of databuffer: One databuffer for each value, or one databuffer for each dimension. Due to the native constraints that makes hardly manageable to have such arrays (Difficulty to pass the array to the native side and cuda side), we choose to flatten the indexes into one databuffer.
+
+\begin{figure}[!h]
+	\subfloat[each index is stored contiguously]{\includegraphics[width=1.5in]{images/indexesCoo_a.pdf} \label{fig:cooIdxA}}
+	\subfloat[Each dimension is stored contiguously]{\includegraphics[width=1.5in]{images/indexesCoo_b.pdf} \label{fig:cooIdxB}}
+	\subfloat[Indexes are flatten]{\includegraphics[width=2.5in]{images/indexesCoo_c.pdf} \label{fig:cooIdxC}}
+	\hfill
+	\caption{Illustration of the different possible datastructure for storing the indexes  [0, 2, 1] of a value $v$ }
+\end{figure}
+
+% TODO regenerate the schema - too much bottom margin
+
+This solution would work if there was no view concept in the API. Views in the COO context have to share indexes and data buffers. 
 
 \subsection{More parameters are needed to define the tensors}
+
+
 \subsubsection{All and Interval Indexes}
 \subsubsection{Point Index}
 \subsubsection{Specified Index}

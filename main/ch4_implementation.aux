@@ -4,30 +4,43 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Hierarchy of Arrays}{13}{section.4.1}}
-\newlabel{fig:hierarchy}{{\caption@xref {fig:hierarchy}{ on input line 29}}{14}{Hierarchy of Arrays}{figure.caption.16}{}}
+\newlabel{fig:hierarchy}{{\caption@xref {fig:hierarchy}{ on input line 31}}{14}{Hierarchy of Arrays}{figure.caption.16}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Arrays hierarchy in Nd4j\relax }}{14}{figure.caption.16}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Limitations and Constraints}{15}{section.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}DataBuffers have a fixed length}{15}{subsection.4.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Limitations and Constraints}{14}{section.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}storing off-heap}{14}{subsection.4.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Workspaces}{14}{subsection.4.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}DataBuffers have a fixed length}{14}{subsection.4.2.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}CSR Matrices}{15}{section.4.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Structure}{15}{subsection.4.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Get or Put Data into this format}{15}{subsection.4.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Limits with this format}{15}{subsection.4.3.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}COO Tensors}{15}{section.4.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}First implementation}{15}{subsection.4.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{15}{subsection.4.4.2}}
-\@writefile{toc}{\contentsline {subsubsection}{All and Interval Indexes}{15}{subsection.4.4.2}}
-\@writefile{toc}{\contentsline {subsubsection}{Point Index}{15}{subsection.4.4.2}}
-\@writefile{toc}{\contentsline {subsubsection}{Specified Index}{15}{subsection.4.4.2}}
-\@writefile{toc}{\contentsline {subsubsection}{New Axis Index}{15}{subsection.4.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{15}{subsection.4.4.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Computation of the Sparse Offsets}{15}{subsection.4.4.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Computation of the Flags}{15}{subsection.4.4.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Computation of the Hidden Dimensions}{15}{subsection.4.4.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{15}{subsection.4.4.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Put a value}{15}{subsection.4.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Get a Sub-array}{15}{subsection.4.3.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Limits with this format}{16}{subsection.4.3.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}COO Tensors}{16}{section.4.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Naive implementation}{16}{subsection.4.4.1}}
+\newlabel{fig:cooIdxA}{{4.2a}{17}{Subfigure 4 4.2a}{subfigure.4.2.1}{}}
+\newlabel{sub@fig:cooIdxA}{{(a)}{a}{Subfigure 4 4.2a\relax }{subfigure.4.2.1}{}}
+\newlabel{fig:cooIdxB}{{4.2b}{17}{Subfigure 4 4.2b}{subfigure.4.2.2}{}}
+\newlabel{sub@fig:cooIdxB}{{(b)}{b}{Subfigure 4 4.2b\relax }{subfigure.4.2.2}{}}
+\newlabel{fig:cooIdxC}{{4.2c}{17}{Subfigure 4 4.2c}{subfigure.4.2.3}{}}
+\newlabel{sub@fig:cooIdxC}{{(c)}{c}{Subfigure 4 4.2c\relax }{subfigure.4.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Illustration of the different possible datastructure for storing the indexes [0, 2, 1] of a value $v$ \relax }}{17}{figure.caption.17}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {each index is stored contiguously}}}{17}{subfigure.2.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Each dimension is stored contiguously}}}{17}{subfigure.2.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Indexes are flatten}}}{17}{subfigure.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{17}{subsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{All and Interval Indexes}{17}{subsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Point Index}{17}{subsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Specified Index}{17}{subsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{New Axis Index}{17}{subsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{17}{subsection.4.4.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Computation of the Sparse Offsets}{17}{subsection.4.4.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Computation of the Flags}{17}{subsection.4.4.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Computation of the Hidden Dimensions}{17}{subsection.4.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{17}{subsection.4.4.4}}
 \@setckpt{main/ch4_implementation}{
-\setcounter{page}{16}
+\setcounter{page}{18}
 \setcounter{equation}{0}
-\setcounter{enumi}{2}
+\setcounter{enumi}{4}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
@@ -40,22 +53,22 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{1}
+\setcounter{figure}{2}
 \setcounter{table}{0}
 \setcounter{ContinuedFloat}{0}
 \setcounter{KVtest}{0}
 \setcounter{subfigure}{0}
-\setcounter{subfigure@save}{0}
+\setcounter{subfigure@save}{3}
 \setcounter{lofdepth}{1}
 \setcounter{subtable}{0}
 \setcounter{subtable@save}{0}
 \setcounter{lotdepth}{1}
 \setcounter{lips@count}{2}
 \setcounter{AM@survey}{0}
-\setcounter{lstnumber}{1}
-\setcounter{Item}{7}
+\setcounter{lstnumber}{5}
+\setcounter{Item}{11}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{37}
+\setcounter{bookmark@seq@number}{40}
 \setcounter{myparts}{0}
 \setcounter{parentequation}{0}
 \setcounter{float@type}{8}

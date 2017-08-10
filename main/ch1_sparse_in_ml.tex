@@ -142,7 +142,7 @@ Given a matrix $N\times M$, the pointers arrays will have a size $M$.
 A tensor is a multi-dimensional array. The order of the tensor is the dimensionality of the array needed to represent it. Matrices and vectors can be represented as tensors where the order is equals to 2 and 1 respectively.
 
 This generalization allows a more generic implementation of a n-dimensional array in the Nd4j library.
-\subsubsection{Coordinates Format}
+\subsubsection{Coordinates Format} \label{sssec:coo}
 The COO format can easily be extended to encode tensors by storing an array of indexes instead the row and column coordinates. 
 
 A array of order $K = 3$ with shape $N\times M \times P$ which has the following non-zero values :

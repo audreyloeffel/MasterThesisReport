@@ -29,32 +29,35 @@
 \contentsline {section}{\numberline {3.4}Operations}{11}{section.3.4}
 \contentsline {chapter}{\numberline {4}Implementation}{13}{chapter.4}
 \contentsline {section}{\numberline {4.1}Hierarchy of Arrays}{13}{section.4.1}
-\contentsline {section}{\numberline {4.2}Limitations and Constraints}{15}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}DataBuffers have a fixed length}{15}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.2}Limitations and Constraints}{14}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}storing off-heap}{14}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Workspaces}{14}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}DataBuffers have a fixed length}{14}{subsection.4.2.3}
 \contentsline {section}{\numberline {4.3}CSR Matrices}{15}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Structure}{15}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Get or Put Data into this format}{15}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Limits with this format}{15}{subsection.4.3.3}
-\contentsline {section}{\numberline {4.4}COO Tensors}{15}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}First implementation}{15}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{15}{subsection.4.4.2}
-\contentsline {subsubsection}{All and Interval Indexes}{15}{subsection.4.4.2}
-\contentsline {subsubsection}{Point Index}{15}{subsection.4.4.2}
-\contentsline {subsubsection}{Specified Index}{15}{subsection.4.4.2}
-\contentsline {subsubsection}{New Axis Index}{15}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{15}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Sparse Offsets}{15}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Flags}{15}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Hidden Dimensions}{15}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{15}{subsection.4.4.4}
-\contentsline {chapter}{\numberline {5}Operations}{17}{chapter.5}
-\contentsline {section}{\numberline {5.1}Backends}{17}{section.5.1}
-\contentsline {section}{\numberline {5.2}BLAS}{17}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Level 1 in CSR Matrix}{17}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Level 1 in COO Tensor}{17}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Libnd4j}{17}{section.5.3}
-\contentsline {chapter}{\numberline {6}Results}{19}{chapter.6}
-\contentsline {section}{\numberline {6.1}l}{19}{section.6.1}
-\contentsline {chapter}{\numberline {7}Conclusion}{21}{chapter.7}
-\contentsline {chapter}{\numberline {A}An appendix}{23}{appendix.A}
-\contentsline {chapter}{Bibliography}{25}{appendix*.18}
+\contentsline {subsection}{\numberline {4.3.2}Put a value}{15}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Get a Sub-array}{15}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Limits with this format}{16}{subsection.4.3.4}
+\contentsline {section}{\numberline {4.4}COO Tensors}{16}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Naive implementation}{16}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{17}{subsection.4.4.2}
+\contentsline {subsubsection}{All and Interval Indexes}{17}{subsection.4.4.2}
+\contentsline {subsubsection}{Point Index}{17}{subsection.4.4.2}
+\contentsline {subsubsection}{Specified Index}{17}{subsection.4.4.2}
+\contentsline {subsubsection}{New Axis Index}{17}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{17}{subsection.4.4.3}
+\contentsline {subsubsection}{Computation of the Sparse Offsets}{17}{subsection.4.4.3}
+\contentsline {subsubsection}{Computation of the Flags}{17}{subsection.4.4.3}
+\contentsline {subsubsection}{Computation of the Hidden Dimensions}{17}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{17}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Operations}{19}{chapter.5}
+\contentsline {section}{\numberline {5.1}Backends}{19}{section.5.1}
+\contentsline {section}{\numberline {5.2}BLAS}{19}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Level 1 in CSR Matrix}{19}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Level 1 in COO Tensor}{19}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Libnd4j}{19}{section.5.3}
+\contentsline {chapter}{\numberline {6}Results}{21}{chapter.6}
+\contentsline {section}{\numberline {6.1}l}{21}{section.6.1}
+\contentsline {chapter}{\numberline {7}Conclusion}{23}{chapter.7}
+\contentsline {chapter}{\numberline {A}An appendix}{25}{appendix.A}
+\contentsline {chapter}{Bibliography}{27}{appendix*.19}
