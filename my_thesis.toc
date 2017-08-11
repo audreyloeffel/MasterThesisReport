@@ -41,23 +41,24 @@
 \contentsline {section}{\numberline {4.4}COO Tensors}{16}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Naive implementation}{16}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{18}{subsection.4.4.2}
-\contentsline {subsubsection}{All and Interval Indexes}{18}{subsection.4.4.2}
-\contentsline {subsubsection}{Point Index}{18}{subsection.4.4.2}
-\contentsline {subsubsection}{Specified Index}{18}{subsection.4.4.2}
-\contentsline {subsubsection}{New Axis Index}{18}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{18}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Sparse Offsets}{18}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Flags}{18}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Hidden Dimensions}{18}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{18}{subsection.4.4.4}
-\contentsline {chapter}{\numberline {5}Operations}{19}{chapter.5}
-\contentsline {section}{\numberline {5.1}Backends}{19}{section.5.1}
-\contentsline {section}{\numberline {5.2}BLAS}{19}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Level 1 in CSR Matrix}{19}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Level 1 in COO Tensor}{19}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Libnd4j}{19}{section.5.3}
-\contentsline {chapter}{\numberline {6}Results}{21}{chapter.6}
-\contentsline {section}{\numberline {6.1}l}{21}{section.6.1}
-\contentsline {chapter}{\numberline {7}Conclusion}{23}{chapter.7}
-\contentsline {chapter}{\numberline {A}An appendix}{25}{appendix.A}
-\contentsline {chapter}{Bibliography}{27}{appendix*.20}
+\contentsline {subsubsection}{All Indexes}{18}{subsection.4.4.2}
+\contentsline {subsubsection}{Interval Indexes}{18}{subsection.4.4.2}
+\contentsline {subsubsection}{Point Index}{18}{lstnumber.-3.1}
+\contentsline {subsubsection}{Specified Index}{19}{lstnumber.-4.1}
+\contentsline {subsubsection}{New Axis Index}{19}{lstnumber.-4.1}
+\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{19}{subsection.4.4.3}
+\contentsline {subsubsection}{Computation of the Sparse Offsets}{19}{subsection.4.4.3}
+\contentsline {subsubsection}{Computation of the Flags}{20}{Item.17}
+\contentsline {subsubsection}{Computation of the Hidden Dimensions}{20}{Item.17}
+\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{20}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Operations}{21}{chapter.5}
+\contentsline {section}{\numberline {5.1}Backends}{21}{section.5.1}
+\contentsline {section}{\numberline {5.2}BLAS}{21}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Level 1 in CSR Matrix}{21}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Level 1 in COO Tensor}{21}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Libnd4j}{21}{section.5.3}
+\contentsline {chapter}{\numberline {6}Results}{23}{chapter.6}
+\contentsline {section}{\numberline {6.1}l}{23}{section.6.1}
+\contentsline {chapter}{\numberline {7}Conclusion}{25}{chapter.7}
+\contentsline {chapter}{\numberline {A}An appendix}{27}{appendix.A}
+\contentsline {chapter}{Bibliography}{29}{appendix*.21}

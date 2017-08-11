@@ -3,7 +3,7 @@
 
 \section{Hierarchy of Arrays}
 
-The API of an array is defined by an interface called INDArray which has a dense implementation for each backend: NDArray class for the CPU and JCublasNDArray class for the GPU. But since most of the operations and methods are shared between the two backends, they are implemented in an abstract class called BaseNDArray.
+The API of an array is defined by an interface called \textit{INDArray} which has a dense implementation for each backend: \textit{NDArray} class for the CPU and \textit{JCublasNDArray} class for the GPU. But since most of the operations and methods are shared between the two backends, they are implemented in an abstract class called \textit{BaseNDArray}.
 
 Adding sparse representations asked two questions:
 \begin{enumerate}
@@ -13,15 +13,15 @@ Adding sparse representations asked two questions:
 
 To answer those questions, we need to go a little bit deeper in the implementation. 
 
-The dense implementation includes methods that are inherently related to the way dense ndarray is internally made, and other methods are related to the generic parameters such as the shape or are utility method.
+The dense implementation includes methods that are inherently related to the way dense array is internally made, and other methods are related to the generic parameters such as the shape or are utility method.
 
-The first type of methods is not useful in case of sparse. Dense and sparse ndarrays aren't built in the same manner. Methods such as \textit{getStrides} aren't relevant in the sparse context. Reciprocally the sparse array will need methods which will be irrelevant in the dense context.
+The first type of methods is not useful in case of sparse. Dense and sparse arrays are not built in the same manner. Methods such as \textit{getStrides} are not relevant in the sparse context. Reciprocally the sparse array will need methods which will be irrelevant in the dense context.
 
-We encounter the same situation between the different sparse formats. Some will need utily methods that the other ones won't need.
+We encounter the same situation between the different sparse formats. Some will need utility methods that the other ones won't need.
 
-But everything has to be defined in the INDArray interface. To avoid code duplication, everything than can be shared should be implemented in the higher level of the hierarchy. The methods that are not compatible with a type of ndarray will simply throw an unsupported operation exception.
+But everything has to be defined in the \textit{INDArray} interface. To avoid code duplication, everything than can be shared should be implemented in the higher level of the hierarchy. The methods that are not compatible with a type of array will simply throw an unsupported operation exception.
 
-The drawback brought with this solution is that we always need to verify the type of the ndarray before doing any operations.
+The drawback brought with this solution is that we always need to verify the type of the array before doing any operations.
 
 // TODO update schema
  
@@ -90,7 +90,7 @@ However if there is no value with that column, we need to insert a new one at th
 \begin{itemize}
 	\item the shape: an array with two elements containing the new shape of the sub-array.
 	\item the offsets: an arays with two elements that indicate the first row and the first column that belongs to the sub-array.
-	\item the offset: indicates the position in the databuffer of the first element that belongs to the sub-array.
+	\item the offset: indicates the position in the data buffer of the first element that belongs to the sub-array.
 \end{itemize}
  \item Sometimes the offsets are equals to zeros while having a non-null offset. In this case we need to override the offsets.
 \begin{lstlisting}
@@ -115,11 +115,11 @@ This formats only works with two dimensions and cannot be extended to tensors. T
 Moreover the operations to get or put values aren't straightforward. Several step are necessary before accessing the value.
 
 \section{COO Tensors}
-\subsection{Naive implementation}
+\subsection{Naive implementation} \label{ssec:naiveCoo}
 
-Based on the description in \ref{sssec:coo} the COO encoding needs one databuffer to store all the non-null values and one for the indexes of each values. 
+Based on the description in \ref{sssec:coo} the COO encoding needs one data buffer to store all the non-null values and one for the indexes of each values. 
 
-An easy solution would have been to store the indexes into a multi-dimension array of databuffers: One databuffer for each value, or one databuffer for each dimension. Due to the native constraints that makes hardly manageable to have such arrays (Difficulty to pass the array to the native side and cuda side), we choose to flatten the indexes into one databuffer.
+An easy solution would have been to store the indexes into a multi-dimension array of \textit{DataBuffers}: One buffer for each value, or one buffer for each dimension. Due to the native constraints that makes hardly manageable to have such arrays (Difficulty to pass the array to the native side and Cuda side), we choose to flatten the indexes into one buffer.
 
 \begin{figure}[!h]
 	\subfloat[each index is stored contiguously]{\includegraphics[width=1.5in]{images/indexesCoo_a.pdf} \label{fig:cooIdxA}}
@@ -143,23 +143,79 @@ But this implementation makes difficult to be compliant with the API. It brings 
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=0.8in]{images/viewIndexOffset.pdf}
-		\caption{A $3\times 3$ matrix with a $2\times 2$ view in red}
+		\caption{A $3\times 3$ matrix with a $2\times 2$ view in grey}
 		\label{fig:viewOffset}
 	\end{figure}
 
-	\item kmk
+	\item A view can have a lower or higher rank than its original array. How can the view indexes be stored ?
 \end{itemize}
 
 \subsection{More parameters are needed to define the tensors}
 
+Most of the issues cited in section \ref{ssec:naiveCoo} are due to the support of the different types of indexes. Each index implements the interface \textit{INDArrayIndex} and extends from \textit{NDArrayIndex}. They provide a very efficient and powerful mechanism to access part of a array but they introduce some constraints when implementing views for COO.
 
-\subsubsection{All and Interval Indexes}
+\subsubsection{All Indexes}
+\textit{All} indexes are the most straightforward of the library. They are used to collect all the elements of a dimension.
+
+\subsubsection{Interval Indexes}
+\textit{Interval} indexes takes an subpart of a dimension containing in an interval. They don't modify the rank
+
+The grey sub-array in figure \ref{fig:viewOffset} is the result of the operation :
+\begin{lstlisting}
+	myArray.get(NDArrayIndex.interval(1, 3), NDArrayIndex.interval(1, 3));
+\end{lstlisting} 
+After the resolution of the indexes, we obtain offsets equal to $[1, 1]$ with an offset equals to $4$.
+In the COO perspective that means a value having any of its dimensions equal to 0 does not belong to the view. We need to define bounds for each dimension in order to be able to filter out the values.
+
 \subsubsection{Point Index}
+\textit{Point} indexes take one unique element of a dimension. They reduces the rank of the array.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.5in]{images/tensorsHiglighted.pdf}
+	\caption{Result of \textit{point(0)} index in grey on a $2\times 3\times 3$ tensor}
+	\label{fig:pointTensor}
+\end{figure}
+
+Figure \ref{fig:pointTensor} shows a $2\times 3\times 3$ tensors with a $2\times 2$ matrix view which is the result of the operations:
+\begin{lstlisting}
+	myArray.get(NDArrayIndex.point(0));
+\end{lstlisting} 
+
+The coordinates of the resulting matrix have only two dimensions instead of three. We have an issue when trying to access a value given a pair of coordinates in the view context. There is no direct matching between those coordinates and those actually in the indexes buffer. 
+
+The solution is to add an additional parameter array that keep track of the status of each dimension. The array is called flags, it can contains either 0, which means \textit{active}, or 1 which means \textit{fixed}. The flags array for the view shown in figure \ref{fig:pointTensor} would be equal to [1, 0, 0] because the first dimension is fixed at position 0.
+
 \subsubsection{Specified Index}
+When using at least one specified index in the set of indexes used to get a sub-array, it always returns a copy of the original data. It can not be a view because the specified indexes are not deterministic and can not be translated into logical strides, shape or offsets.
+
+In this case we need to iterate over each dimension to access every element of the array and test if the current value belongs to the view. If it is the case, we add it in a new array. We are still using the indexes resolution to get the new shapes, the offsets, etc.
+
+
 \subsubsection{New Axis Index}
+\textit{New axis} indexes are used to add a new dimension to the array. The new dimension always has a length equals to 1. It can be perpended or inserted in the middle of the dimensions.
+Since the rank is higher, more cooridinates are needed to access a value. However the shared indexes buffers is limited to the original rank. Similary to the point index, we need a new parameter array that keep tracks of the position of the new dimensions to be able to  translate the coordinates from view to original context.
+
+Assuming we have a $3\times 3$ matrix: calling \textit{myArray.get(NDArrayIndex.newAxis())} will prepend a new dimension. The view is a $1\times 3\times 3$ tensor with a hidden dimension parameter array equal to $[0]$.
+
 
 \subsection{Computations of the the Parameters}
 \subsubsection{Computation of the Sparse Offsets}
+
+The sparse offsets are computed from the offset (the position of the first value belonging to the array). The size of this array is the rank of the original array.
+
+
+\begin{enumerate}
+	\item The offset give us the position of the first element in the array. We want to reverse it the coordinates of this values which will be the sparse offset. 
+	\item We need an array with a length equals to the view rank.
+	\item For each dimension except the innermost one, we divide the offset by the number of elements in one dimension's element (i.e divide the offset by the number of value in a row). Rounded to the lower integer, this quotient give us the sparse offset for thie dimension. Then we need to remove the number of elements that are in the same dimension but with a lowest value. We want to isolate the dimension's value (to get only a row).
+	\item We iterate until the last element. In this case we have the offsets set up up to the row dimension. To find which column the value is in, we need to take the modulo of the remaining offset by the number of columns.
+	\item We have the sparse offsets given a set of indexes. But perhaps the sparse offsets are already defined. This is the case when we take a view from a view. In this case we need to merge the two sparse offsets arrays.
+	\item We should particularly be careful with hidden dimensions because they are absent from the sparse offset resolution explained above. The result does not contain any information about the hidden dimension, we need to add them in a new array which has a length equals to the underlying rank. The sparse offsets of the active dimensions are simply added.
+\end{enumerate}
+
+
+
 \subsubsection{Computation of the Flags}
 \subsubsection{Computation of the Hidden Dimensions}
 
