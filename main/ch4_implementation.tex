@@ -46,6 +46,7 @@ What the idea behind the workspaces and how does it work ?
 
 Before the workspaces, data were already stored off-heap. What do workspaces bring new ? How could 
 
+Why it wasn't possible to have arrays of databuffers native side ? what we had to flatten everything?
 
 
 \subsection{Workspaces}
@@ -116,7 +117,9 @@ Moreover the operations to get or put values aren't straightforward. Several ste
 \section{COO Tensors}
 \subsection{Naive implementation}
 
-Based on the description in \ref{sssec:coo} we need a databuffer to store all the non-null value and the indexes of each values. One easy solution would have been to store the indexes into a multi-dimension array of databuffer: One databuffer for each value, or one databuffer for each dimension. Due to the native constraints that makes hardly manageable to have such arrays (Difficulty to pass the array to the native side and cuda side), we choose to flatten the indexes into one databuffer.
+Based on the description in \ref{sssec:coo} the COO encoding needs one databuffer to store all the non-null values and one for the indexes of each values. 
+
+An easy solution would have been to store the indexes into a multi-dimension array of databuffers: One databuffer for each value, or one databuffer for each dimension. Due to the native constraints that makes hardly manageable to have such arrays (Difficulty to pass the array to the native side and cuda side), we choose to flatten the indexes into one databuffer.
 
 \begin{figure}[!h]
 	\subfloat[each index is stored contiguously]{\includegraphics[width=1.5in]{images/indexesCoo_a.pdf} \label{fig:cooIdxA}}
@@ -128,7 +131,24 @@ Based on the description in \ref{sssec:coo} we need a databuffer to store all th
 
 % TODO regenerate the schema - too much bottom margin
 
-This solution would work if there was no view concept in the API. Views in the COO context have to share indexes and data buffers. 
+But this implementation makes difficult to be compliant with the API. It brings several issues:
+\begin{itemize}
+	\item The key of views is the sharing of their data. In case of COO format, views have to share the data buffer and the indexes buffer. Without the indexes it is not possible to add a value in the original array by adding it in a view. If we only put the new value in the shared value buffer without updating the indexes, the original array would have a value buffer bigger than its indexes buffer and there would be an offset between the values and the indexes. 
+	
+	Even when sharing both buffers, how would we know which value is included in the view and which is ot? 	
+	
+	\item The coordinates of a value in a view are not necessary the sames of the same value in the original array. 
+		
+	They can be offset if dimension is partially included in the view. Figure \ref{fig:viewOffset} shows a matrix an a view (in red). The value$ v_{i}=5$ would have the coordinates [1, 1] in the original array while it has the coordinates [0, 0] in the view. How the indexes can be translated between views?
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.8in]{images/viewIndexOffset.pdf}
+		\caption{A $3\times 3$ matrix with a $2\times 2$ view in red}
+		\label{fig:viewOffset}
+	\end{figure}
+
+	\item kmk
+\end{itemize}
 
 \subsection{More parameters are needed to define the tensors}
 
