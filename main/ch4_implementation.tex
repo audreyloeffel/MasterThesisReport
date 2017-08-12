@@ -39,7 +39,8 @@ The drawback brought with this solution is that we always need to verify the typ
 Nd4j has been made in the perspective of dense arrays. The design has been thought and optimized regarding the dense implementation which brings some constraints to implement the sparse representation
 \subsection{storing off-heap}
 
-// TO ASK TO RAVER:
+// TO ASK TO RAVER
+
 What are the advantages for storing data off-heap ? Why Garbage collector is a bad thing ?
 
 What the idea behind workspaces and how does it work ?
@@ -48,12 +49,13 @@ Before the workspaces, data were already stored off-heap. What do workspaces bri
 
 Why it wasn't possible to have arrays of databuffers native side ? what we had to flatten everything?
 
-Why did we use managed memory?
+Why didn't we use managed memory?
 
 \subsection{Workspaces}
 \subsection{DataBuffers have a fixed length}
 
-explain what is in the ToC doc
+Databuffers cannot be reallocated -> necessary in case of sparse
+-> explain the reallocation mechanism
 
 --------
 -> we can reallocate memory from java side but it's impossible from native side. so we need to overallocated to the max result size before any operations !
@@ -64,7 +66,7 @@ explain what is in the ToC doc
 
 -> add in op interface
 
-We also overallocated by a factor 2 the size of the databuffers used for storing the values and the indexes -> avoid to much reallocation mechanism
+We also overallocate by a factor 2 the size of the databuffers used for storing the values and the indexes -> avoid too much reallocation
 
 \subsection{Alternatives}
 -> TODO %TODO            better explaination
@@ -115,7 +117,7 @@ However if there is no value with that column, we need to insert a new one at th
 
 % put the code in annex?
 
-\subsection{Limits with this format}
+\subsection{Limits of this format}
 
 This formats only works with two dimensions and cannot be extended to tensors. Therefor it makes it difficult to be compatible with the API.
 Moreover the operations to get or put values aren't straightforward. Several step are necessary before accessing the value.
@@ -130,7 +132,7 @@ An easy solution would have been to store the indexes into a multi-dimension arr
 \begin{figure}[!h]
 	\subfloat[each index is stored contiguously]{\includegraphics[width=1.5in]{images/indexesCoo_a.pdf} \label{fig:cooIdxA}}
 	\subfloat[Each dimension is stored contiguously]{\includegraphics[width=1.5in]{images/indexesCoo_b.pdf} \label{fig:cooIdxB}}
-	\subfloat[Indexes are flatten]{\includegraphics[width=2.5in]{images/indexesCoo_c.pdf} \label{fig:cooIdxC}}
+	\subfloat[Flattened Indexes]{\includegraphics[width=2.5in]{images/indexesCoo_c.pdf} \label{fig:cooIdxC}}
 	\hfill
 	\caption{Illustration of the different possible datastructure for storing the indexes  [0, 2, 1] of a value $v$ }
 \end{figure}
@@ -258,7 +260,7 @@ Flags determine which dimension is active and which one is hidden from the point
 
 \subsubsection{Computation of the Hidden Dimensions}
 
-The resolution returns an array containing the position of the newAxis indexes in the indexes array. The array may already have some hidden dimensions. In this case we need to adapt the result with the current hidden dimension.
+The resolution returns an array containing the position of the \textit{newAxis} indexes in the indexes array. The array may already have some hidden dimensions. In this case we need to adapt the result with the current hidden dimension.
 
 \begin{algorithm}
 	\caption{Calculate the hidden dimensions}
@@ -330,7 +332,7 @@ This method is described in detail in algorithm \ref{alg:translation}
 					\State $result[idxPhy] \gets sparseOffsets[idxPhy]$ \Comment{If the dimension is fixed, the coordinate takes the value of the offset}
 					\State $idxPhy \gets idxPhy + 1$
 				\EndWhile\\
-				\Comment{If the dimension is not fix, we add the offset to the coordinate}				
+				\Comment{If the dimension is not fixed, we add the offset to the coordinate}				
 				
 				\If{$idxPhy < underlyingRank \And  !isFixed(idxPhy)$}
 					\State $result[idxPhy] \gets sparseOffsets[idxPhy] + viewIndexes[idxVir]$ 
@@ -344,3 +346,86 @@ This method is described in detail in algorithm \ref{alg:translation}
 		\end{algorithmic}
 	\end{algorithm}
 	
+\subsection{Included values}
+
+
+
+\subsection{?}
+binary search to reverse the indexes 
+
+tensor contractions not equals depending on the dimensions because the time to access the elements is not the same because the values are sorted along the first dimension
+-> binary search, skip list, tree ...
+
+\subsection{Final Implementation}
+	
+	The final representation is encoded with 5 \textit{DataBuffers}:
+	\begin{enumerate}
+		\item Values: Stored the value linearly.
+		\item Indexes: Stored the flattened indexes of each values.
+		\item Flags: Define which dimensions are active and which are fixed.
+		\item Sparse Offsets: Define the bound of each dimension.
+		\item Hidden Dimensions: Keep track of the position in the shape array of the hidden dimension.
+	\end{enumerate}
+	%TODO
+	TODO : schema - example view with 1 hidden dim and 1 fixed
+
+	\begin{figure}[!h]
+		\centering
+		\subfloat[A tensor $T$ with shape $(2\times 3\times 3)$ ]{\includegraphics[width=1.7in]{images/tensors.pdf} \label{fig:tens}}
+		\qquad
+		\qquad
+		\subfloat[A view of tensor $T$ with shape $(1\times 2\times 2)$]{\includegraphics{images/tensors-view.pdf} \label{fig:tensView}}
+
+	
+		\caption{Illustration of the different possible datastructure for storing the indexes  [0, 2, 1] of a value $v$ }
+	\end{figure}
+	
+	\begin{figure}[h]
+	
+			\[
+			\begin{aligned}
+			Shape = 
+			\begin{bmatrix}
+			1 & 2 & 2 
+			\end{bmatrix}\\
+			Values = 
+			\begin{bmatrix}
+			5 & 8 
+			\end{bmatrix}\\			
+			Indexes = 
+			\begin{bmatrix}
+			0 &  1 & 2 & 0 & 2 & 1
+			\end{bmatrix}\\			
+			Flags = 
+			\begin{bmatrix}
+			1 & 0 & 0
+			\end{bmatrix}\\			
+			SparseOffsets = 
+			\begin{bmatrix}
+			0 &  1 & 1
+			\end{bmatrix}\\			
+			HiddenDimension = 
+			\begin{bmatrix}
+			0 
+			\end{bmatrix}\\			
+			\end{aligned}
+			\]
+			\caption{Parameters defining the view in \ref{feg:tensView}}
+			\label{eqn:viewParams}
+	\end{figure}
+	The indexes and values are sorted in the lexicographic order in order to make the search by indexes easily via binary search. The sort is ensured before performing any operations.
+	
+	The flags, the offsets and the hidden dimensions arrays are grouped in one \textit{DataBuffer}, similarly to the \textit{ShapeInformation} buffer.
+\subsection{Put a Value}
+
+Several steps are needed to put a new value in a COO array:
+\begin{enumerate}
+	\item Translate the indexes into the underlying context.
+	\item Verify if the value of this indexes is already non null. In this case we can either remove the entry if the new value is 0, or replace the value in the buffer. Nothing else need to be done.
+	\item The new value is 0: the indexes and the value are not added in the buffers.
+	\item It is a new non-null value: we need to insert the value and the indexes in the buffers. But first we need to ensure that the buffers have enough spaces for the new entries. If not, we need to reallocate them. The new entries are added at the end of the buffers; the sort are not maintained at insertion to avoid sorting the array too often when it is not needed.
+\end{enumerate}
+
+\subsection{Get a Sub-Array}
+
+The new parameters make the task easier. Once the indexes resolved and the parameters computed, a new array is created with the current value and indexes buffers and the new parameters. 

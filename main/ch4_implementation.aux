@@ -15,7 +15,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Structure}{15}{subsection.4.3.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Put a value}{15}{subsection.4.3.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Get a Sub-array}{15}{subsection.4.3.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Limits with this format}{16}{subsection.4.3.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Limits of this format}{16}{subsection.4.3.4}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}COO Tensors}{16}{section.4.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Naive implementation}{16}{subsection.4.4.1}}
 \newlabel{ssec:naiveCoo}{{4.4.1}{16}{Naive implementation}{subsection.4.4.1}{}}
@@ -28,7 +28,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Illustration of the different possible datastructure for storing the indexes [0, 2, 1] of a value $v$ \relax }}{17}{figure.caption.17}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {each index is stored contiguously}}}{17}{subfigure.2.1}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Each dimension is stored contiguously}}}{17}{subfigure.2.2}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Indexes are flatten}}}{17}{subfigure.2.3}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Flattened Indexes}}}{17}{subfigure.2.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }}{17}{figure.caption.18}}
 \newlabel{fig:viewOffset}{{4.3}{17}{A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }{figure.caption.18}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{17}{subsection.4.4.2}}
@@ -50,10 +50,24 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{21}{subsection.4.4.4}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Translate the indexes from view to underlying context\relax }}{22}{algorithm.3}}
 \newlabel{alg:translation}{{3}{22}{Translate the indexes from view to underlying context\relax }{algorithm.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.5}Included values}{22}{subsection.4.4.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.6}?}{22}{subsection.4.4.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.7}Final Implementation}{22}{subsection.4.4.7}}
+\newlabel{fig:tens}{{4.5a}{23}{Subfigure 4 4.5a}{subfigure.4.5.1}{}}
+\newlabel{sub@fig:tens}{{(a)}{a}{Subfigure 4 4.5a\relax }{subfigure.4.5.1}{}}
+\newlabel{fig:tensView}{{4.5b}{23}{Subfigure 4 4.5b}{subfigure.4.5.2}{}}
+\newlabel{sub@fig:tensView}{{(b)}{b}{Subfigure 4 4.5b\relax }{subfigure.4.5.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Illustration of the different possible datastructure for storing the indexes [0, 2, 1] of a value $v$ \relax }}{23}{figure.caption.20}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {A tensor $T$ with shape $(2\times 3\times 3)$ }}}{23}{subfigure.5.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {A view of tensor $T$ with shape $(1\times 2\times 2)$}}}{23}{subfigure.5.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Parameters defining the view in \ref  {feg:tensView}\relax }}{23}{figure.caption.21}}
+\newlabel{eqn:viewParams}{{4.6}{23}{Parameters defining the view in \ref {feg:tensView}\relax }{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.8}Put a Value}{23}{subsection.4.4.8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.9}Get a Sub-Array}{24}{subsection.4.4.9}}
 \@setckpt{main/ch4_implementation}{
-\setcounter{page}{23}
+\setcounter{page}{25}
 \setcounter{equation}{0}
-\setcounter{enumi}{3}
+\setcounter{enumi}{4}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
@@ -62,16 +76,16 @@
 \setcounter{part}{0}
 \setcounter{chapter}{4}
 \setcounter{section}{4}
-\setcounter{subsection}{4}
+\setcounter{subsection}{9}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{4}
+\setcounter{figure}{6}
 \setcounter{table}{0}
 \setcounter{ContinuedFloat}{0}
 \setcounter{KVtest}{0}
 \setcounter{subfigure}{0}
-\setcounter{subfigure@save}{3}
+\setcounter{subfigure@save}{2}
 \setcounter{lofdepth}{1}
 \setcounter{subtable}{0}
 \setcounter{subtable@save}{0}
@@ -79,9 +93,9 @@
 \setcounter{lips@count}{2}
 \setcounter{AM@survey}{0}
 \setcounter{lstnumber}{2}
-\setcounter{Item}{18}
+\setcounter{Item}{27}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{41}
+\setcounter{bookmark@seq@number}{46}
 \setcounter{myparts}{0}
 \setcounter{parentequation}{0}
 \setcounter{float@type}{16}

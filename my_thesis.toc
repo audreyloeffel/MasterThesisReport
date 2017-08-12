@@ -38,7 +38,7 @@
 \contentsline {subsection}{\numberline {4.3.1}Structure}{15}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Put a value}{15}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Get a Sub-array}{15}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Limits with this format}{16}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.4}Limits of this format}{16}{subsection.4.3.4}
 \contentsline {section}{\numberline {4.4}COO Tensors}{16}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Naive implementation}{16}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{17}{subsection.4.4.2}
@@ -52,14 +52,24 @@
 \contentsline {subsubsection}{Computation of the Flags}{20}{algorithm.1}
 \contentsline {subsubsection}{Computation of the Hidden Dimensions}{21}{algorithm.1}
 \contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{21}{subsection.4.4.4}
-\contentsline {chapter}{\numberline {5}Operations}{23}{chapter.5}
-\contentsline {section}{\numberline {5.1}Backends}{23}{section.5.1}
-\contentsline {section}{\numberline {5.2}BLAS}{23}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Level 1 in CSR Matrix}{23}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Level 1 in COO Tensor}{23}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Libnd4j}{23}{section.5.3}
-\contentsline {chapter}{\numberline {6}Results}{25}{chapter.6}
-\contentsline {section}{\numberline {6.1}l}{25}{section.6.1}
-\contentsline {chapter}{\numberline {7}Conclusion}{27}{chapter.7}
-\contentsline {chapter}{\numberline {A}An appendix}{29}{appendix.A}
-\contentsline {chapter}{Bibliography}{31}{appendix*.21}
+\contentsline {subsection}{\numberline {4.4.5}Included values}{22}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}?}{22}{subsection.4.4.6}
+\contentsline {subsection}{\numberline {4.4.7}Final Implementation}{22}{subsection.4.4.7}
+\contentsline {subsection}{\numberline {4.4.8}Put a Value}{23}{subsection.4.4.8}
+\contentsline {subsection}{\numberline {4.4.9}Get a Sub-Array}{24}{subsection.4.4.9}
+\contentsline {chapter}{\numberline {5}Operations}{25}{chapter.5}
+\contentsline {section}{\numberline {5.1}Backends}{25}{section.5.1}
+\contentsline {section}{\numberline {5.2}BLAS}{25}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Level 1 in CSR Matrix}{25}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Level 1 in COO Tensor}{25}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Level 2 in COO Tensors}{25}{subsection.5.2.3}
+\contentsline {subsubsection}{GEMV}{25}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Libnd4j}{25}{section.5.3}
+\contentsline {chapter}{\numberline {6}Results}{27}{chapter.6}
+\contentsline {section}{\numberline {6.1}Storing a huge data set}{27}{section.6.1}
+\contentsline {section}{\numberline {6.2}Operations performance}{27}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}level 1}{27}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}level 2}{27}{subsection.6.2.2}
+\contentsline {chapter}{\numberline {7}Conclusion}{29}{chapter.7}
+\contentsline {chapter}{\numberline {A}An appendix}{31}{appendix.A}
+\contentsline {chapter}{Bibliography}{33}{appendix*.23}

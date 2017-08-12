@@ -13,9 +13,13 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Illustration of the different possible datastructure for storing the indexes [0, 2, 1] of a value $v$ \relax }}{17}{figure.caption.17}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {each index is stored contiguously}}}{17}{subfigure.2.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Each dimension is stored contiguously}}}{17}{subfigure.2.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Indexes are flatten}}}{17}{subfigure.2.3}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Flattened Indexes}}}{17}{subfigure.2.3}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }}{17}{figure.caption.18}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Result of \textit {get(point(0), all(), all())} on the first dimension in grey on a $2\times 3\times 3$ tensor\relax }}{18}{figure.caption.19}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Illustration of the different possible datastructure for storing the indexes [0, 2, 1] of a value $v$ \relax }}{23}{figure.caption.20}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A tensor $T$ with shape $(2\times 3\times 3)$ }}}{23}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {A view of tensor $T$ with shape $(1\times 2\times 2)$}}}{23}{subfigure.5.2}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Parameters defining the view in \ref {feg:tensView}\relax }}{23}{figure.caption.21}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
