@@ -202,22 +202,94 @@ Assuming we have a $3\times 3$ matrix: calling \textit{myArray.get(NDArrayIndex.
 \subsection{Computations of the the Parameters}
 \subsubsection{Computation of the Sparse Offsets}
 
-The sparse offsets are computed from the offset (the position of the first value belonging to the array). The size of this array is the rank of the original array.
+The sparse offsets are computed from the offset. The offset give us the position of the first element in the array. We want to reverse it the coordinates of this values which will be the sparse offset. 
 
 
 \begin{enumerate}
-	\item The offset give us the position of the first element in the array. We want to reverse it the coordinates of this values which will be the sparse offset. 
 	\item We need an array with a length equals to the view rank.
 	\item For each dimension except the innermost one, we divide the offset by the number of elements in one dimension's element (i.e divide the offset by the number of value in a row). Rounded to the lower integer, this quotient give us the sparse offset for thie dimension. Then we need to remove the number of elements that are in the same dimension but with a lowest value. We want to isolate the dimension's value (to get only a row).
 	\item We iterate until the last element. In this case we have the offsets set up up to the row dimension. To find which column the value is in, we need to take the modulo of the remaining offset by the number of columns.
-	\item We have the sparse offsets given a set of indexes. But perhaps the sparse offsets are already defined. This is the case when we take a view from a view. In this case we need to merge the two sparse offsets arrays.
+	\item We have the sparse offsets given a set of indexes. But it does not take into account the possibly already non-null sparse offsets. This is the case when we take a view from a view. In this case we need to merge the two sparse offsets arrays.
 	\item We should particularly be careful with hidden dimensions because they are absent from the sparse offset resolution explained above. The result does not contain any information about the hidden dimension, we need to add them in a new array which has a length equals to the underlying rank. The sparse offsets of the active dimensions are simply added.
 \end{enumerate}
 
+\begin{algorithm}
+	\caption{Calculate the sparse offsets}
+	\label{alg:sparseOffsets}
+\begin{algorithmic}
+	\Statex
+	\Function{CreateSparseOffsets}{int $offset$}\\
+	\Comment{Compute the new offsets}
+	\State $newOffsets\gets new\ int[rank]$
+	
+	\For{$i=0$ to $(rank - 2)$} 
+	\State $nbElements \gets \prod_{j=i+1}^{rank} shape[j]$
+	\State $newOffsets[i] \gets \lfloor offset \div nbElements\rfloor$
+	\State $offset \gets offset - newOffsets[i] \times nbElements$
+	\EndFor
+	\State $newOffsets[rank-1] \gets offset \mod shape[rank-1]$ 
+	\\
+	\\
+	\Comment{Merge with sparseOffsets of this array}	
+	\State $finalOffsets\gets new\ int[underlyingRank]$
+	\State $active\gets 0$
+	\For{$i=0$ to $underlyingRanke$}
+	\If {$flags[i] == 0$}
+	\State $finalOffsets[i] \gets sparseOffsets[i]$
+	\Else
+	\State $finalOffsets[i] \gets newOffsets[active] + sparseOffsets[i]$
+	\State $i \gets i + 1$
+	\EndIf
+	\EndFor\\
+	\Return $finalOffsets$
 
+\end{algorithmic}
+\end{algorithm}
+	
 
 \subsubsection{Computation of the Flags}
+Flags determine which dimension is active and which one is hidden from the point of view of the array. The dimension can only be reduced with point index, which means the flags can be computed during the offset resolution. We fill the flags array while iterating over the indexes array.
+
 \subsubsection{Computation of the Hidden Dimensions}
+
+The resolution returns an array containing the position of the newAxis indexes in the indexes array. The array may already have some hidden dimensions. In this case we need to adapt the result with the current hidden dimension.
+
+\begin{algorithm}
+	\caption{Calculate the hidden dimensions}
+	\label{alg:hiddenDim}
+	\begin{algorithmic}
+	
+		
+		\Function{CreateHiddenDimensions}{int[] $newAxis$}\\
+		
+		
+		\If {$newAxis$ is empty or null}
+		\Return {$hiddenDimensions$}		
+		\EndIf
+		\\
+		\If {$hiddenDimensions$ is empty}
+		\Return {$newAxis$}		
+		\EndIf
+		\\	
+		
+	
+		\State $size\gets newAxis.length + hiddenDimensions.length$ 	\Comment{Merge both arrays}
+		\State $newArray \gets $ new $int[size], i\gets 0, newDim\gets 0$
+				
+		\For{$oldDim=0$ to $hiddenDimensions.length$}
+			\State $j\gets 0$
+			\While{$newAxis[newDim] \leq hiddenDimensions[i]$}
+				\State $newArray[i] \gets newAxis[newDim]$
+				\State $i\gets i + 1, j\gets j + 1$ 	
+			\EndWhile
+			\State $newArray[i] \gets hiddenDimensions[oldDim] + j$	
+			\Comment{add an offset corresponding to the amount of axis added before this dimension}
+			\State $i\gets i + 1$
+		\EndFor
+		\Return{$newArray$}
+	\end{algorithmic}
+\end{algorithm}
+
 
 \subsection{Sparse Indexes Translation}
 ..

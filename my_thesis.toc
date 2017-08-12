@@ -48,17 +48,17 @@
 \contentsline {subsubsection}{New Axis Index}{19}{lstnumber.-4.1}
 \contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{19}{subsection.4.4.3}
 \contentsline {subsubsection}{Computation of the Sparse Offsets}{19}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Flags}{20}{Item.17}
-\contentsline {subsubsection}{Computation of the Hidden Dimensions}{20}{Item.17}
-\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{20}{subsection.4.4.4}
-\contentsline {chapter}{\numberline {5}Operations}{21}{chapter.5}
-\contentsline {section}{\numberline {5.1}Backends}{21}{section.5.1}
-\contentsline {section}{\numberline {5.2}BLAS}{21}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Level 1 in CSR Matrix}{21}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Level 1 in COO Tensor}{21}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Libnd4j}{21}{section.5.3}
-\contentsline {chapter}{\numberline {6}Results}{23}{chapter.6}
-\contentsline {section}{\numberline {6.1}l}{23}{section.6.1}
-\contentsline {chapter}{\numberline {7}Conclusion}{25}{chapter.7}
-\contentsline {chapter}{\numberline {A}An appendix}{27}{appendix.A}
-\contentsline {chapter}{Bibliography}{29}{appendix*.21}
+\contentsline {subsubsection}{Computation of the Flags}{20}{algorithm.1}
+\contentsline {subsubsection}{Computation of the Hidden Dimensions}{21}{algorithm.1}
+\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{21}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Operations}{23}{chapter.5}
+\contentsline {section}{\numberline {5.1}Backends}{23}{section.5.1}
+\contentsline {section}{\numberline {5.2}BLAS}{23}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Level 1 in CSR Matrix}{23}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Level 1 in COO Tensor}{23}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Libnd4j}{23}{section.5.3}
+\contentsline {chapter}{\numberline {6}Results}{25}{chapter.6}
+\contentsline {section}{\numberline {6.1}l}{25}{section.6.1}
+\contentsline {chapter}{\numberline {7}Conclusion}{27}{chapter.7}
+\contentsline {chapter}{\numberline {A}An appendix}{29}{appendix.A}
+\contentsline {chapter}{Bibliography}{31}{appendix*.21}
