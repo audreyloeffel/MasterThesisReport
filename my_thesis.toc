@@ -55,7 +55,8 @@
 \contentsline {subsection}{\numberline {4.4.5}Included values}{22}{subsection.4.4.5}
 \contentsline {subsection}{\numberline {4.4.6}?}{22}{subsection.4.4.6}
 \contentsline {subsection}{\numberline {4.4.7}Final Implementation}{22}{subsection.4.4.7}
-\contentsline {subsection}{\numberline {4.4.8}Put a Value}{23}{subsection.4.4.8}
+\contentsline {subsubsection}{Example}{23}{Item.23}
+\contentsline {subsection}{\numberline {4.4.8}Put a Value}{24}{subsection.4.4.8}
 \contentsline {subsection}{\numberline {4.4.9}Get a Sub-Array}{24}{subsection.4.4.9}
 \contentsline {chapter}{\numberline {5}Operations}{25}{chapter.5}
 \contentsline {section}{\numberline {5.1}Backends}{25}{section.5.1}
