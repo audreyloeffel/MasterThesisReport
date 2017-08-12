@@ -8,8 +8,9 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Arrays hierarchy in Nd4j\relax }}{14}{figure.caption.16}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Limitations and Constraints}{14}{section.4.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}storing off-heap}{14}{subsection.4.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Workspaces}{15}{subsection.4.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}DataBuffers have a fixed length}{15}{subsection.4.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Workspaces}{14}{subsection.4.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}DataBuffers have a fixed length}{14}{subsection.4.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Alternatives}{15}{subsection.4.2.4}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}CSR Matrices}{15}{section.4.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Structure}{15}{subsection.4.3.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Put a value}{15}{subsection.4.3.2}}
@@ -30,12 +31,12 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Indexes are flatten}}}{17}{subfigure.2.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }}{17}{figure.caption.18}}
 \newlabel{fig:viewOffset}{{4.3}{17}{A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }{figure.caption.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{18}{subsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{17}{subsection.4.4.2}}
 \@writefile{toc}{\contentsline {subsubsection}{All Indexes}{18}{subsection.4.4.2}}
 \@writefile{toc}{\contentsline {subsubsection}{Interval Indexes}{18}{subsection.4.4.2}}
 \@writefile{toc}{\contentsline {subsubsection}{Point Index}{18}{lstnumber.-3.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Result of \textit  {point(0)} index in grey on a $2\times 3\times 3$ tensor\relax }}{18}{figure.caption.19}}
-\newlabel{fig:pointTensor}{{4.4}{18}{Result of \textit {point(0)} index in grey on a $2\times 3\times 3$ tensor\relax }{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Result of \textit  {get(point(0), all(), all())} on the first dimension in grey on a $2\times 3\times 3$ tensor\relax }}{18}{figure.caption.19}}
+\newlabel{fig:pointTensor}{{4.4}{18}{Result of \textit {get(point(0), all(), all())} on the first dimension in grey on a $2\times 3\times 3$ tensor\relax }{figure.caption.19}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Specified Index}{19}{lstnumber.-4.1}}
 \@writefile{toc}{\contentsline {subsubsection}{New Axis Index}{19}{lstnumber.-4.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{19}{subsection.4.4.3}}
@@ -47,10 +48,12 @@
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Calculate the hidden dimensions\relax }}{21}{algorithm.2}}
 \newlabel{alg:hiddenDim}{{2}{21}{Calculate the hidden dimensions\relax }{algorithm.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{21}{subsection.4.4.4}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Translate the indexes from view to underlying context\relax }}{22}{algorithm.3}}
+\newlabel{alg:translation}{{3}{22}{Translate the indexes from view to underlying context\relax }{algorithm.3}{}}
 \@setckpt{main/ch4_implementation}{
-\setcounter{page}{22}
+\setcounter{page}{23}
 \setcounter{equation}{0}
-\setcounter{enumi}{5}
+\setcounter{enumi}{3}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
@@ -76,20 +79,20 @@
 \setcounter{lips@count}{2}
 \setcounter{AM@survey}{0}
 \setcounter{lstnumber}{2}
-\setcounter{Item}{16}
+\setcounter{Item}{18}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{40}
+\setcounter{bookmark@seq@number}{41}
 \setcounter{myparts}{0}
 \setcounter{parentequation}{0}
 \setcounter{float@type}{16}
-\setcounter{ALG@line}{19}
-\setcounter{ALG@rem}{19}
-\setcounter{ALG@nested}{1}
+\setcounter{ALG@line}{23}
+\setcounter{ALG@rem}{23}
+\setcounter{ALG@nested}{0}
 \setcounter{ALG@Lnr}{2}
 \setcounter{ALG@blocknr}{10}
 \setcounter{ALG@storecount}{0}
 \setcounter{ALG@tmpcounter}{0}
-\setcounter{algorithm}{2}
+\setcounter{algorithm}{3}
 \setcounter{lstlisting}{0}
 \setcounter{section@level}{0}
 }

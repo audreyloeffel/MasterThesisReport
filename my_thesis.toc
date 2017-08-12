@@ -25,14 +25,15 @@
 \contentsline {subsection}{\numberline {3.1.1}Data Buffer}{10}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Parameters of an Array}{10}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Views}{10}{section.3.2}
-\contentsline {section}{\numberline {3.3}Indexes}{11}{section.3.3}
+\contentsline {section}{\numberline {3.3}Indexes}{10}{section.3.3}
 \contentsline {section}{\numberline {3.4}Operations}{11}{section.3.4}
 \contentsline {chapter}{\numberline {4}Implementation}{13}{chapter.4}
 \contentsline {section}{\numberline {4.1}Hierarchy of Arrays}{13}{section.4.1}
 \contentsline {section}{\numberline {4.2}Limitations and Constraints}{14}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}storing off-heap}{14}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Workspaces}{15}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}DataBuffers have a fixed length}{15}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.2}Workspaces}{14}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}DataBuffers have a fixed length}{14}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Alternatives}{15}{subsection.4.2.4}
 \contentsline {section}{\numberline {4.3}CSR Matrices}{15}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Structure}{15}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Put a value}{15}{subsection.4.3.2}
@@ -40,7 +41,7 @@
 \contentsline {subsection}{\numberline {4.3.4}Limits with this format}{16}{subsection.4.3.4}
 \contentsline {section}{\numberline {4.4}COO Tensors}{16}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Naive implementation}{16}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{18}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{17}{subsection.4.4.2}
 \contentsline {subsubsection}{All Indexes}{18}{subsection.4.4.2}
 \contentsline {subsubsection}{Interval Indexes}{18}{subsection.4.4.2}
 \contentsline {subsubsection}{Point Index}{18}{lstnumber.-3.1}

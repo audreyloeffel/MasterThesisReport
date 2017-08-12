@@ -27,7 +27,7 @@ The drawback brought with this solution is that we always need to verify the typ
  
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=6.5in]{images/INDArrayHierarchy.png} 
+	%	\includegraphics[width=6.5in]{images/INDArrayHierarchy.png} 
 		\label{fig:hierarchy}
 		\caption{Arrays hierarchy in Nd4j}
 	\end{center}
@@ -40,14 +40,15 @@ Nd4j has been made in the perspective of dense arrays. The design has been thoug
 \subsection{storing off-heap}
 
 // TO ASK TO RAVER:
-What are the advantages for storing data off-heap ? Why Garbadge collector is a bad thing ?
+What are the advantages for storing data off-heap ? Why Garbage collector is a bad thing ?
 
-What the idea behind the workspaces and how does it work ?
+What the idea behind workspaces and how does it work ?
 
-Before the workspaces, data were already stored off-heap. What do workspaces bring new ? How could 
+Before the workspaces, data were already stored off-heap. What do workspaces bring new ? 
 
 Why it wasn't possible to have arrays of databuffers native side ? what we had to flatten everything?
 
+Why did we use managed memory?
 
 \subsection{Workspaces}
 \subsection{DataBuffers have a fixed length}
@@ -63,6 +64,12 @@ explain what is in the ToC doc
 
 -> add in op interface
 
+We also overallocated by a factor 2 the size of the databuffers used for storing the values and the indexes -> avoid to much reallocation mechanism
+
+\subsection{Alternatives}
+-> TODO %TODO            better explaination
+The implementation of CSR and COO would have been easier with managed memory. We could have stored the arrays in Java ArrayList and we woudn't have to take care of the memory, reallocation, etc 
+
 
 \section{CSR Matrices}
 \subsection{Structure}
@@ -77,9 +84,8 @@ While iterating over the range of values, if we find a value with the same colum
 
 However if there is no value with that column, we need to insert a new one at the correct position. Then we need to update the end of row pointer for this row. Finally each row pointers that come after need to be increment by one.
 
-
--- ADD pseudo code for putscalar of csr
-
+% TODO
+-- ADD pseudo code for putscalar of csr?
 
 
 
@@ -168,12 +174,12 @@ After the resolution of the indexes, we obtain offsets equal to $[1, 1]$ with an
 In the COO perspective that means a value having any of its dimensions equal to 0 does not belong to the view. We need to define bounds for each dimension in order to be able to filter out the values.
 
 \subsubsection{Point Index}
-\textit{Point} indexes take one unique element of a dimension. They reduces the rank of the array.
+\textit{Point} indexes take one unique element of a dimension. They reduce the rank of the array.
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1.5in]{images/tensorsHiglighted.pdf}
-	\caption{Result of \textit{point(0)} index in grey on a $2\times 3\times 3$ tensor}
+	\caption{Result of \textit{get(point(0), all(), all())} on the first dimension in grey on a $2\times 3\times 3$ tensor}
 	\label{fig:pointTensor}
 \end{figure}
 
@@ -182,9 +188,10 @@ Figure \ref{fig:pointTensor} shows a $2\times 3\times 3$ tensors with a $2\times
 	myArray.get(NDArrayIndex.point(0));
 \end{lstlisting} 
 
-The coordinates of the resulting matrix have only two dimensions instead of three. We have an issue when trying to access a value given a pair of coordinates in the view context. There is no direct matching between those coordinates and those actually in the indexes buffer. 
+The coordinates of the resulting matrix have only two dimensions instead of three. We have an issue when trying to access a value given a pair of coordinates in the view context. There is no direct matching between these coordinates and those who actually are in the indexes buffer. 
 
-The solution is to add an additional parameter array that keep track of the status of each dimension. The array is called flags, it can contains either 0, which means \textit{active}, or 1 which means \textit{fixed}. The flags array for the view shown in figure \ref{fig:pointTensor} would be equal to [1, 0, 0] because the first dimension is fixed at position 0.
+The solution is to add an additional parameter array that keeps track of the status of each dimension. 
+The array is called flags and it can contains either 0, which means \textit{active}, or 1 which means \textit{fixed}. The flags array for the view shown in figure \ref{fig:pointTensor} would be equal to [1, 0, 0] because the first dimension is fixed at position 0.
 
 \subsubsection{Specified Index}
 When using at least one specified index in the set of indexes used to get a sub-array, it always returns a copy of the original data. It can not be a view because the specified indexes are not deterministic and can not be translated into logical strides, shape or offsets.
@@ -194,7 +201,7 @@ In this case we need to iterate over each dimension to access every element of t
 
 \subsubsection{New Axis Index}
 \textit{New axis} indexes are used to add a new dimension to the array. The new dimension always has a length equals to 1. It can be perpended or inserted in the middle of the dimensions.
-Since the rank is higher, more cooridinates are needed to access a value. However the shared indexes buffers is limited to the original rank. Similary to the point index, we need a new parameter array that keep tracks of the position of the new dimensions to be able to  translate the coordinates from view to original context.
+Since the rank is higher, more coordinates are needed to access a value. However the shared indexes buffers is limited to the original rank. Similarly to the point index, we need a new parameter array that keep tracks of the position of the new dimensions to be able to  translate the coordinates from view to original context.
 
 Assuming we have a $3\times 3$ matrix: calling \textit{myArray.get(NDArrayIndex.newAxis())} will prepend a new dimension. The view is a $1\times 3\times 3$ tensor with a hidden dimension parameter array equal to $[0]$.
 
@@ -206,11 +213,11 @@ The sparse offsets are computed from the offset. The offset give us the position
 
 
 \begin{enumerate}
-	\item We need an array with a length equals to the view rank.
-	\item For each dimension except the innermost one, we divide the offset by the number of elements in one dimension's element (i.e divide the offset by the number of value in a row). Rounded to the lower integer, this quotient give us the sparse offset for thie dimension. Then we need to remove the number of elements that are in the same dimension but with a lowest value. We want to isolate the dimension's value (to get only a row).
+	\item For each dimension except the innermost one, we divide the offset by the number of elements in one dimension's element (i.e divide the offset by the number of value in a row). Rounded to the lower integer, this quotient give us the sparse offset for the dimension. Then we need to remove the number of elements that are in the same dimension but at a lowest value. We want to isolate the dimension's value as if it was the value 0 of the dimension.
 	\item We iterate until the last element. In this case we have the offsets set up up to the row dimension. To find which column the value is in, we need to take the modulo of the remaining offset by the number of columns.
-	\item We have the sparse offsets given a set of indexes. But it does not take into account the possibly already non-null sparse offsets. This is the case when we take a view from a view. In this case we need to merge the two sparse offsets arrays.
-	\item We should particularly be careful with hidden dimensions because they are absent from the sparse offset resolution explained above. The result does not contain any information about the hidden dimension, we need to add them in a new array which has a length equals to the underlying rank. The sparse offsets of the active dimensions are simply added.
+	\item We have the sparse offsets given a set of indexes. But it does not take into account the possibly already non-null sparse offsets. This is the case when we take a view from a view. In this case we need to merge the two sparse offsets arrays. The final result is the sum of the existing offset and the freshly computed offset.
+	\item We should particularly be careful with fixed dimensions because they are absent from the sparse offset resolution explained above. The result does not contain any information about them, we need to merge them in a new array which has a length equals to the underlying rank. In this case, it takes the value of the existing offset.
+
 \end{enumerate}
 
 \begin{algorithm}
@@ -218,9 +225,9 @@ The sparse offsets are computed from the offset. The offset give us the position
 	\label{alg:sparseOffsets}
 \begin{algorithmic}
 	\Statex
-	\Function{CreateSparseOffsets}{int $offset$}\\
-	\Comment{Compute the new offsets}
-	\State $newOffsets\gets new\ int[rank]$
+	\Procedure{CreateSparseOffsets}{int $offset$}\\
+	\Comment{$rank$, $underlyingRank$, $shape$ and $sparseOffsets$ are class fields}\\
+	\State $newOffsets\gets new\ int[rank]$ \Comment{Compute the new offsets}
 	
 	\For{$i=0$ to $(rank - 2)$} 
 	\State $nbElements \gets \prod_{j=i+1}^{rank} shape[j]$
@@ -229,9 +236,8 @@ The sparse offsets are computed from the offset. The offset give us the position
 	\EndFor
 	\State $newOffsets[rank-1] \gets offset \mod shape[rank-1]$ 
 	\\
-	\\
-	\Comment{Merge with sparseOffsets of this array}	
-	\State $finalOffsets\gets new\ int[underlyingRank]$
+	\\	
+	\State $finalOffsets\gets new\ int[underlyingRank]$	\Comment{Merge with sparseOffsets of this array}
 	\State $active\gets 0$
 	\For{$i=0$ to $underlyingRanke$}
 	\If {$flags[i] == 0$}
@@ -242,7 +248,7 @@ The sparse offsets are computed from the offset. The offset give us the position
 	\EndIf
 	\EndFor\\
 	\Return $finalOffsets$
-
+\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 	
@@ -258,10 +264,9 @@ The resolution returns an array containing the position of the newAxis indexes i
 	\caption{Calculate the hidden dimensions}
 	\label{alg:hiddenDim}
 	\begin{algorithmic}
-	
-		
-		\Function{CreateHiddenDimensions}{int[] $newAxis$}\\
-		
+			
+		\Procedure{CreateHiddenDimensions}{int[] $newAxis$}\\
+		\Comment{$hiddenDimensions$ is a class field}\\
 		
 		\If {$newAxis$ is empty or null}
 		\Return {$hiddenDimensions$}		
@@ -274,22 +279,68 @@ The resolution returns an array containing the position of the newAxis indexes i
 		
 	
 		\State $size\gets newAxis.length + hiddenDimensions.length$ 	\Comment{Merge both arrays}
-		\State $newArray \gets $ new $int[size], i\gets 0, newDim\gets 0$
-				
+		\State $newArray \gets $ new $int[size],\ i\gets 0,\ newDim\gets 0$
+		\\
 		\For{$oldDim=0$ to $hiddenDimensions.length$}
 			\State $j\gets 0$
-			\While{$newAxis[newDim] \leq hiddenDimensions[i]$}
+			\While{$newAxis[newDim] < hiddenDimensions[i]$}
 				\State $newArray[i] \gets newAxis[newDim]$
-				\State $i\gets i + 1, j\gets j + 1$ 	
+				\State $i\gets i + 1,\ j\gets j + 1$ 	
 			\EndWhile
 			\State $newArray[i] \gets hiddenDimensions[oldDim] + j$	
 			\Comment{add an offset corresponding to the amount of axis added before this dimension}
 			\State $i\gets i + 1$
 		\EndFor
 		\Return{$newArray$}
+		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
 
 
 \subsection{Sparse Indexes Translation}
-..
+
+To translate a view coordinates to the underlying coordinates, we have to take into accounts: the sparse offsets, the hidden dimensions and the flags. With those three parameters we have everything need for translating.
+	
+While iterating over the view dimensions, three situations can happen :
+\begin{enumerate}
+	\item The current dimension is hidden: We do nothing
+	\item The current dimension is fixed: We put the corresponding offset into the result array. Since several fixed dimensions can occur in a row, we need to repeat until we reach an active dimension.
+	\item The current dimension is active: We sum the view coordinate with the sparse offset.
+\end{enumerate}
+This method is described in detail in algorithm \ref{alg:translation} 
+	
+	
+\begin{algorithm}
+	\caption{Translate the indexes from view to underlying context}
+	\label{alg:translation}
+	\begin{algorithmic}
+		
+		\Procedure{translate}{int[] $viewIndexes$}\\
+		\Comment{$underlyingRank$, $hiddenDimensions$ and $sparseOffsets$ are class fields}\\
+		\State $result \gets new\ int[underlyingRank]$
+		\State $idxPhy \gets 0,\ hidden \gets 0 $
+		\\
+		\For{$idxVir=0$ to $viewIndexes.length$}\\
+		
+		 \Comment{The current dimension is hidden, it does not appear in the result}
+			\If{$hidden < hiddenDimension.length \And hiddenDimension[hidden] == idxVir$}
+				\State $hidden \gets hidden + 1$
+			\Else
+				\While{$idxPhy < underlyingRank \And isFixed(idxPhy)$}
+					\State $result[idxPhy] \gets sparseOffsets[idxPhy]$ \Comment{If the dimension is fixed, the coordinate takes the value of the offset}
+					\State $idxPhy \gets idxPhy + 1$
+				\EndWhile\\
+				\Comment{If the dimension is not fix, we add the offset to the coordinate}				
+				
+				\If{$idxPhy < underlyingRank \And  !isFixed(idxPhy)$}
+					\State $result[idxPhy] \gets sparseOffsets[idxPhy] + viewIndexes[idxVir]$ 
+					\State $idxPhy \gets idxPhy + 1$
+				\EndIf
+		
+			\EndIf
+			
+		\EndFor		
+		\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+	

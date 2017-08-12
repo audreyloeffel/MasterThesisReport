@@ -46,6 +46,8 @@ The pointer points to the allocated memory space and the indexes provides an eas
 
 The implementation of the databuffer depends on the data type, because of the length needed to store a single value (int -> 32 bits, long -> 64bits, float -> 32bits, double -> 64bits)
 
+%TODO talk about memory copy (how bad is it)
+
 \subsection{Parameters of an Array}
 The information about the shape of the array are grouped in a DataBuffer object called ShapeInformation. It groups these following information:
 
@@ -63,7 +65,7 @@ The information about the shape of the array are grouped in a DataBuffer object 
 
 The data in memory can be shared by multiple NDArrays. An NDArray can refer to a subset of another NDArray. We say that such an array is a view of the original array. This is a powerful concept that avoid the unnecessary copy of the data which is a very expensive operation.
 
-Since the memory space is shared, changes to one will impact the other ones. Figure \ref{fig:sharememView} illustrates how a view shares its data with its original array.
+
 
 \begin{figure}[h]
 	\begin{center}
@@ -74,6 +76,7 @@ Since the memory space is shared, changes to one will impact the other ones. Fig
 	\label{fig:sharememView}
 \end{figure}
 \section{Indexes}
+Since the memory space is shared, changes to one will impact the other ones. Figure \ref{fig:sharememView} illustrates how a view shares its data with its original array.
 
 NDArrays can be accessed through a combination of indexes. There are many way to index an array. For each dimension of the original array, we can specify if we want everything, an interval or a specific value of it. It gives a lot of flexibility to access sub-part of a array. 
  
@@ -89,3 +92,5 @@ Nd4j defines five types of operations:
 \item Index Accumulation: Similar to accumulation operations but return an index instead of a value. A classic operation is getting the maximum or minimum value along a dimension.
 \item Broadcast: Some of the more useful operations are vector operations, such as \textit{addRowVector} which add a row vector to every row of a matrix.
 \end{enumerate}
+
+%TODO BLAS vs NATIVE Nd4j, even for the CPU, must optimize for low memory mobility even when the backend is native

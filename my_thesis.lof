@@ -15,7 +15,7 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Each dimension is stored contiguously}}}{17}{subfigure.2.2}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Indexes are flatten}}}{17}{subfigure.2.3}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }}{17}{figure.caption.18}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Result of \textit {point(0)} index in grey on a $2\times 3\times 3$ tensor\relax }}{18}{figure.caption.19}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Result of \textit {get(point(0), all(), all())} on the first dimension in grey on a $2\times 3\times 3$ tensor\relax }}{18}{figure.caption.19}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

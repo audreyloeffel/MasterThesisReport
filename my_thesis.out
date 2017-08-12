@@ -28,24 +28,25 @@
 \BOOKMARK [2][-]{subsection.4.2.1}{storing off-heap}{section.4.2}% 28
 \BOOKMARK [2][-]{subsection.4.2.2}{Workspaces}{section.4.2}% 29
 \BOOKMARK [2][-]{subsection.4.2.3}{DataBuffers have a fixed length}{section.4.2}% 30
-\BOOKMARK [1][-]{section.4.3}{CSR Matrices}{chapter.4}% 31
-\BOOKMARK [2][-]{subsection.4.3.1}{Structure}{section.4.3}% 32
-\BOOKMARK [2][-]{subsection.4.3.2}{Put a value}{section.4.3}% 33
-\BOOKMARK [2][-]{subsection.4.3.3}{Get a Sub-array}{section.4.3}% 34
-\BOOKMARK [2][-]{subsection.4.3.4}{Limits with this format}{section.4.3}% 35
-\BOOKMARK [1][-]{section.4.4}{COO Tensors}{chapter.4}% 36
-\BOOKMARK [2][-]{subsection.4.4.1}{Naive implementation}{section.4.4}% 37
-\BOOKMARK [2][-]{subsection.4.4.2}{More parameters are needed to define the tensors}{section.4.4}% 38
-\BOOKMARK [2][-]{subsection.4.4.3}{Computations of the the Parameters}{section.4.4}% 39
-\BOOKMARK [2][-]{subsection.4.4.4}{Sparse Indexes Translation}{section.4.4}% 40
-\BOOKMARK [0][-]{chapter.5}{Operations}{}% 41
-\BOOKMARK [1][-]{section.5.1}{Backends}{chapter.5}% 42
-\BOOKMARK [1][-]{section.5.2}{BLAS}{chapter.5}% 43
-\BOOKMARK [2][-]{subsection.5.2.1}{Level 1 in CSR Matrix}{section.5.2}% 44
-\BOOKMARK [2][-]{subsection.5.2.2}{Level 1 in COO Tensor}{section.5.2}% 45
-\BOOKMARK [1][-]{section.5.3}{Libnd4j}{chapter.5}% 46
-\BOOKMARK [0][-]{chapter.6}{Results}{}% 47
-\BOOKMARK [1][-]{section.6.1}{l}{chapter.6}% 48
-\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 49
-\BOOKMARK [0][-]{appendix.A}{An appendix}{}% 50
-\BOOKMARK [0][-]{appendix*.21}{Bibliography}{}% 51
+\BOOKMARK [2][-]{subsection.4.2.4}{Alternatives}{section.4.2}% 31
+\BOOKMARK [1][-]{section.4.3}{CSR Matrices}{chapter.4}% 32
+\BOOKMARK [2][-]{subsection.4.3.1}{Structure}{section.4.3}% 33
+\BOOKMARK [2][-]{subsection.4.3.2}{Put a value}{section.4.3}% 34
+\BOOKMARK [2][-]{subsection.4.3.3}{Get a Sub-array}{section.4.3}% 35
+\BOOKMARK [2][-]{subsection.4.3.4}{Limits with this format}{section.4.3}% 36
+\BOOKMARK [1][-]{section.4.4}{COO Tensors}{chapter.4}% 37
+\BOOKMARK [2][-]{subsection.4.4.1}{Naive implementation}{section.4.4}% 38
+\BOOKMARK [2][-]{subsection.4.4.2}{More parameters are needed to define the tensors}{section.4.4}% 39
+\BOOKMARK [2][-]{subsection.4.4.3}{Computations of the the Parameters}{section.4.4}% 40
+\BOOKMARK [2][-]{subsection.4.4.4}{Sparse Indexes Translation}{section.4.4}% 41
+\BOOKMARK [0][-]{chapter.5}{Operations}{}% 42
+\BOOKMARK [1][-]{section.5.1}{Backends}{chapter.5}% 43
+\BOOKMARK [1][-]{section.5.2}{BLAS}{chapter.5}% 44
+\BOOKMARK [2][-]{subsection.5.2.1}{Level 1 in CSR Matrix}{section.5.2}% 45
+\BOOKMARK [2][-]{subsection.5.2.2}{Level 1 in COO Tensor}{section.5.2}% 46
+\BOOKMARK [1][-]{section.5.3}{Libnd4j}{chapter.5}% 47
+\BOOKMARK [0][-]{chapter.6}{Results}{}% 48
+\BOOKMARK [1][-]{section.6.1}{l}{chapter.6}% 49
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 50
+\BOOKMARK [0][-]{appendix.A}{An appendix}{}% 51
+\BOOKMARK [0][-]{appendix*.21}{Bibliography}{}% 52
