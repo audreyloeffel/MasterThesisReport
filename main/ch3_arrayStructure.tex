@@ -6,7 +6,7 @@ The new sparse array have to be compliant with the API and inter-operable with t
 \section{Storing an Array}
 \label{sec:storing}
 
-A dense array is stored as a single contiguous block of memory, flatten in a one-dimensional array. Arrays are stored off-heap (outside the JVM environment). The reasons behind this design decision are numerous: better performance, better interoperability with BLAS libraries, and to avoid the disadvantages of the {JVM} such as the limited size of arrays due to the integer indexing (limited to $2^{31}-1 \cong 2.14 \text{ billion}$ elements)
+A dense array is stored as a single contiguous block of memory, flatten in a one-dimensional array. Arrays are stored off-heap (outside the JVM environment). The reasons behind this design decision are numerous: better performance (avoid the interruptions of the garbage collector), better interoperability with BLAS libraries, and to avoid the disadvantages of the {JVM} such as the limited size of arrays due to the integer indexing (limited to $2^{31}-1 \cong 2.14 \text{ billion}$ elements)
 
 There are two methods to store a multi-dimensional array into a linear memory space: row-major order (C) or column-major order (Fortran). Figure \ref{fig:orders} shows how a two-dimensional array is stored according to the order.
 
@@ -39,36 +39,37 @@ There are two methods to store a multi-dimensional array into a linear memory sp
 
 \end{figure}
 
-The data are accessed via strides which define how to index over contiguous block of data. For each dimension it defines by how many values two consecutive elements are separated. In the case of matrix $A$ defined in figure \ref{fig:orders}, the strides would be $(3, 1)$ in case of C-order and $(1, 3)$ in case of F-order. Strides $(3, 1)$ means that each row is separated by 3 values and each column is separated by 1 value.
+The data is accessed via strides which define how to index over contiguous block of data. For each dimension it defines by how many values two consecutive elements are separated. In the case of matrix $A$ defined in figure \ref{fig:orders}, the strides would be $(3, 1)$ in case of C-order and $(1, 3)$ in case of F-order. Strides $(3, 1)$ means that each row is separated by 3 values and each column is separated by 1 value.
 
 \subsection{Data Buffer}
-The DataBuffer is a storage abstraction which provides optimal storage and retrieval depending on the backend. The data are stored off-heap through JavaCPP. It is basically a wrapper around a pointer and an indexer with utility methods to access and modify the data. 
+The DataBuffer is a storage abstraction which provides optimal storage and retrieval depending on the backend. The data is stored off-heap through JavaCPP. It is basically a wrapper around a pointer and an indexer with utility methods to access and modify the data. 
 The pointer points to the allocated memory space and the indexes provides an easy-to-use and efficient way to access a multi-dimensional memory space.
 
-The implementation of the databuffer depends on the data type, because of the length needed to store a single value (int -> 32 bits, long -> 64bits, float -> 32bits, double -> 64bits)
+The implementation of the databuffer depends on the data type, because of the length needed to store a single value (int -> 32 bits, long -> 64bits, float -> 32bits, double -> 64bits, assuming a 64bit-architecture).
 
 %TODO talk about memory copy (how bad is it)
-
+// TODO speak about memory copy, host and device memory, etc
 \subsection{Parameters of an Array}
 The information about the shape of the array are grouped in a DataBuffer object called ShapeInformation. It groups these following information:
 
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries elementWiseStride}]
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries ElementWiseStride}]
 	\item [Rank] The number of dimension of the array.
 	\item [Shape] The shape of the array.
 	\item [Strides] Provides information about the logical layout of the array for each dimension.
-	\item [Offset] Provides the position of the first value of the data array that belongs to the array or view.
-	\item[ElementWiseStride] Indicates how two contiguous elements are physically separated in memory.
+	\item [Offset] Provides the position of the first value in memory that belongs to the array or view (explained in section \ref{sec:viewsDesc}.
+	\item [ElementWiseStride] Indicates how two contiguous elements are physically separated in memory.
 	\item[Order] C or F order
 \end{description}
 
 
 \section{Views}
-
+\label{sec:viewsDesc}
 The data in memory can be shared by multiple NDArrays. An NDArray can refer to a subset of another NDArray. We say that such an array is a view of the original array. This is a powerful concept that avoid the unnecessary copy of the data which is a very expensive operation.
 
+Since the memory space is shared, changes to array will impact the content of the other arrays. Figure \ref{fig:sharememView} illustrates how a view shares its data with its original array.
 
 
-\begin{figure}[h]
+\begin{figure}[!h]
 	\begin{center}
 		\includegraphics[width=3.5in]{images/views.png} 
 
@@ -76,8 +77,9 @@ The data in memory can be shared by multiple NDArrays. An NDArray can refer to a
 	\end{center}
 	\label{fig:sharememView}
 \end{figure}
+
+
 \section{Indexes}
-Since the memory space is shared, changes to one will impact the other ones. Figure \ref{fig:sharememView} illustrates how a view shares its data with its original array.
 
 NDArrays can be accessed through a combination of indexes. There are many way to index an array. For each dimension of the original array, we can specify if we want everything, an interval or a specific value of it. It gives a lot of flexibility to access sub-part of a array. 
  

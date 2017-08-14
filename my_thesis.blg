@@ -18,50 +18,52 @@ Database file #1: tail/bibliography.bib
 Warning--to sort, need author or key in Zipf
 Warning--to sort, need author or key in netflixgrandprize
 Warning--to sort, need author or key in mklformat
+Warning--to sort, need author or key in breeze
 Warning--to sort, need author or key in mkllvl1
 Warning--empty year in Zipf
+Warning--empty year in breeze
 Warning--empty year in mklformat
 Warning--empty year in mkllvl1
 Warning--empty year in netflixgrandprize
-You've used 5 entries,
+You've used 6 entries,
             2773 wiz_defined-function locations,
-            624 strings with 5662 characters,
-and the built_in function-call counts, 1303 in all, are:
-= -- 123
+            628 strings with 5790 characters,
+and the built_in function-call counts, 1549 in all, are:
+= -- 148
 > -- 10
 < -- 1
-+ -- 9
++ -- 10
 - -- 3
-* -- 77
-:= -- 136
-add.period$ -- 13
-call.type$ -- 5
-change.case$ -- 16
-chr.to.int$ -- 4
-cite$ -- 22
-duplicate$ -- 75
-empty$ -- 173
+* -- 91
+:= -- 157
+add.period$ -- 16
+call.type$ -- 6
+change.case$ -- 19
+chr.to.int$ -- 5
+cite$ -- 27
+duplicate$ -- 90
+empty$ -- 208
 format.name$ -- 4
-if$ -- 306
+if$ -- 367
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 0
-newline$ -- 31
+newline$ -- 36
 num.names$ -- 4
-pop$ -- 77
+pop$ -- 94
 preamble$ -- 1
-purify$ -- 11
+purify$ -- 13
 quote$ -- 0
-skip$ -- 51
+skip$ -- 60
 stack$ -- 0
-substring$ -- 14
-swap$ -- 7
+substring$ -- 17
+swap$ -- 8
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 55
-warning$ -- 8
+type$ -- 66
+warning$ -- 10
 while$ -- 3
 width$ -- 0
-write$ -- 61
-(There were 8 warnings)
+write$ -- 72
+(There were 10 warnings)

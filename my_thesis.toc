@@ -25,7 +25,7 @@
 \contentsline {subsection}{\numberline {3.1.1}Data Buffer}{12}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Parameters of an Array}{12}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Views}{12}{section.3.2}
-\contentsline {section}{\numberline {3.3}Indexes}{12}{section.3.3}
+\contentsline {section}{\numberline {3.3}Indexes}{13}{section.3.3}
 \contentsline {section}{\numberline {3.4}Operations}{13}{section.3.4}
 \contentsline {chapter}{\numberline {4}Implementation}{15}{chapter.4}
 \contentsline {section}{\numberline {4.1}Hierarchy of Arrays}{15}{section.4.1}
@@ -37,48 +37,48 @@
 \contentsline {section}{\numberline {4.3}CSR Matrices}{17}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Structure}{17}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Put a value}{17}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Get a Sub-Array}{17}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.3}Get a Sub-Array}{18}{subsection.4.3.3}
 \contentsline {subsection}{\numberline {4.3.4}Limits of this format}{18}{subsection.4.3.4}
-\contentsline {section}{\numberline {4.4}COO Tensors}{18}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Naive implementation}{18}{subsection.4.4.1}
+\contentsline {section}{\numberline {4.4}COO Tensors}{19}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Naive implementation}{19}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{20}{subsection.4.4.2}
 \contentsline {subsubsection}{All Indexes}{20}{subsection.4.4.2}
 \contentsline {subsubsection}{Interval Indexes}{20}{subsection.4.4.2}
-\contentsline {subsubsection}{Point Index}{20}{lstnumber.-3.1}
-\contentsline {subsubsection}{Specified Index}{21}{lstnumber.-4.1}
-\contentsline {subsubsection}{New Axis Index}{21}{lstnumber.-4.1}
-\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{21}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Sparse Offsets}{21}{subsection.4.4.3}
+\contentsline {subsubsection}{Point Index}{21}{lstnumber.-3.1}
+\contentsline {subsubsection}{Specified Index}{22}{figure.caption.19}
+\contentsline {subsubsection}{New Axis Index}{22}{figure.caption.19}
+\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{22}{subsection.4.4.3}
+\contentsline {subsubsection}{Computation of the Sparse Offsets}{22}{subsection.4.4.3}
 \contentsline {subsubsection}{Computation of the Flags}{23}{algorithm.1}
-\contentsline {subsubsection}{Computation of the Hidden Dimensions}{23}{algorithm.1}
-\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{23}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Reverse coordinates}{24}{subsection.4.4.5}
-\contentsline {subsection}{\numberline {4.4.6}Final Implementation}{25}{subsection.4.4.6}
-\contentsline {subsubsection}{Example}{25}{Item.27}
-\contentsline {subsection}{\numberline {4.4.7}Put a Value}{26}{subsection.4.4.7}
-\contentsline {subsection}{\numberline {4.4.8}Get a Sub-Array}{26}{subsection.4.4.8}
-\contentsline {chapter}{\numberline {5}Operations}{27}{chapter.5}
-\contentsline {section}{\numberline {5.1}Basic Linear Algerba Subprograms (BLAS)}{27}{section.5.1}
-\contentsline {section}{\numberline {5.2}Backends}{28}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}In-Place Routines}{28}{subsection.5.2.1}
-\contentsline {subsubsection}{Example}{28}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Level 1 Routines}{29}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Level 2 and Level 3 Routines}{29}{subsection.5.2.3}
-\contentsline {subsubsection}{Gemv Routine}{30}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Libnd4j}{30}{section.5.3}
-\contentsline {chapter}{\numberline {6}Results}{31}{chapter.6}
-\contentsline {section}{\numberline {6.1}Storing a huge data set}{31}{section.6.1}
-\contentsline {section}{\numberline {6.2}Operations performance}{31}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}level 1}{31}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}level 2}{31}{subsection.6.2.2}
-\contentsline {subsubsection}{Gemv}{31}{subsection.6.2.2}
-\contentsline {chapter}{\numberline {7}Future}{33}{chapter.7}
-\contentsline {section}{\numberline {7.1}Sparse Representation}{33}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}API compliant}{33}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}More Supported Sparse Format}{33}{subsection.7.1.2}
-\contentsline {subsection}{\numberline {7.1.3} ..?}{33}{subsection.7.1.3}
-\contentsline {section}{\numberline {7.2}Operations}{33}{section.7.2}
-\contentsline {section}{\numberline {7.3}Optimization}{33}{section.7.3}
-\contentsline {chapter}{\numberline {8}Conclusion}{35}{chapter.8}
-\contentsline {chapter}{\numberline {A}An appendix}{37}{appendix.A}
-\contentsline {chapter}{Bibliography}{39}{appendix*.24}
+\contentsline {subsubsection}{Computation of the Hidden Dimensions}{24}{algorithm.1}
+\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{24}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Reverse coordinates}{25}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}Final Implementation}{26}{subsection.4.4.6}
+\contentsline {subsubsection}{Example}{26}{Item.31}
+\contentsline {subsection}{\numberline {4.4.7}Put a Value}{27}{subsection.4.4.7}
+\contentsline {subsection}{\numberline {4.4.8}Get a Sub-Array}{27}{subsection.4.4.8}
+\contentsline {chapter}{\numberline {5}Operations}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}Basic Linear Algerba Subprograms (BLAS)}{29}{section.5.1}
+\contentsline {section}{\numberline {5.2}Backends}{30}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}In-Place Routines}{30}{subsection.5.2.1}
+\contentsline {subsubsection}{Example}{30}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Level 1 Routines}{31}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Level 2 and Level 3 Routines}{31}{subsection.5.2.3}
+\contentsline {subsubsection}{Gemv Routine}{32}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Libnd4j}{32}{section.5.3}
+\contentsline {chapter}{\numberline {6}Results}{33}{chapter.6}
+\contentsline {section}{\numberline {6.1}Storing a huge data set}{33}{section.6.1}
+\contentsline {section}{\numberline {6.2}Operations performance}{33}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}level 1}{33}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}level 2}{33}{subsection.6.2.2}
+\contentsline {subsubsection}{Gemv}{33}{subsection.6.2.2}
+\contentsline {chapter}{\numberline {7}Future}{35}{chapter.7}
+\contentsline {section}{\numberline {7.1}Sparse Representation}{35}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}API compliant}{35}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}More Supported Sparse Format}{35}{subsection.7.1.2}
+\contentsline {subsection}{\numberline {7.1.3} ..?}{35}{subsection.7.1.3}
+\contentsline {section}{\numberline {7.2}Operations}{35}{section.7.2}
+\contentsline {section}{\numberline {7.3}Optimization}{35}{section.7.3}
+\contentsline {chapter}{\numberline {8}Conclusion}{37}{chapter.8}
+\contentsline {chapter}{\numberline {A}An appendix}{39}{appendix.A}
+\contentsline {chapter}{Bibliography}{41}{appendix*.24}

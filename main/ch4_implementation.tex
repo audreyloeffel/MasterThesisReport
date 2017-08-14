@@ -19,6 +19,8 @@ The first type of methods is not useful in case of sparse. Dense and sparse arra
 
 We encounter the same situation between the different sparse formats. Some will need utility methods that the other ones won't need.
 
+However some methods should be reusable such as traversal operations which operate in an element-wise manner.
+
 But everything has to be defined in the \textit{INDArray} interface. To avoid code duplication, everything than can be shared should be implemented in the higher level of the hierarchy. The methods that are not compatible with a type of array will simply throw an unsupported operation exception.
 
 The drawback brought with this solution is that we always need to verify the type of the array before doing any operations.
@@ -55,19 +57,21 @@ Workspaces provides some contiguous memory buffer. No garbage collection mecanis
 
 \subsection{DataBuffers have a fixed length}
 
-Databuffers cannot be reallocated -> necessary in case of sparse
--> explain the reallocation mechanism
+Once allocated a \textit{DataBuffer} can not be reallocated. It is not a issue when manipulating dense arrays, we never need to add a new value in a dense array, we only update the existing values. However we need to be able to add new values in the sparse buffers. Each time a zero value become a non-zero value we have to put the value and its indexes in memory.
 
---------
--> we can reallocate memory from java side but it's impossible from native side. so we need to overallocated to the max result size before any operations !
+To reallocate a buffer we need to:
+\begin{enumerate}
+	\item Create a new \textit{Pointer} to a bigger memory space and replace the current pointer of the \textit{DataBuffer} .
+	\item Create a new \textit{Indexer} with the new \textit{Pointer} and replace the current indexer of the \textit{DataBuffer}.
+	\item Copy the content from the old \textit{Pointer} to the new space.
+	\item The buffer has two length attributes: \textit{length} which count the number of values in the buffer and \textit{underlyingLength} which reflects the actual allocated size in memory. After the reallocation the \textit{underlyingLength} is increased to the new size, but the \textit{length} only increases at the insertion of a new value.
+\end{enumerate}
 
-1 - estimate the size needed (only the size of the view -> which avoid to allocated at the max size of the array - it wouldn't fit in memory)
-2 - reallocate
-3 - perform the op
+We over-allocate the buffer in order to limit the amount of reallocation operations. 
 
--> add in op interface
+Another possibility would have been to create a new \textit{DataBuffer} with the content of the old buffer plus the new value. But changing the DataBuffer object in a array would have broken the view mechanism since the views would still point to the old \textit{DataBuffer} reference. Moreover this solution doe not allow the over-allocation.
 
-We also overallocate by a factor 2 the size of the databuffers used for storing the values and the indexes -> avoid too much reallocation
+
 
 \subsection{Alternatives}
 -> TODO %TODO            better explaination
@@ -144,11 +148,11 @@ But this implementation makes difficult to be compliant with the API. It brings 
 \begin{itemize}
 	\item The key of views is the sharing of their data. In case of COO format, views have to share the data buffer and the indexes buffer. Without the indexes it is not possible to add a value in the original array by adding it in a view. If we only put the new value in the shared value buffer without updating the indexes, the original array would have a value buffer bigger than its indexes buffer and there would be an offset between the values and the indexes. 
 	
-	Even when sharing both buffers, how would we know which value is included in the view and which is ot? 	
+	Even when sharing both buffers, how would we know which value is included in the view and which is not? 	
 	
 	\item The coordinates of a value in a view are not necessary the sames of the same value in the original array. 
 		
-	They can be offset if dimension is partially included in the view. Figure \ref{fig:viewOffset} shows a matrix an a view (in red). The value$ v_{i}=5$ would have the coordinates [1, 1] in the original array while it has the coordinates [0, 0] in the view. How the indexes can be translated between views?
+	They can be offset if dimension is partially included in the view. Figure \ref{fig:viewOffset} shows a matrix an a view (in red). The value$ v_{i}=5$ would have the coordinates [1, 1] in the original array while it has the coordinates [0, 0] in the view. How can the indexes be translated between views?
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=0.8in]{images/viewIndexOffset.pdf}
@@ -156,7 +160,7 @@ But this implementation makes difficult to be compliant with the API. It brings 
 		\label{fig:viewOffset}
 	\end{figure}
 
-	\item A view can have a lower or higher rank than its original array. How can the view indexes be stored ?
+	\item A view can have a lower or higher rank than its original array. How can the view indexes be stored if they do not have the same dimensionality?
 \end{itemize}
 
 \subsection{More parameters are needed to define the tensors}
@@ -173,28 +177,42 @@ The grey sub-array in figure \ref{fig:viewOffset} is the result of the operation
 \begin{lstlisting}
 	myArray.get(NDArrayIndex.interval(1, 3), NDArrayIndex.interval(1, 3));
 \end{lstlisting} 
-After the resolution of the indexes, we obtain offsets equal to $[1, 1]$ with an offset equals to $4$.
-In the COO perspective that means a value having any of its dimensions equal to 0 does not belong to the view. We need to define bounds for each dimension in order to be able to filter out the values.
+After the resolution of the indexes, we obtain offsets equal to $[1, 1]$ with an offset equals to $4$, which mean that the first row and the first column are not included in the view and the first element in memory that belongs to the view is at position $4$.
+
+To be able to identify what values belong to the view and what values do not, we need to define the bounds of each dimension. For this example, we have
+
+$(idx_{row}, idx_{colum}) \in view $  if  $idx_{row} \in [1, 3[$ and $idx_{column} \in [1, 3[$
+
+We only need to store the lower bound $i_{lower}$ of the interval $idx_{dim} \in [i_{lower}, i_{upper}[$, we can easily compute $i_{upper} = i_{lower}+shape[dim]$.
+The lower bounds are stored in the \textit{sparseOffset} array.
 
 \subsubsection{Point Index}
 \textit{Point} indexes take one unique element of a dimension. They reduce the rank of the array.
 
+Assuming we have a tensor with a shape equals to ($2\times 3\times 3$) as shown in figure \ref{fig:pointTensor}. We want to take a slice along the first dimension, assuming that the first dimension being the pages, the second the rows and the third the columns. We use the following operation:
+\begin{lstlisting}
+myTensor.get(NDArrayIndex.point(0),
+	NDIndexArray.all(),
+	NDIndexArray.all());
+\end{lstlisting} 
+
+The result is a view with a shape equals to ($3\times 3$), as shown in grey in figure \ref{fig:pointTensor}
+
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1.5in]{images/tensorsHiglighted.pdf}
-	\caption{Result of \textit{get(point(0), all(), all())} on the first dimension in grey on a $2\times 3\times 3$ tensor}
+	\caption{A $2\times 3\times 3$ tensor with a slice along the first dimension in grey}
 	\label{fig:pointTensor}
 \end{figure}
 
-Figure \ref{fig:pointTensor} shows a $2\times 3\times 3$ tensors with a $2\times 2$ matrix view which is the result of the operations:
-\begin{lstlisting}
-	myArray.get(NDArrayIndex.point(0));
-\end{lstlisting} 
-
 The coordinates of the resulting matrix have only two dimensions instead of three. We have an issue when trying to access a value given a pair of coordinates in the view context. There is no direct matching between these coordinates and those who actually are in the indexes buffer. 
 
-The solution is to add an additional parameter array that keeps track of the status of each dimension. 
-The array is called flags and it can contains either 0, which means \textit{active}, or 1 which means \textit{fixed}. The flags array for the view shown in figure \ref{fig:pointTensor} would be equal to [1, 0, 0] because the first dimension is fixed at position 0.
+Each value of the tensor has its coordinates in the form $(idx_{0}, idx_{1}, idx_{2})$. But in the resulting view the values are defined with only two coordinates: ($idx_{1}, idx_{2}$), the first dimension is fixed with a value equals to 0. 
+
+To translate the view coordinates to the original coordinates which are actually stored into the shared buffer, we need to keep track of the unused dimension and its value. The solution is to add an additional parameter array that keeps track of the status of each dimension. The array is called \textit{flags} and it can contains either 0, which means \textit{active}, or 1 which means \textit{fixed}.
+
+In this example the flags array would be equal to [1, 0, 0] because the first dimension is fixed at position 0. The value 0 would be keep into the \textit{sparseOffset} array. And the indexes translation would be : T($idx_{1}, idx_{2}$) = ($sparseOffset[0], idx_{1}, idx_{2}$)
+
 
 \subsubsection{Specified Index}
 When using at least one specified index in the set of indexes used to get a sub-array, it always returns a copy of the original data. It can not be a view because the specified indexes can not be described with a recurrent pattern and can not be translated into logical strides, shape or offsets.

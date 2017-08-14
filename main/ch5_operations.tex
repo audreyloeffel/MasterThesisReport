@@ -37,7 +37,7 @@ Some of the operations are performed in-place, that means the input matrix is mo
 
 We might have an issue when the number of non-null values increases. We could run out of space in the different buffers because the memory can not be reallocated from the native side and because we can not know how many new values will be added. To avoid this problem we have to ensure having enough space before performing the operations.
 
-The solution is to allocate the maximum size that the routine could use to the databuffers. At first it may look like inefficient and counterproductive according to the benefits we want to gain with the sparse implementation. However such operations are never executed on the whole array but only one a small sub-part of it.
+The solution is to allocate the maximum size that the routine could use to the \textit{DataBuffers}. At first it may look like inefficient and counterproductive according to the benefits we want to gain with the sparse implementation. However such operations are never executed on the whole array but only one a small sub-part of it.
 
 \subsubsection{Example}
 To illustrate this issue let's take an array $myArray$ with a size equals to $(100'000\times 100'000 \times 100)$. 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -8,6 +8,11 @@
 \bibitem[Zip()]{Zipf}
 Zipf's law.
 \newblock \url{ }https://en.wikipedia.org/wiki/Zipf%27s_law.
+
+\bibitem[bre()]{breeze}
+Breeze - a numerical processing library for scala.
+\newblock \url{https://github.com/scalanlp/breeze}.
+\newblock [Online; accessed 14-August-2017].
 
 \bibitem[mkl({\natexlab{a}})]{mklformat}
 {Intel MKL} sparse format.
