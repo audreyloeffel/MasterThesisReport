@@ -33,11 +33,23 @@ Each backend is parameter-able
 
 
 \subsection{In-Place Routines}
-Some of the operations are performed in-place, that means that the input matrix is modified during the operations.
+Some of the operations are performed in-place, that means the input matrix is modified during the operations.
 
-We may have an issue when the number of non-null values increases. We could run out of space in the different buffers because we don't know how many values the operation will add. The memory can not be reallocated from the native side. We have to ensure having enough space before performing the operations.
+We might have an issue when the number of non-null values increases. We could run out of space in the different buffers because the memory can not be reallocated from the native side and because we can not know how many new values will be added. To avoid this problem we have to ensure having enough space before performing the operations.
 
-The solution is to allocate the maximum size to the databuffers. It may look like inefficient and counterproductive according to the benefits we want to get with the sparse implementation. However such an operation is never executed with the whole array but only with a small sub-part.h
+The solution is to allocate the maximum size that the routine could use to the databuffers. At first it may look like inefficient and counterproductive according to the benefits we want to gain with the sparse implementation. However such operations are never executed on the whole array but only one a small sub-part of it.
+
+\subsubsection{Example}
+To illustrate this issue let's take an array $myArray$ with a size equals to $(100'000\times 100'000 \times 100)$. 
+The following operation take a slice of the array $myArray$ (which corresponds in a row in this example) and assign $1.0$ to each value. 
+\begin{lstlisting}
+	myArray.get(NDIndexArray.point(0), 
+		NDIndexArray.point(0), 
+		NDIndexArray.all())
+		.assign(1.0),
+\end{lstlisting}
+Despite the huge size of the array, we only add at most 100 new values. If the buffers have not the capacity to get this amount of new values, we need to reallocate them prior the operation.
+
 
 \subsection{Level 1 Routines}
 

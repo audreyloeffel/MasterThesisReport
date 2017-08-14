@@ -1,12 +1,12 @@
 \chapter{Sparse Data and Formats}
 \section{Definition}
 
-Data are said sparse when it is contains only a few non-null values. That kind of dataset are really common in Machine Learning application and can be an high influence on the computation. 
+Data is said sparse when it is contains only a few non-zero values. That kind of dataset is really common in Machine Learning applications and can be an high influence on the computation. The use-cases include recommendation systems, clickstream, retail, \dots
 
 The sparsity of a dataset is defined by :
 
 \begin{equation}\label{eqn:sparsity}
-sparsity = \frac{\text{\# non-null values}}{\text{\# values}}
+sparsity = \frac{\text{\# non-zero values}}{\text{\# values}}
 \end{equation}
 
 Conversely when a dataset has only a few null values, the data are said dense. The density of the dataset is defined by the inverse of the sparsity:
@@ -14,10 +14,11 @@ Conversely when a dataset has only a few null values, the data are said dense. T
 density = \frac{1}{\text{sparsity}}
 \end{equation}
 
-Using dense methods and data structure with sparse data could have a severe bad impact on the performance
+Using dense methods and data structure with sparse data dismisses all optimization and performance gains we could achieve using sparse linear algebra.
+
 \section{The Advantages of Sparse Data}
 Sparsity is a very useful property in Machine Learning. Some algorithms can have fast optimization, fast evaluation of the model, statistical robustess or other computational advantages.
-A lot of machine learning application are using sparse dataset such as recommender system, natural language processing algorithm, 
+A lot of machine learning applications are using sparse dataset such as recommender system, natural language processing algorithm
 
 \section{Sparse Data are very common in Machine Learning}
 

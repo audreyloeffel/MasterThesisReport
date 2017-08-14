@@ -1,0 +1,31 @@
+\chapter{Future}
+
+\section{Sparse Representation}
+
+\subsection{API compliant}
+Implement the methods of INDArray tobe used like the dense array.
+reshape, operations, etc..
+\subsection{More Supported Sparse Format}
+support csr, csc for matrix and conversion between them. Slice of a COO tensor to CSR vector, etc
+
+-- import data directly in sparse format
+-- conversion from dense
+
+\subsection{ ..?}
+optimizing the tensor contraction
+
+-> skip list or other datastructure 
+-> sort along different dimensions
+
+
+\section{Operations}
+-> blas level 2 and 3
+-> libnd4j -> assign, etc
+-> support tensors and op on contraction
+
+\section{Optimization}
+Nd4j is built with the idea to avoid the JVM environement for storing the data. It is based on the postulate that the data is usually huge and does not fit into the memory. However with the new sparse implementation, we can store huge datasets into a reasonable size of memory (as long as it has a high sparsity)
+
+Perhaps we should consider storing spars array on-heap.
+
+More complexe format like storing by block (sparse-> on-heap, dense -> off-heap), or full sparse on-heap with managed memory. 
