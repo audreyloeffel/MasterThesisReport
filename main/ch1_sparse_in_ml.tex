@@ -1,7 +1,7 @@
 \chapter{Sparse Data and Formats}
 \section{Definition}
 
-Data is said sparse when it is contains only a few non-zero values. That kind of dataset is really common in Machine Learning applications and can be an high influence on the computation. The use-cases include recommendation systems, clickstream, retail, \dots
+Data is said sparse when it is contains only a few non-zero values. That kind of dataset is really common in Machine Learning applications and can be an high influence on the computation. Common use-cases include recommendation systems, clickstream dataset,\dots
 
 The sparsity of a dataset is defined by :
 
@@ -17,22 +17,26 @@ density = \frac{1}{\text{sparsity}}
 Using dense methods and data structure with sparse data dismisses all optimization and performance gains we could achieve using sparse linear algebra.
 
 \section{The Advantages of Sparse Data}
-Sparsity is a very useful property in Machine Learning. Some algorithms can have fast optimization, fast evaluation of the model, statistical robustess or other computational advantages.
-A lot of machine learning applications are using sparse dataset such as recommender system, natural language processing algorithm
+Linear algebra is a branch of mathematics that is widely used throughout science and engineering. Macĥine learning and more specifically deep learning algorithms rely on linear algebra. Sparsity is a very useful property in Machine Learning. Some algorithms can have fast optimization, fast evaluation of the model, statistical robustness or other computational advantages.
+
+A lot of machine learning applications are using sparse dataset such as recommender system. Natural language processing algorithm tends to have sparse dataset as stated by the Zipf's law \cite{Zipf}.
 
 \section{Sparse Data are very common in Machine Learning}
 
 In Machine Learning it's very common to deal with sparse dataset. We can encounter them in any kind of applications: Natural Language Processing, Retrieving Systems, Recommender Systems, etc.
 
-Given the possible optimization that sparse dataset allows and the high number of people that could take advantages of it, it becomes important to add the support of sparse data in Nd4j. 
+Given the possible optimization that sparse dataset allows and the high number of people that could take advantages of it, it becomes important to add the support of sparse data in the DL4J suite of libraries. 
 \subsection{A Real Case of Sparse Dataset}
-In 2008 Netflix launched a contest, the Netflix Grand Prize \cite{netflixgrandprize}, to improve their recommender system model and to increase the accuracy of predictions and published an sample dataset made with the ratings of anonymous Netflix customers. The dataset had more than 100 millions sampled ratings and it contained about $m=480'186$ users and $m=17'770$ movies \cite{Koren091the}. If stored as a dense matrix, it would need to store $8'532'905'220$ values in memory. That corresponds to a sparsity $\cong \frac{100'000'000}{8'532'905'220} = 0.011719338$.
+In 2008 Netflix launched a contest, the Netflix Grand Prize \cite{netflixgrandprize}, to improve their recommender system model and to increase the accuracy of predictions. They published an sample dataset made with the ratings of anonymous Netflix customers. The dataset had more than 100 millions sampled ratings and it contained about $m=480'186$ users and $m=17'770$ movies \cite{Koren091the}. If stored as a dense matrix, it would need to store $8'532'905'220$ values in memory. That corresponds to a sparsity $\cong \frac{100'000'000}{8'532'905'220} = 0.011719338$.
 
 Storing more than 8 trillions 64-bit floating-point numbers needs more than 64 gigabyte of memory which quickly become unmanageable even for the world's fastest supercomputers. 
 
-\section{Solution: Encode the data into a Sparse Format}
+\section{Solution: Sparse Representation and Operations}
+Even if the compression of sparse data is very efficient when storing as dense data, we could gain in performance during the processing by using a sparse representation with sparse operations. 
 
-To avoid the issue due to the high volume of storage needed, we must store the data into a sparse format. There are different kind of formats which each of them is more suitable to different aspects (Storage vs computation).
+In sparse operations only the values are accessed and processed while in dense operations, every cell is accessed even if it contains a zero value.
+
+To reduce the size of the memory needed and to gain in performance, we must store the data into a sparse format. There are different kind of formats which each of them is more suitable to different aspects (Storage vs computation).
 
 
 
@@ -44,9 +48,8 @@ There are many methods for storing sparse data, each of them presents different 
 \subsubsection{Coordinates Format}
 
 It is the simplest method to encode a sparse array. The coordinates and the value of each non-zero entry are stored in arrays.
-Typically each element are encoded in a tuple (row, column, value)
+Typically each element is encoded in a tuple (row, column, value)
 
-Some implementation variations of the COO format exist. The elements can be sorted along a dimension, or it can have duplicate indexes.
 
 \begin{figure}[h]
 	\[
@@ -86,6 +89,8 @@ But this format is not the most efficient regarding the memory consumption.
 \subsubsection{Compressed Row Format}
 
 The Compressed Row and the Compressed Column formats are the most general format to store a sparse array. They don't store any unnecessary element conversely to the COO format. But it requires more steps to access a element than the COO format. 
+
+Similarly to the row-major ordering explained in section \ref{sec:storing}, this format stores the values by row and use pointers to differentiate each row.
 
 Each non-zero element of a row are stored contiguously in the memory. Each row are also contiguously stored.
 
@@ -135,18 +140,25 @@ The format, described by the Intel MKL Sparse Library \cite{mklformat}, requires
 		\label{fig:csrformat}
 \end{figure}
 \subsubsection{Compressed Column Format}
-The Compressed Column Format is similar to {CSR} but it compresses columns instead of rows.
+The Compressed Column Format is similar to {CSR} but it compresses columns instead of rows. The values are stored in a column-major ordering, as explained in section \ref{sec:storing}.
 
 Given a matrix $N\times M$, the pointers arrays will have a size $M$. 
 \subsection{Tensors - Multi-dimensional arrays}
 
-A tensor is a multi-dimensional array. The order of the tensor is the dimensionality of the array needed to represent it. Matrices and vectors can be represented as tensors where the order is equals to 2 and 1 respectively.
+A tensor is a multi-dimensional array. The order of the tensor is its number of dimension. It corresponds to the number of indexes needed to index a value. Matrices, vectors and scalars can be represented as tensors where the order is equals to 2, 1 and 0 respectively.
 
 This generalization allows a more generic implementation of a n-dimensional array in the Nd4j library.
 \subsubsection{Coordinates Format} \label{sssec:coo}
 The COO format can easily be extended to encode tensors by storing an array of indexes instead the row and column coordinates. 
 
-A array of order $K = 3$ with shape $N\times M \times P$ which has the following non-zero values :
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=2.5in]{images/tensorscooexpl.pdf} 
+		\caption{A $3\times 3\times 3$ tensor}
+        \label{fig:tensorCOO}
+	\end{center}
+\end{figure}
+The tensor, illustrated in figure \ref{fig:tensorCOO}, of order $K = 3$ with shape $3\times 3 \times 3$ which has the following non-zero values :
 \begin{center}
 	\begin{tabular}{ l | c  }
 		value & indexes\\ \hline
@@ -159,7 +171,7 @@ A array of order $K = 3$ with shape $N\times M \times P$ which has the following
 	\end{tabular}
 \end{center}
 
-can be encoded with one values array and one indexes array :
+It can be encoded with one values array and one indexes array :
 \begin{figure}[h]
 	\[
 	\begin{aligned}
@@ -177,3 +189,4 @@ can be encoded with one values array and one indexes array :
 	\caption{A tensor stored in COO format}
 		\label{fig:cooformattensor}
 \end{figure}
+

@@ -37,21 +37,22 @@ The drawback brought with this solution is that we always need to verify the typ
 \section{Limitations and Constraints}
 
 Nd4j has been made in the perspective of dense arrays. The design has been thought and optimized regarding the dense implementation which brings some constraints to implement the sparse representation
-\subsection{storing off-heap}
+\subsection{Storing off-heap}
 
-// TO ASK TO RAVER
-
-What are the advantages for storing data off-heap ? Why Garbage collector is a bad thing ?
-
-What the idea behind workspaces and how does it work ?
-
-Before the workspaces, data were already stored off-heap. What do workspaces bring new ? 
-
-Why it wasn't possible to have arrays of databuffers native side ? what we had to flatten everything?
-
-Why didn't we use managed memory?
+The data, encapsulated into DataBuffer object, is stored off-heap. Several reasons drive this design decision.
+\begin{enumerate}
+	\item The size of the memory that can be allocated within the JVM is limited to 2 billion. We can not fit matrices into the JVM.
+	\item We want to use Cuda to accelerate the computation on the GPU. Cuda is not compatible with the JVM environment, the data has to be stored on the native side.
+	\item Java execution is always sequential, with C++ we can have cheap parallel executions.
+	\item At C++ level we can have SIMD (Single instruction, multiple data) instructions that allow to execute an instruction in parallel on different blocks of the same data.
+\end{enumerate}
 
 \subsection{Workspaces}
+
+Workspaces provides some contiguous memory buffer. No garbage collection mecanism occurs within them, the programmer has to take care of closing the workspace to avoid memory leaks.
+
+
+
 \subsection{DataBuffers have a fixed length}
 
 Databuffers cannot be reallocated -> necessary in case of sparse

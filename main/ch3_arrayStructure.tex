@@ -4,6 +4,7 @@ The new sparse array have to be compliant with the API and inter-operable with t
 
 
 \section{Storing an Array}
+\label{sec:storing}
 
 A dense array is stored as a single contiguous block of memory, flatten in a one-dimensional array. Arrays are stored off-heap (outside the JVM environment). The reasons behind this design decision are numerous: better performance, better interoperability with BLAS libraries, and to avoid the disadvantages of the {JVM} such as the limited size of arrays due to the integer indexing (limited to $2^{31}-1 \cong 2.14 \text{ billion}$ elements)
 

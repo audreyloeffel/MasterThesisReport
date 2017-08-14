@@ -8,77 +8,77 @@
 \contentsline {section}{\numberline {1.2}The Advantages of Sparse Data}{3}{section.1.2}
 \contentsline {section}{\numberline {1.3}Sparse Data are very common in Machine Learning}{4}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}A Real Case of Sparse Dataset}{4}{subsection.1.3.1}
-\contentsline {section}{\numberline {1.4}Solution: Encode the data into a Sparse Format}{4}{section.1.4}
+\contentsline {section}{\numberline {1.4}Solution: Sparse Representation and Operations}{4}{section.1.4}
 \contentsline {section}{\numberline {1.5}Formats}{4}{section.1.5}
-\contentsline {subsection}{\numberline {1.5.1}Matrices}{4}{subsection.1.5.1}
-\contentsline {subsubsection}{Coordinates Format}{4}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.1}Matrices}{5}{subsection.1.5.1}
+\contentsline {subsubsection}{Coordinates Format}{5}{subsection.1.5.1}
 \contentsline {subsubsection}{Compressed Row Format}{5}{figure.caption.9}
-\contentsline {subsubsection}{Compressed Column Format}{5}{figure.caption.10}
+\contentsline {subsubsection}{Compressed Column Format}{6}{figure.caption.10}
 \contentsline {subsection}{\numberline {1.5.2}Tensors - Multi-dimensional arrays}{6}{subsection.1.5.2}
 \contentsline {subsubsection}{Coordinates Format}{6}{subsection.1.5.2}
-\contentsline {chapter}{\numberline {2}The Deeplearning4j Library}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}Architecture of the library}{7}{section.2.1}
-\contentsline {section}{\numberline {2.2}The Importance of Nd4j in the Library}{7}{section.2.2}
-\contentsline {section}{\numberline {2.3}Nd4j needs a Sparse Representation}{8}{section.2.3}
-\contentsline {chapter}{\numberline {3}Structure of an Multi-dimensional Array}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Storing an Array}{9}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Data Buffer}{10}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Parameters of an Array}{10}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Views}{10}{section.3.2}
-\contentsline {section}{\numberline {3.3}Indexes}{10}{section.3.3}
-\contentsline {section}{\numberline {3.4}Operations}{11}{section.3.4}
-\contentsline {chapter}{\numberline {4}Implementation}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}Hierarchy of Arrays}{13}{section.4.1}
-\contentsline {section}{\numberline {4.2}Limitations and Constraints}{14}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}storing off-heap}{14}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Workspaces}{14}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}DataBuffers have a fixed length}{14}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Alternatives}{15}{subsection.4.2.4}
-\contentsline {section}{\numberline {4.3}CSR Matrices}{15}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Structure}{15}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Put a value}{15}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Get a Sub-Array}{15}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Limits of this format}{16}{subsection.4.3.4}
-\contentsline {section}{\numberline {4.4}COO Tensors}{16}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Naive implementation}{16}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{17}{subsection.4.4.2}
-\contentsline {subsubsection}{All Indexes}{18}{subsection.4.4.2}
-\contentsline {subsubsection}{Interval Indexes}{18}{subsection.4.4.2}
-\contentsline {subsubsection}{Point Index}{18}{lstnumber.-3.1}
-\contentsline {subsubsection}{Specified Index}{19}{lstnumber.-4.1}
-\contentsline {subsubsection}{New Axis Index}{19}{lstnumber.-4.1}
-\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{19}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Sparse Offsets}{19}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Flags}{20}{algorithm.1}
-\contentsline {subsubsection}{Computation of the Hidden Dimensions}{21}{algorithm.1}
-\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{21}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Reverse coordinates}{22}{subsection.4.4.5}
-\contentsline {subsection}{\numberline {4.4.6}Final Implementation}{23}{subsection.4.4.6}
-\contentsline {subsubsection}{Example}{23}{Item.23}
-\contentsline {subsection}{\numberline {4.4.7}Put a Value}{24}{subsection.4.4.7}
-\contentsline {subsection}{\numberline {4.4.8}Get a Sub-Array}{24}{subsection.4.4.8}
-\contentsline {chapter}{\numberline {5}Operations}{25}{chapter.5}
-\contentsline {section}{\numberline {5.1}Basic Linear Algerba Subprograms (BLAS)}{25}{section.5.1}
-\contentsline {section}{\numberline {5.2}Backends}{26}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}In-Place Routines}{26}{subsection.5.2.1}
-\contentsline {subsubsection}{Example}{26}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Level 1 Routines}{27}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Level 2 and Level 3 Routines}{27}{subsection.5.2.3}
-\contentsline {subsubsection}{Gemv Routine}{28}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Libnd4j}{28}{section.5.3}
-\contentsline {chapter}{\numberline {6}Results}{29}{chapter.6}
-\contentsline {section}{\numberline {6.1}Storing a huge data set}{29}{section.6.1}
-\contentsline {section}{\numberline {6.2}Operations performance}{29}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}level 1}{29}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}level 2}{29}{subsection.6.2.2}
-\contentsline {subsubsection}{Gemv}{29}{subsection.6.2.2}
-\contentsline {chapter}{\numberline {7}Future}{31}{chapter.7}
-\contentsline {section}{\numberline {7.1}Sparse Representation}{31}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}API compliant}{31}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}More Supported Sparse Format}{31}{subsection.7.1.2}
-\contentsline {subsection}{\numberline {7.1.3} ..?}{31}{subsection.7.1.3}
-\contentsline {section}{\numberline {7.2}Operations}{31}{section.7.2}
-\contentsline {section}{\numberline {7.3}Optimization}{31}{section.7.3}
-\contentsline {chapter}{\numberline {8}Conclusion}{33}{chapter.8}
-\contentsline {chapter}{\numberline {A}An appendix}{35}{appendix.A}
-\contentsline {chapter}{Bibliography}{37}{appendix*.23}
+\contentsline {chapter}{\numberline {2}The Deeplearning4j Library}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Architecture of the library}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}The Importance of Nd4j in the Library}{9}{section.2.2}
+\contentsline {section}{\numberline {2.3}Nd4j needs a Sparse Representation}{10}{section.2.3}
+\contentsline {chapter}{\numberline {3}Structure of an Multi-dimensional Array}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Storing an Array}{11}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Data Buffer}{12}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Parameters of an Array}{12}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Views}{12}{section.3.2}
+\contentsline {section}{\numberline {3.3}Indexes}{12}{section.3.3}
+\contentsline {section}{\numberline {3.4}Operations}{13}{section.3.4}
+\contentsline {chapter}{\numberline {4}Implementation}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}Hierarchy of Arrays}{15}{section.4.1}
+\contentsline {section}{\numberline {4.2}Limitations and Constraints}{16}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Storing off-heap}{16}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Workspaces}{16}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}DataBuffers have a fixed length}{16}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Alternatives}{17}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}CSR Matrices}{17}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Structure}{17}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Put a value}{17}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Get a Sub-Array}{17}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Limits of this format}{18}{subsection.4.3.4}
+\contentsline {section}{\numberline {4.4}COO Tensors}{18}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Naive implementation}{18}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{20}{subsection.4.4.2}
+\contentsline {subsubsection}{All Indexes}{20}{subsection.4.4.2}
+\contentsline {subsubsection}{Interval Indexes}{20}{subsection.4.4.2}
+\contentsline {subsubsection}{Point Index}{20}{lstnumber.-3.1}
+\contentsline {subsubsection}{Specified Index}{21}{lstnumber.-4.1}
+\contentsline {subsubsection}{New Axis Index}{21}{lstnumber.-4.1}
+\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{21}{subsection.4.4.3}
+\contentsline {subsubsection}{Computation of the Sparse Offsets}{21}{subsection.4.4.3}
+\contentsline {subsubsection}{Computation of the Flags}{23}{algorithm.1}
+\contentsline {subsubsection}{Computation of the Hidden Dimensions}{23}{algorithm.1}
+\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{23}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Reverse coordinates}{24}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}Final Implementation}{25}{subsection.4.4.6}
+\contentsline {subsubsection}{Example}{25}{Item.27}
+\contentsline {subsection}{\numberline {4.4.7}Put a Value}{26}{subsection.4.4.7}
+\contentsline {subsection}{\numberline {4.4.8}Get a Sub-Array}{26}{subsection.4.4.8}
+\contentsline {chapter}{\numberline {5}Operations}{27}{chapter.5}
+\contentsline {section}{\numberline {5.1}Basic Linear Algerba Subprograms (BLAS)}{27}{section.5.1}
+\contentsline {section}{\numberline {5.2}Backends}{28}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}In-Place Routines}{28}{subsection.5.2.1}
+\contentsline {subsubsection}{Example}{28}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Level 1 Routines}{29}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Level 2 and Level 3 Routines}{29}{subsection.5.2.3}
+\contentsline {subsubsection}{Gemv Routine}{30}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Libnd4j}{30}{section.5.3}
+\contentsline {chapter}{\numberline {6}Results}{31}{chapter.6}
+\contentsline {section}{\numberline {6.1}Storing a huge data set}{31}{section.6.1}
+\contentsline {section}{\numberline {6.2}Operations performance}{31}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}level 1}{31}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}level 2}{31}{subsection.6.2.2}
+\contentsline {subsubsection}{Gemv}{31}{subsection.6.2.2}
+\contentsline {chapter}{\numberline {7}Future}{33}{chapter.7}
+\contentsline {section}{\numberline {7.1}Sparse Representation}{33}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}API compliant}{33}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}More Supported Sparse Format}{33}{subsection.7.1.2}
+\contentsline {subsection}{\numberline {7.1.3} ..?}{33}{subsection.7.1.3}
+\contentsline {section}{\numberline {7.2}Operations}{33}{section.7.2}
+\contentsline {section}{\numberline {7.3}Optimization}{33}{section.7.3}
+\contentsline {chapter}{\numberline {8}Conclusion}{35}{chapter.8}
+\contentsline {chapter}{\numberline {A}An appendix}{37}{appendix.A}
+\contentsline {chapter}{Bibliography}{39}{appendix*.24}
