@@ -91,13 +91,13 @@ However if there is no value with that column, we need to insert a new one at th
 
 
 
-\subsection{Get a Sub-array}
+\subsection{Get a Sub-Array}
 
 \begin{enumerate}
 \item First, we need to resolve the index to get the new shape of the array, the new rank, etc. In the case we use the resolution of the dense array but we are only interested in
 \begin{itemize}
 	\item the shape: an array with two elements containing the new shape of the sub-array.
-	\item the offsets: an arays with two elements that indicate the first row and the first column that belongs to the sub-array.
+	\item the offsets: an array with two elements that indicate the first row and the first column that belongs to the sub-array.
 	\item the offset: indicates the position in the data buffer of the first element that belongs to the sub-array.
 \end{itemize}
  \item Sometimes the offsets are equals to zeros while having a non-null offset. In this case we need to override the offsets.
@@ -196,7 +196,7 @@ The solution is to add an additional parameter array that keeps track of the sta
 The array is called flags and it can contains either 0, which means \textit{active}, or 1 which means \textit{fixed}. The flags array for the view shown in figure \ref{fig:pointTensor} would be equal to [1, 0, 0] because the first dimension is fixed at position 0.
 
 \subsubsection{Specified Index}
-When using at least one specified index in the set of indexes used to get a sub-array, it always returns a copy of the original data. It can not be a view because the specified indexes are not deterministic and can not be translated into logical strides, shape or offsets.
+When using at least one specified index in the set of indexes used to get a sub-array, it always returns a copy of the original data. It can not be a view because the specified indexes can not be described with a recurrent pattern and can not be translated into logical strides, shape or offsets.
 
 In this case we need to iterate over each dimension to access every element of the array and test if the current value belongs to the view. If it is the case, we add it in a new array. We are still using the indexes resolution to get the new shapes, the offsets, etc.
 
@@ -346,12 +346,13 @@ This method is described in detail in algorithm \ref{alg:translation}
 		\end{algorithmic}
 	\end{algorithm}
 	
-\subsection{Included values}
+\subsection{Reverse coordinates}
+
+An important and frequently used method of the API is to get the value of a coordinates. Since the indexes are flatten into one buffer, we need to find it into buffer and get the underlying index.
+
+Since the indexes buffer is lexicographically sorted, a binary search can be applied. But instead of comparing a value, we need to compare a sub-array of the buffer with the target indexes. An additional step is necessary before the comparison: We use the index range of the value buffer (from 0 to NNZ) and for each index we need to get the bounds of the sub-array and extract it.
 
 
-
-\subsection{?}
-binary search to reverse the indexes 
 
 tensor contractions not equals depending on the dimensions because the time to access the elements is not the same because the values are sorted along the first dimension
 -> binary search, skip list, tree ...
