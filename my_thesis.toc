@@ -41,23 +41,23 @@
 \contentsline {subsection}{\numberline {4.3.4}Limits of this format}{18}{subsection.4.3.4}
 \contentsline {section}{\numberline {4.4}COO Tensors}{19}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Naive implementation}{19}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}More parameters are needed to define the tensors}{20}{subsection.4.4.2}
-\contentsline {subsubsection}{All Indexes}{20}{subsection.4.4.2}
-\contentsline {subsubsection}{Interval Indexes}{20}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.2}Reverse coordinates}{20}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}More parameters are needed to define the tensors}{20}{subsection.4.4.3}
+\contentsline {subsubsection}{All Indexes}{20}{subsection.4.4.3}
+\contentsline {subsubsection}{Interval Indexes}{21}{subsection.4.4.3}
 \contentsline {subsubsection}{Point Index}{21}{lstnumber.-3.1}
 \contentsline {subsubsection}{Specified Index}{22}{figure.caption.19}
-\contentsline {subsubsection}{New Axis Index}{22}{figure.caption.20}
-\contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{23}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Sparse Offsets}{23}{subsection.4.4.3}
-\contentsline {subsubsection}{Example of the Sparse Offset Computation}{23}{algorithm.1}
-\contentsline {subsubsection}{Computation of the Flags}{25}{figure.caption.22}
-\contentsline {subsubsection}{Computation of the Hidden Dimensions}{25}{figure.caption.22}
-\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{27}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Reverse coordinates}{28}{subsection.4.4.5}
-\contentsline {subsection}{\numberline {4.4.6}Final Implementation}{28}{subsection.4.4.6}
-\contentsline {subsubsection}{Example}{28}{Item.30}
+\contentsline {subsubsection}{New Axis Index}{23}{figure.caption.20}
+\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{23}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Computations of the the Parameters}{23}{subsection.4.4.5}
+\contentsline {subsubsection}{Computation of the Sparse Offsets}{23}{subsection.4.4.5}
+\contentsline {subsubsection}{Example of the Sparse Offset Computation}{26}{algorithm.2}
+\contentsline {subsubsection}{Computation of the Flags}{27}{figure.caption.22}
+\contentsline {subsubsection}{Computation of the Hidden Dimensions}{27}{figure.caption.22}
+\contentsline {subsection}{\numberline {4.4.6}Final Implementation}{27}{subsection.4.4.6}
+\contentsline {subsubsection}{Example}{29}{Item.30}
 \contentsline {subsection}{\numberline {4.4.7}Put a Value}{29}{subsection.4.4.7}
-\contentsline {subsection}{\numberline {4.4.8}Get a Sub-Array}{29}{subsection.4.4.8}
+\contentsline {subsection}{\numberline {4.4.8}Get a Sub-Array}{30}{subsection.4.4.8}
 \contentsline {chapter}{\numberline {5}Operations}{31}{chapter.5}
 \contentsline {section}{\numberline {5.1}Basic Linear Algerba Subprograms (BLAS)}{31}{section.5.1}
 \contentsline {section}{\numberline {5.2}Backends}{32}{section.5.2}

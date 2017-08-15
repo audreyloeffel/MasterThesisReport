@@ -163,6 +163,16 @@ But this implementation makes difficult to be compliant with the API. It brings 
 	\item A view can have a lower or higher rank than its original array. How can the view indexes be stored if they do not have the same dimensionality?
 \end{itemize}
 
+\subsection{Reverse coordinates}
+
+An important and frequently used method of the API is to get the value of a coordinates. Since the indexes are flatten into one buffer, we need to find it into buffer and get the underlying index.
+
+Since the indexes buffer is lexicographically sorted, a binary search can be applied. But instead of comparing a value, we need to compare a sub-array of the buffer with the target indexes. An additional step is necessary before the comparison: We use the index range of the value buffer (from 0 to NNZ) and for each index we need to get the bounds of the sub-array and extract it.
+
+
+
+tensor contractions are not equal depending on the dimensions because the time to access the elements is not the same because the values are sorted along the first dimension
+-> binary search, skip list, tree ...
 \subsection{More parameters are needed to define the tensors}
 
 Most of the issues cited in section \ref{ssec:naiveCoo} are due to the support of the different types of indexes. Each index implements the interface \textit{INDArrayIndex} and extends from \textit{NDArrayIndex}. They provide a very efficient and powerful mechanism to access part of a array but they introduce some constraints when implementing views for COO.
@@ -242,6 +252,54 @@ Instead of returning a view of $myMatrix$, it returns a new array containing the
 Since the rank is higher, more coordinates are needed to access a value. However the shared indexes buffers is limited to the original rank. Similarly to the point index, we need a new parameter array that keep tracks of the position of the new dimensions to be able to  translate the coordinates from view to original context.
 
 Assuming we have a $3\times 3$ matrix: calling \textit{myArray.get(NDArrayIndex.newAxis(), NDArrayIndex.all())} will prepend a new dimension. The view is a $1\times 3\times 3$ tensor with a hidden dimension parameter array equal to $[0]$.
+
+\subsection{Sparse Indexes Translation}
+
+To translate a view coordinates to the underlying coordinates, we have to take into accounts: the sparse offsets, the hidden dimensions and the flags. With those three parameters we have everything needed for translating.
+
+While iterating over the view dimensions, three situations can happen :
+\begin{enumerate}
+	\item The current dimension is hidden: We do nothing
+	\item The current dimension is fixed: We put the corresponding offset into the result array. Since several fixed dimensions can occur in a row, we need to repeat until we reach an active dimension.
+	\item The current dimension is active: We sum the view coordinate with the sparse offset.
+\end{enumerate}
+This method is described in detail in algorithm \ref{alg:translation} 
+
+
+\begin{algorithm}
+	\caption{Translate the indexes from view to underlying context}
+	\label{alg:translation}
+	\begin{algorithmic}
+		
+		\Procedure{translate}{int[] $viewIndexes$}\\
+		\Comment{$underlyingRank$, $hiddenDimensions$ and $sparseOffsets$ are class fields}\\
+		\State $result \gets new\ int[underlyingRank]$
+		\State $idxPhy \gets 0,\ hidden \gets 0 $
+		\\
+		\For{$idxVir=0$ to $viewIndexes.length$}\\
+		
+		\Comment{The current dimension is hidden, it does not appear in the result}
+		\If{$hidden < hiddenDimension.length \And hiddenDimension[hidden] == idxVir$}
+		\State $hidden \gets hidden + 1$
+		\Else
+		\While{$idxPhy < underlyingRank \And isFixed(idxPhy)$}
+		\State $result[idxPhy] \gets sparseOffsets[idxPhy]$ \Comment{If the dimension is fixed, the coordinate takes the value of the offset}
+		\State $idxPhy \gets idxPhy + 1$
+		\EndWhile\\
+		\Comment{If the dimension is not fixed, we add the offset to the coordinate}				
+		
+		\If{$idxPhy < underlyingRank \And  !isFixed(idxPhy)$}
+		\State $result[idxPhy] \gets sparseOffsets[idxPhy] + viewIndexes[idxVir]$ 
+		\State $idxPhy \gets idxPhy + 1$
+		\EndIf
+		
+		\EndIf
+		
+		\EndFor		
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+\subsubsection{Example of indexes translation}
 
 
 \subsection{Computations of the the Parameters}
@@ -372,7 +430,7 @@ The resolution returns an array containing the position of the \textit{newAxis} 
 	\begin{algorithmic}
 			
 		\Procedure{CreateHiddenDimensions}{int[] $newAxis$}\\
-		\Comment{$hiddenDimensions$ is a class field}\\
+		\Comment{$hiddenDimensions$ is a class field of the array}\\
 		
 		\If {$newAxis$ is empty or null}
 		\Return {$hiddenDimensions$}		
@@ -385,17 +443,16 @@ The resolution returns an array containing the position of the \textit{newAxis} 
 		
 	
 		\State $size\gets newAxis.length + hiddenDimensions.length$ 	\Comment{Merge both arrays}
-		\State $newArray \gets $ new $int[size],\ i\gets 0,\ newDim\gets 0$
+		\State $newArray \gets $ new $int[size],\ newArrayIdx\gets 0,\ newDim\gets 0$
 		\\
-		\For{$oldDim=0$ to $hiddenDimensions.length$}
-			\State $j\gets 0$
-			\While{$newAxis[newDim] < hiddenDimensions[i]$}
-				\State $newArray[i] \gets newAxis[newDim]$
-				\State $i\gets i + 1,\ j\gets j + 1$ 	
+		\For{$(oldDim=0$ to $hiddenDimensions.length)$}
+			\While{$((oldDim \geq hiddenDimensions.length \parallel newAxis[newDim] \leq hiddenDimensions[i])\ \&\&\ newDim < newAxis.length)$}
+				\State $newArray[i] \gets newAxis[newDim] + oldDim$
+				\State $newArrayIdx \gets newArrayIdx + 1 $
+				\State $newDim \gets newDim + 1$	
 			\EndWhile
-			\State $newArray[i] \gets hiddenDimensions[oldDim] + j$	
-			\Comment{add an offset corresponding to the amount of axis added before this dimension}
-			\State $i\gets i + 1$
+			\State $newArray[i] \gets hiddenDimensions[oldDim] + newDim$	
+			\State $newArrayIdx\gets newArrayIdx + 1$
 		\EndFor
 		\Return{$newArray$}
 		\EndProcedure
@@ -405,63 +462,7 @@ The resolution returns an array containing the position of the \textit{newAxis} 
 
 
 
-\subsection{Sparse Indexes Translation}
 
-To translate a view coordinates to the underlying coordinates, we have to take into accounts: the sparse offsets, the hidden dimensions and the flags. With those three parameters we have everything need for translating.
-	
-While iterating over the view dimensions, three situations can happen :
-\begin{enumerate}
-	\item The current dimension is hidden: We do nothing
-	\item The current dimension is fixed: We put the corresponding offset into the result array. Since several fixed dimensions can occur in a row, we need to repeat until we reach an active dimension.
-	\item The current dimension is active: We sum the view coordinate with the sparse offset.
-\end{enumerate}
-This method is described in detail in algorithm \ref{alg:translation} 
-	
-	
-\begin{algorithm}
-	\caption{Translate the indexes from view to underlying context}
-	\label{alg:translation}
-	\begin{algorithmic}
-		
-		\Procedure{translate}{int[] $viewIndexes$}\\
-		\Comment{$underlyingRank$, $hiddenDimensions$ and $sparseOffsets$ are class fields}\\
-		\State $result \gets new\ int[underlyingRank]$
-		\State $idxPhy \gets 0,\ hidden \gets 0 $
-		\\
-		\For{$idxVir=0$ to $viewIndexes.length$}\\
-		
-		 \Comment{The current dimension is hidden, it does not appear in the result}
-			\If{$hidden < hiddenDimension.length \And hiddenDimension[hidden] == idxVir$}
-				\State $hidden \gets hidden + 1$
-			\Else
-				\While{$idxPhy < underlyingRank \And isFixed(idxPhy)$}
-					\State $result[idxPhy] \gets sparseOffsets[idxPhy]$ \Comment{If the dimension is fixed, the coordinate takes the value of the offset}
-					\State $idxPhy \gets idxPhy + 1$
-				\EndWhile\\
-				\Comment{If the dimension is not fixed, we add the offset to the coordinate}				
-				
-				\If{$idxPhy < underlyingRank \And  !isFixed(idxPhy)$}
-					\State $result[idxPhy] \gets sparseOffsets[idxPhy] + viewIndexes[idxVir]$ 
-					\State $idxPhy \gets idxPhy + 1$
-				\EndIf
-		
-			\EndIf
-			
-		\EndFor		
-		\EndProcedure
-		\end{algorithmic}
-	\end{algorithm}
-	
-\subsection{Reverse coordinates}
-
-An important and frequently used method of the API is to get the value of a coordinates. Since the indexes are flatten into one buffer, we need to find it into buffer and get the underlying index.
-
-Since the indexes buffer is lexicographically sorted, a binary search can be applied. But instead of comparing a value, we need to compare a sub-array of the buffer with the target indexes. An additional step is necessary before the comparison: We use the index range of the value buffer (from 0 to NNZ) and for each index we need to get the bounds of the sub-array and extract it.
-
-
-
-tensor contractions are not equal depending on the dimensions because the time to access the elements is not the same because the values are sorted along the first dimension
--> binary search, skip list, tree ...
 
 \subsection{Final Implementation}
 	
