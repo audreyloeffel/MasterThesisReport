@@ -17,12 +17,15 @@
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Flattened Indexes}}}{19}{subfigure.2.3}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }}{20}{figure.caption.18}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces A $2\times 3\times 3$ tensor with a slice along the first dimension in grey\relax }}{21}{figure.caption.19}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces A tensor and a view of it \relax }}{26}{figure.caption.20}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A tensor $T$ with shape $(2\times 3\times 3)$ }}}{26}{subfigure.5.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {A view of tensor $T$ with shape $(1\times 2\times 2)$}}}{26}{subfigure.5.2}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Parameters defining the view $T_{view}$ in \ref {fig:tensView}\relax }}{27}{figure.caption.21}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Example of a specified index behavior on a matrix\relax }}{22}{figure.caption.20}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A $3 \times 5$ matrix with selected columns in grey}}}{22}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {A $2\times 2$ matrix created from the column of the matrix in figure \ref {fig:specifiedArray} }}}{22}{subfigure.5.2}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces A tensor and a view of it \relax }}{28}{figure.caption.21}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A tensor $T$ with shape $(2\times 3\times 3)$ }}}{28}{subfigure.6.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {A view of tensor $T$ with shape $(1\times 2\times 2)$}}}{28}{subfigure.6.2}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Parameters defining the view $T_{view}$ in \ref {fig:tensView}\relax }}{28}{figure.caption.22}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces A vector $v$ and its compressed form representation\relax }}{31}{figure.caption.22}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces A vector $v$ and its compressed form representation\relax }}{33}{figure.caption.23}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

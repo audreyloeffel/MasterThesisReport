@@ -105,7 +105,7 @@ However if there is no value with that column, we need to insert a new one at th
 	\item the offsets: an array with two elements that indicate the first row and the first column that belongs to the sub-array.
 	\item the offset: indicates the position in the data buffer of the first element that belongs to the sub-array.
 \end{itemize}
- \item Sometimes the offsets are equals to zeros while having a non-null offset. In this case we need to override the offsets.
+ \item Sometimes the offsets are equal to zeros while having a non-null offset. In this case we need to override the offsets.
 \begin{lstlisting}
 	 offsets[0] = (int) resolution.getOffset() / shape()[1];
 	 offsets[1] = (int) resolution.getOffset() % shape()[1];
@@ -177,7 +177,7 @@ The grey sub-array in figure \ref{fig:viewOffset} is the result of the operation
 \begin{lstlisting}
 	myArray.get(NDArrayIndex.interval(1, 3), NDArrayIndex.interval(1, 3));
 \end{lstlisting} 
-After the resolution of the indexes, we obtain offsets equal to $[1, 1]$ with an offset equals to $4$, which mean that the first row and the first column are not included in the view and the first element in memory that belongs to the view is at position $4$.
+After the resolution of the indexes, we obtain offsets equal to $[1, 1]$ with an offset equal to $4$, which mean that the first row and the first column are not included in the view and the first element in memory that belongs to the view is at position $4$.
 
 To be able to identify what values belong to the view and what values do not, we need to define the bounds of each dimension. For this example, we have
 
@@ -191,9 +191,9 @@ The lower bounds are stored in the \textit{sparseOffset} array.
 
 Assuming we have a tensor with a shape equals to ($2\times 3\times 3$) as shown in figure \ref{fig:pointTensor}. We want to take a slice along the first dimension, assuming that the first dimension being the pages, the second the rows and the third the columns. We use the following operation:
 \begin{lstlisting}
-myTensor.get(NDArrayIndex.point(0),
-	NDIndexArray.all(),
-	NDIndexArray.all());
+	myTensor.get(NDArrayIndex.point(0),
+		NDIndexArray.all(),
+		NDIndexArray.all());
 \end{lstlisting} 
 
 The result is a view with a shape equals to ($3\times 3$), as shown in grey in figure \ref{fig:pointTensor}
@@ -207,7 +207,7 @@ The result is a view with a shape equals to ($3\times 3$), as shown in grey in f
 
 The coordinates of the resulting matrix have only two dimensions instead of three. We have an issue when trying to access a value given a pair of coordinates in the view context. There is no direct matching between these coordinates and those who actually are in the indexes buffer. 
 
-Each value of the tensor has its coordinates in the form $(idx_{0}, idx_{1}, idx_{2})$. But in the resulting view the values are defined with only two coordinates: ($idx_{1}, idx_{2}$), the first dimension is fixed with a value equals to 0. 
+Each value of the tensor has its coordinates in the form $(idx_{0}, idx_{1}, idx_{2})$. But in the resulting view the values are defined with only two coordinates: ($idx_{1}, idx_{2}$), the first dimension is fixed with a value equal to 0. 
 
 To translate the view coordinates to the original coordinates which are actually stored into the shared buffer, we need to keep track of the unused dimension and its value. The solution is to add an additional parameter array that keeps track of the status of each dimension. The array is called \textit{flags} and it can contains either 0, which means \textit{active}, or 1 which means \textit{fixed}.
 
@@ -215,29 +215,50 @@ In this example the flags array would be equal to [1, 0, 0] because the first di
 
 
 \subsubsection{Specified Index}
-When using at least one specified index in the set of indexes used to get a sub-array, it always returns a copy of the original data. It can not be a view because the specified indexes can not be described with a recurrent pattern and can not be translated into logical strides, shape or offsets.
 
-In this case we need to iterate over each dimension to access every element of the array and test if the current value belongs to the view. If it is the case, we add it in a new array. We are still using the indexes resolution to get the new shapes, the offsets, etc.
+Specified index will take specific values of a dimension, depending on the position in the indexes array when calling $myArray.get(indexes...)$. This index takes an array in parameter with the values we want to select.
+
+Assuming we have an $3\times 5$ matrix, as shown in figure \ref{fig:specifiedArray}, on which we call the following operation to select the first, the third and the fourth columns :
+
+\begin{lstlisting}
+	myMatrix.get(NDIndexArray.all(),
+		new SpecifiedIndex(0, 2, 3));
+\end{lstlisting}
+
+Instead of returning a view of $myMatrix$, it returns a new array containing the data from the original matrix. The data is copied, not shared. The data of the view that would result from this operation is not easily indexable in memory with stride and offsets and it would be difficult to represent it. Therefor the figure \ref{fig:specifiedCopy} is an independent $3\times 3$ matrix resulting from the above operation.
+
+\begin{figure}[!h]
+	\centering
+	\subfloat[A $3 \times 5$ matrix with selected columns in grey]{\includegraphics[height=1in]{images/specifiedIndex.pdf} \label{fig:specifiedArray}}
+	\qquad
+	\subfloat[A $2\times 2$ matrix created from the column of the matrix in figure \ref{fig:specifiedArray} ]{\includegraphics[height=1in]{images/specifiedIndexView.pdf} \label{fig:specifiedCopy}}
+	\hfill
+	\caption{Example of a specified index behavior on a matrix}
+\end{figure}
 
 
 \subsubsection{New Axis Index}
-\textit{New axis} indexes are used to add a new dimension to the array. The new dimension always has a length equals to 1. It can be perpended or inserted in the middle of the dimensions.
+\textit{New axis} indexes are used to add a new dimension to the array. The new dimension always has a length equal to 1. It can be prepended or inserted in the middle of the dimensions.
 Since the rank is higher, more coordinates are needed to access a value. However the shared indexes buffers is limited to the original rank. Similarly to the point index, we need a new parameter array that keep tracks of the position of the new dimensions to be able to  translate the coordinates from view to original context.
 
-Assuming we have a $3\times 3$ matrix: calling \textit{myArray.get(NDArrayIndex.newAxis())} will prepend a new dimension. The view is a $1\times 3\times 3$ tensor with a hidden dimension parameter array equal to $[0]$.
+Assuming we have a $3\times 3$ matrix: calling \textit{myArray.get(NDArrayIndex.newAxis(), NDArrayIndex.all())} will prepend a new dimension. The view is a $1\times 3\times 3$ tensor with a hidden dimension parameter array equal to $[0]$.
 
 
 \subsection{Computations of the the Parameters}
 \subsubsection{Computation of the Sparse Offsets}
 
-The sparse offsets are computed from the offset. The offset give us the position of the first element in the array. We want to reverse it the coordinates of this values which will be the sparse offset. 
+The sparse offsets are computed from the offset. The offset gives us the position of the first element in the array. We want to reverse it the coordinates of this values which will be the sparse offset. 
 
 
 \begin{enumerate}
-	\item For each dimension except the innermost one, we divide the offset by the number of elements in one dimension's element (i.e divide the offset by the number of value in a row). Rounded to the lower integer, this quotient give us the sparse offset for the dimension. Then we need to remove the number of elements that are in the same dimension but at a lowest value. We want to isolate the dimension's value as if it was the value 0 of the dimension.
-	\item We iterate until the last element. In this case we have the offsets set up up to the row dimension. To find which column the value is in, we need to take the modulo of the remaining offset by the number of columns.
-	\item We have the sparse offsets given a set of indexes. But it does not take into account the possibly already non-null sparse offsets. This is the case when we take a view from a view. In this case we need to merge the two sparse offsets arrays. The final result is the sum of the existing offset and the freshly computed offset.
-	\item We should particularly be careful with fixed dimensions because they are absent from the sparse offset resolution explained above. The result does not contain any information about them, we need to merge them in a new array which has a length equals to the underlying rank. In this case, it takes the value of the existing offset.
+	\item For each dimension except the innermost one, we divide the offset by the shape of that dimension. Rounded to the lower integer, this quotient gives us the sparse offset for the dimension. Then we need to remove the number of elements that are in the same dimension but at a lowest value (if the element is in the 4th row, we want to remove all the elements of the previous rows).
+	
+	\item We iterate until the last element. In this case we have the offsets set up up to the row dimension. To find which column the value is in, we need to take the modulo of the remaining offset by the number of columns. There is only one operation per dimension, then for a n-order tensor, the complexity of this step if O(n).
+	
+	\item We have the sparse offsets given a set of indexes. But we might be computing the sparse offsets of a view which is already offset from an original array. We need to merge the new sparse offsets with those of the current array. The final result is the sum of the existing offset and the freshly computed offset.
+	
+	
+	During the merge we should particularly be careful with fixed dimensions of the current array because they are absent from the sparse offset resolution explained above. The result does not contain any information about them, we need to add these fixed dimensions with their current offset to final offsets array. 
 
 \end{enumerate}
 
@@ -247,7 +268,7 @@ The sparse offsets are computed from the offset. The offset give us the position
 \begin{algorithmic}
 	\Statex
 	\Procedure{CreateSparseOffsets}{int $offset$}\\
-	\Comment{$rank$, $underlyingRank$, $shape$ and $sparseOffsets$ are class fields}\\
+	\Comment{$rank$, $underlyingRank$ (the rank of the original array and the number of dimension of the indexes buffer), $shape$ and $sparseOffsets$ are class fields of the array instance}\\
 	\State $newOffsets\gets new\ int[rank]$ \Comment{Compute the new offsets}
 	
 	\For{$i=0$ to $(rank - 2)$} 
@@ -261,7 +282,7 @@ The sparse offsets are computed from the offset. The offset give us the position
 	\State $finalOffsets\gets new\ int[underlyingRank]$	\Comment{Merge with sparseOffsets of this array}
 	\State $active\gets 0$
 	\For{$i=0$ to $underlyingRanke$}
-	\If {$flags[i] == 0$}
+	\If {$flags[i] == 0$} \Comment{If the dimension is already inactive in the current array}
 	\State $finalOffsets[i] \gets sparseOffsets[i]$
 	\Else
 	\State $finalOffsets[i] \gets newOffsets[active] + sparseOffsets[i]$
@@ -272,6 +293,7 @@ The sparse offsets are computed from the offset. The offset give us the position
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
 	
 
 \subsubsection{Computation of the Flags}
@@ -316,6 +338,9 @@ The resolution returns an array containing the position of the \textit{newAxis} 
 		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
+
+\subsubsection{Example of the Sparse Offset Computation}
+
 
 
 \subsection{Sparse Indexes Translation}
@@ -373,7 +398,7 @@ Since the indexes buffer is lexicographically sorted, a binary search can be app
 
 
 
-tensor contractions not equals depending on the dimensions because the time to access the elements is not the same because the values are sorted along the first dimension
+tensor contractions are not equal depending on the dimensions because the time to access the elements is not the same because the values are sorted along the first dimension
 -> binary search, skip list, tree ...
 
 \subsection{Final Implementation}
@@ -464,4 +489,18 @@ Several steps are needed to put a new value in a COO array:
 
 \subsection{Get a Sub-Array}
 
-The new parameters make the task easier. Once the indexes resolved and the parameters computed, a new array is created with the current value and indexes buffers and the new parameters. 
+The new parameters make the task easier. Once the indexes resolved and the parameters computed, a new array is created with the current values and indexes buffers and the new parameters. 
+
+However if one of the indexes is a \textit{SpecifiedIndex} we need to create a new array and copy the data. In this case the indexes resolution is translate any type of indexes to specified index:
+
+Assuming we have a $3 \times 3 \times 3  \times 3$ 4-order tensor. The indexes array of the following operation:
+\begin{lstlisting}
+	myTensor.get(NDIndexArray.all(),
+		NDIndexArray.point(1),
+		NDIndexArray.interval(0, 2),
+		new SpecifiedIndex(0,2));
+\end{lstlisting}
+  would become : [SpecifiedIndex(0,1,2), SpecifiedIndex(1), SpecifiedIndex(0,1), SpecifiedIndex(0,2)]. 
+
+Then we iterate over all the included combination of coordinates and add the elements into a new empty array.
+
