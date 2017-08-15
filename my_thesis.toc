@@ -1,6 +1,6 @@
 \select@language {english}
 \contentsline {chapter}{Abstract}{i}{chapter*.2}
-\contentsline {chapter}{List of figures}{v}{section*.4}
+\contentsline {chapter}{List of figures}{vii}{section*.4}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Sparse Data is very common in Machine Learning}{1}{section.1.1}
@@ -36,28 +36,27 @@
 \contentsline {section}{\numberline {5.3}CSR Matrices Implementation}{15}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Structure}{15}{subsection.5.3.1}
 \contentsline {subsection}{\numberline {5.3.2}Put a value}{15}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Get a Sub-Array}{16}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}Limits of this format}{16}{subsection.5.3.4}
+\contentsline {subsection}{\numberline {5.3.3}Get a Sub-array}{16}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}Limits of this format}{17}{subsection.5.3.4}
 \contentsline {section}{\numberline {5.4}COO Tensors}{17}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}Naive implementation}{17}{subsection.5.4.1}
 \contentsline {subsection}{\numberline {5.4.2}Reverse coordinates}{18}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Put a Value}{18}{subsection.5.4.3}
+\contentsline {subsection}{\numberline {5.4.3}Put a Value}{19}{subsection.5.4.3}
 \contentsline {subsection}{\numberline {5.4.4}More parameters are needed to define the tensors}{19}{subsection.5.4.4}
 \contentsline {subsubsection}{All Indexes}{19}{subsection.5.4.4}
 \contentsline {subsubsection}{Interval Indexes}{19}{subsection.5.4.4}
-\contentsline {subsubsection}{Point Index}{19}{lstnumber.-3.1}
-\contentsline {subsubsection}{Specified Index}{20}{figure.caption.16}
+\contentsline {subsubsection}{Point Index}{20}{lstnumber.-2.1}
+\contentsline {subsubsection}{Specified Index}{21}{figure.caption.16}
 \contentsline {subsubsection}{New Axis Index}{21}{figure.caption.17}
-\contentsline {subsection}{\numberline {5.4.5}Sparse Indexes Translation}{21}{subsection.5.4.5}
-\contentsline {subsubsection}{Example of indexes translation}{22}{algorithm.1}
+\contentsline {subsection}{\numberline {5.4.5}Sparse Indexes Translation}{22}{subsection.5.4.5}
+\contentsline {subsubsection}{Example of indexes translation}{22}{algorithm.2}
 \contentsline {subsection}{\numberline {5.4.6}Computations of the the Parameters}{22}{subsection.5.4.6}
 \contentsline {subsubsection}{Computation of the Sparse Offsets}{22}{subsection.5.4.6}
-\contentsline {subsubsection}{Example of the Sparse Offset Computation}{23}{algorithm.2}
-\contentsline {subsubsection}{Computation of the Flags}{25}{figure.caption.19}
-\contentsline {subsubsection}{Computation of the Hidden Dimensions}{25}{figure.caption.19}
+\contentsline {subsubsection}{Computation of the Flags}{24}{algorithm.3}
+\contentsline {subsubsection}{Computation of the Hidden Dimensions}{25}{algorithm.3}
 \contentsline {subsection}{\numberline {5.4.7}Final Implementation}{25}{subsection.5.4.7}
-\contentsline {subsubsection}{Example}{27}{Item.34}
-\contentsline {subsection}{\numberline {5.4.8}Get a Sub-Array}{28}{subsection.5.4.8}
+\contentsline {subsubsection}{Example}{26}{Item.34}
+\contentsline {subsection}{\numberline {5.4.8}Get a Sub-Array}{26}{subsection.5.4.8}
 \contentsline {chapter}{\numberline {6}Operations}{29}{chapter.6}
 \contentsline {section}{\numberline {6.1}Basic Linear Algerba Subprograms (BLAS)}{29}{section.6.1}
 \contentsline {section}{\numberline {6.2}Backends}{30}{section.6.2}
@@ -76,10 +75,12 @@
 \contentsline {chapter}{\numberline {8}Future}{35}{chapter.8}
 \contentsline {section}{\numberline {8.1}Operations}{35}{section.8.1}
 \contentsline {section}{\numberline {8.2}Support of the GPU backend}{35}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Make the sparse array API compliant}{35}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Support More Sparse Formats}{35}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Filtering the Value out}{36}{subsection.8.2.3}
-\contentsline {section}{\numberline {8.3}Optimization}{36}{section.8.3}
-\contentsline {chapter}{\numberline {9}Conclusion}{37}{chapter.9}
-\contentsline {chapter}{\numberline {A}An appendix}{39}{appendix.A}
-\contentsline {chapter}{Bibliography}{41}{appendix*.24}
+\contentsline {section}{\numberline {8.3}Make the sparse array API compliant}{35}{section.8.3}
+\contentsline {section}{\numberline {8.4}Support More Sparse Formats}{35}{section.8.4}
+\contentsline {section}{\numberline {8.5}Tensor contraction indexing}{36}{section.8.5}
+\contentsline {section}{\numberline {8.6}Optimization}{36}{section.8.6}
+\contentsline {chapter}{\numberline {9}Conclusion}{39}{chapter.9}
+\contentsline {chapter}{\numberline {A}Code Snippets}{41}{appendix.A}
+\contentsline {chapter}{\numberline {A}Sparse Offset - An execution example}{43}{appendix.A}
+\contentsline {chapter}{\numberline {A}Indexes Translation - An execution example}{45}{appendix.A}
+\contentsline {chapter}{Bibliography}{47}{appendix*.22}

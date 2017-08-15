@@ -92,38 +92,46 @@ However if there is no value with that column, we need to insert a new one at th
 
 
 
-\subsection{Get a Sub-Array}
-% TODO
-// TODO : Fix and improve it 
+\subsection{Get a Sub-array}
 
 \begin{enumerate}
-\item First, we need to resolve the index to get the new shape of the array, the new rank, etc. In the case we use the resolution of the dense array but we are only interested in
+\item First, we need to compute the parameters such as the shape, the offsets,\dots of the sub-array. We use the \textit{ShapeOffsetResolution} which resolves a combination of indexes and returns the parameters. Despite this class has been made for resolving the indexes of a dense representation, we can reuse it in case of sparse array. The parameters we need are computed independently of the storage format and the internal structure of the array.
+
+For example an interval $[1, 3[$ on a dimension $i$ would result to $offsets[i] = 1$ and $shape[i] = 2$, which is the length of the interval. It does not make any assumption about the underlying storage format.
+
+Here are the parameters we need to compute:
 \begin{itemize}
 	\item the shape: an array with two elements containing the new shape of the sub-array.
 	\item the offsets: an array with two elements that indicate the first row and the first column that belongs to the sub-array.
 	\item the offset: indicates the position in the data buffer of the first element that belongs to the sub-array.
 \end{itemize}
- \item Sometimes the offsets are equal to zeros while having a non-null offset. In this case we need to override the offsets.
-\begin{lstlisting}
-	 offsets[0] = (int) resolution.getOffset() / shape()[1];
-	 offsets[1] = (int) resolution.getOffset() % shape()[1];
-\end{lstlisting}
-\item With the offsets we can now compute the first and the last position of each dimension.
-\begin{lstlisting}
-	long firstRow = offsets[0];
-	long lastRow = firstRow + shape[0];
-	long firstColumn = offsets[1];
-	long lastColumn = firstElement + shape[1];
-\end{lstlisting}
-\item Now we have the bounds for each dimension, we can reconstruct the new beginning and end of row pointers et the columns indexes.
+ \item Sometimes the offsets are equal to zeros while having a non-null offset. This situation occurs for example when using only a combination of \textit{all} and \textit{point} indexes  In this case we need to compute manually the offsets and override them.
+  
+ \begin{algorithm}
+ 	\caption{Calculate the offsets}
+ 	\label{alg:sparseOffsets2d}
+ 	\begin{algorithmic}
+ 		\Procedure{offsets}{int $offset$}\\
+	 		\State $offsets \gets new\ int[2]$
+	 		\State $offsets[0] \gets \lfloor offset\ /\ shape[1]\rfloor$
+	 		\State $offsets[1] \gets offset\ \%\ shape[1]$
+ 		\EndProcedure
+ 	\end{algorithmic}
+ \end{algorithm}
+ 
+\item With the offsets and the shape we can define the bounds of each dimensions such has \\
+$dim_{i} \in [offsets[i], offsets[i] + shape[i][$
+\item Finally we need to loop over every element of the original array. We have to reconstruct the pointers buffers step-by-step by checking if the coordinates of the current element are included in the bounds and update the pointers buffers if needed.
 \end{enumerate}
 
-% put the code in annex?
+The entire method is shown in appendix \ref{lst:getcsc}.
 
 \subsection{Limits of this format}
 
 This formats only works with two dimensions and cannot be extended to tensors. Therefor it makes it difficult to be compatible with the API.
 Moreover the operations to get or put values aren't straightforward. Several step are necessary before accessing the value.
+
+However we could use this format to represent Tensors Along Dimension (TADs) as explained in section \ref{sec:moreFormat}
 
 \section{COO Tensors}
 \subsection{Naive implementation} \label{ssec:naiveCoo}
@@ -132,17 +140,22 @@ Based on the description in \ref{sssec:coo} the COO encoding needs one data buff
 
 An easy solution would have been to store the indexes into a multi-dimension array of \textit{DataBuffers}: One buffer for each value, or one buffer for each dimension. Due to the native constraints that makes hardly manageable to have such arrays (Difficulty to pass the array to the native side and Cuda side), we choose to flatten the indexes into one buffer.
 
-\begin{figure}[!h]
-	\subfloat[each index is stored contiguously]{\includegraphics[width=1.5in]{images/indexesCoo_a.pdf} \label{fig:cooIdxA}}
-	\subfloat[Each dimension is stored contiguously]{\includegraphics[width=1.5in]{images/indexesCoo_b.pdf} \label{fig:cooIdxB}}
-	\subfloat[Flattened Indexes]{\includegraphics[width=2.5in]{images/indexesCoo_c.pdf} \label{fig:cooIdxC}}
+The figure \ref{fig:datastoring} illustrates the different manner to store the coordinates $[0, 2, 1]$ of a value $v_{i}$ in a 3-order tensor with four non-zero values.
+
+\begin{figure}[h]
+	\centering
+	\subfloat[each index is stored contiguously]{\includegraphics[width=1in]{images/indexesCoo_a.pdf} \label{fig:cooIdxA}}
+	\quad
+	\subfloat[Each dimension is stored contiguously]{\includegraphics[width=1.1in]{images/indexesCoo_b.pdf} \label{fig:cooIdxB}}
+	\quad
+	\subfloat[Flattened Indexes]{\includegraphics[width=2.3in]{images/indexesCoo_c.pdf} \label{fig:cooIdxC}}
 	\hfill
 	\caption{Illustration of the different possible datastructure for storing the indexes  [0, 2, 1] of a value $v$ }
+	\label{fig:datastoring}
 \end{figure}
 
-% TODO regenerate the schema - too much bottom margin
 
-But this implementation makes difficult to be compliant with the API. It brings several issues:
+But this implementation makes difficult to be compatible with the API. It brings several issues:
 \begin{itemize}
 	\item The key of views is the sharing of their data. In case of COO format, views have to share the data buffer and the indexes buffer. Without the indexes it is not possible to add a value in the original array by adding it in a view. If we only put the new value in the shared value buffer without updating the indexes, the original array would have a value buffer bigger than its indexes buffer and there would be an offset between the values and the indexes. 
 	
@@ -162,15 +175,22 @@ But this implementation makes difficult to be compliant with the API. It brings 
 \end{itemize}
 
 \subsection{Reverse coordinates}
-
+\label{ssec:reverse}
 An important and frequently used method of the API is to get the value of a coordinates. Since the indexes are flatten into one buffer, we need to find it into buffer and get the underlying index.
 
-Since the indexes buffer is lexicographically sorted, a binary search can be applied. But instead of comparing a value, we need to compare a sub-array of the buffer with the target indexes. An additional step is necessary before the comparison: We use the index range of the value buffer (from 0 to NNZ) and for each index we need to get the bounds of the sub-array and extract it.
+Since the indexes buffer is lexicographically sorted, a binary search can be applied. But instead of comparing a value, we need to compare a sub-array of the buffer with the target indexes. An additional step is necessary before the comparison: translate the position of the value in the values buffer to get the positions of the indexes in the buffer.
+
+We iterate over the values (NNZ elements) and for each value $v_{i}$, we extract the sub-array that contains the coordinates of $v_{i}$
+
+The subarray of a value $v_{i}$ is contained between the following indexes: 
+\begin{lstlisting}[style=nonumbers]
+	idx_from = underlyingRank * i;
+	idx_end = idx_from + underlyingRank;
+\end{lstlisting}
+
+The underlyingRank is the number of coordinates used to index a single value in the original array buffer.
 
 
-// TODO % TODO
-tensor contractions are not equal depending on the dimensions because the time to access the elements is not the same because the values are sorted along the first dimension
--> binary search, skip list, tree ... link to future chapter
 
 \subsection{Put a Value}
 
@@ -194,7 +214,7 @@ Most of the issues cited in section \ref{ssec:naiveCoo} are due to the support o
 \textit{Interval} indexes takes an subpart of a dimension containing in an interval. They don't modify the rank
 
 The grey sub-array in figure \ref{fig:viewOffset} is the result of the operation :
-\begin{lstlisting}
+\begin{lstlisting}[style=nonumbers]
 	myArray.get(NDArrayIndex.interval(1, 3), NDArrayIndex.interval(1, 3));
 \end{lstlisting} 
 After the resolution of the indexes, we obtain offsets equal to $[1, 1]$ with an offset equal to $4$, which mean that the first row and the first column are not included in the view and the first element in memory that belongs to the view is at position $4$.
@@ -210,10 +230,10 @@ The lower bounds are stored in the \textit{sparseOffset} array.
 \textit{Point} indexes take one unique element of a dimension. They reduce the rank of the array.
 
 Assuming we have a tensor with a shape equals to ($2\times 3\times 3$) as shown in figure \ref{fig:pointTensor}. We want to take a slice along the first dimension, assuming that the first dimension being the pages, the second the rows and the third the columns. We use the following operation:
-\begin{lstlisting}
+\begin{lstlisting}[style=nonumbers]
 	myTensor.get(NDArrayIndex.point(0),
-		NDIndexArray.all(),
-		NDIndexArray.all());
+		NDArrayIndex.all(),
+		NDArrayIndex.all());
 \end{lstlisting} 
 
 The result is a view with a shape equals to ($3\times 3$), as shown in grey in figure \ref{fig:pointTensor}
@@ -240,8 +260,8 @@ Specified index will take specific values of a dimension, depending on the posit
 
 Assuming we have an $3\times 5$ matrix, as shown in figure \ref{fig:specifiedArray}, on which we call the following operation to select the first, the third and the fourth columns :
 
-\begin{lstlisting}
-	myMatrix.get(NDIndexArray.all(),
+\begin{lstlisting}[style=nonumbers]
+	myMatrix.get(NDArrayIndex.all(),
 		new SpecifiedIndex(0, 2, 3));
 \end{lstlisting}
 
@@ -264,6 +284,7 @@ Since the rank is higher, more coordinates are needed to access a value. However
 Assuming we have a $3\times 3$ matrix: calling \textit{myArray.get(NDArrayIndex.newAxis(), NDArrayIndex.all())} will prepend a new dimension. The view is a $1\times 3\times 3$ tensor with a hidden dimension parameter array equal to $[0]$.
 
 \subsection{Sparse Indexes Translation}
+\label{ssec:translation}
 
 To translate a view coordinates to the underlying coordinates, we have to take into accounts: the sparse offsets, the hidden dimensions and the flags. With those three parameters we have everything needed for translating.
 
@@ -315,7 +336,7 @@ TODO
 
 \subsection{Computations of the the Parameters}
 \subsubsection{Computation of the Sparse Offsets}
-
+\label{sssec:sparseOff}
 The sparse offsets are computed from the offset. The offset gives us the position of the first element in the array. We want to reverse it the coordinates of this values which will be the sparse offset. 
 
 
@@ -363,71 +384,6 @@ The sparse offsets are computed from the offset. The offset gives us the positio
 \end{algorithmic}
 \end{algorithm}
 
-	\subsubsection{Example of the Sparse Offset Computation}
-	// TODO LAYOUT
-	%TODO Layout
-	
-	Let's take an tensor $myTensor$ with a shape equal to $[2, 4, 4, 5]$ on which we call the following operation :
-	
-	\begin{lstlisting}
-	myTensor.get(NDIndexArray.all(),
-		NDIndexArray.point(0),
-		NDIndexArray.point(3),
-		NDIndexArray.all());
-	\end{lstlisting}
-	
-	$myTensor$ is actually a view of a 5-order tensor and has a the following parameters:
-	
-	\begin{figure}
-		\[
-		sparseOffsets = [1, 1, 0, 0, 0]
-		flags = [1, 0, 0, 0, 0]
-		\]
-		\caption{Results from the resolution}
-		\label{fig:resoSparseOffsets}
-	\end{figure}
-	
-	Assuming we name the dimension as [book, page, row, column], we are taking all the column of the last row of the first pages of each book.
-	
-		
-	The indexes resolution returns the following parameters:
-	
-	\begin{figure}
-		\[
-		offsets = [0, 0]
-		shape = [2, 5]
-		offset = 15
-		\]
-		\caption{Results from the resolution}
-		\label{fig:resoSparseOffsets}
-	\end{figure}
-	
-	First step is to iterate over the dimension:
-	
-	Number of element in one book: $numElement = 4\times 4\times 5 = 60$ 
-	Book offset = $\lfloor offset/numElement\rfloor =  \lfloor 15/60\rfloor = 0$  
-	Then we update the offset: $offset = offset - 0 * 60$
-
-	Number of element in one page = $numElement = 4\times 5 = 20$ 
-	Page offset = $\lfloor offset/numElement\rfloor =  \lfloor 15/20\rfloor = 0$  
-	Then we update the offset: $offset = 15 - 0 * 20$
-
-	Number of element in one row = $numElement = 5$
-	Page offset = $\lfloor offset/numElement\rfloor =  \lfloor 15/5\rfloor = 3$  
-	Then we update the offset: $offset = 15 - 3 * 5 = 0$
-	
-	Finally we reach the last dimension:
-	Column offset = $offset \mod numElement = 0 \mod 5 = 0$
-	
-	We get an temporary offsets array equal to $ newOffsets = [0, 0, 3, 0]$. Now we need to merge with the existing offsets of $myTensor$.
-	
-	Its first dimension is fixed, so we copy its sparse offset : $finalOffest[0] = myTensor.sparseOffset[0] = 1$
-	Its second dimension is active and there is already an non-zero offset. The offset is equal to $finalOffset[1] = newOffset[0] + myTensor.sparseOffset[1] = 0 + 1 = 1$
-	Its second dimension is active. The offset is equal to $finalOffset[2] = newOffset[1] + myTensor.sparseOffset[2] = 0 + 0 = 0$
-	Its third dimension is active. The offset is equal to $finalOffset[3] = newOffset[2] + myTensor.sparseOffset[3] = 3 + 0 = 0$
-	Its third dimension is active. The offset is equal to $finalOffset[4] = newOffset[3] + myTensor.sparseOffset[4] = 0 + 0 = 0$
-	
-	We finally get the final sparseOffset : $[1, 1, 0, 3, 0]$
 	
 
 \subsubsection{Computation of the Flags}
@@ -561,9 +517,9 @@ However if one of the indexes is a \textit{SpecifiedIndex} we need to create a n
 
 Assuming we have a $3 \times 3 \times 3  \times 3$ 4-order tensor. The indexes array of the following operation:
 \begin{lstlisting}
-	myTensor.get(NDIndexArray.all(),
-		NDIndexArray.point(1),
-		NDIndexArray.interval(0, 2),
+	myTensor.get(NDArrayIndex.all(),
+		NDArrayIndex.point(1),
+		NDArrayIndex.interval(0, 2),
 		new SpecifiedIndex(0,2));
 \end{lstlisting}
   would become : [SpecifiedIndex(0,1,2), SpecifiedIndex(1), SpecifiedIndex(0,1), SpecifiedIndex(0,2)]. 

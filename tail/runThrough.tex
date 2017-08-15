@@ -1,0 +1,57 @@
+\appendix
+\chapter{Sparse Offset - An execution example}
+
+	This appendix presents an execution of the algorithm \ref{alg:sparseOffsets} presented in section \ref{sssec:sparseOff}.
+	
+	Let's start with an tensor $myTensor$ with a shape equal to $[2, 4, 4, 5]$ on which we are calling the following operation:
+	
+	\begin{lstlisting}[style=nonumbers]
+	myTensor.get(NDArrayIndex.all(),
+	NDArrayIndex.point(0),
+	NDArrayIndex.point(3),
+	NDArrayIndex.all());
+	\end{lstlisting}
+	
+	Assuming that $myTensor$ is a view of a 5-order tensor and has a the following parameters:
+	
+	\begin{lstlisting}[style=nonumbers]		
+	sparseOffsets = [1, 1, 0, 0, 0]
+	flags = [1, 0, 0, 0, 0]
+	\end{lstlisting}
+	
+	Assuming we name the dimension as [book, page, row, column], we are taking all the columns of the last row of the first pages of each book.
+	
+	The indexes resolution returns the following parameters:
+	
+	\begin{lstlisting}[style=nonumbers]
+	offsets = [0, 0]
+	shape =  [2, 5]
+	offset = 15
+	\end{lstlisting}
+	
+	First step is to iterate over the dimension:\\
+	\textbf{Iteration: i=0}\\
+	Number of element in one book: $numElement = 4\times 4\times 5 = 60$ \\
+	Book offset = $\lfloor offset/numElement\rfloor =  \lfloor 15/60\rfloor = 0$\\  
+	Then we update the offset: $offset = offset - 0 * 60$\\
+	\textbf{Iteration: i=1}\\
+	Number of element in one page = $numElement = 4\times 5 = 20$ \\
+	Page offset = $\lfloor offset/numElement\rfloor =  \lfloor 15/20\rfloor = 0$ \\ 
+	Then we update the offset: $offset = 15 - 0 * 20$\\
+	\textbf{Iteration: i=2}\\
+	Number of element in one row = $numElement = 5$\\
+	Page offset = $\lfloor offset/numElement\rfloor =  \lfloor 15/5\rfloor = 3$ \\ 
+	Then we update the offset: $offset = 15 - 3 * 5 = 0$\\
+	
+	Finally we reach the last dimension:\\
+	Column offset = $offset \mod numElement = 0 \mod 5 = 0$
+	
+	We get an temporary offsets array equal to $ newOffsets = [0, 0, 3, 0]$. Now we need to merge with the existing offsets of $myTensor$.
+	
+	Its first dimension is fixed, so we copy its sparse offset :\\ $finalOffest[0] = myTensor.sparseOffset[0] = 1$\\
+	Its second dimension is active and there is already an non-zero offset. The offset is equal to\\ $finalOffset[1] = newOffset[0] + myTensor.sparseOffset[1] = 0 + 1 = 1$\\
+	Its second dimension is active. The offset is equal to\\ $finalOffset[2] = newOffset[1] + myTensor.sparseOffset[2] = 0 + 0 = 0$\\
+	Its third dimension is active. The offset is equal to\\ $finalOffset[3] = newOffset[2] + myTensor.sparseOffset[3] = 3 + 0 = 0$\\
+	Its third dimension is active. The offset is equal to\\ $finalOffset[4] = newOffset[3] + myTensor.sparseOffset[4] = 0 + 0 = 0$\\
+	
+	We finally get the final sparseOffset : $[1, 1, 0, 3, 0]$

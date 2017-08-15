@@ -12,7 +12,7 @@ There are two methods to store a multi-dimensional array into a linear memory sp
 
 \begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=2.5in]{images/c_f_OrdersLabelled.png} 
+		\includegraphics[width=2.5in]{images/c_f_Orders.pdf} 
 		\label{fig:cOrders}
 	\end{center}
 	\[
@@ -42,21 +42,21 @@ There are two methods to store a multi-dimensional array into a linear memory sp
 The data is accessed via strides which define how to index over contiguous block of data. For each dimension it defines by how many values two consecutive elements are separated. In the case of matrix $A$ defined in figure \ref{fig:orders}, the strides would be $(3, 1)$ in case of C-order and $(1, 3)$ in case of F-order. Strides $(3, 1)$ means that each row is separated by 3 values and each column is separated by 1 value.
 
 \subsection{Data Buffer}
-The DataBuffer is a storage abstraction which provides optimal storage and retrieval depending on the backend. The data is stored off-heap through JavaCPP. It is basically a wrapper around a pointer and an indexer with utility methods to access and modify the data. 
+The \textit{DataBuffer} is a storage abstraction which provides optimal storage and retrieval depending on the backend. The data is stored off-heap through JavaCPP. It is basically a wrapper around a pointer and an indexer with utility methods to access and modify the data. 
 The pointer points to the allocated memory space and the indexes provides an easy-to-use and efficient way to access a multi-dimensional memory space.
 
-The implementation of the databuffer depends on the data type, because of the length needed to store a single value (int -> 32 bits, long -> 64bits, float -> 32bits, double -> 64bits, assuming a 64bit-architecture).
+The implementation of the \textit{DataBuffer} depends on the data type, because of the length needed to store a single value (int -> 32 bits, long -> 64bits, float -> 32bits, double -> 64bits, assuming a 64bit-architecture).
 
 %TODO talk about memory copy (how bad is it)
 // TODO speak about memory copy, host and device memory, etc
 \subsection{Parameters of an Array}
-The information about the shape of the array are grouped in a DataBuffer object called ShapeInformation. It groups these following information:
+The information about the shape of the array are grouped in a \textit{DataBuffer} object called ShapeInformation. It groups these following information:
 
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries ElementWiseStride}]
 	\item [Rank] The number of dimension of the array.
 	\item [Shape] The shape of the array.
 	\item [Strides] Provides information about the logical layout of the array for each dimension.
-	\item [Offset] Provides the position of the first value in memory that belongs to the array or view (explained in section \ref{sec:viewsDesc}.
+	\item [Offset] Provides the position of the first value in memory that belongs to the array or view (explained in section \ref{sec:viewsDesc}).
 	\item [ElementWiseStride] Indicates how two contiguous elements are physically separated in memory.
 	\item[Order] C or F order
 \end{description}
@@ -64,26 +64,27 @@ The information about the shape of the array are grouped in a DataBuffer object 
 
 \section{Views}
 \label{sec:viewsDesc}
-The data in memory can be shared by multiple NDArrays. An NDArray can refer to a subset of another NDArray. We say that such an array is a view of the original array. This is a powerful concept that avoid the unnecessary copy of the data which is a very expensive operation.
+The data in memory can be shared by multiple \textit{NDArrays}. An \textit{NDArray} can refer to a subset of another \textit{NDArray}. We say that such an array is a view of the original array. This is a powerful concept that avoid the unnecessary copy of the data which is a very expensive operation.
 
 Since the memory space is shared, changes to array will impact the content of the other arrays. Figure \ref{fig:sharememView} illustrates how a view shares its data with its original array.
 
 
 \begin{figure}[!h]
 	\begin{center}
-		\includegraphics[width=3.5in]{images/views.png} 
-
-		\caption{View shares memory with the original array}
+		\includegraphics[width=3.5in]{images/views.pdf} 
+		\caption{View shares memory with the original array}		
+		\label{fig:sharememView}
 	\end{center}
-	\label{fig:sharememView}
 \end{figure}
 
 
 \section{Indexes}
 
-NDArrays can be accessed through a combination of indexes. There are many way to index an array. For each dimension of the original array, we can specify if we want everything, an interval or a specific value of it. It gives a lot of flexibility to access sub-part of a array. 
- 
-The indexes provide an efficient mechanism to access Tensors along dimension. A tensor along a dimension (TAD) is a view of an actual tensor with a lower rank.
+\textit{NDArrays} can be accessed through a combination of indexes. There are many way to index an array. For each dimension of the original array, we can specify if we want everything, an interval or a specific value of it. It gives a lot of flexibility to access sub-part of a array. 
+
+Nd4j emulates the  syntax of Numpy\cite{numpy} and use a similar mechanism to indexes the arrays. Among the different indexes we can note the intervals, the points,\dots
+
+The indexes provide an efficient mechanism to access Tensors along dimension. A tensor along dimension (TAD) is a view of an actual tensor with a lower rank. The TAD are a very powerful concept to perform fast and optimized operations on tensors.
 
 \section{Operations}
 

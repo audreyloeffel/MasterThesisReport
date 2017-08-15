@@ -16,11 +16,12 @@ Currently only the backbone of the GPU implementation has been added in Nd4j. We
 
 -- TODO
 
-\subsection{Make the sparse array API compliant}
+\section{Make the sparse array API compliant}
 
 Most of the methods of the INDArray interface are still to be implemented. We want the sparse representation be compatible and interchangeable with the dense array. It's important that both representations have the same behavior and same features.
 
-\subsection{Support More Sparse Formats}
+\section{Support More Sparse Formats}
+\label{sec:moreFormat}
 
 An additional step would be to support different type of sparse format. 
 
@@ -30,14 +31,23 @@ Once the CSR format implemented, it will be easily to extend it to CSC since onl
 
 Then we will need to make the different formats compatible between them, with conversion methods from a format to another. This will allow to get two-dimensional slices of tensors in a different format to benefit of the advantages of each format.
 
-\subsection{Filtering the Value out}
-TODO %TODO
-At first it was a linear scan, then binary search but we can do better:
-optimizing the tensor contraction
+\section{Tensor contraction indexing}
 
--> skip list or other datastructure 
--> sort along different dimensions
+Currently the mechanism to reverse a index and get the value (as explained in section \ref{ssec:reverse}) used a binary search. Sadly it does not provide an equal complexity in case of tensor contraction. A tensor contraction is a lower rank view of a tensor. Since the indexes buffer is sorted along the first dimension in a lexicographical order, it makes the task to access values of a contraction which does not contain the first dimension harder since the indexes are not sorted.
 
+We could think to several possibility:
+\begin{enumerate}
+	\item Extend the sorting mechanism to sort the indexes buffer according to a ordering of dimension. We could imagine a sort function to which we pass an array with the ordering of the dimensions such as:
+	\begin{lstlisting}[style=nonumbers]
+		sortAlongDimension(indexesBuffer, new int[]{2, 0, 1});
+	\end{lstlisting}
+	In this example the coordinates within the buffer would be inverted:\\
+	\qquad $(i_{0}, i_{1}, i_{2})  \rightarrow (i_{2}, i_{0}, i_{1})$  
+	and then would be sorted along the new dimension ordering.
+	\item Use a more complex data-structure to store the indexes such as a skip list or a tree. 
+\end{enumerate} 
+
+The goal is to make the complexity constant regardless of the contraction dimensions.
 
 
 \section{Optimization}

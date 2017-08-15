@@ -20,6 +20,10 @@ Y.~Koren, ``1 the bellkor solution to the netflix grand prize,'' 2009.
   \url{https://github.com/scalanlp/breeze}.
 \newblock [Online; accessed 14-August-2017].
 
+\bibitem{numpy}
+``Numpy.'' \url{http://www.numpy.org/}.
+\newblock [Online; accessed 15-August-2017].
+
 \bibitem{mkllvl1}
 ``{Intel MKL} sparse level 1 routines.''
   \url{https://software.intel.com/en-us/mkl-developer-reference-c-sparse-blas-level-1-routines}.

@@ -31,7 +31,7 @@
 \BOOKMARK [1][-]{section.5.3}{CSR Matrices Implementation}{chapter.5}% 31
 \BOOKMARK [2][-]{subsection.5.3.1}{Structure}{section.5.3}% 32
 \BOOKMARK [2][-]{subsection.5.3.2}{Put a value}{section.5.3}% 33
-\BOOKMARK [2][-]{subsection.5.3.3}{Get a Sub-Array}{section.5.3}% 34
+\BOOKMARK [2][-]{subsection.5.3.3}{Get a Sub-array}{section.5.3}% 34
 \BOOKMARK [2][-]{subsection.5.3.4}{Limits of this format}{section.5.3}% 35
 \BOOKMARK [1][-]{section.5.4}{COO Tensors}{chapter.5}% 36
 \BOOKMARK [2][-]{subsection.5.4.1}{Naive implementation}{section.5.4}% 37
@@ -57,10 +57,12 @@
 \BOOKMARK [0][-]{chapter.8}{Future}{}% 57
 \BOOKMARK [1][-]{section.8.1}{Operations}{chapter.8}% 58
 \BOOKMARK [1][-]{section.8.2}{Support of the GPU backend}{chapter.8}% 59
-\BOOKMARK [2][-]{subsection.8.2.1}{Make the sparse array API compliant}{section.8.2}% 60
-\BOOKMARK [2][-]{subsection.8.2.2}{Support More Sparse Formats}{section.8.2}% 61
-\BOOKMARK [2][-]{subsection.8.2.3}{Filtering the Value out}{section.8.2}% 62
-\BOOKMARK [1][-]{section.8.3}{Optimization}{chapter.8}% 63
+\BOOKMARK [1][-]{section.8.3}{Make the sparse array API compliant}{chapter.8}% 60
+\BOOKMARK [1][-]{section.8.4}{Support More Sparse Formats}{chapter.8}% 61
+\BOOKMARK [1][-]{section.8.5}{Tensor contraction indexing}{chapter.8}% 62
+\BOOKMARK [1][-]{section.8.6}{Optimization}{chapter.8}% 63
 \BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 64
-\BOOKMARK [0][-]{appendix.A}{An appendix}{}% 65
-\BOOKMARK [0][-]{appendix*.24}{Bibliography}{}% 66
+\BOOKMARK [0][-]{appendix.A}{Code Snippets}{}% 65
+\BOOKMARK [0][-]{appendix.A}{Sparse Offset - An execution example}{}% 66
+\BOOKMARK [0][-]{appendix.A}{Indexes Translation - An execution example}{}% 67
+\BOOKMARK [0][-]{appendix*.22}{Bibliography}{}% 68
