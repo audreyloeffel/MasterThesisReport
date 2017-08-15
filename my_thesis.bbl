@@ -1,40 +1,28 @@
-\begin{thebibliography}{6}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\begin{thebibliography}{1}
 
-\bibitem[Zip()]{Zipf}
-Zipf's law.
-\newblock \url{ }https://en.wikipedia.org/wiki/Zipf%27s_law.
+\bibitem{Zipf}
+``Zipf's law.'' \url{ }https://en.wikipedia.org/wiki/Zipf%27s_law.
 
-\bibitem[bre()]{breeze}
-Breeze - a numerical processing library for scala.
-\newblock \url{https://github.com/scalanlp/breeze}.
+\bibitem{netflixgrandprize}
+``Netflix grand prize.'' \url{http://www.netflixprize.com}.
+\newblock [Online; accessed 8-August-2017].
+
+\bibitem{Koren091the}
+Y.~Koren, ``1 the bellkor solution to the netflix grand prize,'' 2009.
+
+\bibitem{mklformat}
+``{Intel MKL} sparse format.''
+  \url{https://software.intel.com/en-us/mkl-developer-reference-c-sparse-blas-csr-matrix-storage-format}.
+\newblock [Online; accessed 8-August-2017].
+
+\bibitem{breeze}
+``Breeze - a numerical processing library for scala.''
+  \url{https://github.com/scalanlp/breeze}.
 \newblock [Online; accessed 14-August-2017].
 
-\bibitem[mkl({\natexlab{a}})]{mklformat}
-{Intel MKL} sparse format.
-\newblock
-  \url{https://software.intel.com/en-us/mkl-developer-reference-c-sparse-blas-csr-matrix-storage-format},
-  {\natexlab{a}}.
-\newblock [Online; accessed 8-August-2017].
-
-\bibitem[mkl({\natexlab{b}})]{mkllvl1}
-{Intel MKL} sparse level 1 routines.
-\newblock
-  \url{https://software.intel.com/en-us/mkl-developer-reference-c-sparse-blas-level-1-routines},
-  {\natexlab{b}}.
+\bibitem{mkllvl1}
+``{Intel MKL} sparse level 1 routines.''
+  \url{https://software.intel.com/en-us/mkl-developer-reference-c-sparse-blas-level-1-routines}.
 \newblock [Online; accessed 13-August-2017].
-
-\bibitem[net()]{netflixgrandprize}
-Netflix grand prize.
-\newblock \url{http://www.netflixprize.com}.
-\newblock [Online; accessed 8-August-2017].
-
-\bibitem[Koren(2009)]{Koren091the}
-Yehuda Koren.
-\newblock 1 the bellkor solution to the netflix grand prize, 2009.
 
 \end{thebibliography}

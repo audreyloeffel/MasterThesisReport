@@ -1,7 +1,6 @@
-\chapter{Sparse Data and Formats}
+\chapter{Sparsity and Formats}
 \section{Definition}
 
-Data is said sparse when it is contains only a few non-zero values. That kind of dataset is really common in Machine Learning applications and can be an high influence on the computation. Common use-cases include recommendation systems, clickstream dataset,\dots
 
 The sparsity of a dataset is defined by :
 
@@ -13,32 +12,6 @@ Conversely when a dataset has only a few null values, the data are said dense. T
 \begin{equation}\label{eqn:density}
 density = \frac{1}{\text{sparsity}}
 \end{equation}
-
-Using dense methods and data structure with sparse data dismisses all optimization and performance gains we could achieve using sparse linear algebra.
-
-\section{The Advantages of Sparse Data}
-Linear algebra is a branch of mathematics that is widely used throughout science and engineering. Macĥine learning and more specifically deep learning algorithms rely on linear algebra. Sparsity is a very useful property in Machine Learning. Some algorithms can have fast optimization, fast evaluation of the model, statistical robustness or other computational advantages.
-
-A lot of machine learning applications are using sparse dataset such as recommender system. Natural language processing algorithm tends to have sparse dataset as stated by the Zipf's law \cite{Zipf}.
-
-\section{Sparse Data are very common in Machine Learning}
-
-In Machine Learning it's very common to deal with sparse dataset. We can encounter them in any kind of applications: Natural Language Processing, Retrieving Systems, Recommender Systems, etc.
-
-Given the possible optimization that sparse dataset allows and the high number of people that could take advantages of it, it becomes important to add the support of sparse data in the DL4J suite of libraries. 
-\subsection{A Real Case of Sparse Dataset}
-In 2008 Netflix launched a contest, the Netflix Grand Prize \cite{netflixgrandprize}, to improve their recommender system model and to increase the accuracy of predictions. They published an sample dataset made with the ratings of anonymous Netflix customers. The dataset had more than 100 millions sampled ratings and it contained about $m=480'186$ users and $m=17'770$ movies \cite{Koren091the}. If stored as a dense matrix, it would need to store $8'532'905'220$ values in memory. That corresponds to a sparsity $\cong \frac{100'000'000}{8'532'905'220} = 0.011719338$.
-
-Storing more than 8 trillions 64-bit floating-point numbers needs more than 64 gigabyte of memory which quickly become unmanageable even for the world's fastest supercomputers. 
-
-\section{Solution: Sparse Representation and Operations}
-Even if the compression of sparse data is very efficient when storing as dense data, we could gain in performance during the processing by using a sparse representation with sparse operations. 
-
-In sparse operations only the values are accessed and processed while in dense operations, every cell is accessed even if it contains a zero value.
-
-To reduce the size of the memory needed and to gain in performance, we must store the data into a sparse format. There are different kind of formats which each of them is more suitable to different aspects (Storage vs computation).
-
-
 
 \section{Formats}
 

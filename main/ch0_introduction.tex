@@ -1,12 +1,41 @@
-\chapter*{Introduction}
+\chapter{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
 
-Linear algebra forms the backbone of many machine learning algorithms, especially in deep learning. It provides structures such as vectors and matrices to hold the data and parameters to perform operations between them. Linear Algebra makes matrix operations fast and easy especially when training on GPUs.
+Linear algebra forms the backbone of many machine learning algorithms, especially in deep learning algorithms. It provides structures such as vectors and matrices to hold the data and parameters to perform operations between them. 
 
-Many of machine learning applications tend to deal with sparse dataset. Natural language processing applications, as stated by the Zips'f law, the frequency of any word in inversely proportional to its rank in the frequency table. ...
+Data is said sparse when it is contains only a few non-zero values. That kind of dataset is really common in Machine Learning applications and can have an high influence on the computation. \dots
 
-Typically in neural networks we have set of input organized into a vector on which we apply a collection of weights stored in matrices.  
+\section{Sparse Data is very common in Machine Learning}
+
+Many of machine learning applications tend to deal with sparse dataset. An example is the natural language processing applications, as stated by the Zips'f law, the frequency of any word in inversely proportional to its rank in the frequency table. ... 
+
+-- TODO how is it used ? frequency table as dataset?
+
+
+Given the possible optimization that sparse dataset allows and the high number of people that could take advantages of it, it becomes important to add the support of sparse data in the DL4J suite of libraries. 
+
+
+
+\section{The Advantages of Sparse Data}
+Linear algebra is a branch of mathematics that is widely used throughout science and engineering. Macĥine learning and more specifically deep learning algorithms rely on linear algebra. Sparsity is a very useful property in Machine Learning. Some algorithms can have fast optimization, fast evaluation of the model, statistical robustness or other computational advantages.
+
+A lot of machine learning applications are using sparse dataset such as recommender system. Natural language processing algorithm tends to have sparse dataset as stated by the Zipf's law \cite{Zipf}.
+
+
+
+\subsection{A Real Case of Sparse Dataset}
+In 2008 Netflix launched a contest, the Netflix Grand Prize \cite{netflixgrandprize}, to improve their recommender system model and to increase the accuracy of predictions. They published an sample dataset made with the ratings of anonymous Netflix customers. The dataset had more than 100 millions sampled ratings and it contained about $m=480'186$ users and $m=17'770$ movies \cite{Koren091the}. If stored as a dense matrix, it would need to store $8'532'905'220$ values in memory. That corresponds to a sparsity $\cong \frac{100'000'000}{8'532'905'220} = 0.011719338$.
+
+Storing more than 8 trillions 64-bit floating-point numbers needs more than 64 gigabyte of memory which quickly become unmanageable even for the world's fastest supercomputers. 
+
+\section{Solution: Sparse Representation and Operations}
+Even if the compression of sparse data is very efficient when storing as dense data, we could gain in performance during the processing by using a sparse representation with sparse operations. 
+
+In sparse operations only the values are accessed and processed while in dense operations, every cell is accessed even if it contains a zero value.
+
+To reduce the size of the memory needed and to gain in performance, we must store the data into a sparse format. There are different kind of formats which each of them is more suitable to different aspects (Storage vs computation).
+
 
 
 

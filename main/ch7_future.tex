@@ -1,15 +1,34 @@
 \chapter{Future}
 
-\section{Sparse Representation}
+\section{Operations}
 
-\subsection{API compliant}
-Implement the methods of INDArray tobe used like the dense array.
-reshape, operations, etc..
-\subsection{More Supported Sparse Format}
-support csr, csc for matrix and conversion between them. Slice of a COO tensor to CSR vector, etc
+All the level 1 operations are available but the level 2 and 3 still have to be implemented. The backbone of the implementation is done, we only need to extract the arguments from the array and call the sparse routines.
 
--- import data directly in sparse format
--- conversion from dense
+Regarding the native operations, everything still needs to be done.
+-- TODO how? no idea..
+
+The operations on the tensors work using contractions. a Contraction is a block or a slice along a dimension of the tensor. If the contraction has a rank equal to 2, the matrix operations can be used. The operations on tensors are performed on sub-parts.
+
+\section{Support of the GPU backend}
+
+Currently only the backbone of the GPU implementation has been added in Nd4j. We need to add the JavaCPP presets for CuSparse, then similiarly to the dense methods, we need to link the API methods to the cuda methods.
+
+
+-- TODO
+
+\subsection{Make the sparse array API compliant}
+
+Most of the methods of the INDArray interface are still to be implemented. We want the sparse representation be compatible and interchangeable with the dense array. It's important that both representations have the same behavior and same features.
+
+\subsection{Support More Sparse Formats}
+
+An additional step would be to support different type of sparse format. 
+
+Due to the necessity of having a sparse representation that is not limited to the matrices and vectors, the CSR implementation has been interrupted in favor of the COO format. The CSR representation needs to be completed: Not all the indexes are supported, it misses the BLAS levels 2 and 3, native operations, GPU backend support. 
+
+Once the CSR format implemented, it will be easily to extend it to CSC since only the order is different between the two formats.
+
+Then we will need to make the different formats compatible between them, with conversion methods from a format to another. This will allow to get two-dimensional slices of tensors in a different format to benefit of the advantages of each format.
 
 \subsection{ ..?}
 optimizing the tensor contraction
@@ -18,14 +37,10 @@ optimizing the tensor contraction
 -> sort along different dimensions
 
 
-\section{Operations}
--> blas level 2 and 3
--> libnd4j -> assign, etc
--> support tensors and op on contraction
 
 \section{Optimization}
-Nd4j is built with the idea to avoid the JVM environement for storing the data. It is based on the postulate that the data is usually huge and does not fit into the memory. However with the new sparse implementation, we can store huge datasets into a reasonable size of memory (as long as it has a high sparsity)
+Nd4j is built with the idea to avoid the JVM environement for storing the data. It is based on the postulate that the data is usually huge and does not fit into the memory. However with the new sparse implementation, we can store huge datasets into a reasonable size of memory (as long as it has a high sparsity).
 
-Perhaps we should consider storing spars array on-heap.
+We should study the possibility of storing sparse arrays on-heap with data structure in managed memory such as ArrayList. A further idea would be to decompose the arrays and storing by block. The blocks with a high sparsity could be stored as on-heap in a sparse format, while the dense blocks would be stored off-heap as dense.
 
-More complexe format like storing by block (sparse-> on-heap, dense -> off-heap), or full sparse on-heap with managed memory. 
+But the question about how the on-heap data would interact with the Cuda remains open.

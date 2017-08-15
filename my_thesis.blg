@@ -13,57 +13,46 @@ A level-1 auxiliary file: main/ch7_future.aux
 A level-1 auxiliary file: main/ch7_conclusion.aux
 A level-1 auxiliary file: tail/appendix.aux
 A level-1 auxiliary file: tail/biblio.aux
-The style file: plainnat.bst
+The style file: ieeetr.bst
 Database file #1: tail/bibliography.bib
-Warning--to sort, need author or key in Zipf
-Warning--to sort, need author or key in netflixgrandprize
-Warning--to sort, need author or key in mklformat
-Warning--to sort, need author or key in breeze
-Warning--to sort, need author or key in mkllvl1
-Warning--empty year in Zipf
-Warning--empty year in breeze
-Warning--empty year in mklformat
-Warning--empty year in mkllvl1
-Warning--empty year in netflixgrandprize
 You've used 6 entries,
-            2773 wiz_defined-function locations,
-            628 strings with 5790 characters,
-and the built_in function-call counts, 1549 in all, are:
-= -- 148
-> -- 10
-< -- 1
-+ -- 10
-- -- 3
-* -- 91
-:= -- 157
-add.period$ -- 16
+            1876 wiz_defined-function locations,
+            513 strings with 4428 characters,
+and the built_in function-call counts, 692 in all, are:
+= -- 67
+> -- 9
+< -- 0
++ -- 7
+- -- 1
+* -- 21
+:= -- 81
+add.period$ -- 10
 call.type$ -- 6
-change.case$ -- 19
-chr.to.int$ -- 5
-cite$ -- 27
-duplicate$ -- 90
-empty$ -- 208
-format.name$ -- 4
-if$ -- 367
-int.to.chr$ -- 2
-int.to.str$ -- 1
+change.case$ -- 6
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 24
+empty$ -- 109
+format.name$ -- 1
+if$ -- 189
+int.to.chr$ -- 0
+int.to.str$ -- 6
 missing$ -- 0
-newline$ -- 36
-num.names$ -- 4
-pop$ -- 94
+newline$ -- 25
+num.names$ -- 1
+pop$ -- 45
 preamble$ -- 1
-purify$ -- 13
+purify$ -- 0
 quote$ -- 0
-skip$ -- 60
+skip$ -- 22
 stack$ -- 0
-substring$ -- 17
-swap$ -- 8
+substring$ -- 0
+swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
-warning$ -- 10
-while$ -- 3
-width$ -- 0
-write$ -- 72
-(There were 10 warnings)
+type$ -- 0
+warning$ -- 0
+while$ -- 1
+width$ -- 7
+write$ -- 47
