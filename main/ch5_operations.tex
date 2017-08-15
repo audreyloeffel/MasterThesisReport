@@ -104,7 +104,7 @@ For now only the general matrix-vector product is implemented (Gemv) for the COO
 This routine computes the matrix-vector product of a COO matrix and a dense vector. It can either compute $y = A*x$ or $y = A^{T}*x$ according to the parameter received in argument.
 
 All the parameters needed to call the BLAS routine are extracted and computed according to the type of sparse format.
-In case of COO, we need the an array of values, an array with the row indexes and an array with the column indexes. Since the indexes are flattened into one buffer, we split have to it into the two arrays.
+In case of COO, we need an array of values, an array with the row indexes and an array with the column indexes. Since the indexes are flattened into one buffer, we split have to it into the two arrays.
 
 \section{Libnd4j}
 Most of the operations are implemented into libNd4j. Basically we used gemv and gemm from blas

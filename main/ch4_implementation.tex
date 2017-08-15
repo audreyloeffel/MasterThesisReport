@@ -51,9 +51,11 @@ The data, encapsulated into DataBuffer object, is stored off-heap. Several reaso
 
 \subsection{Workspaces}
 
-Workspaces provides some contiguous memory buffer. No garbage collection mecanism occurs within them, the programmer has to take care of closing the workspace to avoid memory leaks.
+Workspaces provides some contiguous memory buffer. No garbage collection mecanism occurs within them, we have to take care of closing the workspace at to avoid memory leaks. 
 
+-- todo
 
+%TODO
 
 \subsection{DataBuffers have a fixed length}
 
@@ -72,13 +74,7 @@ We over-allocate the buffer in order to limit the amount of reallocation operati
 Another possibility would have been to create a new \textit{DataBuffer} with the content of the old buffer plus the new value. But changing the DataBuffer object in a array would have broken the view mechanism since the views would still point to the old \textit{DataBuffer} reference. Moreover this solution doe not allow the over-allocation.
 
 
-
-\subsection{Alternatives}
--> TODO %TODO            better explaination
-The implementation of CSR and COO would have been easier with managed memory. We could have stored the arrays in Java ArrayList and we woudn't have to take care of the memory, reallocation, etc 
-
-
-\section{CSR Matrices}
+\section{CSR Matrices Implementation}
 \subsection{Structure}
 
 The representation uses 4 data buffers to encore a CSR matrix. One for the non-zero values, one for the columns indexes and two for the row pointers (to the beginning and to the end of each row).
@@ -92,11 +88,13 @@ While iterating over the range of values, if we find a value with the same colum
 However if there is no value with that column, we need to insert a new one at the correct position. Then we need to update the end of row pointer for this row. Finally each row pointers that come after need to be increment by one.
 
 % TODO
--- ADD pseudo code for putscalar of csr?
+-- ADD pseudo code for putscalar of csr? - coming soon!
 
 
 
 \subsection{Get a Sub-Array}
+% TODO
+// TODO : Fix and improve it 
 
 \begin{enumerate}
 \item First, we need to resolve the index to get the new shape of the array, the new rank, etc. In the case we use the resolution of the dense array but we are only interested in
@@ -170,9 +168,21 @@ An important and frequently used method of the API is to get the value of a coor
 Since the indexes buffer is lexicographically sorted, a binary search can be applied. But instead of comparing a value, we need to compare a sub-array of the buffer with the target indexes. An additional step is necessary before the comparison: We use the index range of the value buffer (from 0 to NNZ) and for each index we need to get the bounds of the sub-array and extract it.
 
 
-
+// TODO % TODO
 tensor contractions are not equal depending on the dimensions because the time to access the elements is not the same because the values are sorted along the first dimension
--> binary search, skip list, tree ...
+-> binary search, skip list, tree ... link to future chapter
+
+\subsection{Put a Value}
+
+Several steps are needed to put a new value in a COO array:
+\begin{enumerate}
+	\item The same value in a view or in the original array can have different coordinates. A translation step is needed between the view indexes and the original array coordinates (the actual coordinates stored in the shared buffer).
+	\item Verify if the value of this indexes is already non-zero. In this case we can either remove the entry if the new value is zero, or replace the value in the buffer. Nothing else need to be done.
+	\item If the new value is equal to 0: the indexes and the value are not added in the buffers.
+	\item If it is a new non-zero value: we need to insert the value and the indexes in the buffers. But first we need to ensure that the buffers have enough spaces for the new entries. If not, we need to reallocate them. The new entries are added at the end of the buffers; the sort are not maintained at insertion to avoid sorting the array too often when it is not needed.
+\end{enumerate}
+
+
 \subsection{More parameters are needed to define the tensors}
 
 Most of the issues cited in section \ref{ssec:naiveCoo} are due to the support of the different types of indexes. Each index implements the interface \textit{INDArrayIndex} and extends from \textit{NDArrayIndex}. They provide a very efficient and powerful mechanism to access part of a array but they introduce some constraints when implementing views for COO.
@@ -300,7 +310,8 @@ This method is described in detail in algorithm \ref{alg:translation}
 	\end{algorithmic}
 \end{algorithm}
 \subsubsection{Example of indexes translation}
-
+% TODO
+TODO
 
 \subsection{Computations of the the Parameters}
 \subsubsection{Computation of the Sparse Offsets}
@@ -353,14 +364,16 @@ The sparse offsets are computed from the offset. The offset gives us the positio
 \end{algorithm}
 
 	\subsubsection{Example of the Sparse Offset Computation}
+	// TODO LAYOUT
+	%TODO Layout
 	
 	Let's take an tensor $myTensor$ with a shape equal to $[2, 4, 4, 5]$ on which we call the following operation :
 	
 	\begin{lstlisting}
 	myTensor.get(NDIndexArray.all(),
-	NDIndexArray.point(0),
-	NDIndexArray.point(3),
-	NDIndexArray.all());
+		NDIndexArray.point(0),
+		NDIndexArray.point(3),
+		NDIndexArray.all());
 	\end{lstlisting}
 	
 	$myTensor$ is actually a view of a 5-order tensor and has a the following parameters:
@@ -418,7 +431,7 @@ The sparse offsets are computed from the offset. The offset gives us the positio
 	
 
 \subsubsection{Computation of the Flags}
-the \textit{Flags} array determines which dimension is active and which one is hidden from the point of view of the array. The \textbf{}dimension can only be reduced using a \textit{point} index, which means the flags can be computed during the offset resolution. An interval with a length equals 1 does not reduced the dimensionality of the array. We fill the flags array while iterating over the indexes array.
+The \textit{Flags} array determines which dimension is active and which one is hidden from the point of view of the array. The \textbf{}dimension can only be reduced using a \textit{point} index, which means the flags can be computed during the offset resolution. An interval with a length equals 1 does not reduced the dimensionality of the array. We fill the flags array while iterating over the indexes array.
 
 \subsubsection{Computation of the Hidden Dimensions}
 
@@ -539,16 +552,6 @@ The first index prepends a new dimension and increases the rank, the second take
 		\caption{Parameters defining the view $T_{view}$ in \ref{fig:tensView}}
 		\label{eqn:viewParams}
 \end{figure}
-
-\subsection{Put a Value}
-
-Several steps are needed to put a new value in a COO array:
-\begin{enumerate}
-	\item Translate the indexes into the underlying context.
-	\item Verify if the value of this indexes is already non null. In this case we can either remove the entry if the new value is 0, or replace the value in the buffer. Nothing else need to be done.
-	\item The new value is 0: the indexes and the value are not added in the buffers.
-	\item It is a new non-null value: we need to insert the value and the indexes in the buffers. But first we need to ensure that the buffers have enough spaces for the new entries. If not, we need to reallocate them. The new entries are added at the end of the buffers; the sort are not maintained at insertion to avoid sorting the array too often when it is not needed.
-\end{enumerate}
 
 \subsection{Get a Sub-Array}
 

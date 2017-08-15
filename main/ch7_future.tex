@@ -30,7 +30,9 @@ Once the CSR format implemented, it will be easily to extend it to CSC since onl
 
 Then we will need to make the different formats compatible between them, with conversion methods from a format to another. This will allow to get two-dimensional slices of tensors in a different format to benefit of the advantages of each format.
 
-\subsection{ ..?}
+\subsection{Filtering the Value out}
+TODO %TODO
+At first it was a linear scan, then binary search but we can do better:
 optimizing the tensor contraction
 
 -> skip list or other datastructure 
@@ -39,8 +41,8 @@ optimizing the tensor contraction
 
 
 \section{Optimization}
-Nd4j is built with the idea to avoid the JVM environement for storing the data. It is based on the postulate that the data is usually huge and does not fit into the memory. However with the new sparse implementation, we can store huge datasets into a reasonable size of memory (as long as it has a high sparsity).
+Nd4j is built with the idea to avoid the JVM environement for storing the data. It is based on the postulate that data is usually huge and does not fit into the memory. However with the new sparse implementation, we can store huge datasets into a reasonable size of memory (as long as it has a high sparsity).
 
 We should study the possibility of storing sparse arrays on-heap with data structure in managed memory such as ArrayList. A further idea would be to decompose the arrays and storing by block. The blocks with a high sparsity could be stored as on-heap in a sparse format, while the dense blocks would be stored off-heap as dense.
 
-But the question about how the on-heap data would interact with the Cuda remains open.
+But the question about how on-heap data would interact with the Cuda remains open.
