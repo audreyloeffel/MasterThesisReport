@@ -294,10 +294,73 @@ The sparse offsets are computed from the offset. The offset gives us the positio
 \end{algorithmic}
 \end{algorithm}
 
+	\subsubsection{Example of the Sparse Offset Computation}
+	
+	Let's take an tensor $myTensor$ with a shape equal to $[2, 4, 4, 5]$ on which we call the following operation :
+	
+	\begin{lstlisting}
+	myTensor.get(NDIndexArray.all(),
+	NDIndexArray.point(0),
+	NDIndexArray.point(3),
+	NDIndexArray.all());
+	\end{lstlisting}
+	
+	$myTensor$ is actually a view of a 5-order tensor and has a the following parameters:
+	
+	\begin{figure}
+		\[
+		sparseOffsets = [1, 1, 0, 0, 0]
+		flags = [1, 0, 0, 0, 0]
+		\]
+		\caption{Results from the resolution}
+		\label{fig:resoSparseOffsets}
+	\end{figure}
+	
+	Assuming we name the dimension as [book, page, row, column], we are taking all the column of the last row of the first pages of each book.
+	
+		
+	The indexes resolution returns the following parameters:
+	
+	\begin{figure}
+		\[
+		offsets = [0, 0]
+		shape = [2, 5]
+		offset = 15
+		\]
+		\caption{Results from the resolution}
+		\label{fig:resoSparseOffsets}
+	\end{figure}
+	
+	First step is to iterate over the dimension:
+	
+	Number of element in one book: $numElement = 4\times 4\times 5 = 60$ 
+	Book offset = $\lfloor offset/numElement\rfloor =  \lfloor 15/60\rfloor = 0$  
+	Then we update the offset: $offset = offset - 0 * 60$
+
+	Number of element in one page = $numElement = 4\times 5 = 20$ 
+	Page offset = $\lfloor offset/numElement\rfloor =  \lfloor 15/20\rfloor = 0$  
+	Then we update the offset: $offset = 15 - 0 * 20$
+
+	Number of element in one row = $numElement = 5$
+	Page offset = $\lfloor offset/numElement\rfloor =  \lfloor 15/5\rfloor = 3$  
+	Then we update the offset: $offset = 15 - 3 * 5 = 0$
+	
+	Finally we reach the last dimension:
+	Column offset = $offset \mod numElement = 0 \mod 5 = 0$
+	
+	We get an temporary offsets array equal to $ newOffsets = [0, 0, 3, 0]$. Now we need to merge with the existing offsets of $myTensor$.
+	
+	Its first dimension is fixed, so we copy its sparse offset : $finalOffest[0] = myTensor.sparseOffset[0] = 1$
+	Its second dimension is active and there is already an non-zero offset. The offset is equal to $finalOffset[1] = newOffset[0] + myTensor.sparseOffset[1] = 0 + 1 = 1$
+	Its second dimension is active. The offset is equal to $finalOffset[2] = newOffset[1] + myTensor.sparseOffset[2] = 0 + 0 = 0$
+	Its third dimension is active. The offset is equal to $finalOffset[3] = newOffset[2] + myTensor.sparseOffset[3] = 3 + 0 = 0$
+	Its third dimension is active. The offset is equal to $finalOffset[4] = newOffset[3] + myTensor.sparseOffset[4] = 0 + 0 = 0$
+	
+	We finally get the final sparseOffset : $[1, 1, 0, 3, 0]$
 	
 
 \subsubsection{Computation of the Flags}
-Flags determine which dimension is active and which one is hidden from the point of view of the array. The dimension can only be reduced with point index, which means the flags can be computed during the offset resolution. We fill the flags array while iterating over the indexes array.
+the \textit{Flags} array determines which dimension is active and which one is hidden from the point of view of the array. The \textbf{}dimension can only be reduced using a \textit{point} index, which means the flags can be computed during the offset resolution. An interval with a length equals 1 does not reduced the dimensionality of the array. We fill the flags array while iterating over the indexes array.
 
 \subsubsection{Computation of the Hidden Dimensions}
 
@@ -339,7 +402,6 @@ The resolution returns an array containing the position of the \textit{newAxis} 
 	\end{algorithmic}
 \end{algorithm}
 
-\subsubsection{Example of the Sparse Offset Computation}
 
 
 

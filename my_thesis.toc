@@ -49,14 +49,15 @@
 \contentsline {subsubsection}{New Axis Index}{22}{figure.caption.20}
 \contentsline {subsection}{\numberline {4.4.3}Computations of the the Parameters}{23}{subsection.4.4.3}
 \contentsline {subsubsection}{Computation of the Sparse Offsets}{23}{subsection.4.4.3}
-\contentsline {subsubsection}{Computation of the Flags}{23}{algorithm.1}
-\contentsline {subsubsection}{Computation of the Hidden Dimensions}{23}{algorithm.1}
-\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{26}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Reverse coordinates}{27}{subsection.4.4.5}
-\contentsline {subsection}{\numberline {4.4.6}Final Implementation}{27}{subsection.4.4.6}
-\contentsline {subsubsection}{Example}{27}{Item.30}
-\contentsline {subsection}{\numberline {4.4.7}Put a Value}{28}{subsection.4.4.7}
-\contentsline {subsection}{\numberline {4.4.8}Get a Sub-Array}{28}{subsection.4.4.8}
+\contentsline {subsubsection}{Example of the Sparse Offset Computation}{23}{algorithm.1}
+\contentsline {subsubsection}{Computation of the Flags}{25}{figure.caption.22}
+\contentsline {subsubsection}{Computation of the Hidden Dimensions}{25}{figure.caption.22}
+\contentsline {subsection}{\numberline {4.4.4}Sparse Indexes Translation}{27}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Reverse coordinates}{28}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}Final Implementation}{28}{subsection.4.4.6}
+\contentsline {subsubsection}{Example}{28}{Item.30}
+\contentsline {subsection}{\numberline {4.4.7}Put a Value}{29}{subsection.4.4.7}
+\contentsline {subsection}{\numberline {4.4.8}Get a Sub-Array}{29}{subsection.4.4.8}
 \contentsline {chapter}{\numberline {5}Operations}{31}{chapter.5}
 \contentsline {section}{\numberline {5.1}Basic Linear Algerba Subprograms (BLAS)}{31}{section.5.1}
 \contentsline {section}{\numberline {5.2}Backends}{32}{section.5.2}
@@ -81,4 +82,4 @@
 \contentsline {section}{\numberline {7.3}Optimization}{37}{section.7.3}
 \contentsline {chapter}{\numberline {8}Conclusion}{39}{chapter.8}
 \contentsline {chapter}{\numberline {A}An appendix}{41}{appendix.A}
-\contentsline {chapter}{Bibliography}{43}{appendix*.25}
+\contentsline {chapter}{Bibliography}{43}{appendix*.27}
