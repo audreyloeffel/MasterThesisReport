@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  15 AUG 2017 01:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  15 AUG 2017 11:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1510,18 +1510,21 @@ LaTeX Info: Redefining \nameref on input line 18.
 \openout4 = `my_thesis.out'.
 
  ABD: EveryShipout initializing macros
-(./head/titlepage.tex <images/epfl.pdf, id=275, 574.94798pt x 275.429pt>
+(./head/titlepage.tex
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 19.
+ <images/epfl.pdf, id=271, 574.94798pt x 275.429pt>
 File: images/epfl.pdf Graphic file (type pdf)
 
 <use images/epfl.pdf>
-Package pdftex.def Info: images/epfl.pdf used on input line 8.
-(pdftex.def)             Requested size: 142.26277pt x 68.2855pt.
- <images/skymind.png, id=276, 720.6925pt x 134.5025pt>
+Package pdftex.def Info: images/epfl.pdf used on input line 55.
+(pdftex.def)             Requested size: 113.81102pt x 54.51746pt.
+ <images/skymind.png, id=272, 720.6925pt x 134.5025pt>
 File: images/skymind.png Graphic file (type png)
 
 <use images/skymind.png>
-Package pdftex.def Info: images/skymind.png used on input line 13.
-(pdftex.def)             Requested size: 142.26378pt x 26.54906pt.
+Package pdftex.def Info: images/skymind.png used on input line 63.
+(pdftex.def)             Requested size: 113.81102pt x 21.23965pt.
  [1
 
 
@@ -1561,8 +1564,6 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 11.03998pt on input line 7.
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 7.
-LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 7.
 )pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
  been already used, duplicate ignored
 <to be read again> 
@@ -1586,20 +1587,19 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 7.63599pt on input line 6.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 5.51999pt on input line 6.
- [3] [4])
+ [3])
 \tf@toc=\write5
 \openout5 = `my_thesis.toc'.
 
- [5] [6
-
-]
+ [4]
 (./my_thesis.lof)
 \tf@lof=\write6
 \openout6 = `my_thesis.lof'.
 
- [7
+ [5
 
-] [8
+
+] [6
 
 ]
 \openout2 = `main/ch0_introduction.aux'.
@@ -1632,7 +1632,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-[4] <images/tensorscooexpl.pdf, id=468, 221.82875pt x 119.44624pt>
+[4] <images/tensorscooexpl.pdf, id=454, 221.82875pt x 119.44624pt>
 File: images/tensorscooexpl.pdf Graphic file (type pdf)
 
 <use images/tensorscooexpl.pdf>
@@ -1651,7 +1651,7 @@ Chapter 3.
 
 
 
-] <images/nd4j_architecture.png, id=486, 334.24875pt x 316.18124pt>
+] <images/nd4j_architecture.png, id=473, 334.24875pt x 316.18124pt>
 File: images/nd4j_architecture.png Graphic file (type png)
 
 <use images/nd4j_architecture.png>
@@ -1668,7 +1668,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--1
 []\T1/futs/b/n/24.88 Structure of an Multi-dimensional
  []
 
-<images/c_f_OrdersLabelled.png, id=494, 256.96pt x 128.48pt>
+<images/c_f_OrdersLabelled.png, id=481, 256.96pt x 128.48pt>
 File: images/c_f_OrdersLabelled.png Graphic file (type png)
 
 <use images/c_f_OrdersLabelled.png>
@@ -1687,7 +1687,7 @@ See the caption package documentation for explanation.
 LaTeX Warning: Reference `fig:sharememView' on page 10 undefined on input line 
 69.
 
-<images/views.png, id=504, 326.21875pt x 252.945pt>
+<images/views.png, id=490, 326.21875pt x 252.945pt>
 File: images/views.png Graphic file (type png)
  <use images/views.png>
 Package pdftex.def Info: images/views.png used on input line 74.
@@ -1733,28 +1733,28 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  [16]
-<images/indexesCoo_a.pdf, id=565, 131.49126pt x 222.8325pt>
+<images/indexesCoo_a.pdf, id=551, 131.49126pt x 222.8325pt>
 File: images/indexesCoo_a.pdf Graphic file (type pdf)
 
 <use images/indexesCoo_a.pdf>
 Package pdftex.def Info: images/indexesCoo_a.pdf used on input line 136.
 (pdftex.def)             Requested size: 108.405pt x 183.71667pt.
 
-<images/indexesCoo_b.pdf, id=566, 131.49126pt x 192.72pt>
+<images/indexesCoo_b.pdf, id=552, 131.49126pt x 192.72pt>
 File: images/indexesCoo_b.pdf Graphic file (type pdf)
 
 <use images/indexesCoo_b.pdf>
 Package pdftex.def Info: images/indexesCoo_b.pdf used on input line 137.
 (pdftex.def)             Requested size: 108.405pt x 158.89008pt.
 
-<images/indexesCoo_c.pdf, id=567, 208.78pt x 132.495pt>
+<images/indexesCoo_c.pdf, id=553, 208.78pt x 132.495pt>
 File: images/indexesCoo_c.pdf Graphic file (type pdf)
 
 <use images/indexesCoo_c.pdf>
 Package pdftex.def Info: images/indexesCoo_c.pdf used on input line 138.
 (pdftex.def)             Requested size: 180.67499pt x 114.6652pt.
 
-<images/viewIndexOffset.pdf, id=569, 53.19875pt x 54.2025pt>
+<images/viewIndexOffset.pdf, id=555, 53.19875pt x 54.2025pt>
 File: images/viewIndexOffset.pdf Graphic file (type pdf)
 
 <use images/viewIndexOffset.pdf>
@@ -1765,14 +1765,14 @@ oo_c.pdf>] [18 <./images/viewIndexOffset.pdf>]
 Underfull \vbox (badness 5787) has occurred while \output is active []
 
  [19]
-<images/tensorsHiglighted.pdf, id=608, 114.4275pt x 75.28125pt>
+<images/tensorsHiglighted.pdf, id=595, 114.4275pt x 75.28125pt>
 File: images/tensorsHiglighted.pdf Graphic file (type pdf)
 
 <use images/tensorsHiglighted.pdf>
 Package pdftex.def Info: images/tensorsHiglighted.pdf used on input line 223.
 (pdftex.def)             Requested size: 108.405pt x 71.32149pt.
  [20 <./images/tensorsHiglighted.pdf>]
-<images/specifiedIndex.pdf, id=626, 87.32625pt x 62.2325pt>
+<images/specifiedIndex.pdf, id=613, 87.32625pt x 62.2325pt>
 File: images/specifiedIndex.pdf Graphic file (type pdf)
 
 <use images/specifiedIndex.pdf>
@@ -1787,7 +1787,7 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 6.99199pt on input line 252.
 
-<images/specifiedIndexView.pdf, id=627, 61.22874pt x 62.2325pt>
+<images/specifiedIndexView.pdf, id=614, 61.22874pt x 62.2325pt>
 File: images/specifiedIndexView.pdf Graphic file (type pdf)
 
 <use images/specifiedIndexView.pdf>
@@ -1847,14 +1847,14 @@ S/futm/m/n/10.95 ç \FML/futmi/m/it/10.95 newAxis\T1/futs/m/n/10.95 (+20) [\FML/
 futmi/m/it/10.95 newDim\T1/futs/m/n/10.95 (+20) ] \FMS/futm/m/n/10.95 ^^T
  []
 
-[25] [26] <images/tensors.pdf, id=683, 114.4275pt x 75.28125pt>
+[25] [26] <images/tensors.pdf, id=669, 114.4275pt x 75.28125pt>
 File: images/tensors.pdf Graphic file (type pdf)
 
 <use images/tensors.pdf>
 Package pdftex.def Info: images/tensors.pdf used on input line 509.
 (pdftex.def)             Requested size: 122.85876pt x 80.83156pt.
 
-<images/tensors-view.pdf, id=684, 81.30376pt x 56.21pt>
+<images/tensors-view.pdf, id=670, 81.30376pt x 56.21pt>
 File: images/tensors-view.pdf Graphic file (type pdf)
 
 <use images/tensors-view.pdf>
@@ -1951,15 +1951,9 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
 (./main/ch7_conclusion.aux) (./tail/appendix.aux) (./tail/biblio.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
+Package rerunfilecheck Info: File `my_thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 0FB539D9018401DBB234FA4F67B94C26;4420.
 
-
-Package rerunfilecheck Warning: File `my_thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `my_thesis.out':
-(rerunfilecheck)             Before: 6F6EFCA34D77D61EDD891D86AC6FEE40;4452
-(rerunfilecheck)             After:  0FB539D9018401DBB234FA4F67B94C26;4420.
 
 LaTeX Warning: There were undefined references.
 
@@ -1969,28 +1963,25 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 26228 strings out of 494953
- 452539 string characters out of 6180977
- 670196 words of memory out of 5000000
- 28352 multiletter control sequences out of 15000+600000
+ 26224 strings out of 494953
+ 452490 string characters out of 6180977
+ 670197 words of memory out of 5000000
+ 28351 multiletter control sequences out of 15000+600000
  153450 words of font info for 344 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,19n,77p,961b,2402s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.5.2.4} has been referenced but does no
-t exist, replaced by a fixed one
-
- </home/audrey/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0800.600pk> </home/au
-drey/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.600pk>{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/typ
-e1/public/fourier/fourier-mex.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/fourier/fourier-ml.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/f
-ourier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/p
-utb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on my_thesis.pdf (51 pages, 466529 bytes).
+ </home/audrey/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0800.600pk> </home/
+audrey/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.600pk>{/usr/share/texliv
+e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/t
+ype1/public/fourier/fourier-mex.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/fourier/fourier-ml.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/fourier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia
+/putb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
+Output written on my_thesis.pdf (49 pages, 465062 bytes).
 PDF statistics:
- 929 PDF objects out of 1000 (max. 8388607)
- 781 compressed objects within 8 object streams
- 227 named destinations out of 1000 (max. 500000)
- 51824 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 916 PDF objects out of 1000 (max. 8388607)
+ 770 compressed objects within 8 object streams
+ 224 named destinations out of 1000 (max. 500000)
+ 51816 words of extra memory for PDF output out of 61914 (max. 10000000)
 
