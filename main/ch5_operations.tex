@@ -41,7 +41,7 @@ The solution is to allocate the maximum size that the routine could use to the \
 
 \subsubsection{Example}
 To illustrate this issue let's take an array $myArray$ with a size equals to $(100'000\times 100'000 \times 100)$. 
-The following operation take a slice of the array $myArray$ (which corresponds in a row in this example) and assign $1.0$ to each value. 
+The following operation takes a slice of the array $myArray$ (which corresponds in a row in this example) and assigns $1.0$ to each value. 
 \begin{lstlisting}
 	myArray.get(NDIndexArray.point(0), 
 		NDIndexArray.point(0), 

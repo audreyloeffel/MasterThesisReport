@@ -290,7 +290,7 @@ To translate a view coordinates to the underlying coordinates, we have to take i
 
 While iterating over the view dimensions, three situations can happen :
 \begin{enumerate}
-	\item The current dimension is hidden: We do nothing
+	\item The current dimension is hidden: We do nothing and go to the next step of the iteration.
 	\item The current dimension is fixed: We put the corresponding offset into the result array. Since several fixed dimensions can occur in a row, we need to repeat until we reach an active dimension.
 	\item The current dimension is active: We sum the view coordinate with the sparse offset.
 \end{enumerate}
@@ -384,7 +384,7 @@ The sparse offsets are computed from the offset. The offset gives us the positio
 \end{algorithmic}
 \end{algorithm}
 
-	
+An example of the execution of the algorithm is presented in appendix \ref{ch:spaoffexec}
 
 \subsubsection{Computation of the Flags}
 The \textit{Flags} array determines which dimension is active and which one is hidden from the point of view of the array. The \textbf{}dimension can only be reduced using a \textit{point} index, which means the flags can be computed during the offset resolution. An interval with a length equals 1 does not reduced the dimensionality of the array. We fill the flags array while iterating over the indexes array.

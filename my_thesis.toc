@@ -80,7 +80,9 @@
 \contentsline {section}{\numberline {8.5}Tensor contraction indexing}{36}{section.8.5}
 \contentsline {section}{\numberline {8.6}Optimization}{36}{section.8.6}
 \contentsline {chapter}{\numberline {9}Conclusion}{39}{chapter.9}
-\contentsline {chapter}{\numberline {A}Code Snippets}{41}{appendix.A}
-\contentsline {chapter}{\numberline {A}Sparse Offset - An execution example}{43}{appendix.A}
-\contentsline {chapter}{\numberline {A}Indexes Translation - An execution example}{45}{appendix.A}
-\contentsline {chapter}{Bibliography}{47}{appendix*.22}
+\contentsline {chapter}{\numberline {A}Appendices}{41}{appendix.A}
+\contentsline {section}{\numberline {A.1}Algorithm Execution Example}{41}{section.A.1}
+\contentsline {subsection}{\numberline {A.1.1}Sparse Offset Computation Algorithm}{41}{subsection.A.1.1}
+\contentsline {subsection}{\numberline {A.1.2}Indexes Translation Algorithm}{42}{subsection.A.1.2}
+\contentsline {section}{\numberline {A.2}Code Snippets}{42}{section.A.2}
+\contentsline {chapter}{Bibliography}{45}{appendix*.22}

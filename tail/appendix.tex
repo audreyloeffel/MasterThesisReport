@@ -1,24 +1,8 @@
 \appendix
 \chapter{Code Snippets}
+\label{ch:codesnip}
 
-\begin{lstlisting}[caption=Extract a sub-array of a CSR matrix\label{lst:getcsc},language=Java]
-	public INDArray subArray(ShapeOffsetResolution resolution) {
-	
-		long[] offsets = resolution.getOffsets();
-		int[] shape = LongUtils.toInts(resolution.getShapes());
-		
-		
-		List<Integer> accuColumns = new ArrayList<>();
-		List<Integer> accuPointerB = new ArrayList<>();
-		List<Integer> accuPointerE = new ArrayList<>();
-		
-		if (shape.length == 2) {
-			
-			if (resolution.getOffset() != 0) {
-				offsets[0] = (int) resolution.getOffset() / shape()[1];
-				offsets[1] = (int) resolution.getOffset() % shape()[1];
-			}
-			long firstRow = offsets[0];
+
 			long lastRow = firstRow + shape[0];
 			long firstElement = offsets[1];
 			long lastElement = firstElement + shape[1];
@@ -28,7 +12,24 @@
 			for (int rowIdx = 0; rowIdx < lastRow; rowIdx++) {
 			
 			boolean isFirstInRow = true;
-			for (int idx = pointerB.getInt(rowIdx); idx < pointerE.getInt(rowIdx); idx++) {
+			for (int idx = pointerB.getInt(rowIdx); idx < pointerE.getInt(rowIdx); idx++) {\begin{lstlisting}[caption=Extract a sub-array of a CSR matrix\label{lst:getcsc},language=Java]
+				public INDArray subArray(ShapeOffsetResolution resolution) {
+				
+				long[] offsets = resolution.getOffsets();
+				int[] shape = LongUtils.toInts(resolution.getShapes());
+				
+				
+				List<Integer> accuColumns = new ArrayList<>();
+				List<Integer> accuPointerB = new ArrayList<>();
+				List<Integer> accuPointerE = new ArrayList<>();
+				
+				if (shape.length == 2) {
+				
+				if (resolution.getOffset() != 0) {
+				offsets[0] = (int) resolution.getOffset() / shape()[1];
+				offsets[1] = (int) resolution.getOffset() % shape()[1];
+				}
+				long firstRow = offsets[0];
 			
 				int colIdx = columnsPointers.getInt(count);
 				

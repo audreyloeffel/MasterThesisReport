@@ -62,7 +62,9 @@
 \BOOKMARK [1][-]{section.8.5}{Tensor contraction indexing}{chapter.8}% 62
 \BOOKMARK [1][-]{section.8.6}{Optimization}{chapter.8}% 63
 \BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 64
-\BOOKMARK [0][-]{appendix.A}{Code Snippets}{}% 65
-\BOOKMARK [0][-]{appendix.A}{Sparse Offset - An execution example}{}% 66
-\BOOKMARK [0][-]{appendix.A}{Indexes Translation - An execution example}{}% 67
-\BOOKMARK [0][-]{appendix*.22}{Bibliography}{}% 68
+\BOOKMARK [0][-]{appendix.A}{Appendices}{}% 65
+\BOOKMARK [1][-]{section.A.1}{Algorithm Execution Example}{appendix.A}% 66
+\BOOKMARK [2][-]{subsection.A.1.1}{Sparse Offset Computation Algorithm}{section.A.1}% 67
+\BOOKMARK [2][-]{subsection.A.1.2}{Indexes Translation Algorithm}{section.A.1}% 68
+\BOOKMARK [1][-]{section.A.2}{Code Snippets}{appendix.A}% 69
+\BOOKMARK [0][-]{appendix*.22}{Bibliography}{}% 70
