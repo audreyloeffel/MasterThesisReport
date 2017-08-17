@@ -553,6 +553,17 @@ The first index prepends a new dimension and increases the rank, the second take
 		HiddenDimension = 
 		\begin{bmatrix}
 		0 
+		\end{bmatrix}\\	
+		\quad	
+		\quad	
+		\\
+		Values = 
+		\begin{bmatrix}
+		2 & 3 & 4 & 5 & 2 & 8 & 3 & \dots & 4
+		\end{bmatrix}\\			
+		Indexes = 
+		\begin{bmatrix}
+		0 & 0 & 1 & 0 & 0 & 2 & 0 & \dots & 2
 		\end{bmatrix}\\			
 		\end{aligned}
 		\]
@@ -564,10 +575,10 @@ The first index prepends a new dimension and increases the rank, the second take
 
 The new parameters make the task easier. Once the indexes resolved and the parameters computed, a new array is created with the current values and indexes buffers and the new parameters. 
 
-However if one of the indexes is a \textit{SpecifiedIndex} we need to create a new array and copy the data. In this case the indexes resolution is translate any type of indexes to specified index:
+However if one of the indexes is a \textit{SpecifiedIndex} we need to create a new array and copy the data. In this case the index resolution translates any type of indexes to a specified index:
 
 Assuming we have a $3 \times 3 \times 3  \times 3$ 4-order tensor. The indexes array of the following operation:
-\begin{lstlisting}
+\begin{lstlisting}[style=nonumbers]
 	myTensor.get(NDArrayIndex.all(),
 		NDArrayIndex.point(1),
 		NDArrayIndex.interval(0, 2),
@@ -575,5 +586,5 @@ Assuming we have a $3 \times 3 \times 3  \times 3$ 4-order tensor. The indexes a
 \end{lstlisting}
   would become : [SpecifiedIndex(0,1,2), SpecifiedIndex(1), SpecifiedIndex(0,1), SpecifiedIndex(0,2)]. 
 
-Then we iterate over all the included combination of coordinates and add the elements into a new empty array.
+Then we iterate over all the included combinations of coordinates and add the elements into a new empty array.
 

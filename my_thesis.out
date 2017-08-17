@@ -43,7 +43,7 @@
 \BOOKMARK [2][-]{subsection.5.4.7}{Final Implementation}{section.5.4}% 43
 \BOOKMARK [2][-]{subsection.5.4.8}{Get a Sub-Array}{section.5.4}% 44
 \BOOKMARK [0][-]{chapter.6}{Operations}{}% 45
-\BOOKMARK [1][-]{section.6.1}{Basic Linear Algerba Subprograms \(BLAS\)}{chapter.6}% 46
+\BOOKMARK [1][-]{section.6.1}{Basic Linear Algebra Subprograms \(BLAS\)}{chapter.6}% 46
 \BOOKMARK [1][-]{section.6.2}{Backends}{chapter.6}% 47
 \BOOKMARK [2][-]{subsection.6.2.1}{In-Place Routines}{section.6.2}% 48
 \BOOKMARK [2][-]{subsection.6.2.2}{Level 1 Routines}{section.6.2}% 49
@@ -67,4 +67,4 @@
 \BOOKMARK [2][-]{subsection.A.1.1}{Sparse Offset Computation Algorithm}{section.A.1}% 67
 \BOOKMARK [2][-]{subsection.A.1.2}{Indexes Translation Algorithm}{section.A.1}% 68
 \BOOKMARK [1][-]{section.A.2}{Code Snippets}{appendix.A}% 69
-\BOOKMARK [0][-]{appendix*.23}{Bibliography}{}% 70
+\BOOKMARK [0][-]{appendix*.24}{Bibliography}{}% 70

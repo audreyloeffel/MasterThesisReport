@@ -22,7 +22,7 @@
 	flags = [1, 0, 0, 0, 0]
 	\end{lstlisting}
 	
-	Assuming we name the dimension as [book, page, row, column], we are taking all the columns of the last row of the first pages of each book.
+	Assuming we name the dimension as [book, page, row, column], we are taking each column of the last row of the first pages of each book.
 	
 	The indexes resolution returns the following parameters:
 	
@@ -51,11 +51,11 @@
 	
 	We get an temporary offsets array equal to $ newOffsets = [0, 0, 3, 0]$. Now we need to merge with the existing offsets of $myTensor$.
 	
-	Its first dimension is fixed, so we copy its sparse offset :\\ $finalOffest[0] = myTensor.sparseOffset[0] = 1$\\
-	Its second dimension is active and there is already an non-zero offset. The offset is equal to\\ $finalOffset[1] = newOffset[0] + myTensor.sparseOffset[1] = 0 + 1 = 1$\\
-	Its second dimension is active. The offset is equal to\\ $finalOffset[2] = newOffset[1] + myTensor.sparseOffset[2] = 0 + 0 = 0$\\
-	Its third dimension is active. The offset is equal to\\ $finalOffset[3] = newOffset[2] + myTensor.sparseOffset[3] = 3 + 0 = 0$\\
-	Its third dimension is active. The offset is equal to\\ $finalOffset[4] = newOffset[3] + myTensor.sparseOffset[4] = 0 + 0 = 0$\\
+	Its first dimension (shelf) is fixed, so we copy its sparse offset :\\ $finalOffest[0] = myTensor.sparseOffset[0] = 1$\\
+	Its second dimension (book) is active and there is already an non-zero offset. The offset is equal to\\ $finalOffset[1] = newOffset[0] + myTensor.sparseOffset[1] = 0 + 1 = 1$\\
+	Its third dimension (page)is active. The offset is equal to\\ $finalOffset[2] = newOffset[1] + myTensor.sparseOffset[2] = 0 + 0 = 0$\\
+	Its fourth dimension (row) is active. The offset is equal to\\ $finalOffset[3] = newOffset[2] + myTensor.sparseOffset[3] = 3 + 0 = 0$\\
+	Its fifth dimension (column) is active. The offset is equal to\\ $finalOffset[4] = newOffset[3] + myTensor.sparseOffset[4] = 0 + 0 = 0$\\
 	
 	We finally get the final sparseOffset : $[1, 1, 0, 3, 0]$
 	
@@ -63,8 +63,64 @@
 \subsection{Indexes Translation Algorithm}
 \label{ssec:idxtrans}
 	
-	We present an execution of the algorithm \ref{alg:translation} presented in section \ref{ssec:translation.}
+	We present an execution of the algorithm \ref{alg:translation} presented in section \ref{ssec:translation}
+	
+	Let's start with a 3-order tensor $myTensor$ which is a view with the following parameters:
+		
+	\begin{lstlisting}[style=nonumbers]	
+		shape = [1, 2, 2]	
+		flags = [1, 0, 0]
+		hiddenDimension = [0]
+		sparseOffsets = [0, 1, 1]
+	\end{lstlisting}
+	
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=1.5in]{images/apptensors.pdf}
+		\caption{A $2\times 3\times 3$ tensor with a view in grey}
+		\label{fig:appTensor}
+	\end{figure}
+	
+	The figure \ref{fig:appTensor} shows the tensor $myTensor$ in grey: it's a sup-part of a $2\times 3\times 3$ from which we performed the following operation:
+	
+	\begin{lstlisting}[style=nonumbers]	
+		myTensor = original.get(NDArrayIndex.newAxis(),
+			NDArrayIndex.point(0),
+			NDArrayIndex.interval(1, 3),
+			NDArrayIndex.interval(1, 3));
+	\end{lstlisting}
 
+	Let's translate the coordinates of the value 5. In $myTensor$ they are equal to $[0, 0, 1]$ while in $original$ tensors they are equal to $[0, 1, 2]$.
+	
+	First we start the initilizing phase: the \textit{result} array has a length of three (equal to the dimensionality of $original$). \textit{idxPhy} is used to keep track of the position in the result array we are computing. \textit{hidden} counts the number of hidden dimension we have encountered in the view.
+	
+	Then we can start with the iterations: we iterate over all the dimensions of the view (idxVir keeps track of the position of the dimension).
+	
+	\textbf{Iteration: idxVir=0}\\
+	The first condition is satisfied since $hidde=0$ is smaller than the number of hidden dimension of $myTensor$ and its hidden dimension is actually the first 0. In this case this coordinate do not appear in the result, we can skip it and increment $hidden$ to 1
+	
+	\textbf{Teration: idxVir=1}\\
+	The first condition is not satisfied: we have already encountered all the hidden dimensions of $myTensor$.
+	
+	Then we start iterating as long as the dimension is fixed:
+	\begin{enumerate}
+		\item  We have $idxPhy=0$, according to the \textit{flags} of the original array, $flags[0] = 1$ which means this dimension of the original array is fixed. We can add the $sparseOffset[0] = 0$ to the result.
+		
+		We have $result = [0, \O, \O]$ and $idxPhy=1$
+		
+		\item The second dimension is not fixed ($flags[idxPhy] = 0$). We stop iterating.
+	\end{enumerate}
+	
+	The second dimension is not fixed ($flags[idxPhy] = 0$).  We add $sparseOffsets[idxPhx] + viewIdx[idxVir] = 1 + 0 =  1$ into the result.
+	
+	We have $result = [0, 1, \O]$, $idxPhy=2$ and $idxVir=2$
+	
+	\textbf{Iteration: idxVir=2}\\
+	This dimension is neither hidden nor fixed. We add $sparseOffsets[idxPhx] + viewIdx[idxVir] = 1 + 1 =  2$ into the result.
+	
+	We finally get the output: We have $result = [0, 1, 2]$
+	
 \section{Code Snippets}
 
 \label{ch:codesnip}
