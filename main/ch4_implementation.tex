@@ -502,7 +502,7 @@ The resolution returns an array containing the position of the \textit{newAxis} 
 \subsubsection{Example}
 Figure \ref{fig:tens} shows a tensor $T$ with a shape $(2\times 3\times 3)$ and Figure \ref{fig:tensView} shows the view resulting from the operation below:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=nonumbers]
 	T_view = T.get(NDArrayIndex.newAxis(), 
 		NDArrayIndex.point(0),
 		NDArrayIndex.interval(1, 3), 

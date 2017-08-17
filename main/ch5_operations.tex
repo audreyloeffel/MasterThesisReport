@@ -107,7 +107,7 @@ All the parameters needed to call the BLAS routine are extracted and computed ac
 In case of COO, we need an array of values, an array with the row indexes and an array with the column indexes. Since the indexes are flattened into one buffer, we split the indexes buffer to create a new array containing the row indexes and a second array containing the column indexes.
 
 \section{Libnd4j}
-Most of the operations are implemented into libNd4j. Basically we used gemv and gemm from blas
-..
-% TODO 
-// TODO find doc or ask raver
+
+In practice, Dl4j does not use all the BLAS routines. Most of the operation are reimplemented in Libnd4j which uses BLAS routines such as \textit{dot}, \textit{axpy}, \textit{gemv} and \textit{gemm} to optimized them.  Those methods are picked up by JavaCPP during the compilation of Nd4j.
+
+Then we have to provide an implementation of each methods. During the compilation of Libnd4j, all the implementations are grouped in a unique c++ class which are accessible through a big \textit{switch} branch. Each operation has an unique identifier which is used to select the right operation implementation.
