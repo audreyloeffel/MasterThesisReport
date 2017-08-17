@@ -20,9 +20,11 @@ BLAS is organized into three sets of routines called \textit{levels}:
  
  Similarly the sparse architecture has to have the same architecture: One sparse wrapper which contains the sparse implementations for each level.
  
- % TODO   -
- // TODO explain/show the architecture in nd4j?
 \section{Backends}
+
+Nd4j can run on the top of several backends. 
+
+ It supports CPU and GPU computations through interchangeable backends. The different backends use the same interface: they can be swaped without any change to the implementation code.
 
 Nd4j can run on the CPU or the GPU. 
 

@@ -20,14 +20,13 @@
 \input{head/titlepage.tex}
 %%\include{head/dedication}
 \setcounter{page}{0}
-%\input{head/acknowledgements}
 %%\include{head/preface}
 \include{head/abstracts}
 
 \tableofcontents
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{List of figures} % adds an entry to the table of contents
+%\addcontentsline{toc}{chapter}{List of figures} % adds an entry to the table of contents
 \listoffigures
 \cleardoublepage
 %\phantomsection
@@ -63,6 +62,7 @@
 
 \include{tail/runThrough}
 \backmatter
+\include{head/acknowledgements}
 \include{tail/biblio}
 % Add your glossary here
 % Add your index here

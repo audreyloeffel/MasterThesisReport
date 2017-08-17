@@ -1,6 +1,5 @@
 \select@language {english}
 \contentsline {chapter}{Abstract}{i}{chapter*.2}
-\contentsline {chapter}{List of figures}{vii}{section*.4}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Sparse Data is very common in Machine Learning}{1}{section.1.1}
@@ -69,11 +68,11 @@
 \contentsline {subsubsection}{Gemv Routine}{34}{subsection.6.2.3}
 \contentsline {section}{\numberline {6.3}Libnd4j}{34}{section.6.3}
 \contentsline {chapter}{\numberline {7}Results}{35}{chapter.7}
-\contentsline {section}{\numberline {7.1}Storing a huge data set}{35}{section.7.1}
+\contentsline {section}{\numberline {7.1}Storing a Huge Dataset is now Possible}{35}{section.7.1}
 \contentsline {section}{\numberline {7.2}Operations performance}{35}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}level 1}{35}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}level 2}{35}{subsection.7.2.2}
-\contentsline {subsubsection}{Gemv}{35}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.2}level 2}{36}{subsection.7.2.2}
+\contentsline {subsubsection}{Gemv}{36}{subsection.7.2.2}
 \contentsline {chapter}{\numberline {8}Future}{37}{chapter.8}
 \contentsline {section}{\numberline {8.1}Operations}{37}{section.8.1}
 \contentsline {section}{\numberline {8.2}Support of the GPU backend}{37}{section.8.2}
@@ -90,4 +89,5 @@
 \contentsline {subsection}{\numberline {A.2.1}Extract a sub-array of a CSR matrix}{46}{subsection.A.2.1}
 \contentsline {subsection}{\numberline {A.2.2}Put a Value into a CSR matrix}{47}{subsection.A.2.2}
 \contentsline {subsection}{\numberline {A.2.3}Add a value into a buffer}{47}{subsection.A.2.3}
-\contentsline {chapter}{Bibliography}{49}{appendix*.25}
+\contentsline {chapter}{Acknowledgements}{49}{appendix*.24}
+\contentsline {chapter}{Bibliography}{51}{appendix*.26}

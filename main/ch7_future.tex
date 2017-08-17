@@ -44,7 +44,7 @@ We could think to several possibility:
 	In this example the coordinates within the buffer would be inverted:\\
 	\qquad $(i_{0}, i_{1}, i_{2})  \rightarrow (i_{2}, i_{0}, i_{1})$  
 	and then would be sorted along the new dimension ordering.
-	\item Use a more complex data-structure to store the indexes such as a skip list or a tree. 
+	\item Use a more complex data-structure to store the indexes such as a skip list or a tree. A skip list is a multi-level linked list. We could take advantages of the levels to index each dimension and be able to have a more efficient random access to a value given a set of coordinates or to tensor contraction values.
 \end{enumerate} 
 
 The goal is to make the complexity constant regardless of the contraction dimensions.
