@@ -50,17 +50,19 @@ The data, encapsulated into DataBuffer object, is stored off-heap. Several reaso
 	
 	In Cuda backend we store the data in a dual manner: one host copy (in the RAM) and one device copy on (on the GPU).
 	
-	\item Java execution is always sequential even with multi-threading, it cannot be parallelized. With C++ we can have cheaper parallel executions.
+	\item Java execution is always sequential even with multi-threading, it cannot be parallelized on multiple CPUs. With C++ we can have cheaper parallel executions.
 	\item At C++ level we can have easier access to SIMD (Single Instruction, Multiple Data) instructions that allow to execute an instruction in parallel on different blocks of the same data. Those instructions are heavily exploited by BLAS.
 \end{enumerate}
 
 \subsection{Workspaces}
 
-Workspaces provides some contiguous memory buffer. No garbage collection mecanism occurs within them, we have to take care of closing the workspace at to avoid memory leaks. 
+The garbage collector makes the memory management of the JVM easier. It takes care of tracking the referenced object created by the program and remove them if there is no any longer reference pointing to the object. It automatically frees the unused allocated memory space. But the free operation is not immediate. The garbage collector has to pause the execution of the program at some point to modify the memory. Some unused memory spaces can still be temporarily allocated.
 
--- todo
+In machine learning and deep learning, many of the operations have a cyclic workload: we get a part of a dataset, we perform an operation and then we pass to the next data. Only the current values a relevant, the old memory content is not  used anymore. We want to avoid having too much previous data allocated.
 
-%TODO
+Nd4j has implemented workspaces. A workspace is a memory chunk that we allocate once and which we can reused it as long as we need. The garbage collect does not manage this memory space. In a cyclic workload, we do not allocated a new memory space, we can use the space used by the last operation. The memory space size do not change, we only replace the content.
+
+
 
 \subsection{DataBuffers have a fixed length}
 
