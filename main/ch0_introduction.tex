@@ -8,9 +8,7 @@ Data is said sparse when it is contains only a few non-zero values. That kind of
 
 \section{Sparse Data is very common in Machine Learning}
 
-Many of machine learning applications tend to deal with sparse dataset. An example is the natural language processing applications, as stated by the Zipf' law \cite{Zipf}, the frequency of any word in inversely proportional to its rank in the frequency table. It means than the dataset of a \textit{bag of words} model tends to be sparse.
-
-%TODO
+Many of machine learning applications tend to deal with sparse dataset. An example is the natural language processing applications, the words need to be vectorized before to be used by a ML application. The most common manner to do so, is to use the bag of world model which uses the frequency of the words in the text. As stated by the Zipf' law \cite{Zipf}, the frequency of any word in inversely proportional to its rank in the frequency table. It results in a very sparse dataset.
 
 Given the possible optimization that sparse dataset allows and the high number of people that could take advantages of it, it becomes important to add the support of sparse data in the DL4J suite of libraries. 
 

@@ -78,6 +78,18 @@ Since the memory space is shared, changes to array will impact the content of th
 \end{figure}
 
 
+We can also get a part of a view. In this case we have a view of a view and the all share the memory space of the original array. The figure \ref{fig:hierachyview} shows a possible hierarchy of views. The DataBuffer of the views contains a pointer to the original DataBuffer and a pointer the memory space.
+
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=5.5in]{images/hierarchyview.pdf} 
+		\caption{View hierarchy}
+		\label{fig:hierachyview}
+	\end{center}
+\end{figure}
+
+
 \section{Indexes}
 
 \textit{NDArrays} can be accessed through a combination of indexes. There are many way to index an array. For each dimension of the original array, we can specify if we want everything, an interval or a specific value of it. It gives a lot of flexibility to access sub-part of a array. 

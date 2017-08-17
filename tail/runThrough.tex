@@ -122,8 +122,8 @@
 	We finally get the output: $result = [0, 1, 2]$
 	
 \section{Code Snippets}
-
 \label{ch:codesnip}
+\subsection{Extract a sub-array of a CSR matrix}
 
 \begin{lstlisting}[caption=Extract a sub-array of a CSR matrix\label{lst:getcsc},language=Java]
 	public INDArray subArray(ShapeOffsetResolution resolution) {
@@ -198,4 +198,50 @@
 			throw new UnsupportedOperationException();
 		}
 	}
+		\end{lstlisting}
+		
+	\subsection{Put a Value into a CSR matrix}
+		\begin{lstlisting}[caption=Put a new value into a CSR array\label{lst:putcsc},language=Java]
+		public INDArray putScalar(int row, int col, double value) {
+		
+			int idx = pointerB.getInt(row);
+			int idxNextRow = pointerE.getInt(row);
+			
+			while (columnsPointers.getInt(idx) < col && columnsPointers.getInt(idx) < idxNextRow) {
+				idx++;
+			}
+			if (columnsPointers.getInt(idx) == col) {
+				values.put(idx, value);
+			} else {
+				//Add a new entry in both buffers at a given position
+				values = addAtPosition(values, length, idx, value);
+				columnsPointers = addAtPosition(columnsPointers, length, idx, col);
+				length++;
+				
+				// shift the indices of the next rows
+				pointerE.put(row, pointerE.getInt(row) + 1);
+				for (int i = row + 1; i < rows; i++) {
+					pointerB.put(i, pointerB.getInt(i) + 1);
+					pointerE.put(i, pointerE.getInt(i) + 1);
+				}
+			}
+			return this;
+		}
+		\end{lstlisting}
+		
+		\subsection{Add a value into a buffer}
+		\begin{lstlisting}[caption=Add a value into a buffer\label{lst:addBuff},language=Java]
+		private DataBuffer addAtPosition(DataBuffer buf, long dataSize, int pos, double value) {
+		
+			DataBuffer buffer = (buf.length() == dataSize) ? reallocate(buf) : buf;
+			double[] tail = buffer.getDoublesAt(pos, (int) dataSize - pos);
+			buffer.put(pos, value);
+			
+			// we have to shift right the tail
+			for (int i = 0; i < tail.length; i++) {
+				buffer.put(i + pos + 1, tail[i]);
+			}
+			return buffer;
+		}
+		
 		\end{lstlisting}

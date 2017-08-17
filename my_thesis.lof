@@ -10,26 +10,27 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Comparison between C-order and F-order\relax }}{9}{figure.caption.11}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces View shares memory with the original array\relax }}{11}{figure.caption.12}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces View hierarchy\relax }}{11}{figure.caption.13}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Arrays hierarchy in Nd4j\relax }}{14}{figure.caption.13}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Illustration of the different possible data structure for storing the indexes [0, 2, 1] of a value $v$ \relax }}{18}{figure.caption.14}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Arrays hierarchy in Nd4j\relax }}{14}{figure.caption.14}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Illustration of the different possible data structure for storing the indexes [0, 2, 1] of a value $v$ \relax }}{18}{figure.caption.15}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {each index is stored contiguously}}}{18}{subfigure.2.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Each dimension is stored contiguously}}}{18}{subfigure.2.2}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Flattened Indexes}}}{18}{subfigure.2.3}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }}{19}{figure.caption.15}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }}{21}{figure.caption.16}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces A $2\times 3\times 3$ tensor with a slice along the first dimension in grey\relax }}{21}{figure.caption.17}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Example of a specified index behavior on a matrix\relax }}{23}{figure.caption.18}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }}{19}{figure.caption.16}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces A $3\times 3$ matrix with a $2\times 2$ view in grey\relax }}{21}{figure.caption.17}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces A $2\times 3\times 3$ tensor with a slice along the first dimension in grey\relax }}{22}{figure.caption.18}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Example of a specified index behavior on a matrix\relax }}{23}{figure.caption.19}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A $3 \times 5$ matrix with selected columns in grey}}}{23}{subfigure.6.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {A $2\times 2$ matrix created from the column of the matrix in figure \ref {fig:specifiedArray} }}}{23}{subfigure.6.2}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces A tensor and a view of it \relax }}{28}{figure.caption.19}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces A tensor and a view of it \relax }}{28}{figure.caption.20}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A tensor $T$ with shape $(2\times 3\times 3)$ }}}{28}{subfigure.7.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {A view of tensor $T$ with shape $(1\times 2\times 2)$}}}{28}{subfigure.7.2}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Parameters defining the view $T_{view}$ in \ref {fig:tensView}\relax }}{28}{figure.caption.20}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Parameters defining the view $T_{view}$ in \ref {fig:tensView}\relax }}{28}{figure.caption.21}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces A vector $v$ and its compressed form representation\relax }}{33}{figure.caption.21}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces A vector $v$ and its compressed form representation\relax }}{33}{figure.caption.22}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces A $2\times 3\times 3$ tensor with a view in grey\relax }}{45}{figure.caption.22}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces A $2\times 3\times 3$ tensor with a view in grey\relax }}{45}{figure.caption.23}
