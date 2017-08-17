@@ -37,6 +37,6 @@ BLAS is  a specification that defines the low-level routines for linear algebra 
 
 In Deeplearning4j, Sparse Data are treated as dense and use the dense operations of BLAS and Libnd4j to perform computations. With a new sparse representation we can gain in storage space and computation speed.
 
-Currently there is no library in the JVM ecosystem that supports the sparse operations. Despite the fact that the Breeze (a numerical processing library for Scala) library \cite{breeze} support sparse vectors and sparse CSR matrices but no sparse tensor. Moreover it is only support the operations of the first level but not accelerated. 
+Currently there is no library in the JVM ecosystem that provides the sparse operations. Despite the fact that the Breeze library \cite{breeze} does support the sparse vectors and the sparse CSR matrices, it does not support the sparse tensor. Moreover the operations provided by Breeze are not accelerated. 
 
 Nd4j will be the first JVM library to support the sparse tensors with their accelerated operations.

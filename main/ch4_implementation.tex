@@ -3,17 +3,17 @@
 
 \section{Hierarchy of Arrays}
 
-The API of an array is defined by an interface called \textit{INDArray} which has a dense implementation for each backend: \textit{NDArray} class for the CPU and \textit{JCublasNDArray} class for the GPU. But since most of the operations and methods are shared between the two backends, they are implemented in an abstract class called \textit{BaseNDArray}.
+The API of an array is defined by an interface called \textit{INDArray} which has a dense implementation for each backend: \textit{NDArray} class for the CPU and \textit{JCublasNDArray} class for the GPU. But since most of the operations and methods are shared between the two dense backends, they are implemented in an abstract class called \textit{BaseNDArray}.
 
 Adding sparse representations asked two questions:
 \begin{enumerate}
  	\item What can be shared with the dense arrays ?
-	\item What can be between the different sparse arrays and what are format-specific ?
+	\item What can be shared between the different sparse arrays and what is format-specific ?
 \end{enumerate}
 
 To answer those questions, we need to go a little bit deeper in the implementation. 
 
-The dense implementation includes methods that are inherently related to the way dense array is internally made, and other methods are related to the generic parameters such as the shape or are utility method.
+The dense implementation includes methods that are inherently related to the way dense arrays are internally made, and other methods are related to the generic parameters such as the shape or are utility methods, and can be used independently of the internal implementation.
 
 The first type of methods is not useful in case of sparse. Dense and sparse arrays are not built in the same manner. Methods such as \textit{getStrides} are not relevant in the sparse context. Reciprocally the sparse array will need methods which will be irrelevant in the dense context.
 
@@ -21,7 +21,9 @@ We encounter the same situation between the different sparse formats. Some will 
 
 However some methods should be reusable such as traversal operations which operate in an element-wise manner.
 
-But everything has to be defined in the \textit{INDArray} interface. To avoid code duplication, everything than can be shared should be implemented in the higher level of the hierarchy. The methods that are not compatible with a type of array will simply throw an unsupported operation exception.
+But as much as possible has to be exposed in the \textit{INDArray} interface. To avoid code duplication, everything than can be shared should be implemented in the higher level of the hierarchy. 
+
+The methods that are not compatible with a type of array will simply throw an unsupported operation exception.
 
 The drawback brought with this solution is that we always need to verify the type of the array before doing any operations.
 
@@ -38,15 +40,18 @@ The drawback brought with this solution is that we always need to verify the typ
 
 \section{Limitations and Constraints}
 
-Nd4j has been made in the perspective of dense arrays. The design has been thought and optimized regarding the dense implementation which brings some constraints to implement the sparse representation
+Nd4j has been made with the perspective of dense arrays. The design has been thought and optimized regarding the dense implementation which brings some constraints to implement the sparse representation
 \subsection{Storing off-heap}
 
 The data, encapsulated into DataBuffer object, is stored off-heap. Several reasons drive this design decision.
 \begin{enumerate}
-	\item The size of the memory that can be allocated within the JVM is limited to 2 billion. We can not fit matrices into the JVM.
-	\item We want to use Cuda to accelerate the computation on the GPU. Cuda is not compatible with the JVM environment, the data has to be stored on the native side.
-	\item Java execution is always sequential, with C++ we can have cheap parallel executions.
-	\item At C++ level we can have SIMD (Single instruction, multiple data) instructions that allow to execute an instruction in parallel on different blocks of the same data.
+	\item The size of the memory that can be allocated within the JVM is limited to 2 billion. We can not fit some big matrices into the JVM.
+	\item We want to use Cuda to accelerate the computation on the GPU. Cuda memory managment is not compatible with the JVM environment, the data has to be stored on the native side.
+	
+	In Cuda backend we store the data in a dual manner: one host copy (in the RAM) and one device copy on (on the GPU).
+	
+	\item Java execution is always sequential even with multi-threading, it cannot be parallelized. With C++ we can have cheaper parallel executions.
+	\item At C++ level we can have easier access to SIMD (Single Instruction, Multiple Data) instructions that allow to execute an instruction in parallel on different blocks of the same data. Those instructions are heavily exploited by BLAS.
 \end{enumerate}
 
 \subsection{Workspaces}
@@ -69,21 +74,24 @@ To reallocate a buffer we need to:
 	\item The buffer has two length attributes: \textit{length} which count the number of values in the buffer and \textit{underlyingLength} which reflects the actual allocated size in memory. After the reallocation the \textit{underlyingLength} is increased to the new size, but the \textit{length} only increases at the insertion of a new value.
 \end{enumerate}
 
-We over-allocate the buffer in order to limit the amount of reallocation operations. 
+We over-allocate the buffer in order to limit the amount of reallocation operations. Instead to expand the size to the new data length, we double the available memory space. The next time we want to insert some new values in the buffer, we avoid the expensive costs of the reallocation and the data copy.
 
 Another possibility would have been to create a new \textit{DataBuffer} with the content of the old buffer plus the new value. But changing the DataBuffer object in a array would have broken the view mechanism since the views would still point to the old \textit{DataBuffer} reference. Moreover this solution doe not allow the over-allocation.
 
 
 \section{CSR Matrices Implementation}
+
+Nd4j does not provide any representation for this matrix format. We used the existing data structure, parameters holder and indexes to implement a new representation and the operations.
+
 \subsection{Structure}
 
-The representation uses 4 data buffers to encore a CSR matrix. One for the non-zero values, one for the columns indexes and two for the row pointers (to the beginning and to the end of each row).
+The representation uses 4 data buffers to encode a CSR matrix. One for the non-zero values, one for the columns indexes and two for the row pointers (to the beginning and to the end of each row).
 
 \subsection{Put a value}
 
-To insert a new value or to update an existing non-null value, we need to identify where the values of row we want ot insert to are located in the values buffer and in the columns buffer. The beginning and end of rows pointers give us the range of indexes.
+To insert a new value or to update an existing non-zero value, we need to identify where the values of row we want ot insert to are located in the values buffer and in the columns buffer. The beginning and end of rows pointers give us the range of indexes.
 
-While iterating over the range of values, if we find a value with the same column index than the one we want to insert to, we can update the values and nothing needs to be changed in the three other buffer. 
+While iterating over the range of values, if we find a value with the same column index than the one we want to insert to, we can update the values and nothing needs to be changed in the three other buffers. 
 
 However if there is no value with that column, we need to insert a new one at the correct position. Then we need to update the end of row pointer for this row. Finally each row pointers that come after need to be increment by one.
 
@@ -105,13 +113,14 @@ Here are the parameters we need to compute:
 	\item the offsets: an array with two elements that indicate the first row and the first column that belongs to the sub-array.
 	\item the offset: indicates the position in the data buffer of the first element that belongs to the sub-array.
 \end{itemize}
- \item Sometimes the offsets are equal to zeros while having a non-null offset. This situation occurs for example when using only a combination of \textit{all} and \textit{point} indexes  In this case we need to compute manually the offsets and override them.
+ \item Sometimes the offsets are equal to zeros while having a non-zero offset. This situation occurs for example when using only a combination of \textit{all} and \textit{point} indexes. In this case we need to compute the offsets manually.
   
  \begin{algorithm}
  	\caption{Calculate the offsets}
  	\label{alg:sparseOffsets2d}
  	\begin{algorithmic}
  		\Procedure{offsets}{int $offset$}\\
+ 		\Comment the shape array mentioned behind is the shape of the current array from which we are getting a view.
 	 		\State $offsets \gets new\ int[2]$
 	 		\State $offsets[0] \gets \lfloor offset\ /\ shape[1]\rfloor$
 	 		\State $offsets[1] \gets offset\ \%\ shape[1]$
@@ -128,17 +137,25 @@ The entire method is shown in appendix \ref{lst:getcsc}.
 
 \subsection{Limits of this format}
 
-This formats only works with two dimensions and cannot be extended to tensors. Therefor it makes it difficult to be compatible with the API.
-Moreover the operations to get or put values aren't straightforward. Several step are necessary before accessing the value.
+This format only works with two dimensions and cannot be extended to tensors. Therefore it makes it hardly compatible with the API.
+Moreover the operations to get or put values aren't straightforward. Several step are necessary before accessing the value of a given coordinates:
+
+Assuming we want to get the value $v_{i}$ of the coordinates $(r_{i}, c_{i})$.
+ We have to get the two row pointers of $r_{i}$, iterate over the values buffer on the range delimited by the pointers and check if the column index of the current value is equal to the $c_{i}$. As soon as we match the column index, we can return the value $v_{i}$ or we return zero if we reach the end of the row without matching.
 
 However we could use this format to represent Tensors Along Dimension (TADs) as explained in section \ref{sec:moreFormat}
 
 \section{COO Tensors}
+
+Conversely to the CSR format, the COO format can easily be extended to multi-dimensional array. Since we stored the coordinates of each value, the rank of the array is not limited to two, we can store any number of coordinates.
+ 
+As the CSR representation, no implementation of a COO format exists in Nd4j, we have to create it using the existing components of the library.
+
 \subsection{Naive implementation} \label{ssec:naiveCoo}
 
 Based on the description in \ref{sssec:coo} the COO encoding needs one data buffer to store all the non-null values and one for the indexes of each values. 
 
-An easy solution would have been to store the indexes into a multi-dimension array of \textit{DataBuffers}: One buffer for each value, or one buffer for each dimension. Due to the native constraints that makes hardly manageable to have such arrays (Difficulty to pass the array to the native side and Cuda side), we choose to flatten the indexes into one buffer.
+An easy solution would have been to store the indexes into a multi-dimension array of \textit{DataBuffers}: One buffer for each value, or one buffer for each dimension. Due to the native constraints that makes hardly manageable to have such arrays (difficult to pass the array to the native side and Cuda side), we choose to flatten the indexes into one buffer.
 
 The figure \ref{fig:datastoring} illustrates the different manner to store the coordinates $[0, 2, 1]$ of a value $v_{i}$ in a 3-order tensor with four non-zero values.
 
@@ -150,14 +167,15 @@ The figure \ref{fig:datastoring} illustrates the different manner to store the c
 	\quad
 	\subfloat[Flattened Indexes]{\includegraphics[width=2.3in]{images/indexesCoo_c.pdf} \label{fig:cooIdxC}}
 	\hfill
-	\caption{Illustration of the different possible datastructure for storing the indexes  [0, 2, 1] of a value $v$ }
+	\caption{Illustration of the different possible data structure for storing the indexes  [0, 2, 1] of a value $v$ }
 	\label{fig:datastoring}
 \end{figure}
 
 
 But this implementation makes difficult to be compatible with the API. It brings several issues:
 \begin{itemize}
-	\item The key of views is the sharing of their data. In case of COO format, views have to share the data buffer and the indexes buffer. Without the indexes it is not possible to add a value in the original array by adding it in a view. If we only put the new value in the shared value buffer without updating the indexes, the original array would have a value buffer bigger than its indexes buffer and there would be an offset between the values and the indexes. 
+	\item The key of views is the sharing of their data to avoid the reallocation. In case of COO format, views have to share the data buffer and the indexes buffer. 
+	We might be tempted to create an new indexes buffer for each view. Each indexes buffers will have the coordinates of the value regarding the view context. But it  would not be possible to add a value in the original array by adding it in a view. If we only put the new value in the shared value buffer without updating the indexes, the original array would have a value buffer bigger than its indexes buffer and we would not know what the indexes of this value are. 
 	
 	Even when sharing both buffers, how would we know which value is included in the view and which is not? 	
 	
@@ -176,7 +194,7 @@ But this implementation makes difficult to be compatible with the API. It brings
 
 \subsection{Reverse coordinates}
 \label{ssec:reverse}
-An important and frequently used method of the API is to get the value of a coordinates. Since the indexes are flatten into one buffer, we need to find it into buffer and get the underlying index.
+An important and frequently used method of the API is to get the value of a set of coordinates. Since the indexes are flattened into one buffer, we need to find them into  the buffer and get the underlying index and then the corresponding value.
 
 Since the indexes buffer is lexicographically sorted, a binary search can be applied. But instead of comparing a value, we need to compare a sub-array of the buffer with the target indexes. An additional step is necessary before the comparison: translate the position of the value in the values buffer to get the positions of the indexes in the buffer.
 
@@ -197,27 +215,47 @@ The underlyingRank is the number of coordinates used to index a single value in 
 Several steps are needed to put a new value in a COO array:
 \begin{enumerate}
 	\item The same value in a view or in the original array can have different coordinates. A translation step is needed between the view indexes and the original array coordinates (the actual coordinates stored in the shared buffer).
-	\item Verify if the value of this indexes is already non-zero. In this case we can either remove the entry if the new value is zero, or replace the value in the buffer. Nothing else need to be done.
+	\item Verify if the old value of this index is already non-zero. If so we can either remove the entry if the new value is zero, or replace the old value by the new in the buffer. Nothing else need to be done.
 	\item If the new value is equal to 0: the indexes and the value are not added in the buffers.
-	\item If it is a new non-zero value: we need to insert the value and the indexes in the buffers. But first we need to ensure that the buffers have enough spaces for the new entries. If not, we need to reallocate them. The new entries are added at the end of the buffers; the sort are not maintained at insertion to avoid sorting the array too often when it is not needed.
+	\item If it is a new non-zero value: we need to insert the value and the indexes in the buffers. But first we need to ensure that the buffers have enough spaces for the new entries. If not, we need to reallocate them. The new entries are added at the end of the buffers; the sort are not maintained at insertion to avoid sorting the array too often when it is not needed. 
+	
+	For example an operation that modifies sequentially the values (i.e traversal operation) might need to add multiple non-zero values in memory. If the sort was maintained at insertion, we would need to pay the cost of searching the right position for each value. 
 \end{enumerate}
 
 
 \subsection{More parameters are needed to define the tensors}
 
-Most of the issues cited in section \ref{ssec:naiveCoo} are due to the support of the different types of indexes. Each index implements the interface \textit{INDArrayIndex} and extends from \textit{NDArrayIndex}. They provide a very efficient and powerful mechanism to access part of a array but they introduce some constraints when implementing views for COO.
+Nd4j uses a powerful tool to access part of an array: the \textit{INDArrayIndexes}. But they are the sources of many of the issues cited in section \ref{ssec:naiveCoo}.
+
+We present each type of index, with their set of constraints and the solutions implemented below.
+
+\subsubsection{Resolution of the Indexes}
+
+The \textit{ShapeOffsetResolution} is a key mechanism in the resolution of the indexes. Taking a combination in input, it computes the information such as the shape, the offsets, the strides,\dots about the sub-array selected by the indexes. 
+
+Despite this class has been made for resolving the indexes of a dense representation, we can reuse with sparse arrays. The parameters we need are computed independently of the storage format and the internal structure of the array.
+
+For example an interval [1, 3[ on a dimension i would result to $offsets[i] = 1$ and $shape[i] = 2$, which is the length of the interval. It does not make any assumption about the underlying storage format.
 
 \subsubsection{All Indexes}
-\textit{All} indexes are the most straightforward of the library. They are used to collect all the elements of a dimension.
+\textit{All} indexes are the most straightforward of the library. They are used to collect all the elements of a dimension. They are useful when used in combination with other type of indexes. For example if we would like to take the first column of a matrix, we would need to ask for the first element of all the rows.
 
 \subsubsection{Interval Indexes}
-\textit{Interval} indexes takes an subpart of a dimension containing in an interval. They don't modify the rank
+\textit{Interval} indexes takes an contiguous subpart of a dimension containing in an interval. They don't modify the rank
 
-The grey sub-array in figure \ref{fig:viewOffset} is the result of the operation :
+The grey sub-array in figure \ref{fig:viewOffsetDup} is the result of the operation :
 \begin{lstlisting}[style=nonumbers]
 	myArray.get(NDArrayIndex.interval(1, 3), NDArrayIndex.interval(1, 3));
 \end{lstlisting} 
-After the resolution of the indexes, we obtain offsets equal to $[1, 1]$ with an offset equal to $4$, which mean that the first row and the first column are not included in the view and the first element in memory that belongs to the view is at position $4$.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8in]{images/viewIndexOffset.pdf}
+	\caption{A $3\times 3$ matrix with a $2\times 2$ view in grey}
+	\label{fig:viewOffsetDup}
+\end{figure}
+
+After the resolution of the indexes, we obtain offsets equal to $[1, 1]$ with an offset equal to $4$, which mean that the first row and the first column are not included in the view and the first element in memory that belongs to the view is at position $4$ in the original array (the value 5 in the figure).
 
 To be able to identify what values belong to the view and what values do not, we need to define the bounds of each dimension. For this example, we have
 
@@ -229,7 +267,7 @@ The lower bounds are stored in the \textit{sparseOffset} array.
 \subsubsection{Point Index}
 \textit{Point} indexes take one unique element of a dimension. They reduce the rank of the array.
 
-Assuming we have a tensor with a shape equals to ($2\times 3\times 3$) as shown in figure \ref{fig:pointTensor}. We want to take a slice along the first dimension, assuming that the first dimension being the pages, the second the rows and the third the columns. We use the following operation:
+Assuming we have a tensor with a shape equal to ($2\times 3\times 3$) as shown in figure \ref{fig:pointTensor}. We want to take a slice along the first dimension, assuming that the first dimension is called the pages, the second the rows and the third the columns. We use the following operation to get the first page:
 \begin{lstlisting}[style=nonumbers]
 	myTensor.get(NDArrayIndex.point(0),
 		NDArrayIndex.all(),
@@ -247,7 +285,10 @@ The result is a view with a shape equals to ($3\times 3$), as shown in grey in f
 
 The coordinates of the resulting matrix have only two dimensions instead of three. We have an issue when trying to access a value given a pair of coordinates in the view context. There is no direct matching between these coordinates and those who actually are in the indexes buffer. 
 
-Each value of the tensor has its coordinates in the form $(idx_{0}, idx_{1}, idx_{2})$. But in the resulting view the values are defined with only two coordinates: ($idx_{1}, idx_{2}$), the first dimension is fixed with a value equal to 0. 
+In the example above, the indexes buffer is equal to $[0, 0, 1, 0, 0, 2, 0, 1, 0, \dots]$ which correspond to the values buffer $[2, 3, 4, \dots]$.
+The value $4$ has the coordinates $(0, 1, 0)$ while its coordinates in the view are equal to $(0, 1)$.
+
+Generalizing, each value of the tensor has its coordinates in the form $(idx_{0}, idx_{1}, idx_{2})$. But in the resulting view the values are defined with only two coordinates: ($idx_{1}, idx_{2}$), the first dimension is fixed with a value equal to 0. 
 
 To translate the view coordinates to the original coordinates which are actually stored into the shared buffer, we need to keep track of the unused dimension and its value. The solution is to add an additional parameter array that keeps track of the status of each dimension. The array is called \textit{flags} and it can contains either 0, which means \textit{active}, or 1 which means \textit{fixed}.
 
@@ -256,7 +297,7 @@ In this example the flags array would be equal to [1, 0, 0] because the first di
 
 \subsubsection{Specified Index}
 
-Specified index will take specific values of a dimension, depending on the position in the indexes array when calling $myArray.get(indexes...)$. This index takes an array in parameter with the values we want to select.
+Specified index will take non-contiguous values of a dimension, depending on the position in the indexes array when calling $myArray.get(indexes...)$. This index takes an array as argument containing the values we want to select.
 
 Assuming we have an $3\times 5$ matrix, as shown in figure \ref{fig:specifiedArray}, on which we call the following operation to select the first, the third and the fourth columns :
 
@@ -265,7 +306,7 @@ Assuming we have an $3\times 5$ matrix, as shown in figure \ref{fig:specifiedArr
 		new SpecifiedIndex(0, 2, 3));
 \end{lstlisting}
 
-Instead of returning a view of $myMatrix$, it returns a new array containing the data from the original matrix. The data is copied, not shared. The data of the view that would result from this operation is not easily indexable in memory with stride and offsets and it would be difficult to represent it. Therefor the figure \ref{fig:specifiedCopy} is an independent $3\times 3$ matrix resulting from the above operation.
+Instead of returning a view of $myMatrix$, it returns a new array containing the data from the original matrix. The data is copied, not shared. The data of the view that would result from this operation is not easily indexable in memory with stride and offsets and it would be difficult to represent it. Therefore the figure \ref{fig:specifiedCopy} is an independent $3\times 3$ matrix resulting from the above operation.
 
 \begin{figure}[!h]
 	\centering
@@ -279,19 +320,23 @@ Instead of returning a view of $myMatrix$, it returns a new array containing the
 
 \subsubsection{New Axis Index}
 \textit{New axis} indexes are used to add a new dimension to the array. The new dimension always has a length equal to 1. It can be prepended or inserted in the middle of the dimensions.
-Since the rank is higher, more coordinates are needed to access a value. However the shared indexes buffers is limited to the original rank. Similarly to the point index, we need a new parameter array that keep tracks of the position of the new dimensions to be able to  translate the coordinates from view to original context.
+Since the rank is higher, more coordinates are needed to access a value. However the shared indexes buffer is limited to the original rank. Similarly to the point index, we need a new parameter array that keep tracks of the position of the new dimensions to be able to translate the coordinates from view to original context.
 
 Assuming we have a $3\times 3$ matrix: calling \textit{myArray.get(NDArrayIndex.newAxis(), NDArrayIndex.all())} will prepend a new dimension. The view is a $1\times 3\times 3$ tensor with a hidden dimension parameter array equal to $[0]$.
+
+We use an array called \textit{hiddenDimension} to keep track of the position of the new dimensions in the coordinates. In the example above, each value $v_{i}$ has the coordinates $(i_{0}, i_{1}, i_{2})$ within the view context. The array \textit{hiddenDimension} contain $[0]$ because this dimension does not exist in the original array.
 
 \subsection{Sparse Indexes Translation}
 \label{ssec:translation}
 
 To translate a view coordinates to the underlying coordinates, we have to take into accounts: the sparse offsets, the hidden dimensions and the flags. With those three parameters we have everything needed for translating.
 
+
+
 While iterating over the view dimensions, three situations can happen :
 \begin{enumerate}
-	\item The current dimension is hidden: We do nothing and go to the next step of the iteration.
-	\item The current dimension is fixed: We put the corresponding offset into the result array. Since several fixed dimensions can occur in a row, we need to repeat until we reach an active dimension.
+	\item The current dimension is hidden; the original array does not contain it becaise it has been created by a \textit{point} index: We do nothing. The dimension is skipped and we start the next iteration.
+	\item The current dimension is fixed: We put the corresponding offset into the result array. Since several fixed dimensions can occur one after the others in the coordinates array, we need to repeat until we reach an active dimension.
 	\item The current dimension is active: We sum the view coordinate with the sparse offset.
 \end{enumerate}
 This method is described in detail in algorithm \ref{alg:translation} 
@@ -303,9 +348,12 @@ This method is described in detail in algorithm \ref{alg:translation}
 	\begin{algorithmic}
 		
 		\Procedure{translate}{int[] $viewIndexes$}\\
-		\Comment{$underlyingRank$, $hiddenDimensions$ and $sparseOffsets$ are class fields}\\
+		\Comment{ $underlyingRank$ is the rank of the original array which is equal to the number of indexes stored in the buffer for a given value. 
+		$hiddenDimensions$ contains the position of each hidden dimension.
+		$sparseOffsets$ contains the offsets for each dimension. They are class fields of the COO array instance.}\\
 		\State $result \gets new\ int[underlyingRank]$
-		\State $idxPhy \gets 0,\ hidden \gets 0 $
+		\State $idxPhy \gets 0$ \\ 
+		\State $hidden \gets 0$ \Comment{Number of hidden dimension encountered}
 		\\
 		\For{$idxVir=0$ to $viewIndexes.length$}\\
 		
@@ -326,29 +374,31 @@ This method is described in detail in algorithm \ref{alg:translation}
 		
 		\EndIf
 		
-		\EndFor		
+		\EndFor	
+		\Return $result$ \Comment{contains the indexes of the underlying array}	
 		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
 \subsubsection{Example of indexes translation}
-% TODO
-TODO
+
+An example of execution is explained in appendix \ref{ssec:idxtrans}.
 
 \subsection{Computations of the the Parameters}
 \subsubsection{Computation of the Sparse Offsets}
 \label{sssec:sparseOff}
-The sparse offsets are computed from the offset. The offset gives us the position of the first element in the array. We want to reverse it the coordinates of this values which will be the sparse offset. 
+The \textit{sparse offsets} are computed from the offset resulting from the resolution of the indexes. The \textit{offset} gives us the position of the first element in the array. 
 
 
 \begin{enumerate}
-	\item For each dimension except the innermost one, we divide the offset by the shape of that dimension. Rounded to the lower integer, this quotient gives us the sparse offset for the dimension. Then we need to remove the number of elements that are in the same dimension but at a lowest value (if the element is in the 4th row, we want to remove all the elements of the previous rows).
+	\item For each dimension except the innermost one, we divide the offset by the length of that dimension. The quotient gives us the sparse offset for the dimension. Then we need to remove the number of elements that are in the same dimension but at a lowest value (if the element is in the 4th row, we want to remove all the elements of the previous rows).
 	
-	\item We iterate until the last element. In this case we have the offsets set up up to the row dimension. To find which column the value is in, we need to take the modulo of the remaining offset by the number of columns. There is only one operation per dimension, then for a n-order tensor, the complexity of this step if O(n).
+	\item We reached the last dimension: To compute the sparse offset of the last dimension we need to take the modulo of the updated offset by length of the dimension. 
 	
-	\item We have the sparse offsets given a set of indexes. But we might be computing the sparse offsets of a view which is already offset from an original array. We need to merge the new sparse offsets with those of the current array. The final result is the sum of the existing offset and the freshly computed offset.
+	In steps 1 and 2 there is only one operation to compute the sparse offset per dimension, then for a n-order tensor, the complexity of these steps is O(n).
 	
-	
-	During the merge we should particularly be careful with fixed dimensions of the current array because they are absent from the sparse offset resolution explained above. The result does not contain any information about them, we need to add these fixed dimensions with their current offset to final offsets array. 
+	\item We have the sparse offsets given a set of indexes. But if we are computing the sparse offsets of a view of a view, the view from which we are taking a view might already have some sparse offsets. We need to merge the new sparse offsets with those of the current array. The final result is the sum of the existing offset and the freshly computed offset.
+		
+	During the merge we should be particularly careful with fixed dimensions of the current array because they are absent from the sparse offset resolution explained above. The result does not contain any information about them, we need to add these fixed dimensions at the correct position with their current sparse offset to final offsets array. 
 
 \end{enumerate}
 
@@ -378,16 +428,17 @@ The sparse offsets are computed from the offset. The offset gives us the positio
 	\State $finalOffsets[i] \gets newOffsets[active] + sparseOffsets[i]$
 	\State $i \gets i + 1$
 	\EndIf
-	\EndFor\\
+	\EndFor
 	\Return $finalOffsets$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
+\subsubsection{Example of Sparse Offsets Computation}
 An example of the execution of the algorithm is presented in appendix \ref{ch:spaoffexec}
 
 \subsubsection{Computation of the Flags}
-The \textit{Flags} array determines which dimension is active and which one is hidden from the point of view of the array. The \textbf{}dimension can only be reduced using a \textit{point} index, which means the flags can be computed during the offset resolution. An interval with a length equals 1 does not reduced the dimensionality of the array. We fill the flags array while iterating over the indexes array.
+The \textit{Flags} array determines which dimension is active and which one is hidden from the point of view of the array. The \textbf{}dimension can only be reduced using a \textit{point} index, which means the flags can be computed during the offset resolution. An \textit{interval} with a length equals 1 does not reduce the dimensionality of the array. We fill the flags array while iterating over the indexes array.
 
 \subsubsection{Computation of the Hidden Dimensions}
 
@@ -437,14 +488,14 @@ The resolution returns an array containing the position of the \textit{newAxis} 
 	
 	The final representation is encoded with 5 \textit{DataBuffers}:
 	\begin{enumerate}
-		\item Values: Stored the value linearly.
-		\item Indexes: Stored the flattened indexes of each values.
+		\item Values: Store the values linearly.
+		\item Indexes: Store the flattened indexes of each values.
 		\item Flags: Define which dimensions are active and which are fixed.
-		\item Sparse Offsets: Define the bound of each dimension.
-		\item Hidden Dimensions: Keep track of the position in the shape array of the hidden dimension.
+		\item Sparse Offsets: Define the bounds of each dimension.
+		\item Hidden Dimensions: Keep track of the position of the hidden dimension in the shape array .
 	\end{enumerate}
 	
-		The indexes and values are sorted in the lexicographic order in order to make the search by indexes easily via binary search. The sort is ensured before performing any operations.
+		The indexes and values are sorted in the lexicographic order in order to make the search by indexes easily via binary search. We sort the buffers only before we need to read them : when performing an operation or when accessing its contents. The sort is not maintained at the insertion.
 		
 		The flags, the offsets and the hidden dimensions arrays are grouped in one \textit{DataBuffer}, similarly to the \textit{ShapeInformation} buffer.
 		
@@ -458,7 +509,7 @@ Figure \ref{fig:tens} shows a tensor $T$ with a shape $(2\times 3\times 3)$ and 
 		NDArrayIndex.interval(1, 3));
 \end{lstlisting}
 
-The first index prepends a new dimension and increases the rank, the second takes the first page of the tensor and reduces the rank. Then the next ones select the sub-array in the first page. The parameters of $T_{view}$ are listed in figure \ref{eqn:viewParams} 
+The first index prepends a new dimension and increases the rank, the second takes the first page of the tensor and reduces the rank. Then the next ones select the sub-array in the first page dimension. The parameters of $T_{view}$ are listed in figure \ref{eqn:viewParams} 
 
 \begin{figure}[!h]
 	\centering

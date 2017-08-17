@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  16 AUG 2017 09:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  16 AUG 2017 17:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1630,7 +1630,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-[4] <images/tensorscooexpl.pdf, id=479, 221.82875pt x 119.44624pt>
+[4] <images/tensorscooexpl.pdf, id=481, 221.82875pt x 119.44624pt>
 File: images/tensorscooexpl.pdf Graphic file (type pdf)
 
 <use images/tensorscooexpl.pdf>
@@ -1649,7 +1649,7 @@ Chapter 3.
 
 
 
-] <images/nd4j_architecture.png, id=497, 334.24875pt x 316.18124pt>
+] <images/nd4j_architecture.png, id=499, 334.24875pt x 316.18124pt>
 File: images/nd4j_architecture.png Graphic file (type png)
 
 <use images/nd4j_architecture.png>
@@ -1666,7 +1666,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--1
 []\T1/futs/b/n/24.88 Structure of an Multi-dimensional
  []
 
-<images/c_f_Orders.pdf, id=505, 256.96pt x 129.48375pt>
+<images/c_f_Orders.pdf, id=507, 256.96pt x 129.48375pt>
 File: images/c_f_Orders.pdf Graphic file (type pdf)
 
 <use images/c_f_Orders.pdf>
@@ -1677,14 +1677,14 @@ Package pdftex.def Info: images/c_f_Orders.pdf used on input line 15.
 
 
  <./images/c_f_Orders.pdf>]
-<images/views.pdf, id=517, 326.21875pt x 222.8325pt>
+<images/views.pdf, id=519, 326.21875pt x 222.8325pt>
 File: images/views.pdf Graphic file (type pdf)
  <use images/views.pdf>
 Package pdftex.def Info: images/views.pdf used on input line 74.
 (pdftex.def)             Requested size: 252.94499pt x 172.7886pt.
 
 [10] [11 <./images/views.pdf>]
-Overfull \hbox (1.91658pt too wide) in paragraph at lines 97--98
+Overfull \hbox (1.91658pt too wide) in paragraph at lines 99--100
 []\T1/futs/m/n/10.95 (-20) Broadcast: Some of the more use-ful op-er-a-tions ar
 e vec-tor op-er-a-tions, such as \T1/futs/m/it/10.95 (-20) addRowVec-
  []
@@ -1698,12 +1698,8 @@ Chapter 5.
 
 
 
-]
-Underfull \vbox (badness 5008) has occurred while \output is active []
-
- [14]
-[15]
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 104
+] [14] [15]
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 112
 .
  (/usr/share/texlive/texmf-dist/tex/latex/fourier/ts1futs.fd
 File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
@@ -1713,127 +1709,148 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 111.
- [16]
-<images/indexesCoo_a.pdf, id=575, 91.34125pt x 152.57pt>
+put line 119.
+
+[16]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17]
+<images/indexesCoo_a.pdf, id=585, 91.34125pt x 152.57pt>
 File: images/indexesCoo_a.pdf Graphic file (type pdf)
 
 <use images/indexesCoo_a.pdf>
-Package pdftex.def Info: images/indexesCoo_a.pdf used on input line 147.
+Package pdftex.def Info: images/indexesCoo_a.pdf used on input line 164.
 (pdftex.def)             Requested size: 72.26999pt x 120.71986pt.
 
-Underfull \hbox (badness 6592) in paragraph at lines 147--147
+Underfull \hbox (badness 6592) in paragraph at lines 164--164
 []\T1/futs/m/n/9 (+20) (a) |each in-dex is
  []
 
-<images/indexesCoo_b.pdf, id=576, 103.38625pt x 132.495pt>
+<images/indexesCoo_b.pdf, id=586, 103.38625pt x 132.495pt>
 File: images/indexesCoo_b.pdf Graphic file (type pdf)
 
 <use images/indexesCoo_b.pdf>
-Package pdftex.def Info: images/indexesCoo_b.pdf used on input line 149.
+Package pdftex.def Info: images/indexesCoo_b.pdf used on input line 166.
 (pdftex.def)             Requested size: 79.49744pt x 101.88194pt.
 
-<images/indexesCoo_c.pdf, id=577, 213.79875pt x 45.16875pt>
+<images/indexesCoo_c.pdf, id=587, 213.79875pt x 45.16875pt>
 File: images/indexesCoo_c.pdf Graphic file (type pdf)
 
 <use images/indexesCoo_c.pdf>
-Package pdftex.def Info: images/indexesCoo_c.pdf used on input line 151.
+Package pdftex.def Info: images/indexesCoo_c.pdf used on input line 168.
 (pdftex.def)             Requested size: 166.2212pt x 35.11705pt.
- [17 <./images/indexesCoo_a.pdf> <./images/indexesCoo_b.pdf> <./images/indexesC
-oo_c.pdf>]
-<images/viewIndexOffset.pdf, id=598, 53.19875pt x 53.19875pt>
+
+<images/viewIndexOffset.pdf, id=589, 53.19875pt x 53.19875pt>
 File: images/viewIndexOffset.pdf Graphic file (type pdf)
 
 <use images/viewIndexOffset.pdf>
-Package pdftex.def Info: images/viewIndexOffset.pdf used on input line 169.
+Package pdftex.def Info: images/viewIndexOffset.pdf used on input line 187.
 (pdftex.def)             Requested size: 57.81621pt x 57.81906pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 186.
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[18 <./images/indexesCoo_a.pdf> <./images/indexesCoo_b.pdf> <./images/indexesCo
+o_c.pdf>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 204.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [18 <./images/viewIndexOffset.pdf>] [19]
-<images/tensorsHiglighted.pdf, id=622, 114.4275pt x 75.28125pt>
+ [19 <./images/viewIndexOffset.pdf>]
+Underfull \vbox (badness 5985) has occurred while \output is active []
+
+ [20]
+File: images/viewIndexOffset.pdf Graphic file (type pdf)
+
+<use images/viewIndexOffset.pdf>
+Package pdftex.def Info: images/viewIndexOffset.pdf used on input line 253.
+(pdftex.def)             Requested size: 57.81621pt x 57.81906pt.
+
+<images/tensorsHiglighted.pdf, id=629, 114.4275pt x 75.28125pt>
 File: images/tensorsHiglighted.pdf Graphic file (type pdf)
 
 <use images/tensorsHiglighted.pdf>
-Package pdftex.def Info: images/tensorsHiglighted.pdf used on input line 243.
+Package pdftex.def Info: images/tensorsHiglighted.pdf used on input line 281.
 (pdftex.def)             Requested size: 108.405pt x 71.32149pt.
- [20 <./images/tensorsHiglighted.pdf>]
-<images/specifiedIndex.pdf, id=638, 87.32625pt x 62.2325pt>
+ [21 <./images/tensorsHiglighted.pdf>]
+<images/specifiedIndex.pdf, id=646, 87.32625pt x 62.2325pt>
 File: images/specifiedIndex.pdf Graphic file (type pdf)
 
 <use images/specifiedIndex.pdf>
-Package pdftex.def Info: images/specifiedIndex.pdf used on input line 272.
+Package pdftex.def Info: images/specifiedIndex.pdf used on input line 313.
 (pdftex.def)             Requested size: 101.41977pt x 72.26999pt.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 272.
+(Font)              scaled to size 8.27998pt on input line 313.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 272.
+(Font)              scaled to size 6.99199pt on input line 313.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 272.
+(Font)              scaled to size 8.27998pt on input line 313.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 272.
+(Font)              scaled to size 6.99199pt on input line 313.
 
-<images/specifiedIndexView.pdf, id=639, 61.22874pt x 62.2325pt>
+<images/specifiedIndexView.pdf, id=647, 61.22874pt x 62.2325pt>
 File: images/specifiedIndexView.pdf Graphic file (type pdf)
 
 <use images/specifiedIndexView.pdf>
-Package pdftex.def Info: images/specifiedIndexView.pdf used on input line 274.
+Package pdftex.def Info: images/specifiedIndexView.pdf used on input line 315.
 (pdftex.def)             Requested size: 71.11038pt x 72.26999pt.
- [21 <./images/specifiedIndex.pdf> <./images/specifiedIndexView.pdf>] [22] [23]
- [24]
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[22] [23 <./images/specifiedIndex.pdf> <./images/specifiedIndexView.pdf>]
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 467--468
 [] \T1/futs/b/n/10.95 while $\T1/futs/m/n/10.95 (+20) ((\FML/futmi/m/it/10.95 o
 ldDim \FMS/futm/m/n/10.95 ^^U \FML/futmi/m/it/10.95 hiddenDimensions:length \FM
 S/futm/m/n/10.95 ç \FML/futmi/m/it/10.95 newAxis\T1/futs/m/n/10.95 (+20) [\FML/
 futmi/m/it/10.95 newDim\T1/futs/m/n/10.95 (+20) ] \FMS/futm/m/n/10.95 ^^T
  []
 
-[25] <images/tensors.pdf, id=694, 114.4275pt x 75.28125pt>
+[25] [26] [27] <images/tensors.pdf, id=707, 114.4275pt x 75.28125pt>
 File: images/tensors.pdf Graphic file (type pdf)
 
 <use images/tensors.pdf>
-Package pdftex.def Info: images/tensors.pdf used on input line 465.
+Package pdftex.def Info: images/tensors.pdf used on input line 514.
 (pdftex.def)             Requested size: 122.85876pt x 80.83156pt.
 
-<images/tensors-view.pdf, id=695, 81.30376pt x 56.21pt>
+<images/tensors-view.pdf, id=708, 81.30376pt x 56.21pt>
 File: images/tensors-view.pdf Graphic file (type pdf)
 
 <use images/tensors-view.pdf>
-Package pdftex.def Info: images/tensors-view.pdf used on input line 468.
+Package pdftex.def Info: images/tensors-view.pdf used on input line 517.
 (pdftex.def)             Requested size: 81.30354pt x 56.20985pt.
- [26 <./images/tensors.pdf> <./images/tensors-view.pdf>]) [27]
+ [28 <./images/tensors.pdf> <./images/tensors-view.pdf>]) [29]
 \openout2 = `main/ch5_operations.aux'.
 
- (./main/ch5_operations.tex [28
+ (./main/ch5_operations.tex [30
 
 
 
 ]
 Chapter 6.
-[29] [30]
+[31] [32]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [31])
-[32]
+ [33])
+[34]
 \openout2 = `main/ch6_results.aux'.
 
  (./main/ch6_results.tex
 Chapter 7.
-) [33
+) [35
 
 
 
 ]
 \openout2 = `main/ch7_future.aux'.
 
- (./main/ch7_future.tex [34
+ (./main/ch7_future.tex [36
 
 
 
@@ -1842,20 +1859,20 @@ Chapter 8.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [35]
-[36]) [37]
+ [37]
+[38]) [39]
 \openout2 = `main/ch7_conclusion.aux'.
 
- (./main/ch7_conclusion.tex [38
+ (./main/ch7_conclusion.tex [40
 
 
 
 ]
 Chapter 9.
-) [39]
+) [41]
 \openout2 = `tail/runThrough.aux'.
 
- (./tail/runThrough.tex [40
+ (./tail/runThrough.tex [42
 
 
 
@@ -1866,25 +1883,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--48
 
  []
 
-[41]
+[43]
 Underfull \hbox (badness 10000) in paragraph at lines 54--59
 
  []
 
 
-LaTeX Warning: Reference `ssec:translation.' on page 42 undefined on input line
- 65.
+LaTeX Warning: Reference `ssec:translation.' on page 44 undefined on input line
+ 66.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <8> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 72.
- [42]
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 73.
+ [44]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [43])
-[44]
+ [45])
+[46]
 \openout2 = `tail/biblio.aux'.
 
  (./tail/biblio.tex (./my_thesis.bbl
@@ -1905,7 +1922,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--31
 l-[]1-[]routines$[][].  [On-line; ac-cessed 13-
  []
 
-)) [45
+)) [47
 
 
 
@@ -1922,7 +1939,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 72.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 72.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 72.
 Package rerunfilecheck Info: File `my_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: D93779C2984B4582D505FC77F470EB71;4710.
+(rerunfilecheck)             Checksum: 52DBF367FD4B3717484419B4CA3F7476;4710.
 
 
 LaTeX Warning: There were undefined references.
@@ -1930,10 +1947,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 72.
  ) 
 Here is how much of TeX's memory you used:
- 26519 strings out of 494953
- 456476 string characters out of 6180977
- 805361 words of memory out of 5000000
- 28534 multiletter control sequences out of 15000+600000
+ 26524 strings out of 494953
+ 456541 string characters out of 6180977
+ 805588 words of memory out of 5000000
+ 28536 multiletter control sequences out of 15000+600000
  155178 words of font info for 359 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,19n,77p,961b,2224s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1945,10 +1962,10 @@ public/fourier/fourier-ml.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /fourier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia
 /putb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on my_thesis.pdf (55 pages, 502131 bytes).
+Output written on my_thesis.pdf (57 pages, 507407 bytes).
 PDF statistics:
- 1106 PDF objects out of 1200 (max. 8388607)
- 919 compressed objects within 10 object streams
- 313 named destinations out of 1000 (max. 500000)
+ 1117 PDF objects out of 1200 (max. 8388607)
+ 928 compressed objects within 10 object streams
+ 316 named destinations out of 1000 (max. 500000)
  51848 words of extra memory for PDF output out of 61914 (max. 10000000)
 

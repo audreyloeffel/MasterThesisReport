@@ -6,7 +6,7 @@ The new sparse array have to be compliant with the API and inter-operable with t
 \section{Storing an Array}
 \label{sec:storing}
 
-A dense array is stored as a single contiguous block of memory, flatten in a one-dimensional array. Arrays are stored off-heap (outside the JVM environment). The reasons behind this design decision are numerous: better performance (avoid the interruptions of the garbage collector), better interoperability with BLAS libraries, and to avoid the disadvantages of the {JVM} such as the limited size of arrays due to the integer indexing (limited to $2^{31}-1 \cong 2.14 \text{ billion}$ elements)
+A dense array is stored as a single contiguous block of memory, flattened in a one-dimensional array. Arrays are stored off-heap (outside the JVM memory management). The reasons behind this design decision are numerous: better performance (avoid the interruptions of the garbage collector), better interoperability with BLAS libraries, and to avoid the disadvantages of the {JVM} such as the limited size of arrays due to the integer indexing (limited to $2^{31}-1 \cong 2.14 \text{ billion}$ elements)
 
 There are two methods to store a multi-dimensional array into a linear memory space: row-major order (C) or column-major order (Fortran). Figure \ref{fig:orders} shows how a two-dimensional array is stored according to the order.
 
@@ -84,13 +84,15 @@ Since the memory space is shared, changes to array will impact the content of th
 
 Nd4j emulates the  syntax of Numpy\cite{numpy} and use a similar mechanism to indexes the arrays. Among the different indexes we can note the intervals, the points,\dots
 
+Each index implements the interface \textit{INDArrayIndex} and extends from \textit{NDArrayIndex}.
+
 The indexes provide an efficient mechanism to access Tensors along dimension. A tensor along dimension (TAD) is a view of an actual tensor with a lower rank. The TAD are a very powerful concept to perform fast and optimized operations on tensors.
 
 \section{Operations}
 
 Nd4j defines five types of operations:
 \begin{enumerate}
-\item Scalar: element-wise operations such as addition or multiplication where a scalar is applying on an ndarray.
+\item Scalar: element-wise operations such as addition or multiplication where the same operation is applied on each element of the array. 
 \item Transform: in-place operations such as logarithm or cosine. There are usually executed in an element-wise manner but it's not always the case; some can be applied along a dimension.
 \item Accumulation: Also called Reduction. Operations applied over the whole ndarray or along a dimension such as the sum of all values.
 \item Index Accumulation: Similar to accumulation operations but return an index instead of a value. A classic operation is getting the maximum or minimum value along a dimension.
