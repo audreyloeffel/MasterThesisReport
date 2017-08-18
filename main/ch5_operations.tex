@@ -88,7 +88,7 @@ Once we have the two buffers, the procedure to call the BLAS routines is identic
 
 The level 2 routines perform operations between a sparse matrix and dense vectors whereas level 3 perform between a sparse matrix and dense matrices. The operations between two sparse matrices are not supported by Intel MKL.
 
-Intel MKL library supports several sparse matrix storage formats such as COO and CSR and each type has its own implementation of the routines.
+Intel MKL library \cite{mkllvl23} supports several sparse matrix storage formats such as COO and CSR and each type has its own implementation of the routines.
 
 For now in Nd4j only the general matrix-vector product is implemented (Gemv) for the COO format. All the input parameters of the COO routines can be extracted by a \textit{SparseCOOGemvParameters} object which makes the future implementation of the level 2 routines easier.
 

@@ -27,8 +27,6 @@ Once the CSR format implemented, it will be easy to extend it to CSC since only 
 
 Then we will need to make the different formats compatible between them, with conversion methods from a format to another. This will allow getting two-dimensional slices of tensors in a different format to benefit from the advantages of each format.
 
-Elgohary \cite{Elgohary:2016:CLA:2994509.2994515} developped an alternative version of CSR
-
 \section{Tensor Contraction Indexing}
 
 Currently, the mechanism to reverse an index and get the value (as explained in section \ref{ssec:reverse}) used a binary search. Sadly it does not provide an equal complexity in case of tensor contraction. A tensor contraction is a lower rank view of a tensor. Since the indexes buffer is sorted along the first dimension in a lexicographical order, it makes the task to access values of a contraction which does not contain the first dimension harder since the indexes are not sorted.

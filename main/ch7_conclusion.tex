@@ -1,8 +1,8 @@
 \chapter{Conclusion}
  
  
- This work presents an implementation of a Compressed Row format (CSR) for sparse scalar, vector, and matrix. We also implemented the  Coordinate format (COO) for sparse scalar, vector, matrix, and tensor.
+ We have presented an implementation of a Compressed Row format (CSR) for sparse scalar, vector, and matrix. We also have presented the Coordinates (COO) format and the constraints encountered during the implementation due to the different \textit{INDArrayIndexs}. We have shown how we have resolved those issues using some additional parameters to define the array in that representation.
  
- To be able to perform accelerated sparse linear algebra operations we bound the Nd4j operation calls to the routines of Intel MKL Sparse BLAS for the two implemented formats.
+ Then to be able to perform the accelerated sparse linear algebra operations we have bound the Nd4j calls to the routines of Intel MKL Sparse BLAS using JavaCPP for the two implemented formats.
  
- We compared the memory needed to store a sparse data set using the dense representation and the COO representation. We observed significant improvements: the sparse format allows us storing some big data set that would not fit in memory if they used the dense representations. 
+ Finally, we have compared the memory needed to store a sparse data set using the dense representation and the COO representation. We have observed significant improvements: the sparse format allows us storing some big data set that would not fit in memory if they used the dense representations. 

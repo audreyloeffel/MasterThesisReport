@@ -39,7 +39,7 @@ The drawback brought with this solution is that we always need to verify the typ
 \section{Limitations and Constraints}
 
 Nd4j has been made with the perspective of dense arrays. The design has been thought and optimized regarding the dense implementation which brings some constraints to implement the sparse representation
-\subsection{Storing off-heap}
+\subsection{Storing Off-heap}
 
 The data, encapsulated into DataBuffer object, is stored off-heap. Several reasons drive this design decision.
 \begin{enumerate}
@@ -62,9 +62,9 @@ Nd4j has implemented workspaces. A workspace is a memory chunk that we allocate 
 
 
 
-\subsection{DataBuffers have a fixed length}
+\subsection{DataBuffer Length}
 
-Once allocated a \textit{DataBuffer} can not be reallocated. It is not a issue when manipulating dense arrays, we never need to add a new value in a dense array, we only update the existing values. However we need to be able to add new values in the sparse buffers. Each time a zero value become a non-zero value we have to put the value and its indexes in memory.
+The \textit{DataBuffer} have a fixed length. Once allocated a \textit{DataBuffer} can not be reallocated. It is not a issue when manipulating dense arrays, we never need to add a new value in a dense array, we only update the existing values. However we need to be able to add new values in the sparse buffers. Each time a zero value become a non-zero value we have to put the value and its indexes in memory.
 
 To reallocate a buffer we need to:
 \begin{enumerate}
@@ -87,7 +87,7 @@ Nd4j does not provide any representation for this matrix format. We used the exi
 
 The representation uses 4 data buffers to encode a CSR matrix. One for the non-zero values, one for the columns indexes and two for the row pointers (to the beginning and to the end of each row).
 
-\subsection{Put a value}
+\subsection{Put a Value}
 
 To insert a new value or to update an existing non-zero value, we need to identify where the values of row we want ot insert to are located in the values buffer and in the columns buffer. The beginning and end of rows pointers give us the range of indexes.
 
@@ -133,7 +133,7 @@ $dim_{i} \in [offsets[i], offsets[i] + shape[i][$
 
 The entire method is shown in appendix \ref{lst:getcsc}.
 
-\subsection{Limits of this format}
+\subsection{Limits of this Format}
 
 This format only works with two dimensions and cannot be extended to tensors. Therefore it makes it hardly compatible with the API.
 Moreover the operations to get or put values aren't straightforward. Several step are necessary before accessing the value of a given coordinates:
@@ -149,7 +149,7 @@ Conversely to the CSR format, the COO format can easily be extended to multi-dim
  
 As the CSR representation, no implementation of a COO format exists in Nd4j, we have to create it using the existing components of the library.
 
-\subsection{Naive implementation} \label{ssec:naiveCoo}
+\subsection{Naive Implementation} \label{ssec:naiveCoo}
 
 Based on the description in \ref{sssec:coo} the COO encoding needs one data buffer to store all the non-null values and one for the indexes of each values. 
 
@@ -190,7 +190,7 @@ But this implementation makes difficult to be compatible with the API. It brings
 	\item A view can have a lower or higher rank than its original array. How can the view indexes be stored if they do not have the same dimensionality?
 \end{itemize}
 
-\subsection{Reverse coordinates}
+\subsection{Reverse the Coordinates}
 \label{ssec:reverse}
 An important and frequently used method of the API is to get the value of a set of coordinates. Since the indexes are flattened into one buffer, we need to find them into  the buffer and get the underlying index and then the corresponding value.
 
@@ -221,7 +221,7 @@ Several steps are needed to put a new value in a COO array:
 \end{enumerate}
 
 
-\subsection{More parameters are needed to define the tensors}
+\subsection{More Parameters are Needed to Define the Tensors}
 
 Nd4j uses a powerful tool to access part of an array: the \textit{INDArrayIndexes}. But they are the sources of many of the issues cited in section \ref{ssec:naiveCoo}.
 
@@ -229,9 +229,9 @@ We present each type of index, with their set of constraints and the solutions i
 
 \subsubsection{Resolution of the Indexes}
 
-The \textit{ShapeOffsetResolution} is a key mechanism in the resolution of the indexes. Taking a combination in input, it computes the information such as the shape, the offsets, the strides,\dots about the sub-array selected by the indexes. 
+The \textit{ShapeOffsetResolution} is a key mechanism in the resolution of the \textit{NDArrayIndexes}. Taking a combination of indexes as argument, it computes the information (the shape, the offsets, the strides,\dots) about the sub-array selected by the indexes. 
 
-Despite this class has been made for resolving the indexes of a dense representation, we can reuse with sparse arrays. The parameters we need are computed independently of the storage format and the internal structure of the array.
+Despite this class has been made for resolving the indexes of a dense representation, we can reuse it with sparse arrays. The parameters we need are computed independently of the storage format and the internal structure of the array.
 
 For example an interval [1, 3[ on a dimension i would result to $offsets[i] = 1$ and $shape[i] = 2$, which is the length of the interval. It does not make any assumption about the underlying storage format.
 
@@ -377,7 +377,7 @@ This method is described in detail in algorithm \ref{alg:translation}
 		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
-\subsubsection{Example of indexes translation}
+\subsubsection{Example of Indexes Translation}
 
 An example of execution is explained in appendix \ref{ssec:idxtrans}.
 
