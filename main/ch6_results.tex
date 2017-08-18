@@ -17,11 +17,11 @@ When executing this operation, Nd4j throws a \textit{OutOfMemory} exception. The
 
 Ten billion of float numbers need 10 billion \time 64bit = 640 billion bit = 80 GB of RAM.
 
-However if store those 10 billion of 0 into the sparse COO format, the size is highly reduced. The values buffer and the indexes buffers are empty. 
+However if we store those 10 billion of 0 into the sparse COO format, the size is highly reduced. The values buffer and the indexes buffers are empty. 
 
 Assuming we have the same tensor but with a sparsity of 0.01, we only need:
 \begin{enumerate}
-	\item 100 billion of values $\times$ sparsity = 100 million \\
+	\item 100 billion of values $\times$ sparsity = 100 million of values\\
 	Storing 100 million of Float numbers requires: 64 million bit = 0.8 GB.\\
 	\item Each value has three coordinates, we need 100 million $\times$ 3 $\times$ 32bit = 1.2 GB.
 		

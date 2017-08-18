@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  17 AUG 2017 18:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  17 AUG 2017 18:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1962,8 +1962,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 72.
 (./head/acknowledgements.aux) (./tail/biblio.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 72.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 72.
-Package rerunfilecheck Info: File `my_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: FDDA6487F1B7480DD1CBDF3444CABB2E;4795.
+
+
+Package rerunfilecheck Warning: File `my_thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `my_thesis.out':
+(rerunfilecheck)             Before: FDDA6487F1B7480DD1CBDF3444CABB2E;4795
+(rerunfilecheck)             After:  C5F94BDBF91B598E7194B1D5D37531A6;4796.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 72.
  ) 
 Here is how much of TeX's memory you used:
@@ -1982,7 +1989,7 @@ public/fourier/fourier-ml.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /fourier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia
 /putb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on my_thesis.pdf (59 pages, 562911 bytes).
+Output written on my_thesis.pdf (59 pages, 563082 bytes).
 PDF statistics:
  1194 PDF objects out of 1200 (max. 8388607)
  999 compressed objects within 10 object streams

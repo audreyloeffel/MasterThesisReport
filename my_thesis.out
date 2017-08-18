@@ -56,7 +56,7 @@
 \BOOKMARK [1][-]{section.8.3}{Make the Sparse Array Compliant with the API}{chapter.8}% 56
 \BOOKMARK [1][-]{section.8.4}{Support More Sparse Formats}{chapter.8}% 57
 \BOOKMARK [1][-]{section.8.5}{Tensor Contraction Indexing}{chapter.8}% 58
-\BOOKMARK [1][-]{section.8.6}{Optimization}{chapter.8}% 59
+\BOOKMARK [1][-]{section.8.6}{Optimizations}{chapter.8}% 59
 \BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 60
 \BOOKMARK [0][-]{appendix.A}{Appendices}{}% 61
 \BOOKMARK [1][-]{section.A.1}{Algorithm Execution Example}{appendix.A}% 62

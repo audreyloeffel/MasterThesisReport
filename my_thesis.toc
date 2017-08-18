@@ -75,7 +75,7 @@
 \contentsline {section}{\numberline {8.3}Make the Sparse Array Compliant with the API}{37}{section.8.3}
 \contentsline {section}{\numberline {8.4}Support More Sparse Formats}{38}{section.8.4}
 \contentsline {section}{\numberline {8.5}Tensor Contraction Indexing}{38}{section.8.5}
-\contentsline {section}{\numberline {8.6}Optimization}{39}{section.8.6}
+\contentsline {section}{\numberline {8.6}Optimizations}{39}{section.8.6}
 \contentsline {chapter}{\numberline {9}Conclusion}{41}{chapter.9}
 \contentsline {chapter}{\numberline {A}Appendices}{43}{appendix.A}
 \contentsline {section}{\numberline {A.1}Algorithm Execution Example}{43}{section.A.1}

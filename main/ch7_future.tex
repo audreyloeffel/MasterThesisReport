@@ -48,7 +48,7 @@ We could think to several possibility:
 The goal is to make the complexity constant regardless of the contraction dimensions.
 
 
-\section{Optimization}
+\section{Optimizations}
 Nd4j is built with the idea to avoid the JVM environment for storing the data. It is based on the postulate that data is usually huge and does not fit into the memory. However, with the new sparse implementation, we can store huge datasets into a reasonable size of memory (as long as it has a high sparsity).
 
 We should study the possibility of storing sparse arrays on-heap with a data structure in managed memory such as ArrayList. A further idea would be to decompose the arrays and storing by block. The blocks with a high sparsity could be stored as on-heap in a sparse format, while the dense blocks would be stored off-heap as dense.
