@@ -26,8 +26,6 @@ But as much as possible has to be exposed in the \textit{INDArray} interface. To
 The methods that are not compatible with a type of array will simply throw an unsupported operation exception.
 
 The drawback brought with this solution is that we always need to verify the type of the array before doing any operations.
-
-// TODO update schema
  
 \begin{figure}[H]
 	\begin{center}
@@ -167,7 +165,7 @@ The figure \ref{fig:datastoring} illustrates the different manner to store the c
 	\quad
 	\subfloat[Flattened Indexes]{\includegraphics[width=2.3in]{images/indexesCoo_c.pdf} \label{fig:cooIdxC}}
 	\hfill
-	\caption{Illustration of the different possible data structure for storing the indexes  [0, 2, 1] of a value $v$ }
+	\caption{Illustration of the different possible data structure for storing the indexes  [0, 2, 1] of a value $v$. }
 	\label{fig:datastoring}
 \end{figure}
 
@@ -198,7 +196,7 @@ An important and frequently used method of the API is to get the value of a set 
 
 Since the indexes buffer is lexicographically sorted, a binary search can be applied. But instead of comparing a value, we need to compare a sub-array of the buffer with the target indexes. An additional step is necessary before the comparison: translate the position of the value in the values buffer to get the positions of the indexes in the buffer.
 
-We iterate over the values (NNZ elements) and for each value $v_{i}$, we extract the sub-array that contains the coordinates of $v_{i}$
+We iterate over the values (NNZ elements) and for each value $v_{i}$, we extract the sub-array that contains the coordinates of $v_{i}$.
 
 The subarray of a value $v_{i}$ is contained between the following indexes: 
 \begin{lstlisting}[style=nonumbers]
@@ -324,12 +322,12 @@ Since the rank is higher, more coordinates are needed to access a value. However
 
 Assuming we have a $3\times 3$ matrix: calling \textit{myArray.get(NDArrayIndex.newAxis(), NDArrayIndex.all())} will prepend a new dimension. The view is a $1\times 3\times 3$ tensor with a hidden dimension parameter array equal to $[0]$.
 
-We use an array called \textit{hiddenDimension} to keep track of the position of the new dimensions in the coordinates. In the example above, each value $v_{i}$ has the coordinates $(i_{0}, i_{1}, i_{2})$ within the view context. The array \textit{hiddenDimension} contain $[0]$ because this dimension does not exist in the original array.
+We use an array called \textit{hiddenDimension} to keep track of the position of the new dimensions in the coordinates. In the example above, each value $v_{i}$ has the coordinates $(i_{0}, i_{1}, i_{2})$ within the view context. The array \textit{hiddenDimension} contains $[0]$ because this dimension does not exist in the original array.
 
 \subsection{Sparse Indexes Translation}
 \label{ssec:translation}
 
-To translate a view coordinates to the underlying coordinates, we have to take into accounts: the sparse offsets, the hidden dimensions and the flags. With those three parameters we have everything needed for translating.
+To translate the view coordinates to the underlying coordinates, we have to take into accounts: the sparse offsets, the hidden dimensions and the flags. With those three parameters we have everything needed for translating.
 
 
 
@@ -435,7 +433,7 @@ The \textit{sparse offsets} are computed from the offset resulting from the reso
 \end{algorithm}
 
 \subsubsection{Example of Sparse Offsets Computation}
-An example of the execution of the algorithm is presented in appendix \ref{ch:spaoffexec}
+An example of the execution of the algorithm is presented in appendix \ref{ch:spaoffexec}.
 
 \subsubsection{Computation of the Flags}
 The \textit{Flags} array determines which dimension is active and which one is hidden from the point of view of the array. The \textbf{}dimension can only be reduced using a \textit{point} index, which means the flags can be computed during the offset resolution. An \textit{interval} with a length equals 1 does not reduce the dimensionality of the array. We fill the flags array while iterating over the indexes array.

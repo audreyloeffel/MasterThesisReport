@@ -29,4 +29,9 @@ Y.~Koren, ``1 the bellkor solution to the netflix grand prize,'' 2009.
   \url{https://software.intel.com/en-us/mkl-developer-reference-c-sparse-blas-level-1-routines}.
 \newblock [Online; accessed 13-August-2017].
 
+\bibitem{Elgohary:2016:CLA:2994509.2994515}
+A.~Elgohary, M.~Boehm, P.~J. Haas, F.~R. Reiss, and B.~Reinwald, ``Compressed
+  linear algebra for large-scale machine learning,'' {\em Proc. VLDB Endow.},
+  vol.~9, pp.~960--971, Aug. 2016.
+
 \end{thebibliography}

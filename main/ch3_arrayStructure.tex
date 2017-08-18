@@ -47,7 +47,7 @@ The pointer points to the allocated memory space and the indexes provides an eas
 
 The implementation of the \textit{DataBuffer} depends on the data type, because of the length needed to store a single value (int -> 32 bits, long -> 64bits, float -> 32bits, double -> 64bits, assuming a 64bit-architecture).
 
-The GPU backend the data is allocated on the host (in the RAM) and on the device (on the GPU), the \textit{DataBuffer} has two pointers instead of one.
+In the GPU backend, the data is allocated on the host (in the RAM) and on the device (on the GPU), the \textit{DataBuffer} has two pointers instead of one.
 
 \subsection{Parameters of an Array}
 The information about the shape of the array are grouped in a \textit{DataBuffer} object called ShapeInformation. It groups these following information:
@@ -110,5 +110,3 @@ Nd4j defines five types of operations:
 \item Index Accumulation: Similar to accumulation operations but return an index instead of a value. A classic operation is getting the maximum or minimum value along a dimension.
 \item Broadcast: Some of the more useful operations are vector operations, such as \textit{addRowVector} which add a row vector to every row of a matrix.
 \end{enumerate}
-
-%TODO BLAS vs NATIVE Nd4j, even for the CPU, must optimize for low memory mobility even when the backend is native

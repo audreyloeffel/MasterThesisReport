@@ -49,13 +49,13 @@
 \BOOKMARK [2][-]{subsection.6.2.3}{Level 2 and Level 3 Routines}{section.6.2}% 49
 \BOOKMARK [1][-]{section.6.3}{Libnd4j}{chapter.6}% 50
 \BOOKMARK [0][-]{chapter.7}{Results}{}% 51
-\BOOKMARK [1][-]{section.7.1}{Storing a Huge Dataset is now Possible}{chapter.7}% 52
+\BOOKMARK [1][-]{section.7.1}{Storing a Huge Array is now Possible}{chapter.7}% 52
 \BOOKMARK [0][-]{chapter.8}{Future}{}% 53
 \BOOKMARK [1][-]{section.8.1}{Operations}{chapter.8}% 54
 \BOOKMARK [1][-]{section.8.2}{Support of the GPU backend}{chapter.8}% 55
-\BOOKMARK [1][-]{section.8.3}{Make the sparse array API compliant}{chapter.8}% 56
+\BOOKMARK [1][-]{section.8.3}{Make the Sparse Array Compliant with the API}{chapter.8}% 56
 \BOOKMARK [1][-]{section.8.4}{Support More Sparse Formats}{chapter.8}% 57
-\BOOKMARK [1][-]{section.8.5}{Tensor contraction indexing}{chapter.8}% 58
+\BOOKMARK [1][-]{section.8.5}{Tensor Contraction Indexing}{chapter.8}% 58
 \BOOKMARK [1][-]{section.8.6}{Optimization}{chapter.8}% 59
 \BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 60
 \BOOKMARK [0][-]{appendix.A}{Appendices}{}% 61
@@ -66,5 +66,5 @@
 \BOOKMARK [2][-]{subsection.A.2.1}{Extract a sub-array of a CSR matrix}{section.A.2}% 66
 \BOOKMARK [2][-]{subsection.A.2.2}{Put a Value into a CSR matrix}{section.A.2}% 67
 \BOOKMARK [2][-]{subsection.A.2.3}{Add a value into a buffer}{section.A.2}% 68
-\BOOKMARK [0][-]{appendix*.24}{Acknowledgements}{}% 69
-\BOOKMARK [0][-]{appendix*.26}{Bibliography}{}% 70
+\BOOKMARK [0][-]{appendix*.23}{Acknowledgements}{}% 69
+\BOOKMARK [0][-]{appendix*.25}{Bibliography}{}% 70

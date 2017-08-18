@@ -1,23 +1,25 @@
 \chapter{Results}
 
-\section{Storing a Huge Dataset is now Possible}
+\section{Storing a Huge Array is now Possible}
 
-Having a sparse COO tensor representation makes possible to store a big array into memory that would'nt fit in the dense representation.
+Having a sparse COO tensor representation makes possible to store a big array into the memory that would not fit in the dense representation.
 
-For example the following operation try to create an array with a shape [10000, 10000, 100]. 
+For example, the following operation tries to create an array with a shape [10000, 10000, 100]. This array contains 10 billion of 0.
 
 \begin{lstlisting}[style=nonumbers]
 	INDArray dense = Nd4j.zero(new int[]{10000, 10000, 100});
 \end{lstlisting}
 
-During the execution Nd4j throws a \textit{OutOfMemory} exception. The data can not fit into the memory
+When executing this operation, Nd4j throws a \textit{OutOfMemory} exception. The data is too big and required memory size can not be allocated.
 \begin{lstlisting}[style=nonumbers]
 	java.lang.OutOfMemoryError: Cannot allocate new FloatPointer(10000000000): totalBytes = 1, physicalBytes = 208M
 \end{lstlisting}
 
-10 billion of Float numbers would need 10 billion \time 64bit = 640 bilion bit = 80 GB of RAM.
+Ten billion of float numbers need 10 billion \time 64bit = 640 billion bit = 80 GB of RAM.
 
-However if we store a sparse tensors with same shape having a sparsity of 0.01, we only need:
+However if store those 10 billion of 0 into the sparse COO format, the size is highly reduced. The values buffer and the indexes buffers are empty. 
+
+Assuming we have the same tensor but with a sparsity of 0.01, we only need:
 \begin{enumerate}
 	\item 100 billion of values $\times$ sparsity = 100 million \\
 	Storing 100 million of Float numbers requires: 64 million bit = 0.8 GB.\\
@@ -25,4 +27,6 @@ However if we store a sparse tensors with same shape having a sparsity of 0.01, 
 		
 \end{enumerate}
 	At total, the sparse representation requires 2 GB of memory which is more acceptable compared to the average memory size of the current computers.
+	
+	
 

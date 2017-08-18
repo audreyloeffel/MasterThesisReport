@@ -22,17 +22,7 @@ BLAS is organized into three sets of routines called \textit{levels}:
  
 \section{Backends}
 
-Nd4j can run on the top of several backends. 
-
- It supports CPU and GPU computations through interchangeable backends. The different backends use the same interface: they can be swaped without any change to the implementation code.
-
-Nd4j can run on the CPU or the GPU. 
-
-It supports interchangeable backends. The API is the same, the differences between the backends are transparent for the user.
-Each backend is parameter-able 
-
--- TODO : find doc
-
+Nd4j runs on top of interchangeable backends. The Nd4j API is build to be the same regardless of the current backend. This architecture allows us to swap the backend without changing the code: the written software can be easily deployed on multiple platforms with different architectures.
 
 \subsection{In-Place Routines}
 Some of the operations are performed in-place, that means the input matrix is modified during the operations.
@@ -90,9 +80,9 @@ The \textit{values} array can be easily obtained from the CSR and COO format sin
 
 In case of CSR vector the \textit{indexes} array corresponds to the column indexes buffer and can also be easily obtained.
 
-However a value in a COO vector is always defined by two coordinates. It is due to a Nd4j singularity where the lowest possible rank for an array is 2, even in case of vector. The \textit{indexes} array has to be extract from the \textit{indexes} buffer depending whether it is a row vector or a column vector.
+However a value in a COO vector is always defined by two coordinates. It is due to a Nd4j singularity where the lowest possible rank for an array is 2, even in case of vector and scalar. The \textit{indexes} array has to be extract from the \textit{indexes} buffer depending whether it is a row vector or a column vector.
 
-Once we have the two buffers, the procedure to call the BLAS routines is identical regardless of the underlying sparse format of the array. That mean we only need one implementation. The logic behind the arrays getters are implemented in the format-specific classes. 
+Once we have the two buffers, the procedure to call the BLAS routines is identical regardless of the underlying sparse format of the array. That mean we only need one implementation for all the sparse formats. 
 
 \subsection{Level 2 and Level 3 Routines}
 

@@ -12,7 +12,7 @@ The operations on the tensors work using contractions. A contraction is a block 
 
 Currently, only the backbone of the sparse GPU backend has been added in Nd4j. We need to generate and add the JavaCPP presets for CuSparse and then we will be able to link the API methods to the Cuda methods.
 
-\section{Make the sparse array API compliant}
+\section{Make the Sparse Array Compliant with the API}
 
 Most of the methods of the INDArray interface are still to be implemented. We want the sparse representation to be compatible and interchangeable with the dense array. It's important that both representations have the same behavior and same features.
 
@@ -27,7 +27,9 @@ Once the CSR format implemented, it will be easy to extend it to CSC since only 
 
 Then we will need to make the different formats compatible between them, with conversion methods from a format to another. This will allow getting two-dimensional slices of tensors in a different format to benefit from the advantages of each format.
 
-\section{Tensor contraction indexing}
+Elgohary \cite{Elgohary:2016:CLA:2994509.2994515} developped an alternative version of CSR
+
+\section{Tensor Contraction Indexing}
 
 Currently, the mechanism to reverse an index and get the value (as explained in section \ref{ssec:reverse}) used a binary search. Sadly it does not provide an equal complexity in case of tensor contraction. A tensor contraction is a lower rank view of a tensor. Since the indexes buffer is sorted along the first dimension in a lexicographical order, it makes the task to access values of a contraction which does not contain the first dimension harder since the indexes are not sorted.
 
