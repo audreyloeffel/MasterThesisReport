@@ -39,7 +39,7 @@ There are two methods to store a multi-dimensional array into a linear memory sp
 
 \end{figure}
 
-The data is accessed via strides which define how to index over contiguous block of data. For each dimension it defines by how many values two consecutive elements are separated. In the case of matrix $A$ defined in figure \ref{fig:orders}, the strides would be $(3, 1)$ in case of C-order and $(1, 3)$ in case of F-order. Strides $(3, 1)$ means that each row is separated by 3 values and each column is separated by 1 value.
+The data is accessed via strides which define how to index a contiguous block of data. For each dimension, it defines by how many values two consecutive elements are separated. In the case of matrix $A$ defined in figure \ref{fig:orders}, the strides would be $(3, 1)$ in case of C-order and $(1, 3)$ in case of F-order. Strides $(3, 1)$ means that each row is separated by 3 values and each column is separated by 1 value.
 
 \subsection{Data Buffer}
 The \textit{DataBuffer} is a storage abstraction which provides optimal storage and retrieval depending on the backend. The data is stored off-heap through JavaCPP. It is basically a wrapper around a pointer and an indexer with utility methods to access and modify the data. 
@@ -47,8 +47,8 @@ The pointer points to the allocated memory space and the indexes provides an eas
 
 The implementation of the \textit{DataBuffer} depends on the data type, because of the length needed to store a single value (int -> 32 bits, long -> 64bits, float -> 32bits, double -> 64bits, assuming a 64bit-architecture).
 
-%TODO talk about memory copy (how bad is it)
-// TODO speak about memory copy, host and device memory, etc
+The GPU backend the data is allocated on the host (in the RAM) and on the device (on the GPU), the \textit{DataBuffer} has two pointers instead of one.
+
 \subsection{Parameters of an Array}
 The information about the shape of the array are grouped in a \textit{DataBuffer} object called ShapeInformation. It groups these following information:
 

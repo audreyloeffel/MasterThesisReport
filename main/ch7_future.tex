@@ -4,21 +4,17 @@
 
 All the level 1 operations are available but the level 2 and 3 still have to be implemented. The backbone of the implementation is done, we only need to extract the arguments from the array and call the sparse routines.
 
-Regarding the native operations, everything still needs to be done.
--- TODO how? no idea..
+Regarding the native operations, everything still needs to be done. We need to implement each method into libnd4j and create the binding with Nd4j.
 
-The operations on the tensors work using contractions. a Contraction is a block or a slice along a dimension of the tensor. If the contraction has a rank equal to 2, the matrix operations can be used. The operations on tensors are performed on sub-parts.
+The operations on the tensors work using contractions. A contraction is a block or a slice along a dimension of the tensor with a rank lower than the rank of the original array. If we reduce the rank until we get a matrix, we can use the accelerated matrix operations. We perform the tensors operators by blocks.
 
 \section{Support of the GPU backend}
 
-Currently only the backbone of the GPU implementation has been added in Nd4j. We need to add the JavaCPP presets for CuSparse, then similiarly to the dense methods, we need to link the API methods to the cuda methods.
-
-
--- TODO
+Currently, only the backbone of the sparse GPU backend has been added in Nd4j. We need to generate and add the JavaCPP presets for CuSparse and then we will be able to link the API methods to the Cuda methods.
 
 \section{Make the sparse array API compliant}
 
-Most of the methods of the INDArray interface are still to be implemented. We want the sparse representation be compatible and interchangeable with the dense array. It's important that both representations have the same behavior and same features.
+Most of the methods of the INDArray interface are still to be implemented. We want the sparse representation to be compatible and interchangeable with the dense array. It's important that both representations have the same behavior and same features.
 
 \section{Support More Sparse Formats}
 \label{sec:moreFormat}
@@ -27,13 +23,13 @@ An additional step would be to support different type of sparse format.
 
 Due to the necessity of having a sparse representation that is not limited to the matrices and vectors, the CSR implementation has been interrupted in favor of the COO format. The CSR representation needs to be completed: Not all the indexes are supported, it misses the BLAS levels 2 and 3, native operations, GPU backend support. 
 
-Once the CSR format implemented, it will be easily to extend it to CSC since only the order is different between the two formats.
+Once the CSR format implemented, it will be easy to extend it to CSC since only the order is different between the two formats.
 
-Then we will need to make the different formats compatible between them, with conversion methods from a format to another. This will allow to get two-dimensional slices of tensors in a different format to benefit of the advantages of each format.
+Then we will need to make the different formats compatible between them, with conversion methods from a format to another. This will allow getting two-dimensional slices of tensors in a different format to benefit from the advantages of each format.
 
 \section{Tensor contraction indexing}
 
-Currently the mechanism to reverse a index and get the value (as explained in section \ref{ssec:reverse}) used a binary search. Sadly it does not provide an equal complexity in case of tensor contraction. A tensor contraction is a lower rank view of a tensor. Since the indexes buffer is sorted along the first dimension in a lexicographical order, it makes the task to access values of a contraction which does not contain the first dimension harder since the indexes are not sorted.
+Currently, the mechanism to reverse an index and get the value (as explained in section \ref{ssec:reverse}) used a binary search. Sadly it does not provide an equal complexity in case of tensor contraction. A tensor contraction is a lower rank view of a tensor. Since the indexes buffer is sorted along the first dimension in a lexicographical order, it makes the task to access values of a contraction which does not contain the first dimension harder since the indexes are not sorted.
 
 We could think to several possibility:
 \begin{enumerate}
@@ -51,8 +47,8 @@ The goal is to make the complexity constant regardless of the contraction dimens
 
 
 \section{Optimization}
-Nd4j is built with the idea to avoid the JVM environement for storing the data. It is based on the postulate that data is usually huge and does not fit into the memory. However with the new sparse implementation, we can store huge datasets into a reasonable size of memory (as long as it has a high sparsity).
+Nd4j is built with the idea to avoid the JVM environment for storing the data. It is based on the postulate that data is usually huge and does not fit into the memory. However, with the new sparse implementation, we can store huge datasets into a reasonable size of memory (as long as it has a high sparsity).
 
-We should study the possibility of storing sparse arrays on-heap with data structure in managed memory such as ArrayList. A further idea would be to decompose the arrays and storing by block. The blocks with a high sparsity could be stored as on-heap in a sparse format, while the dense blocks would be stored off-heap as dense.
+We should study the possibility of storing sparse arrays on-heap with a data structure in managed memory such as ArrayList. A further idea would be to decompose the arrays and storing by block. The blocks with a high sparsity could be stored as on-heap in a sparse format, while the dense blocks would be stored off-heap as dense.
 
-But the question about how on-heap data would interact with the Cuda remains open.
+But the question about how on-heap data would interact with the Cuda remains open. Perhaps we could have a mixed backend which performs dense operations on GPU and sparse operations on CPU.

@@ -4,35 +4,35 @@
 
 Linear algebra forms the backbone of many machine learning algorithms, especially in deep learning algorithms. It provides structures such as vectors and matrices to hold the data and parameters to perform operations between them. 
 
-Data is said sparse when it is contains only a few non-zero values. That kind of dataset is really common in Machine Learning applications and can have an high influence on the computation. 
+Data is said sparse when it contains only a few non-zero values. That kind of dataset is really common in Machine Learning applications and can have a high influence on the computation.  
 
 \section{Sparse Data is very common in Machine Learning}
 
-Many of machine learning applications tend to deal with sparse dataset. An example is the natural language processing applications, the words need to be vectorized before to be used by a ML application. The most common manner to do so, is to use the bag of world model which uses the frequency of the words in the text. As stated by the Zipf' law \cite{Zipf}, the frequency of any word in inversely proportional to its rank in the frequency table. It results in a very sparse dataset.
+Many of machine learning applications tend to deal with a sparse data set. An example is the natural language processing applications, the words need to be vectorized before to be used by an ML application. The most common manner to achieve it is to use the bag of world model which uses the frequency of the words in the text. As stated by the Zipf' law \cite{Zipf}, the frequency of any word in inversely proportional to its rank in the frequency table. It results in a very sparse data set.
 
-Given the possible optimization that sparse dataset allows and the high number of people that could take advantages of it, it becomes important to add the support of sparse data in the DL4J suite of libraries. 
+Given the possible optimization that sparse data set allows and the high number of people that could take advantages of it, it becomes important to add the support of sparse data in the DL4J suite of libraries. 
 
-Moreover nowadays deep-learning is a highly competitive field. Many libraries exist or are beeing built in many language. However Deeplearning4j has a prominent position in this ML-library war since it runs on the Java Virtual Machine (JVM) and is company and production-oriented.
+Moreover, nowadays deep-learning is a highly competitive field. Many libraries exist or are being built in many languages. However, Deeplearning4j has a prominent position in this ML-library war since it runs on the Java Virtual Machine (JVM) and business and production-oriented.
 
 
 
 \section{The Advantages of Sparse Data}
-Linear algebra is a branch of mathematics that is widely used throughout science and engineering. Macĥine learning and more specifically deep learning algorithms rely on linear algebra. Sparsity is a very useful property in Machine Learning. Some algorithms can have fast optimization, fast evaluation of the model, statistical robustness or other computational advantages.
+Linear algebra is a branch of mathematics that is widely used throughout science and engineering. Machine learning and more specifically deep learning algorithms rely on linear algebra. Sparsity is a very useful property in Machine Learning. Some algorithms can have fast optimization, fast evaluation of the model, statistical robustness or other computational advantages.
 
 
 \subsection{A Real Case of Sparse Dataset}
-In 2008 Netflix launched a contest, the Netflix Grand Prize \cite{netflixgrandprize}, to improve their recommender system model and to increase the accuracy of predictions. They published an sample dataset made with the ratings of anonymous Netflix customers. The dataset had more than 100 millions sampled ratings and it contained about $m=480'186$ users and $m=17'770$ movies \cite{Koren091the}. If stored as a dense matrix, it would need to store $8'532'905'220$ values in memory. That corresponds to a sparsity $\cong \frac{100'000'000}{8'532'905'220} = 0.011719338$.
+In 2008 Netflix launched a contest, the Netflix Grand Prize \cite{netflixgrandprize}, to improve their recommender system model and to increase the accuracy of predictions. They published a sample data set made with the ratings of anonymous Netflix customers. The dataset had more than 100 millions sampled ratings and it contained about $m=480'186$ users and $m=17'770$ movies \cite{Koren091the}. If stored as a dense matrix, it would need to store $8'532'905'220$ values in memory. That corresponds to a sparsity $\cong \frac{100'000'000}{8'532'905'220} = 0.011719338$.
 
-Storing more than 8 trillions 64-bit floating-point numbers needs more than 64 gigabyte of memory which quickly become unmanageable even for the world's fastest supercomputers. 
+Storing more than 8 billion 64-bit floating-point numbers needs more than 64 gigabytes of memory which quickly become unmanageable even for the world's fastest supercomputers. 
 
 \section{Solution: Sparse Representation and Operations}
 Even if the compression of sparse data is very efficient when storing as dense data, we could gain in performance during the processing by using a sparse representation with sparse operations. 
 
-In sparse operations only the values are accessed and processed while in dense operations, every cell is accessed even if it contains a zero value.
+In sparse operations, only the values are accessed and processed while in dense operations, every cell is accessed even if it contains a zero value.
 
-For example with a dataset with density equal to 10\% we gain arounf 10\% in storage memory and in compuation %todo c'est sorti dôu?
+For example with a dataset with a density equal to 10\% we only need 10\% of the memory space and to process 10\% of the matrix cells to perform an operation.
 
-To reduce the size of the memory needed and to gain in performance, we must store the data into a sparse format. There are different kind of formats which each of them is more suitable to different aspects (Storage vs computation).
+To reduce the size of the memory needed and to gain in performance, we must store the data in a sparse format. There are different kind of formats which each of them is more suitable for different aspects (Storage vs computation).
 
 
 

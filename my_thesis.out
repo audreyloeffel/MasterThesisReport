@@ -50,24 +50,21 @@
 \BOOKMARK [1][-]{section.6.3}{Libnd4j}{chapter.6}% 50
 \BOOKMARK [0][-]{chapter.7}{Results}{}% 51
 \BOOKMARK [1][-]{section.7.1}{Storing a Huge Dataset is now Possible}{chapter.7}% 52
-\BOOKMARK [1][-]{section.7.2}{Operations performance}{chapter.7}% 53
-\BOOKMARK [2][-]{subsection.7.2.1}{level 1}{section.7.2}% 54
-\BOOKMARK [2][-]{subsection.7.2.2}{level 2}{section.7.2}% 55
-\BOOKMARK [0][-]{chapter.8}{Future}{}% 56
-\BOOKMARK [1][-]{section.8.1}{Operations}{chapter.8}% 57
-\BOOKMARK [1][-]{section.8.2}{Support of the GPU backend}{chapter.8}% 58
-\BOOKMARK [1][-]{section.8.3}{Make the sparse array API compliant}{chapter.8}% 59
-\BOOKMARK [1][-]{section.8.4}{Support More Sparse Formats}{chapter.8}% 60
-\BOOKMARK [1][-]{section.8.5}{Tensor contraction indexing}{chapter.8}% 61
-\BOOKMARK [1][-]{section.8.6}{Optimization}{chapter.8}% 62
-\BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 63
-\BOOKMARK [0][-]{appendix.A}{Appendices}{}% 64
-\BOOKMARK [1][-]{section.A.1}{Algorithm Execution Example}{appendix.A}% 65
-\BOOKMARK [2][-]{subsection.A.1.1}{Sparse Offset Computation Algorithm}{section.A.1}% 66
-\BOOKMARK [2][-]{subsection.A.1.2}{Indexes Translation Algorithm}{section.A.1}% 67
-\BOOKMARK [1][-]{section.A.2}{Code Snippets}{appendix.A}% 68
-\BOOKMARK [2][-]{subsection.A.2.1}{Extract a sub-array of a CSR matrix}{section.A.2}% 69
-\BOOKMARK [2][-]{subsection.A.2.2}{Put a Value into a CSR matrix}{section.A.2}% 70
-\BOOKMARK [2][-]{subsection.A.2.3}{Add a value into a buffer}{section.A.2}% 71
-\BOOKMARK [0][-]{appendix*.24}{Acknowledgements}{}% 72
-\BOOKMARK [0][-]{appendix*.26}{Bibliography}{}% 73
+\BOOKMARK [0][-]{chapter.8}{Future}{}% 53
+\BOOKMARK [1][-]{section.8.1}{Operations}{chapter.8}% 54
+\BOOKMARK [1][-]{section.8.2}{Support of the GPU backend}{chapter.8}% 55
+\BOOKMARK [1][-]{section.8.3}{Make the sparse array API compliant}{chapter.8}% 56
+\BOOKMARK [1][-]{section.8.4}{Support More Sparse Formats}{chapter.8}% 57
+\BOOKMARK [1][-]{section.8.5}{Tensor contraction indexing}{chapter.8}% 58
+\BOOKMARK [1][-]{section.8.6}{Optimization}{chapter.8}% 59
+\BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 60
+\BOOKMARK [0][-]{appendix.A}{Appendices}{}% 61
+\BOOKMARK [1][-]{section.A.1}{Algorithm Execution Example}{appendix.A}% 62
+\BOOKMARK [2][-]{subsection.A.1.1}{Sparse Offset Computation Algorithm}{section.A.1}% 63
+\BOOKMARK [2][-]{subsection.A.1.2}{Indexes Translation Algorithm}{section.A.1}% 64
+\BOOKMARK [1][-]{section.A.2}{Code Snippets}{appendix.A}% 65
+\BOOKMARK [2][-]{subsection.A.2.1}{Extract a sub-array of a CSR matrix}{section.A.2}% 66
+\BOOKMARK [2][-]{subsection.A.2.2}{Put a Value into a CSR matrix}{section.A.2}% 67
+\BOOKMARK [2][-]{subsection.A.2.3}{Add a value into a buffer}{section.A.2}% 68
+\BOOKMARK [0][-]{appendix*.24}{Acknowledgements}{}% 69
+\BOOKMARK [0][-]{appendix*.26}{Bibliography}{}% 70
